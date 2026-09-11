@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAGLA ASTROLOGY & HOROSCOPE | 30+ Years Vedic Astrology, Kundli & Palmistry</title>
+  <meta name="description" content="Bagla Astrology & Horoscope provides authentic Vedic astrology, Janam Kundli analysis, palmistry (Hastarekha), Kundli Milan, and planetary remedies with over 30+ years of sacred experience.">
+  <meta name="keywords" content="Bagla Astrology, Vedic Astrology, Kundli, Horoscope, Palmistry, Hastarekha, Kundli Milan, Sade Sati, Astrologer with 30 years experience">
+  
+  <!-- Favicon / Branding -->
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cosmic Canvas Starfield -->
+  <canvas id="canvas-stars"></canvas>
+
+  <!-- ==========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================== -->
+  <aside class="top-bar" aria-label="Announcement & Quick Contact">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5zm4 4h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+          🕉️ <em>Om Namah Shivaya</em> — Divine Vedic Wisdom & Guidance
+        </span>
+        <a href="tel:+919829743685" class="top-bar-item">
+          <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+          Direct Helpline: +91 98297 43685
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-badge">
+          Jaipur, Rajasthan • 30+ Years Sacred Experience
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       SITE HEADER & NAVIGATION
+       ========================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <!-- Brand Logo & Title -->
+        <a href="#hero" class="brand-logo-link" aria-label="Bagla Astrology & Horoscope Homepage">
+          <img src="images/logo.jpg" alt="Bagla Astrology & Horoscope Crest" class="brand-logo-img">
+          <div class="brand-name-wrap">
+            <span class="brand-name">BAGLA</span>
+            <span class="brand-tagline">Astrology & Horoscope</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="baglamukhi.html" class="nav-link">Maa Baglamukhi</a></li>
+          <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+          <li><a href="#horoscope" class="nav-link">Horoscope</a></li>
+        </ul>
+
+        <!-- Action CTAs -->
+        <div class="header-actions">
+          <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20astrology." target="_blank" class="header-wa-btn" aria-label="WhatsApp Helpline 9829743685">
+            <svg viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+            <span>WhatsApp: 9829743685</span>
+          </a>
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION
+         ========================================================================== -->
+    <section id="hero" class="hero-section">
+      <div class="hero-aura-glow"></div>
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Content -->
+          <div class="hero-content">
+            <div class="hero-tagline-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span>Vedic Astrology • Palmistry • Horoscope</span>
+            </div>
+            <h1 class="hero-title">
+              Illuminate Your Destiny with <span class="text-gold-gradient">30+ Years of Sacred Vedic Wisdom</span>
+            </h1>
+            <p class="hero-description">
+              Find clarity through life’s uncertainties. Over three decades of authentic Janam Kundli analysis, sacred Hastarekha (palmistry), Kundli Milan, and genuine planetary remedies tailored to your karmic blueprint.
+            </p>
+            <div class="hero-cta-group">
+              <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20astrology." target="_blank" class="btn btn-whatsapp">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                <span>Consult on WhatsApp</span>
+              </a>
+              <a href="tel:9829743685" class="btn btn-primary">
+                <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+                <span>Call +91 98297 43685</span>
+              </a>
+              <a href="#horoscope" class="btn btn-outline">
+                <span>Check Today's Horoscope</span>
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              </a>
+            </div>
+
+            <!-- Trust Stats -->
+            <div class="hero-stats-row">
+              <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Years of Mastery</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">50K+</span>
+                <span class="stat-label">Kundlis Decoded</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">1000+</span>
+                <span class="stat-label">Baglamukhi Anushthans</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Confidential & Ethical</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Visual: Logo in Cosmic Radiance -->
+          <div class="hero-visual">
+            <div class="hero-visual-wrapper">
+              <div class="celestial-orbit-outer"></div>
+              <div class="celestial-orbit-inner"></div>
+              <div class="hero-logo-frame">
+                <img src="images/logo.jpg" alt="Bagla Astrology & Horoscope Sacred Crest" loading="eager">
+              </div>
+
+              <!-- Floating Trust Badge -->
+              <div class="floating-blessing-card">
+                <div class="badge-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                </div>
+                <div class="badge-text">
+                  <h4>Vedic Shastra Heritage</h4>
+                  <p>Certified Astrological Consultation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE 12 ZODIAC HOROSCOPE SECTION
+         ========================================================================== -->
+    <section id="horoscope" class="horoscope-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Planetary Alignments & Rashiphal
+          </div>
+          <h2 class="section-title">Daily Horoscope & Zodiac Insights</h2>
+          <p class="section-subtitle">
+            Explore the cosmic vibrations of your Sun and Moon sign today. Click any of the 12 sacred rashis below for tailored career, relationships, and health guidance.
+          </p>
+        </div>
+
+        <!-- 12 Zodiac Wheel Grid -->
+        <div class="zodiac-wheel-grid" role="tablist" aria-label="12 Zodiac Signs Selector">
+          <!-- 1. Aries -->
+          <button class="zodiac-card active" data-sign="aries" role="tab" aria-selected="true">
+            <div class="zodiac-glyph">♈</div>
+            <div class="zodiac-name">Aries</div>
+            <div class="zodiac-dates">Mar 21 - Apr 19</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 2. Taurus -->
+          <button class="zodiac-card" data-sign="taurus" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♉</div>
+            <div class="zodiac-name">Taurus</div>
+            <div class="zodiac-dates">Apr 20 - May 20</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 3. Gemini -->
+          <button class="zodiac-card" data-sign="gemini" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♊</div>
+            <div class="zodiac-name">Gemini</div>
+            <div class="zodiac-dates">May 21 - Jun 20</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 4. Cancer -->
+          <button class="zodiac-card" data-sign="cancer" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♋</div>
+            <div class="zodiac-name">Cancer</div>
+            <div class="zodiac-dates">Jun 21 - Jul 22</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+
+          <!-- 5. Leo -->
+          <button class="zodiac-card" data-sign="leo" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♌</div>
+            <div class="zodiac-name">Leo</div>
+            <div class="zodiac-dates">Jul 23 - Aug 22</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 6. Virgo -->
+          <button class="zodiac-card" data-sign="virgo" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♍</div>
+            <div class="zodiac-name">Virgo</div>
+            <div class="zodiac-dates">Aug 23 - Sep 22</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 7. Libra -->
+          <button class="zodiac-card" data-sign="libra" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♎</div>
+            <div class="zodiac-name">Libra</div>
+            <div class="zodiac-dates">Sep 23 - Oct 22</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 8. Scorpio -->
+          <button class="zodiac-card" data-sign="scorpio" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♏</div>
+            <div class="zodiac-name">Scorpio</div>
+            <div class="zodiac-dates">Oct 23 - Nov 21</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+
+          <!-- 9. Sagittarius -->
+          <button class="zodiac-card" data-sign="sagittarius" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♐</div>
+            <div class="zodiac-name">Sagittarius</div>
+            <div class="zodiac-dates">Nov 22 - Dec 21</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 10. Capricorn -->
+          <button class="zodiac-card" data-sign="capricorn" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♑</div>
+            <div class="zodiac-name">Capricorn</div>
+            <div class="zodiac-dates">Dec 22 - Jan 19</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 11. Aquarius -->
+          <button class="zodiac-card" data-sign="aquarius" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♒</div>
+            <div class="zodiac-name">Aquarius</div>
+            <div class="zodiac-dates">Jan 20 - Feb 18</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 12. Pisces -->
+          <button class="zodiac-card" data-sign="pisces" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♓</div>
+            <div class="zodiac-name">Pisces</div>
+            <div class="zodiac-dates">Feb 19 - Mar 20</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Horoscope Content Panel -->
+        <div class="horoscope-display-panel" id="horoscope-panel">
+          <div class="horoscope-header-row">
+            <div class="horoscope-sign-info">
+              <div class="horoscope-big-glyph" id="horoscope-big-glyph">♈</div>
+              <div class="horoscope-sign-title">
+                <h3 id="horoscope-sign-name">Aries</h3>
+                <p id="horoscope-sign-vedic">Mesha (मेष) • <span id="horoscope-sign-dates">Mar 21 - Apr 19</span></p>
+              </div>
+            </div>
+            <div class="horoscope-meta-pills">
+              <div class="meta-pill"><strong>Ruling Planet:</strong> <span id="horoscope-ruler">Mars (Mangal)</span></div>
+              <div class="meta-pill"><strong>Lucky Gemstone:</strong> <span id="horoscope-gemstone">Red Coral (Moonga)</span></div>
+              <div class="meta-pill"><strong>Lucky Color:</strong> <span id="horoscope-color">Crimson Red & Coral</span></div>
+              <div class="meta-pill"><strong>Lucky Numbers:</strong> <span id="horoscope-numbers">9, 18, 27</span></div>
+            </div>
+          </div>
+
+          <!-- Aspects Grid -->
+          <div class="horoscope-aspects-grid">
+            <!-- General / Overview -->
+            <div class="aspect-card">
+              <div class="aspect-card-header">
+                <div class="aspect-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                </div>
+                <h4>Cosmic Energy</h4>
+              </div>
+              <p id="horoscope-overview">
+                Planetary alignments favor bold personal initiatives today. The Sun illuminates your house of courage and self-realization, opening up pathways that felt blocked earlier this month.
+              </p>
+            </div>
+
+            <!-- Career & Wealth -->
+            <div class="aspect-card">
+              <div class="aspect-card-header">
+                <div class="aspect-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </div>
+                <h4>Career & Wealth</h4>
+              </div>
+              <p id="horoscope-career">
+                A new project or leadership mandate will be entrusted to you. Maintain patience during team negotiations and avoid hasty financial speculation.
+              </p>
+            </div>
+
+            <!-- Love & Relationships -->
+            <div class="aspect-card">
+              <div class="aspect-card-header">
+                <div class="aspect-icon-wrap">
+                  <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+                <h4>Love & Family</h4>
+              </div>
+              <p id="horoscope-love">
+                Passionate energies run high. Clear communication with your partner resolves past misunderstandings; singles may receive an unexpected auspicious proposal.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom CTA Strip -->
+          <div class="horoscope-cta-strip">
+            <div class="horoscope-cta-text">
+              <p>Looking for a complete Kundli & Planetary Dasha analysis?</p>
+              <span>Get your personalized 30+ year timeline decoded by Pandit Ji.</span>
+            </div>
+            <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20Kundli%20%26%20Dasha%20analysis." target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>Consult on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         CORE SERVICES SECTION
+         ========================================================================== */
+    -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.84L19.53 19H4.47L12 5.84zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+            Sacred Offerings
+          </div>
+          <h2 class="section-title">Vedic Astrology & Divination Services</h2>
+          <p class="section-subtitle">
+            Grounded in classical Sanskrit scriptures, authentic astronomical calculations, and 30+ years of compassionate consultation experience.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- 1. Vedic Janam Kundli -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.54l6 5.4V18h-2v-6H8v6H6v-7.06l6-5.4z"/></svg>
+            </div>
+            <h3>Janam Kundli & Birth Chart</h3>
+            <p>
+              Exhaustive analysis of the 12 Bhavas (houses), planetary yogas, ongoing Mahadasha / Antardasha periods, and life milestone forecasts.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Accurate Lagna & Navamsha (D9) Chart</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mahadasha & Planetary Transits (Gochar)</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Practical remedies with no fear-mongering</li>
+            </ul>
+            <a href="services.html#janam-kundli" class="service-link">
+              <span>Explore Kundli Details</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- 2. Sacred Palmistry (Hastarekha) -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M13 24c3.31 0 6-2.69 6-6V9c0-1.66-1.34-3-3-3-.41 0-.79.08-1.14.23C14.5 4.96 13.36 4 12 4c-.58 0-1.12.18-1.57.48C9.96 3.61 9.04 3 8 3 6.34 3 5 4.34 5 6v5.18c-.32-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3 0 2.45 1.33 4.59 3.28 5.72l5.44 3.12c.76.44 1.52.66 2.28.66z"/></svg>
+            </div>
+            <h3>Sacred Palmistry (Hastarekha)</h3>
+            <p>
+              Ancient hand analysis revealing your innate talents, health resilience, life turning points, and fate trajectories recorded upon the palm.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Life, Head, Heart & Fate line decoding</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mounts of Sun, Jupiter, Venus & Saturn</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Confirmation for unknown birth times</li>
+            </ul>
+            <a href="#palmistry" class="service-link">
+              <span>Explore Palmistry Deep Dive</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- 3. Kundli Milan & Marriage -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <h3>Kundli Milan & Compatibility</h3>
+            <p>
+              In-depth 36 Guna Ashtakoot matching, Manglik Dosha evaluation, emotional temperament analysis, and remedies for enduring matrimonial harmony.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 36 Guna Milan & Nadi Dosha review</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mangal Dosha verification & remedies</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Financial & family harmony assessment</li>
+            </ul>
+            <a href="services.html#kundli-milan" class="service-link">
+              <span>Explore Compatibility Details</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- 4. Career, Wealth & Business -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+            </div>
+            <h3>Career, Wealth & Business</h3>
+            <p>
+              Strategic astrological timing for new business ventures, career transitions, promotion cycles, partnership checks, and auspicious Muhurat.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 10th House (Karma Bhava) scrutiny</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Shubh Muhurat for company inauguration</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Financial prosperity & Lakshmi yogas</li>
+            </ul>
+            <a href="services.html#career-wealth" class="service-link">
+              <span>Explore Career Astrology</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- 5. Vedic Dosha Nivaran -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <h3>Dosha Nivaran & Remedies</h3>
+            <p>
+              Authentic Vedic remedial solutions for Kaal Sarp Dosha, Shani Sade Sati, Pitra Dosha, Rahu-Ketu afflictions, and recurring obstacles.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Shani Sade Sati protective remedies</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Kaal Sarp Yoga mitigation rituals</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mantra Sadhana & Charity guidelines</li>
+            </ul>
+            <a href="services.html#dasha-nivaran" class="service-link">
+              <span>Explore Remedial Solutions</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+
+          <!-- 6. Gemstones & Yantras -->
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24"><path d="M12 2L3.5 8.5 12 22l8.5-13.5L12 2zm0 3.31L17.47 9H6.53L12 5.31zM6.16 11h11.68L12 18.28 6.16 11z"/></svg>
+            </div>
+            <h3>Certified Gemstones (Ratna)</h3>
+            <p>
+              Precise astrological recommendation of planetary gemstones (Ruby, Yellow Sapphire, Blue Sapphire, Emerald, Pearl) suited to your friendly Grahas.
+            </p>
+            <ul class="service-features-list">
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Weight (Ratti), metal, and finger rules</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pran Pratishtha & Shuddhikaran rituals</li>
+              <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Protection against conflicting stones</li>
+            </ul>
+            <a href="services.html#gemstones" class="service-link">
+              <span>Explore Certified Gemstones</span>
+              <svg viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PALMISTRY SPOTLIGHT SECTION (HASTAREKHA SHASTRA)
+         ========================================================================== -->
+    <section id="palmistry" class="palmistry-section">
+      <div class="container">
+        <div class="palmistry-grid">
+          <!-- Left: Interactive Hand SVG Diagram -->
+          <div class="palm-diagram-box">
+            <div class="palm-svg-container">
+              <svg viewBox="0 0 300 400" width="100%" height="auto" xmlns="http://www.w3.org/2000/svg">
+                <!-- Palm Silhouette Outline -->
+                <path d="M70 230 C60 180 50 140 50 110 C50 95 65 95 72 110 C80 130 90 160 95 160 C95 130 92 65 92 45 C92 30 110 30 115 45 C120 70 125 130 128 150 C130 120 138 30 142 15 C145 0 165 0 168 15 C172 45 174 120 176 150 C180 120 195 50 205 40 C215 30 228 42 225 60 C220 95 215 150 215 175 C215 190 235 180 250 185 C265 190 270 210 260 225 C240 255 220 310 215 360 C210 380 190 395 150 395 C110 395 90 380 85 360 C80 320 75 270 70 230 Z" 
+                      fill="rgba(163, 21, 47, 0.12)" 
+                      stroke="#d4af37" 
+                      stroke-width="2" 
+                      stroke-linejoin="round"/>
+                
+                <!-- Palm Mounts Indicative Circles -->
+                <circle cx="110" cy="180" r="14" fill="rgba(212, 175, 55, 0.08)" stroke="#d4af37" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="110" y="184" fill="#f7df6e" font-size="9" text-anchor="middle" font-family="Cinzel">JUP</text>
+                
+                <circle cx="150" cy="170" r="14" fill="rgba(212, 175, 55, 0.08)" stroke="#d4af37" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="150" y="174" fill="#f7df6e" font-size="9" text-anchor="middle" font-family="Cinzel">SAT</text>
+                
+                <circle cx="185" cy="180" r="14" fill="rgba(212, 175, 55, 0.08)" stroke="#d4af37" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="185" y="184" fill="#f7df6e" font-size="9" text-anchor="middle" font-family="Cinzel">SUN</text>
+
+                <circle cx="210" cy="205" r="13" fill="rgba(212, 175, 55, 0.08)" stroke="#d4af37" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="210" y="209" fill="#f7df6e" font-size="8" text-anchor="middle" font-family="Cinzel">MER</text>
+
+                <circle cx="105" cy="295" r="24" fill="rgba(207, 34, 66, 0.1)" stroke="#cf2242" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="105" y="299" fill="#ff8a9e" font-size="9" text-anchor="middle" font-family="Cinzel">VENUS</text>
+
+                <circle cx="195" cy="320" r="20" fill="rgba(76, 201, 240, 0.1)" stroke="#4cc9f0" stroke-dasharray="3,3" stroke-width="1"/>
+                <text x="195" y="324" fill="#80e5ff" font-size="9" text-anchor="middle" font-family="Cinzel">MOON</text>
+
+                <!-- Sacred Hand Lines -->
+                <!-- 1. Heart Line -->
+                <path d="M225 210 Q 170 215, 120 185" 
+                      class="palm-svg-line" 
+                      data-line="heart" 
+                      fill="none" 
+                      stroke="#f07b8f" 
+                      stroke-width="3" 
+                      stroke-linecap="round"/>
+
+                <!-- 2. Head Line -->
+                <path d="M85 220 Q 140 230, 210 275" 
+                      class="palm-svg-line" 
+                      data-line="head" 
+                      fill="none" 
+                      stroke="#4cc9f0" 
+                      stroke-width="3" 
+                      stroke-linecap="round"/>
+
+                <!-- 3. Life Line -->
+                <path d="M85 220 Q 135 245, 135 345" 
+                      class="palm-svg-line" 
+                      data-line="life" 
+                      fill="none" 
+                      stroke="#2ec484" 
+                      stroke-width="3.5" 
+                      stroke-linecap="round"/>
+
+                <!-- 4. Fate Line -->
+                <path d="M155 375 Q 152 280, 150 190" 
+                      class="palm-svg-line" 
+                      data-line="fate" 
+                      fill="none" 
+                      stroke="#f7df6e" 
+                      stroke-width="3" 
+                      stroke-linecap="round"/>
+
+                <!-- 5. Sun Line -->
+                <path d="M185 295 L 185 200" 
+                      class="palm-svg-line" 
+                      data-line="sun" 
+                      fill="none" 
+                      stroke="#ff9e00" 
+                      stroke-width="2.5" 
+                      stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Interactive Legend -->
+            <div class="palm-lines-legend">
+              <div class="legend-item" data-line="life">
+                <span class="legend-dot" style="background: #2ec484;"></span>
+                <span><strong>Life Line</strong> (Vitality & Energy)</span>
+              </div>
+              <div class="legend-item" data-line="heart">
+                <span class="legend-dot" style="background: #f07b8f;"></span>
+                <span><strong>Heart Line</strong> (Emotions & Vows)</span>
+              </div>
+              <div class="legend-item" data-line="head">
+                <span class="legend-dot" style="background: #4cc9f0;"></span>
+                <span><strong>Head Line</strong> (Intellect & Wisdom)</span>
+              </div>
+              <div class="legend-item" data-line="fate">
+                <span class="legend-dot" style="background: #f7df6e;"></span>
+                <span><strong>Fate Line</strong> (Destiny & Wealth)</span>
+              </div>
+              <div class="legend-item" data-line="sun">
+                <span class="legend-dot" style="background: #ff9e00;"></span>
+                <span><strong>Sun Line</strong> (Fame & Success)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Text Description -->
+          <div class="palmistry-text-block">
+            <div class="section-eyebrow">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              Hastarekha Shastra Mastery
+            </div>
+            <h2>Your Destiny Written in the <span class="text-gold-gradient">Palms of Your Hands</span></h2>
+            <p>
+              In ancient Vedic tradition, the hand is a living cosmic mirror of your subconscious Karma. When exact birth times are lost or disputed, palmistry serves as the ultimate diagnostic tool to confirm life timelines, marital harmony, and financial inflection points.
+            </p>
+
+            <div class="palm-pillars">
+              <div class="palm-pillar-item">
+                <div class="pillar-number">01</div>
+                <div class="pillar-content">
+                  <h4>The Mounts of the Nine Planets</h4>
+                  <p>Evaluation of Jupiter (authority), Venus (vitality & romance), and Saturn (patience & perseverance) elevates reading precision beyond standard horoscopes.</p>
+                </div>
+              </div>
+
+              <div class="palm-pillar-item">
+                <div class="pillar-number">02</div>
+                <div class="pillar-content">
+                  <h4>Dynamic Karmic Evolution</h4>
+                  <p>Hand lines evolve as your thoughts, deeds, and remedial practices progress. Pandit Ji tracks shifts in the Fate Line to pinpoint your peak golden years.</p>
+                </div>
+              </div>
+
+              <div class="palm-pillar-item">
+                <div class="pillar-number">03</div>
+                <div class="pillar-content">
+                  <h4>Remote High-Resolution Palm Readings</h4>
+                  <p>Clients worldwide can submit clear digital palm photographs for detailed phone or video consultations with verified analysis.</p>
+                </div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20Palmistry%20Reading." target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+              <span>Consult on Palmistry</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT PANDIT JI / 30+ YEARS LEGACY SECTION
+         ========================================================================== -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Left: Image & Badge -->
+          <div class="about-image-card">
+            <div class="about-image-inner">
+              <img src="images/logo.jpg" alt="Bagla Astrology Heritage Seal" loading="lazy">
+            </div>
+            <div class="experience-corner-badge">
+              <span class="exp-num">30+</span>
+              <span class="exp-label">Years of<br>Excellence</span>
+            </div>
+          </div>
+
+          <!-- Right: Content -->
+          <div class="about-content">
+            <div class="section-eyebrow">
+              <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              The Bagla Astrology Legacy
+            </div>
+            <h2>Three Decades of Guiding Souls Through <span class="text-gold-gradient">Vedic Truth</span></h2>
+            <p class="lead-text">
+              Founded on the sacred bedrock of Parashara Hora Shastra and Jaimini Sutras, Bagla Astrology has stood as a beacon of genuine astrological wisdom for over 30 continuous years.
+            </p>
+            <p>
+              In an era clouded by sensationalized predictions and superstition, our guiding principle remains simple and sacred: astrology is divine navigational guidance, not fatalism. We combine rigorous mathematical planetary charting with empathetic, real-world solutions that inspire confidence and spiritual peace.
+            </p>
+            <p>
+              Whether counseling business magnates, couples navigating marital compatibility, or young scholars planning foreign education, every reading is conducted with complete confidentiality, precision, and personal attention.
+            </p>
+
+            <div class="about-key-points">
+              <div class="about-point">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>30+ Years Continuous Practice</span>
+              </div>
+              <div class="about-point">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Ethical & Non-Fear-Based Remedies</span>
+              </div>
+              <div class="about-point">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>50,000+ Satisfied Consultations</span>
+              </div>
+              <div class="about-point">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Strict Client Confidentiality</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px;">
+              <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20connect%20with%20you%20for%20astrological%20guidance." target="_blank" class="btn btn-whatsapp">
+                <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/></svg>
+                <span>Connect on WhatsApp</span>
+              </a>
+              <a href="tel:9829743685" class="btn btn-gold">
+                <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+                <span>Call +91 98297 43685</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         TESTIMONIALS SECTION
+         ========================================================================== -->
+    <section id="reviews" class="testimonials-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            Client Experiences
+          </div>
+          <h2 class="section-title">Words of Trust Across 30+ Years</h2>
+          <p class="section-subtitle">
+            Generations of seekers, professionals, and families have turned to Bagla Astrology during life's pivotal moments.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <!-- 1. Career Turnaround -->
+          <div class="testimonial-card">
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="testimonial-quote">
+              "During my Saturn Sade Sati, my manufacturing firm was facing severe financial deadlock. Pandit Ji examined both my Kundli and hand lines, pinpointed the exact month of recovery, and prescribed simple, sattvic remedies. Exactly within the timeframe predicted, our government contract was sanctioned."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">VS</div>
+              <div class="author-meta">
+                <h4>Vikramaditya Singhania</h4>
+                <p>Industrialist, Jaipur • Client for 14 Years</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Matrimonial Harmony -->
+          <div class="testimonial-card">
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="testimonial-quote">
+              "Other astrologers scared us regarding Mangal Dosha and demanded exorbitant rituals. Bagla Astrology calmly evaluated the Navamsha and cancellation Yogas, proving there was no impediment. Today, my daughter is blissfully married with two children. Their ethical guidance is unparalleled."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SM</div>
+              <div class="author-meta">
+                <h4>Sunita Mukherjee</h4>
+                <p>Kolkata • Kundli Milan Consultation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Palmistry Insight -->
+          <div class="testimonial-card">
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <p class="testimonial-quote">
+              "I did not possess my exact birth time. Pandit Ji examined my palm lines over video consultation and accurately stated my exact relocation year to London, past surgeries, and career shifts. The recommended Yellow Sapphire brought profound clarity and focus."
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AP</div>
+              <div class="author-meta">
+                <h4>Dr. Anand Patel</h4>
+                <p>Cardiologist, London, UK • Video Consultation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FAQ SECTION (ACCORDION)
+         ========================================================================== -->
+    <section id="faq" class="faq-section">
+      <div class="container">
+        <div class="text-center">
+          <div class="section-eyebrow">
+            <svg viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
+            Common Inquiries
+          </div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">
+            Everything you need to know about our consultations, accuracy, and preparation.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <div class="faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item active">
+              <button class="faq-question" aria-expanded="true">
+                <span>What details are required for an accurate Vedic Kundli reading?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </button>
+              <div class="faq-answer">
+                To cast your accurate Janam Kundli, we require your Date of Birth, exact Time of Birth (with AM/PM), and Place of Birth (City/Country). Even a 4-minute variation can shift your Ascendant (Lagna) degree, which is why birth chart rectification is performed when necessary.
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What if I do not have my exact birth time?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </button>
+              <div class="faq-answer">
+                This is where Pandit Ji’s 30+ years of mastery in Palmistry (Hastarekha Shastra) and Prashna Kundli (Horary Astrology) proves invaluable. By analyzing hand lines, mount prominence, and the exact planetary energy at the moment of your query, full guidance is provided without requiring birth time.
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Are video/phone consultations as accurate as in-person visits?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </button>
+              <div class="faq-answer">
+                Yes, 100%. Vedic Astrology relies on immutable astronomical mathematics of planetary degrees and your karmic coordinates. More than 60% of our clients consult from the USA, UK, Canada, Australia, and the Middle East via high-definition video calls with identical accuracy and satisfaction.
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What kind of remedies does Bagla Astrology recommend?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </button>
+              <div class="faq-answer">
+                We strictly oppose fear-mongering and superstitious commercialization. Our remedies are authentic Vedic solutions: Mantra Sadhana, charity (Daan) to appropriate individuals on planetary days, behavioral adjustments, Vastu alignment, and energized natural certified gemstones when astrologically supportive.
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How do I submit my hand pictures for a Palmistry reading?</span>
+                <svg class="faq-icon-chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+              </button>
+              <div class="faq-answer">
+                After scheduling your consultation, our team sends simple guidelines to capture clear, well-lit photos of both your active and passive hands (including fingers and palm side profiles) using your smartphone camera in natural daylight.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-aura"></div>
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Summary -->
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="images/logo.jpg" alt="Bagla Astrology Crest" class="footer-logo-img">
+            <span class="footer-brand-name">BAGLA ASTROLOGY</span>
+          </div>
+          <p>
+            Three decades of dedicated Vedic astrology, authentic Janam Kundli interpretation, and sacred Hastarekha palmistry. Guiding seekers with truth, compassion, and divine cosmic clarity.
+          </p>
+          <div class="footer-badges-strip">
+            <span class="top-bar-badge">30+ Years Legacy</span>
+            <span class="top-bar-badge">100% Vedic Principles</span>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="about.html">30+ Years Heritage</a></li>
+            <li><a href="services.html">Vedic Services</a></li>
+            <li><a href="baglamukhi.html">Maa Baglamukhi</a></li>
+            <li><a href="reviews.html">Devotee Reviews</a></li>
+            <li><a href="#horoscope">Daily Horoscope</a></li>
+            <li><a href="#palmistry">Palmistry Shastra</a></li>
+            <li><a href="tel:9829743685">Direct Call (+91 98297 43685)</a></li>
+          </ul>
+        </div>
+
+        <!-- Core Services -->
+        <div class="footer-col">
+          <h4>Specialties</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Janam Kundli Analysis</a></li>
+            <li><a href="#palmistry">Hastarekha Palmistry</a></li>
+            <li><a href="#services">Kundli Milan & Marriage</a></li>
+            <li><a href="#services">Career & Wealth Muhurat</a></li>
+            <li><a href="#services">Shani Sade Sati Remedies</a></li>
+            <li><a href="#services">Certified Ratna (Gemstones)</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Consultations -->
+        <div class="footer-col">
+          <h4>Consultation Desk</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+              <div>
+                <strong>Call & WhatsApp:</strong><br>
+                <a href="tel:+919829743685">+91 98297 43685</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <div>
+                <strong>Email Inquiries:</strong><br>
+                <a href="mailto:consult@baglaastrology.com">consult@baglaastrology.com</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div>
+                <strong>Sanctuary & Studio:</strong><br>
+                Jaipur, Rajasthan, India
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Disclaimer & Copyright -->
+      <div class="footer-bottom">
+        <p>© 2026 BAGLA ASTROLOGY & HOROSCOPE. All Sacred Rights Reserved.</p>
+        <p class="footer-disclaimer">
+          <em>Devotional Note:</em> Known among devotees in Jaipur for the trust and faith placed in his Baglamukhi Anushthan services. Vedic astrology and palmistry offer spiritual guidance and probability analysis based on classical texts.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Quick WhatsApp Button -->
+  <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20book%20a%20consultation." 
+     target="_blank" 
+     class="floating-whatsapp-btn" 
+     aria-label="Chat with Shastri Amit Kumar Sharma on WhatsApp">
+    <span class="floating-whatsapp-tooltip">WhatsApp: +91 98297 43685</span>
+    <svg viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+  </a>
+
+  <!-- Master JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
