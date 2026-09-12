@@ -925,6 +925,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 18px 12px;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
@@ -3850,6 +3853,501 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ==========================================================================
+   DAINIK RASHI FALADESH & 12 DEDICATED RASHI STYLES (DIVYA DRISHTI)
+   ========================================================================== */
 
+/* Quick 12 Rashi Horizontal Bar */
+.rashi-quick-bar-wrapper {
+  background: #ffffff;
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.3);
+  padding: 14px 0;
+  position: sticky;
+  top: 75px;
+  z-index: 95;
+  box-shadow: 0 4px 18px rgba(11, 25, 44, 0.05);
+}
 
+.rashi-quick-pills-list {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #d97706 #f4ede2;
+}
 
+.rashi-quick-pills-list::-webkit-scrollbar {
+  height: 5px;
+}
+.rashi-quick-pills-list::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 4px;
+}
+
+.quick-rashi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #faf7f2;
+  border: 1px solid rgba(180, 83, 9, 0.2);
+  color: #1c120c;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.quick-rashi-pill:hover,
+.quick-rashi-pill.active {
+  background: linear-gradient(135deg, #0b192c 0%, #1e3e62 100%);
+  border-color: #d4af37;
+  color: #f1d06e;
+  box-shadow: 0 4px 12px rgba(11, 25, 44, 0.25);
+  transform: translateY(-2px);
+}
+
+.quick-rashi-pill .quick-glyph {
+  font-size: 1.1rem;
+}
+
+/* Faladesh Date & Panchang Strip */
+.faladesh-date-banner {
+  background: linear-gradient(135deg, #0b192c 0%, #102a43 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(11, 25, 44, 0.15);
+}
+
+.faladesh-date-info h3 {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: #f1d06e;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faladesh-panchang-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.84rem;
+  color: #e2e8f0;
+}
+
+.panchang-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.panchang-badge strong {
+  color: #f59e0b;
+}
+
+/* Date Switcher Tabs */
+.date-switch-row {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius-full);
+  padding: 4px;
+}
+
+.date-switch-btn {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.date-switch-btn:hover {
+  color: #ffffff;
+}
+
+.date-switch-btn.active {
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #0b192c;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Bhagya Score Meter */
+.faladesh-score-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(180, 83, 9, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 6px 20px rgba(70, 40, 15, 0.05);
+}
+
+.score-title-group h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: #1c120c;
+  margin-bottom: 4px;
+}
+
+.score-title-group p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.score-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 480px;
+}
+
+.score-track {
+  height: 12px;
+  background: #ebe1cf;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  flex: 1;
+  position: relative;
+}
+
+.score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d97706 0%, #059669 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.8s ease-in-out;
+}
+
+.score-percent-badge {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #047857;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* Activity Prediction Section */
+.activities-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.activity-prediction-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(180, 83, 9, 0.18);
+  border-left: 5px solid #d97706;
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(70, 40, 15, 0.04);
+}
+
+.activity-prediction-card:hover {
+  border-color: #d97706;
+  transform: translateX(4px);
+  box-shadow: 0 8px 25px rgba(70, 40, 15, 0.08);
+}
+
+.act-prob-badge {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1.5px solid #d97706;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  text-align: center;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.act-prob-num {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #78350f;
+  display: block;
+  line-height: 1.1;
+}
+
+.act-prob-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #92400e;
+  text-transform: uppercase;
+}
+
+.act-content {
+  flex: 1;
+}
+
+.act-tag {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.act-title {
+  font-size: 1.08rem;
+  color: #1c120c;
+  margin-bottom: 6px;
+  font-weight: 700;
+}
+
+.act-desc {
+  font-size: 0.88rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* 4 Core Pillars Grid */
+.faladesh-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.pillar-card {
+  background: #ffffff;
+  border: 1px solid rgba(180, 83, 9, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: 0 6px 20px rgba(70, 40, 15, 0.04);
+  transition: all var(--transition-fast);
+}
+
+.pillar-card:hover {
+  border-color: #d97706;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(70, 40, 15, 0.08);
+}
+
+.pillar-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(180, 83, 9, 0.12);
+}
+
+.pillar-head-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1px solid #d97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9f1239;
+  flex-shrink: 0;
+}
+
+.pillar-head-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.pillar-head h4 {
+  font-size: 1.1rem;
+  color: #1c120c;
+  margin-bottom: 0;
+}
+
+.pillar-card p {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* Do's and Don'ts Grid */
+.dos-donts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.do-card {
+  background: #f0fdf4;
+  border: 1.5px solid #22c55e;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.do-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #15803d;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.do-card p {
+  font-size: 0.9rem;
+  color: #166534;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.dont-card {
+  background: #fef2f2;
+  border: 1.5px solid #ef4444;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.dont-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #b91c1c;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.dont-card p {
+  font-size: 0.9rem;
+  color: #991b1b;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Lucky Metrics Cards */
+.lucky-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.lucky-card {
+  background: #ffffff;
+  border: 1px solid rgba(180, 83, 9, 0.18);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 4px 15px rgba(70, 40, 15, 0.03);
+}
+
+.lucky-card .label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.lucky-card .val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #78350f;
+  margin-bottom: 0;
+}
+
+/* Remedy Banner */
+.faladesh-remedy-banner {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 1.5px solid #d97706;
+  border-left: 6px solid #b45309;
+  border-radius: var(--radius-lg);
+  padding: 26px 30px;
+  margin-bottom: 36px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.remedy-banner-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #9f1239;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(159, 18, 57, 0.25);
+}
+
+.remedy-banner-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: #78350f;
+  margin-bottom: 6px;
+}
+
+.remedy-banner-content p {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .faladesh-date-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .faladesh-score-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .score-bar-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+  .activity-prediction-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .dos-donts-grid {
+    grid-template-columns: 1fr;
+  }
+}
