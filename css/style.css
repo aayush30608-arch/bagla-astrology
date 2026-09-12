@@ -3686,6 +3686,56 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 
+/* Empty State Card when Reviews are 0 */
+.empty-reviews-card {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 24px;
+  background: #ffffff;
+  border: 2px dashed rgba(180, 83, 9, 0.28);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(70, 40, 15, 0.04);
+  animation: fadeInReview 0.5s ease-out;
+}
+
+.empty-sacred-icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: pulseGentle 3s ease-in-out infinite;
+}
+
+.empty-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: #78350f;
+  margin-bottom: 8px;
+}
+
+.empty-subtitle {
+  color: #3d2b1f;
+  font-size: 1rem;
+  max-width: 580px;
+  margin: 0 auto 6px;
+  line-height: 1.6;
+}
+
+.empty-en {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+@keyframes pulseGentle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes fadeInReview {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
 
 

@@ -99,7 +99,7 @@
 
         <!-- Dynamic Total Reviews Counter Pill -->
         <div class="total-reviews-counter-pill" id="total-reviews-count">
-          <span class="counter-num">542</span> Devotee Reviews
+          <span class="counter-num">0</span> Devotee Reviews
         </div>
 
         <h1 class="section-title text-gold-gradient">
@@ -119,45 +119,45 @@
         <div class="rating-overview-grid">
           <!-- Col 1: Big Score -->
           <div class="rating-score-box">
-            <div class="big-rating-number">4.9</div>
-            <div class="stars-display-row" aria-label="4.9 out of 5 stars">
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            <div class="big-rating-number" id="average-rating-number">0.0</div>
+            <div class="stars-display-row" id="average-rating-stars" aria-label="Average Rating">
+              <svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
             <p class="rating-score-sub" id="total-reviews-sub">
-              Based on 542 verified devotee consultations & anushthans
+              Based on 0 verified devotee consultations
             </p>
           </div>
 
-          <!-- Col 2: Rating Distribution Bars -->
+          <!-- Col 2: Rating Distribution Bars (Dynamically Updated) -->
           <div class="rating-bars-container">
             <div class="rating-bar-row">
               <span>5 Stars</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 92%;"></div></div>
-              <span>92%</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-5" style="width: 0%;"></div></div>
+              <span id="bar-pct-5">0%</span>
             </div>
             <div class="rating-bar-row">
               <span>4 Stars</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 7%;"></div></div>
-              <span>7%</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-4" style="width: 0%;"></div></div>
+              <span id="bar-pct-4">0%</span>
             </div>
             <div class="rating-bar-row">
               <span>3 Stars</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
-              <span>1%</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-3" style="width: 0%;"></div></div>
+              <span id="bar-pct-3">0%</span>
             </div>
             <div class="rating-bar-row">
               <span>2 Stars</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
-              <span>0%</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-2" style="width: 0%;"></div></div>
+              <span id="bar-pct-2">0%</span>
             </div>
             <div class="rating-bar-row">
               <span>1 Star</span>
-              <div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div>
-              <span>0%</span>
+              <div class="bar-track"><div class="bar-fill" id="bar-fill-1" style="width: 0%;"></div></div>
+              <span id="bar-pct-1">0%</span>
             </div>
           </div>
 

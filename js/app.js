@@ -440,83 +440,19 @@ function initReviewsPage() {
 
   if (!reviewsContainer) return; // Only execute on pages with the review container
 
-  // Default Verified Reviews Collection
-  const defaultReviews = [
-    {
-      id: 1,
-      name: "Ghanshyamdas Agarwal",
-      city: "Jaipur, Rajasthan",
-      service: "Mata Baglamukhi Anushthan",
-      rating: 5,
-      date: "September 4, 2026",
-      title: "7-Year Disputed Property Resolved Through Mata's Hawan",
-      comment: "Our family was mired in an unfair 7-year legal dispute that was draining our peace and savings. Shastri Amit Kumar Sharma Ji conducted a 3-day Baglamukhi Hawan with pure Satvik sankalp. Within 45 days, the opposing parties agreed to an honorable mutual settlement. His devotion to Maa Baglamukhi is extraordinary.",
-      helpful: 24
-    },
-    {
-      id: 2,
-      name: "Dr. Meenakshi Rathore",
-      city: "Udaipur & New Delhi",
-      service: "Janam Kundli Analysis",
-      rating: 5,
-      date: "August 28, 2026",
-      title: "Accurate Dasha Guidance Without Any Fear-Mongering",
-      comment: "Most astrologers we met earlier tried to terrify us regarding Rahu Mahadasha and demanded costly rituals. Shastri Ji calmly explained the planetary degrees, recommended daily Hanuman Chalisa and chanting, and predicted the exact month my daughter would clear her medical super-speciality entrance. Truly ethical guidance.",
-      helpful: 19
-    },
-    {
-      id: 3,
-      name: "Rajeev Singhal",
-      city: "Jaipur (C-Scheme)",
-      service: "Career, Wealth & Business",
-      rating: 5,
-      date: "August 15, 2026",
-      title: "Saved Our Textile Business from Severe Financial Impasse",
-      comment: "During a critical phase in 2024, our factory exports were stalled. Shastri Ji analyzed my 10th and 11th Bhavas, suggested Vastu corrections for the cash desk, and performed an auspicious Muhurat puja for our new domestic line. Since then, business has expanded consistently. Devotee of Shastri Ji for 12 years.",
-      helpful: 31
-    },
-    {
-      id: 4,
-      name: "Pooja & Sameer Kulkarni",
-      city: "Mumbai, Maharashtra",
-      service: "Kundli Milan & Compatibility",
-      rating: 5,
-      date: "July 22, 2026",
-      title: "Clarified Manglik Misunderstandings for Our Marriage",
-      comment: "Our alliance was almost called off by elders due to a supposed severe Mangal Dosha. Shastri Amit Kumar Sharma Ji examined our Navamsha charts and proved there was a complete Dosha Bhanga (cancellation). We are now blissfully married for over a year. He brought two families together with patience and wisdom.",
-      helpful: 14
-    },
-    {
-      id: 5,
-      name: "Karan Joharilal",
-      city: "London, United Kingdom",
-      service: "Hasthrekha (Palmistry)",
-      rating: 5,
-      date: "July 09, 2026",
-      title: "Video Call Palmistry Reading Accurately Read My Life",
-      comment: "I did not have my exact birth certificate time. I sent high-resolution pictures of my palms on WhatsApp and booked a video consultation. Shastri Ji accurately stated my year of relocation to England, past health setbacks, and advised a certified natural Pukhraj. The clarity has been life-changing.",
-      helpful: 27
-    },
-    {
-      id: 6,
-      name: "Bhawani Singh Shekhawat",
-      city: "Jaipur, Rajasthan",
-      service: "Mata Baglamukhi Anushthan",
-      rating: 5,
-      date: "June 18, 2026",
-      title: "Unshakeable Peace of Mind and Protection",
-      comment: "Shastri Ji's upasana of Maa Pitambari is pure, traditional, and deeply disciplined. The serene fragrance of the hawan and his Vedic pronunciation instill immediate confidence. I recommend all devotees seeking protection to connect with him.",
-      helpful: 18
-    }
-  ];
+  // Initial reviews array reset to 0 (no hardcoded/dummy reviews)
+  const defaultReviews = [];
+  const STORAGE_KEY = 'bagla_astrology_reviews_v2';
 
   // Load reviews from localStorage or initialize
   function loadAllReviews() {
     try {
-      const stored = localStorage.getItem('bagla_astrology_reviews');
+      // Clear legacy storage key with old mock reviews
+      localStorage.removeItem('bagla_astrology_reviews');
+      const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }
@@ -528,7 +464,7 @@ function initReviewsPage() {
 
   function saveReviews(reviews) {
     try {
-      localStorage.setItem('bagla_astrology_reviews', JSON.stringify(reviews));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(reviews));
     } catch (e) {
       console.error('Error saving reviews:', e);
     }
@@ -541,9 +477,10 @@ function initReviewsPage() {
   // Render Stars Helper
   function renderStars(rating) {
     let starsHtml = '';
+    const rounded = Math.round(rating);
     for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        starsHtml += `<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+      if (i <= rounded) {
+        starsHtml += `<svg viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
       } else {
         starsHtml += `<svg viewBox="0 0 24 24" fill="#d4c5b5"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
       }
@@ -551,18 +488,47 @@ function initReviewsPage() {
     return starsHtml;
   }
 
-  // Calculate and Update Total Review Counters
+  // Calculate and Update Total Review Counters & Real-Time Stats
   function updateStatistics() {
-    // Base counter represents lifetime devotees served (e.g. 542 baseline + dynamic submissions)
-    const baseCount = 542;
-    const dynamicAdded = allReviews.length - defaultReviews.length;
-    const totalCount = baseCount + dynamicAdded;
+    const totalCount = allReviews.length;
 
     if (totalReviewsPill) {
-      totalReviewsPill.innerHTML = `<span class="counter-num">${totalCount.toLocaleString()}</span> Devotee Reviews`;
+      totalReviewsPill.innerHTML = `<span class="counter-num">${totalCount}</span> Devotee Review${totalCount === 1 ? '' : 's'}`;
     }
     if (totalReviewsSub) {
-      totalReviewsSub.textContent = `Based on ${totalCount.toLocaleString()} verified devotee consultations & anushthans`;
+      totalReviewsSub.textContent = `Based on ${totalCount} verified devotee consultation${totalCount === 1 ? '' : 's'}`;
+    }
+
+    const avgScoreEl = document.getElementById('average-rating-number');
+    const avgStarsEl = document.getElementById('average-rating-stars');
+
+    if (totalCount === 0) {
+      if (avgScoreEl) avgScoreEl.textContent = '0.0';
+      if (avgStarsEl) avgStarsEl.innerHTML = renderStars(0);
+
+      for (let k = 1; k <= 5; k++) {
+        const fillEl = document.getElementById(`bar-fill-${k}`);
+        const pctEl = document.getElementById(`bar-pct-${k}`);
+        if (fillEl) fillEl.style.width = '0%';
+        if (pctEl) pctEl.textContent = '0%';
+      }
+      return;
+    }
+
+    // Calculate actual average from submitted reviews
+    const sumRatings = allReviews.reduce((sum, r) => sum + (Number(r.rating) || 5), 0);
+    const avg = (sumRatings / totalCount).toFixed(1);
+    if (avgScoreEl) avgScoreEl.textContent = avg;
+    if (avgStarsEl) avgStarsEl.innerHTML = renderStars(Number(avg));
+
+    // Calculate percentage breakdown for 1 to 5 stars
+    for (let k = 1; k <= 5; k++) {
+      const count = allReviews.filter(r => Math.round(Number(r.rating)) === k).length;
+      const pct = Math.round((count / totalCount) * 100);
+      const fillEl = document.getElementById(`bar-fill-${k}`);
+      const pctEl = document.getElementById(`bar-pct-${k}`);
+      if (fillEl) fillEl.style.width = `${pct}%`;
+      if (pctEl) pctEl.textContent = `${pct}%`;
     }
   }
 
@@ -570,7 +536,7 @@ function initReviewsPage() {
   function renderReviews() {
     let filtered = allReviews.filter(rev => {
       if (currentFilter === 'all') return true;
-      return rev.service.toLowerCase().includes(currentFilter.toLowerCase());
+      return (rev.service || '').toLowerCase().includes(currentFilter.toLowerCase());
     });
 
     if (currentSort === 'newest') {
@@ -580,17 +546,37 @@ function initReviewsPage() {
     }
 
     if (!filtered.length) {
-      reviewsContainer.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 50px 20px; background: #ffffff; border: 1.5px dashed rgba(180, 83, 9, 0.3); border-radius: 16px; box-shadow: 0 4px 20px rgba(70, 40, 15, 0.04);">
-          <p style="color: #78350f; font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">No reviews found under this category yet.</p>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Be the first devotee to share your experience!</p>
-        </div>
-      `;
+      if (allReviews.length === 0) {
+        reviewsContainer.innerHTML = `
+          <div class="empty-reviews-card">
+            <div class="empty-sacred-icon">🕉️</div>
+            <h3 class="empty-title">Abhi Tak Koi Review Darj Nahi Hua Hai</h3>
+            <p class="empty-subtitle">
+              Shastri Amit Kumar Sharma Ji ke sath apna pavitra anubhav share karne wale pehle bhakt banein!
+            </p>
+            <p class="empty-en">
+              (No devotee reviews recorded yet. Be the first to share your sincere spiritual experience!)
+            </p>
+            <a href="#write-review" class="btn btn-gold" style="margin-top: 14px; font-size: 0.9rem; padding: 12px 28px;">
+              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+              <span>Pehla Review Likhein (Write First Review)</span>
+            </a>
+          </div>
+        `;
+      } else {
+        reviewsContainer.innerHTML = `
+          <div class="empty-reviews-card">
+            <div class="empty-sacred-icon">🔍</div>
+            <h3 class="empty-title">Is Category Me Koi Review Nahi Mila</h3>
+            <p class="empty-subtitle">Kripya "All Reviews" filter select karein ya naya review submit karein.</p>
+          </div>
+        `;
+      }
       return;
     }
 
     reviewsContainer.innerHTML = filtered.map(review => {
-      const initials = review.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      const initials = (review.name || 'D').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
       return `
         <div class="devotee-review-card" data-id="${review.id}">
           <div class="review-card-top">
@@ -625,7 +611,7 @@ function initReviewsPage() {
               <svg viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
               <span>Pranam / Helpful (${review.helpful || 0})</span>
             </button>
-            <span style="font-size: 0.76rem; color: var(--gold-400);">Authentic Consultation</span>
+            <span style="font-size: 0.76rem; color: var(--gold-500); font-weight: 600;">Authentic Consultation</span>
           </div>
         </div>
       `;
@@ -717,9 +703,26 @@ function initReviewsPage() {
       updateStatistics();
       renderReviews();
 
-      // Show Thank You Box
+      // Show Thank You Box with WhatsApp share button
       const successBox = document.getElementById('review-success-toast');
       if (successBox) {
+        const waReviewText = encodeURIComponent(
+          `Pranam Shastri Amit Kumar Sharma Ji,\n\nMaine aapki website par naya review submit kiya hai:\n- Devotee: ${name} (${city})\n- Service: ${service}\n- Rating: ${rating}/5 Stars\n- Title: ${title}\n- Review: "${comment}"\n\nJai Maa Baglamukhi!`
+        );
+        successBox.innerHTML = `
+          <h4>🙏 Pranam ${name}! Thank You for Your Blessed Review</h4>
+          <p style="margin-bottom: 14px;">
+            Aapka review website par successfully add ho gaya hai! Ab total <strong>${allReviews.length}</strong> review darj ho chuke hain.
+          </p>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://wa.me/919829743685?text=${waReviewText}" target="_blank" class="btn btn-whatsapp" style="font-size: 0.86rem; padding: 10px 20px;">
+              <span>Also Send this Review to Shastri Ji on WhatsApp</span>
+            </a>
+            <a href="#reviews-feed-container" class="btn btn-gold" style="font-size: 0.86rem; padding: 10px 20px;">
+              <span>View Your Review in Feed</span>
+            </a>
+          </div>
+        `;
         successBox.style.display = 'block';
         successBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
@@ -744,7 +747,7 @@ function initReviewsPage() {
     }
   };
 
-  // Initial render
+  // Initial render on page load
   updateStatistics();
   renderReviews();
 }
