@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Rashifal & 12 Zodiac Guide | DIVYA DRISHTI | Apke Sitare • Aapki Disha</title>
+  <meta name="description" content="Explore daily Vedic Rashifal and 12 Zodiac sign forecasts with Divya Drishti. Career, love, health predictions and astrological guidance by Shastri Amit Kumar Sharma.">
+  <meta name="keywords" content="Daily Rashifal, Vedic Horoscope, 12 Rashi, Zodiac Signs, Today Horoscope Jaipur, Shastri Amit Kumar Sharma, Divya Drishti">
+  
+  <!-- Favicon / Branding -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Cosmic Canvas Starfield -->
+  <canvas id="canvas-stars"></canvas>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <aside class="top-bar" aria-label="Announcement & Quick Contact">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5zm4 4h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+          🕉️ <em>Jai Maa Baglamukhi</em> — 30+ Years of Sacred Astrological Guidance
+        </span>
+        <a href="tel:+919829743685" class="top-bar-item">
+          <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+          Direct Helpline: +91 98297 43685
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-badge">Jaipur, Rajasthan • Apke Sitare • Aapki Disha</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- SITE HEADER & NAVIGATION -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo-link" aria-label="Divya Drishti Homepage">
+          <img src="images/logo.png" alt="Divya Drishti Emblem" class="brand-logo-img">
+          <div class="brand-name-wrap">
+            <span class="brand-name">DIVYA DRISHTI</span>
+            <span class="brand-tagline">Apke Sitare • Aapki Disha</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item nav-item-dropdown">
+            <a href="services.html" class="nav-link dropdown-toggle" aria-haspopup="true">
+              <span>Services</span>
+              <svg class="nav-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="kundli.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.5-6.2 4.5 2.3-7.1-6.1-4.5h7.6z"/></svg> Janam Kundli Analysis</a></li>
+              <li><a href="palmistry.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M13 24c3.31 0 6-2.69 6-6V9c0-1.66-1.34-3-3-3-.41 0-.79.08-1.14.23C14.5 4.96 13.36 4 12 4c-.58 0-1.12.18-1.57.48C9.96 3.61 9.04 3 8 3 6.34 3 5 4.34 5 6v5.18c-.32-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3 0 2.45 1.33 4.59 3.28 5.72l5.44 3.12c.76.44 1.52.66 2.28.66z"/></svg> Hasthrekha (Palmistry)</a></li>
+              <li><a href="kundli-milan.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Kundli Milan (Compatibility)</a></li>
+              <li><a href="career-astrology.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg> Career, Wealth & Business</a></li>
+              <li><a href="dasha-remedies.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg> Dasha Nivaran & Remedies</a></li>
+              <li><a href="gemstones.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M12 2l7 7-7 13-7-13 7-7zm0 2.83L6.83 9 12 18.59 17.17 9 12 4.83z"/></svg> Certified Gemstones</a></li>
+              <li><a href="baglamukhi.html" class="dropdown-link"><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.51L20.02 19H3.98L12 5.51zM11 10h2v4h-2zm0 6h2v2h-2z"/></svg> Mata Baglamukhi Anushthan</a></li>
+              <li><a href="services.html" class="dropdown-link" style="border-top: 1px solid rgba(212,175,55,0.25); font-weight: 700; color: #B8860B;"><svg viewBox="0 0 24 24"><path d="M4 11h5V5H4v6zm0 7h5v-5H4v5zm6 0h5v-5h-5v5zm6 0h5v-5h-5v5zm-6-7h5V5h-5v6zm6-6v6h5V5h-5z"/></svg> View All Services →</a></li>
+            </ul>
+          </li>
+          <li><a href="baglamukhi.html" class="nav-link">Maa Baglamukhi</a></li>
+          <li><a href="horoscope.html" class="nav-link active">Horoscope</a></li>
+          <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-actions">
+          <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20my%20Horoscope." target="_blank" class="header-wa-btn" aria-label="WhatsApp Helpline 9829743685">
+            <svg viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+            <span>WhatsApp: 9829743685</span>
+          </a>
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <span>Daily Rashifal & 12 Rashi Guide</span>
+        </nav>
+        <div class="section-eyebrow">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Planetary Rashiphal
+        </div>
+        <h1 class="section-title text-gold-gradient">
+          Daily Vedic Rashifal & 12 Signs Guide
+        </h1>
+        <p class="section-subtitle">
+          Tune into the cosmic vibrations of your Moon and Sun sign. Select any of the 12 sacred Rashis below for tailored career, love, health, and lucky remedial insights.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 12 ZODIAC SECTION -->
+    <section id="horoscope" class="horoscope-section" style="padding-top: 10px;">
+      <div class="container">
+        <!-- 12 Zodiac Wheel Grid -->
+        <div class="zodiac-wheel-grid" role="tablist" aria-label="12 Zodiac Signs Selector">
+          <!-- 1. Aries -->
+          <button class="zodiac-card active" data-sign="aries" role="tab" aria-selected="true">
+            <div class="zodiac-glyph">♈</div>
+            <div class="zodiac-name">Aries</div>
+            <div class="zodiac-dates">Mesh (Mar 21 - Apr 19)</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 2. Taurus -->
+          <button class="zodiac-card" data-sign="taurus" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♉</div>
+            <div class="zodiac-name">Taurus</div>
+            <div class="zodiac-dates">Vrishabh (Apr 20 - May 20)</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 3. Gemini -->
+          <button class="zodiac-card" data-sign="gemini" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♊</div>
+            <div class="zodiac-name">Gemini</div>
+            <div class="zodiac-dates">Mithun (May 21 - Jun 20)</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 4. Cancer -->
+          <button class="zodiac-card" data-sign="cancer" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♋</div>
+            <div class="zodiac-name">Cancer</div>
+            <div class="zodiac-dates">Kark (Jun 21 - Jul 22)</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+
+          <!-- 5. Leo -->
+          <button class="zodiac-card" data-sign="leo" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♌</div>
+            <div class="zodiac-name">Leo</div>
+            <div class="zodiac-dates">Singh (Jul 23 - Aug 22)</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 6. Virgo -->
+          <button class="zodiac-card" data-sign="virgo" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♍</div>
+            <div class="zodiac-name">Virgo</div>
+            <div class="zodiac-dates">Kanya (Aug 23 - Sep 22)</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 7. Libra -->
+          <button class="zodiac-card" data-sign="libra" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♎</div>
+            <div class="zodiac-name">Libra</div>
+            <div class="zodiac-dates">Tula (Sep 23 - Oct 22)</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 8. Scorpio -->
+          <button class="zodiac-card" data-sign="scorpio" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♏</div>
+            <div class="zodiac-name">Scorpio</div>
+            <div class="zodiac-dates">Vrishchik (Oct 23 - Nov 21)</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+
+          <!-- 9. Sagittarius -->
+          <button class="zodiac-card" data-sign="sagittarius" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♐</div>
+            <div class="zodiac-name">Sagittarius</div>
+            <div class="zodiac-dates">Dhanu (Nov 22 - Dec 21)</div>
+            <span class="zodiac-element-tag elem-fire">Fire</span>
+          </button>
+
+          <!-- 10. Capricorn -->
+          <button class="zodiac-card" data-sign="capricorn" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♑</div>
+            <div class="zodiac-name">Capricorn</div>
+            <div class="zodiac-dates">Makar (Dec 22 - Jan 19)</div>
+            <span class="zodiac-element-tag elem-earth">Earth</span>
+          </button>
+
+          <!-- 11. Aquarius -->
+          <button class="zodiac-card" data-sign="aquarius" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♒</div>
+            <div class="zodiac-name">Aquarius</div>
+            <div class="zodiac-dates">Kumbh (Jan 20 - Feb 18)</div>
+            <span class="zodiac-element-tag elem-air">Air</span>
+          </button>
+
+          <!-- 12. Pisces -->
+          <button class="zodiac-card" data-sign="pisces" role="tab" aria-selected="false">
+            <div class="zodiac-glyph">♓</div>
+            <div class="zodiac-name">Pisces</div>
+            <div class="zodiac-dates">Meen (Feb 19 - Mar 20)</div>
+            <span class="zodiac-element-tag elem-water">Water</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Horoscope Content Panel -->
+        <div class="horoscope-detail-panel" id="horoscope-panel" role="region" aria-live="polite">
+          <div class="panel-header-row">
+            <div class="sign-meta">
+              <span class="sign-huge-glyph" id="panel-glyph">♈</span>
+              <div>
+                <h3 class="sign-title" id="panel-name">Aries (Mesh Rashi)</h3>
+                <p class="sign-subtitle-info" id="panel-dates">Ruling Planet: Mars (Mangal) • Element: Fire (Agni)</p>
+              </div>
+            </div>
+            <div class="planetary-metric-strip">
+              <div class="metric-pill">
+                <span class="metric-label">Lucky Color</span>
+                <span class="metric-val" id="panel-color">Crimson Red</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Lucky Number</span>
+                <span class="metric-val" id="panel-number">9 & 18</span>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Daily Vibe</span>
+                <span class="metric-val" id="panel-vibe">High Energy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="horoscope-body-grid">
+            <div class="horo-card">
+              <div class="horo-card-head">
+                <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                <h4>Career & Finances</h4>
+              </div>
+              <p id="panel-career">
+                Dynamic opportunities arise in leadership and project execution. A favorable transit of Mars brings assertive focus. Ensure patience when communicating with colleagues.
+              </p>
+            </div>
+
+            <div class="horo-card">
+              <div class="horo-card-head">
+                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <h4>Love & Family</h4>
+              </div>
+              <p id="panel-love">
+                Deepen emotional bonds through open, truthful dialogues. Singles may encounter prospective partners through professional circles or social gatherings.
+              </p>
+            </div>
+
+            <div class="horo-card">
+              <div class="horo-card-head">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/></svg>
+                <h4>Health & Wellness</h4>
+              </div>
+              <p id="panel-health">
+                Watch for heat accumulation and dehydration. Incorporate morning pranayama and cooling sattvic foods to balance Pitta dosha.
+              </p>
+            </div>
+          </div>
+
+          <div class="horoscope-remedy-box">
+            <div class="remedy-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            </div>
+            <div class="remedy-text">
+              <h5>Today's Vedic Remedy:</h5>
+              <p id="panel-remedy">
+                Chant the Hanuman Chalisa at dawn and offer red flowers or jaggery to water for peace and inner vitality.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-aura"></div>
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="images/logo.png" alt="Divya Drishti Emblem" class="footer-logo-img">
+            <div class="footer-brand-text">
+              <span class="footer-brand-name">DIVYA DRISHTI</span>
+              <span class="footer-brand-sub">Apke Sitare • Aapki Disha</span>
+            </div>
+          </div>
+          <p>
+            Shastri & Maa Baglamukhi Upasak Amit Kumar Sharma. Dedicated to authentic Vedic astrology, Hastarekha palmistry, and sacred Baglamukhi Mata Anushthans in Jaipur since 1992.
+          </p>
+          <div class="footer-badges-strip">
+            <span class="top-bar-badge">Since 1992</span>
+            <span class="top-bar-badge">1,000+ Anushthans</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Shastri Ji</a></li>
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="baglamukhi.html">Maa Baglamukhi</a></li>
+            <li><a href="horoscope.html">Daily Rashifal</a></li>
+            <li><a href="reviews.html">Devotee Reviews</a></li>
+            <li><a href="contact.html">Contact & Sanctuary</a></li>
+            <li><a href="tel:+919829743685">Direct Call (+91 98297 43685)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Vedic Services</h4>
+          <ul class="footer-links">
+            <li><a href="kundli.html">Janam Kundli Analysis</a></li>
+            <li><a href="palmistry.html">Hasthrekha (Palmistry)</a></li>
+            <li><a href="kundli-milan.html">Kundli Milan & Marriage</a></li>
+            <li><a href="career-astrology.html">Career & Wealth Astrology</a></li>
+            <li><a href="dasha-remedies.html">Dasha Nivaran Remedies</a></li>
+            <li><a href="gemstones.html">Certified Gemstones</a></li>
+            <li><a href="baglamukhi.html">Baglamukhi Hawan & Puja</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Consultation Desk</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.27-.27.36-.66.25-1.01-.37-1.11-.56-2.3-.56-3.53 0-.55-.45-1-1-1H4.39c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-1-1z"/></svg>
+              <div>
+                <strong>Direct Mobile & WhatsApp:</strong><br>
+                <a href="tel:+919829743685">+91 98297 43685</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <div>
+                <strong>Inquiries Desk:</strong><br>
+                <a href="mailto:divyadrishtiastro@gmail.com">divyadrishtiastro@gmail.com</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              <div>
+                <strong>Sanctuary:</strong><br>
+                Jaipur, Rajasthan, India
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 DIVYA DRISHTI (Apke Sitare • Aapki Disha). All Sacred Rights Reserved.</p>
+        <p class="footer-disclaimer">
+          <em>Devotional Note:</em> Revered across Jaipur and Rajasthan for authentic Vedic guidance. Daily horoscopes offer general astrological trends based on planetary transits.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Quick WhatsApp Button -->
+  <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Amit%20Kumar%20Sharma%20Ji%2C%20I%20would%20like%20to%20consult%20regarding%20my%20Horoscope." 
+     target="_blank" 
+     class="floating-whatsapp-btn" 
+     aria-label="Chat with Shastri Amit Kumar Sharma on WhatsApp">
+    <span class="floating-whatsapp-tooltip">WhatsApp: +91 98297 43685</span>
+    <svg viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+  </a>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
