@@ -10,7 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initPalmistryInteractive();
   initFaqAccordion();
   initReviewsPage();
+  initDrishtiChatLoader();
 });
+
+/* ==========================================================================
+   0. DRISHTI AI CHATBOT AUTO-LOADER
+   ========================================================================== */
+function initDrishtiChatLoader() {
+  if (window.DrishtiChat) return;
+  if (!document.getElementById('drishti-chat-script')) {
+    const s = document.createElement('script');
+    s.id = 'drishti-chat-script';
+    s.src = 'js/drishti-chat.js';
+    s.defer = true;
+    document.head.appendChild(s);
+  }
+}
 
 /* ==========================================================================
    1. COSMIC STARFIELD CANVAS
