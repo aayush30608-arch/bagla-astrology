@@ -1,7 +1,7 @@
 /* ==========================================================================
    DIVYA DRISHTI - MASTER STYLESHEET
    Aesthetic: Imperial Midnight Navy, Warm Alabaster Parchment & Radiant Temple Gold
-   Tagline: Apke Sitare • Aapki Disha
+   Tagline: Apke Sitare â€¢ Aapki Disha
    ========================================================================== */
 
 :root {
@@ -5051,3 +5051,275 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
+/* ==========================================================================
+   KUNDLI SARANSH & INTERPRETATION STYLES
+   ========================================================================== */
+.saransh-master-card {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.saransh-header-strip {
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.25);
+  padding-bottom: 18px;
+  margin-bottom: 24px;
+}
+
+.saransh-core-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.saransh-core-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.saransh-core-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.saransh-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.saransh-core-header h4 {
+  font-size: 1.08rem;
+  color: #0B192C;
+  margin: 0 0 4px 0;
+  font-family: var(--font-heading);
+}
+
+.saransh-sub {
+  font-size: 0.8rem;
+  color: #B45309;
+  font-weight: 700;
+  display: block;
+}
+
+.saransh-text {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+.saransh-badge-row {
+  margin-top: auto;
+}
+
+.saransh-pill {
+  display: inline-block;
+  background: #FEF3C7;
+  color: #78350F;
+  border: 1px solid #FCD34D;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.saransh-yogas-box, .saransh-favorable-box, .saransh-remedies-box, .saransh-houses-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.saransh-box-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.saransh-yogas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.yoga-card {
+  background: linear-gradient(135deg, #FFFDF9 0%, #FEF9EF 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  position: relative;
+}
+
+.yoga-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.yoga-card-top strong {
+  color: #0B192C;
+  font-size: 0.98rem;
+}
+
+.yoga-card p {
+  font-size: 0.86rem;
+  color: #4B5563;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.saransh-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.saransh-pillar-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.pillar-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pillar-icon {
+  font-size: 1.4rem;
+}
+
+.pillar-top h5 {
+  font-size: 0.95rem;
+  color: #0B192C;
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+.pillar-text {
+  font-size: 0.88rem;
+  color: #4B5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.favorable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.favorable-item {
+  background: #FFFDF9;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.favorable-label {
+  display: block;
+  font-size: 0.76rem;
+  color: #6B7280;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.favorable-val {
+  font-size: 0.94rem;
+  color: #0B192C;
+}
+
+.remedies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.remedy-item {
+  background: #FFFBF5;
+  border-left: 3.5px solid #D4AF37;
+  padding: 12px 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.remedy-item strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #78350F;
+  margin-bottom: 4px;
+}
+
+.remedy-item p {
+  font-size: 0.85rem;
+  color: #4B5563;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.houses-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.house-card {
+  background: #FFFDF9;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.house-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.house-card-header strong {
+  font-size: 0.9rem;
+  color: #0B192C;
+}
+
+.house-card-rashi {
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(159, 18, 57, 0.1);
+  color: #9F1239;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.house-card-planets {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #B45309;
+  margin-bottom: 6px;
+}
+
+.house-card p {
+  font-size: 0.84rem;
+  color: #4B5563;
+  line-height: 1.5;
+  margin: 0;
+}

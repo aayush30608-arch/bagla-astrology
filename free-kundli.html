@@ -133,7 +133,7 @@
             <!-- Name Input -->
             <div class="kundli-form-group">
               <label for="personName">नाम (Name):</label>
-              <input type="text" id="personName" class="kundli-form-input" placeholder="उदा. जातक का नाम" value="अभय शर्मा" required>
+              <input type="text" id="personName" class="kundli-form-input" placeholder="उदा. जातक का नाम" value="aayush sharma" required>
             </div>
 
             <!-- Birth Date (DD / MM / YYYY) -->
@@ -141,13 +141,13 @@
               <label>जन्म तिथि (Date of Birth):</label>
               <div class="kundli-split-inputs">
                 <div>
-                  <input type="number" id="birthDay" class="kundli-form-input" placeholder="DD (दिन)" min="1" max="31" value="15" required>
+                  <input type="number" id="birthDay" class="kundli-form-input" placeholder="DD (दिन)" min="1" max="31" value="30" required>
                 </div>
                 <div>
-                  <input type="number" id="birthMonth" class="kundli-form-input" placeholder="MM (माह)" min="1" max="12" value="9" required>
+                  <input type="number" id="birthMonth" class="kundli-form-input" placeholder="MM (माह)" min="1" max="12" value="6" required>
                 </div>
                 <div>
-                  <input type="number" id="birthYear" class="kundli-form-input" placeholder="YYYY (वर्ष)" min="1900" max="2100" value="1995" required>
+                  <input type="number" id="birthYear" class="kundli-form-input" placeholder="YYYY (वर्ष)" min="1900" max="2100" value="2008" required>
                 </div>
               </div>
             </div>
@@ -157,10 +157,10 @@
               <label>जन्म समय (Time of Birth - 24hrs):</label>
               <div class="kundli-split-inputs">
                 <div>
-                  <input type="number" id="birthHour" class="kundli-form-input" placeholder="HH (घंटा)" min="0" max="23" value="11" required>
+                  <input type="number" id="birthHour" class="kundli-form-input" placeholder="HH (घंटा)" min="0" max="23" value="18" required>
                 </div>
                 <div>
-                  <input type="number" id="birthMin" class="kundli-form-input" placeholder="MM (मिनट)" min="0" max="59" value="45" required>
+                  <input type="number" id="birthMin" class="kundli-form-input" placeholder="MM (मिनट)" min="0" max="59" value="58" required>
                 </div>
                 <div>
                   <input type="number" id="birthSec" class="kundli-form-input" placeholder="SS (सेकंड)" min="0" max="59" value="0">
@@ -228,27 +228,31 @@
             </div>
           </div>
 
-          <!-- Quick Avakahada Summary Metrics -->
+          <!-- Quick Avakahada Summary Metrics (6 Pillars) -->
           <div class="kundli-metrics-grid">
             <div class="kundli-metric-box">
               <span>लग्न (Ascendant)</span>
-              <strong id="metaLagna">वृश्चिक (8)</strong>
+              <strong id="metaLagna">धनु (9)</strong>
+            </div>
+            <div class="kundli-metric-box">
+              <span>लग्न नक्षत्र (Asc Nakshatra)</span>
+              <strong id="metaLagnaNakshatra">मूला (३) • केतु</strong>
             </div>
             <div class="kundli-metric-box">
               <span>लग्नेश (Lagna Lord)</span>
-              <strong id="metaLagnaLord">मंगल</strong>
+              <strong id="metaLagnaLord">बृहस्पति (गुरु)</strong>
             </div>
             <div class="kundli-metric-box">
               <span>चंद्र राशि (Moon Sign)</span>
-              <strong id="metaMoonSign">कन्या (6)</strong>
+              <strong id="metaMoonSign">वृष (२)</strong>
             </div>
             <div class="kundli-metric-box">
-              <span>जन्म नक्षत्र (Nakshatra)</span>
-              <strong id="metaNakshatra">हस्त (४)</strong>
+              <span>जन्म नक्षत्र (Moon Nakshatra)</span>
+              <strong id="metaNakshatra">कृत्तिका (४) • सूर्य</strong>
             </div>
             <div class="kundli-metric-box">
               <span>अयनांश (Lahiri)</span>
-              <strong id="metaAyanamsha">२३° ५१'</strong>
+              <strong id="metaAyanamsha">२३° ५८'</strong>
             </div>
           </div>
 
@@ -258,32 +262,194 @@
               <!-- Rendered dynamically by script -->
             </svg>
             <div class="kundli-chart-legend">
-              * वक्री (Retrograde) &nbsp;•&nbsp; # अस्त (Combust) &nbsp;•&nbsp; उत्तर-भारतीय लग्न चक्र
+              * वक्री (Retrograde) &nbsp;•&nbsp; # अस्त (Combust) &nbsp;•&nbsp; उत्तर-भारतीय लग्न चक्र (Lagna Chart)
             </div>
           </div>
 
           <!-- Planetary Positions Table (Matching Table in Screenshot 2) -->
           <div style="margin-top: 30px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-              <h3 style="color: #0B192C; font-size: 1.3rem; margin: 0;">ग्रह स्थिति सारणी (Planetary Positions)</h3>
-              <span style="font-size: 0.82rem; color: #78350F; font-weight: 700;">वैदिक निरयण पद्धति</span>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+              <h3 style="color: #0B192C; font-size: 1.3rem; margin: 0; font-family: 'Cinzel', serif;">ग्रह स्थिति सारणी (Planetary Positions)</h3>
+              <span style="font-size: 0.82rem; color: #78350F; font-weight: 700; background: #FEF3C7; padding: 4px 10px; border-radius: 20px; border: 1px solid #FCD34D;">वैदिक निरयण लाहिड़ी अयनांश</span>
             </div>
 
             <div class="planetary-positions-card">
               <table class="planetary-table">
                 <thead>
                   <tr>
-                    <th>ग्रह (Planets)</th>
-                    <th>राशि (Sign)</th>
-                    <th>अंश (Degree)</th>
-                    <th>नक्षत्र (चरण)</th>
-                    <th>स्थिति (Dignity)</th>
+                    <th>ग्रह</th>
+                    <th>राशि</th>
+                    <th>अंश</th>
+                    <th>नक्षत्र (च)</th>
+                    <th>अवस्था</th>
                   </tr>
                 </thead>
                 <tbody id="planetaryTableBody">
                   <!-- Injected dynamically -->
                 </tbody>
               </table>
+            </div>
+          </div>
+
+          <!-- ==========================================================================
+               KUNDLI SARANSH & EASY INTERPRETATION (कुंडली का सरल सारांश एवं संपूर्ण फलादेश)
+               ========================================================================== -->
+          <div id="kundliSaranshSection" style="margin-top: 45px;">
+            <div class="saransh-master-card">
+              <div class="saransh-header-strip">
+                <div class="saransh-title-wrap">
+                  <span class="service-badge-pill" style="background: rgba(212,175,55,0.2); color: #B45309; border: 1px solid rgba(212,175,55,0.4);">
+                    ✨ नए साधकों हेतु सरल ज्योतिषीय मार्गदर्शन
+                  </span>
+                  <h3 style="color: #0B192C; font-family: 'Cinzel', serif; font-size: 1.45rem; margin: 8px 0 4px 0;">
+                    कुंडली का सरल सारांश एवं संपूर्ण फलादेश (Kundli Insights)
+                  </h3>
+                  <p style="color: #4B5563; font-size: 0.92rem; margin: 0;">
+                    यदि आप ज्योतिष में नए हैं, तो यह अनुभाग आपकी जन्म कुंडली के गूढ़ फलादेश को अत्यंत सरल और व्यावहारिक भाषा में स्पष्ट करता है।
+                  </p>
+                </div>
+              </div>
+
+              <!-- 1. Two Core Pillars: Lagna & Moon -->
+              <div class="saransh-core-grid">
+                <div class="saransh-core-card">
+                  <div class="saransh-core-header">
+                    <span class="saransh-icon">🌟</span>
+                    <div>
+                      <h4>आपका मूल स्वभाव एवं व्यक्तित्व (Personality & Lagna)</h4>
+                      <span class="saransh-sub" id="saranshLagnaSub">धनु लग्न • अग्नि तत्व • द्विस्वभाव</span>
+                    </div>
+                  </div>
+                  <p id="saranshPersonality" class="saransh-text"></p>
+                  <div class="saransh-badge-row">
+                    <span class="saransh-pill" id="saranshLagneshPill">लग्नेश: बृहस्पति (प्रथम भाव)</span>
+                  </div>
+                </div>
+
+                <div class="saransh-core-card">
+                  <div class="saransh-core-header">
+                    <span class="saransh-icon">🌙</span>
+                    <div>
+                      <h4>मानसिक शक्ति एवं मनोवृत्ति (Mind & Moon Sign)</h4>
+                      <span class="saransh-sub" id="saranshMoonSub">वृष राशि • उच्च चंद्रमा • पृथ्वी तत्व</span>
+                    </div>
+                  </div>
+                  <p id="saranshMoon" class="saransh-text"></p>
+                  <div class="saransh-badge-row">
+                    <span class="saransh-pill" id="saranshMoonPill">नक्षत्र: कृत्तिका (चरण ४)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Auspicious Yogas in Chart -->
+              <div class="saransh-yogas-box">
+                <div class="saransh-box-header">
+                  <span style="font-size: 1.3rem;">👑</span>
+                  <div>
+                    <h4 style="margin: 0; color: #0B192C; font-size: 1.15rem;">आपकी कुंडली के विशेष राजयोग एवं शुभ योग</h4>
+                    <p style="margin: 0; font-size: 0.85rem; color: #6B7280;">ग्रहों के विशिष्ट संयोजन से निर्मित होने वाले शक्तिशाली राजयोग</p>
+                  </div>
+                </div>
+                <div class="saransh-yogas-grid" id="saranshYogasGrid">
+                  <!-- Dynamic Yoga Cards injected here -->
+                </div>
+              </div>
+
+              <!-- 3. Four Life Pillars: Career, Marriage, Health, Luck -->
+              <div class="saransh-pillars-grid">
+                <div class="saransh-pillar-card">
+                  <div class="pillar-top">
+                    <span class="pillar-icon">💼</span>
+                    <h5>करियर, आजीविका एवं धन (Career & Wealth)</h5>
+                  </div>
+                  <p id="saranshCareer" class="pillar-text"></p>
+                </div>
+
+                <div class="saransh-pillar-card">
+                  <div class="pillar-top">
+                    <span class="pillar-icon">💍</span>
+                    <h5>विवाह, प्रेम एवं दांपत्य (Marriage & Harmony)</h5>
+                  </div>
+                  <p id="saranshMarriage" class="pillar-text"></p>
+                </div>
+
+                <div class="saransh-pillar-card">
+                  <div class="pillar-top">
+                    <span class="pillar-icon">🌿</span>
+                    <h5>स्वास्थ्य एवं मानसिक शक्ति (Health & Vitality)</h5>
+                  </div>
+                  <p id="saranshHealth" class="pillar-text"></p>
+                </div>
+
+                <div class="saransh-pillar-card">
+                  <div class="pillar-top">
+                    <span class="pillar-icon">🪷</span>
+                    <h5>भाग्य एवं आध्यात्मिक उन्नति (Luck & Dharma)</h5>
+                  </div>
+                  <p id="saranshFortune" class="pillar-text"></p>
+                </div>
+              </div>
+
+              <!-- 4. Favorable Factors Table (अनुकूल तत्व) -->
+              <div class="saransh-favorable-box">
+                <h4 style="color: #0B192C; font-size: 1.05rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+                  <span>🎯</span> आपके अनुकूल ज्योतिषीय तत्व (Lucky Astrological Factors)
+                </h4>
+                <div class="favorable-grid">
+                  <div class="favorable-item">
+                    <span class="favorable-label">अनुकूल रत्न (Lucky Gemstone):</span>
+                    <strong class="favorable-val" id="favGemstone">पीला पुखराज</strong>
+                  </div>
+                  <div class="favorable-item">
+                    <span class="favorable-label">शुभ रंग (Lucky Colors):</span>
+                    <strong class="favorable-val" id="favColor">पीला, केसरिया, सुनहरा</strong>
+                  </div>
+                  <div class="favorable-item">
+                    <span class="favorable-label">शुभ अंक (Lucky Numbers):</span>
+                    <strong class="favorable-val" id="favNumbers">३, ९, १२, २१</strong>
+                  </div>
+                  <div class="favorable-item">
+                    <span class="favorable-label">इष्ट देव (Ishta Devta):</span>
+                    <strong class="favorable-val" id="favDeity">भगवान श्री लक्ष्मीनारायण / माँ बगलामुखी</strong>
+                  </div>
+                  <div class="favorable-item">
+                    <span class="favorable-label">शुभ वार (Auspicious Day):</span>
+                    <strong class="favorable-val" id="favDay">गुरुवार (Thursday)</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Vedic Remedies & Precautions (वैदिक सावधानियां एवं उपाय) -->
+              <div class="saransh-remedies-box">
+                <div class="saransh-box-header">
+                  <span style="font-size: 1.3rem;">🛡️</span>
+                  <div>
+                    <h4 style="margin: 0; color: #0B192C; font-size: 1.15rem;">दोष निवारण एवं व्यावहारिक सनातन उपाय</h4>
+                    <p style="margin: 0; font-size: 0.85rem; color: #6B7280;">वक्री व अस्त ग्रहों के संतुलन एवं भाग्य वृद्धि हेतु शास्त्रोक्त उपाय</p>
+                  </div>
+                </div>
+                <div class="remedies-grid" id="saranshRemediesGrid">
+                  <!-- Dynamic Remedies injected here -->
+                </div>
+              </div>
+
+              <!-- 6. 12 Bhavas Interactive Explorer (१२ भावों की सरल व्याख्या) -->
+              <div class="saransh-houses-box">
+                <div class="saransh-box-header" style="cursor: pointer; user-select: none;" id="toggleHousesBox">
+                  <span style="font-size: 1.3rem;">🏛️</span>
+                  <div style="flex: 1;">
+                    <h4 style="margin: 0; color: #0B192C; font-size: 1.15rem;">आपकी कुंडली के १२ भावों की विस्तृत व्याख्या</h4>
+                    <p style="margin: 0; font-size: 0.85rem; color: #6B7280;">जानें किस भाव में कौन सा ग्रह बैठकर क्या परिणाम दे रहा है (क्लिक करके खोलें/बंद करें)</p>
+                  </div>
+                  <span id="houseToggleArrow" style="font-size: 1.2rem; color: #B45309; transition: transform 0.3s;">▼</span>
+                </div>
+                <div class="houses-accordion-content" id="housesAccordionContent" style="display: block; margin-top: 16px;">
+                  <div class="houses-cards-grid" id="housesCardsGrid">
+                    <!-- Dynamic 12 house cards injected here -->
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -295,7 +461,7 @@
             </a>
             <a id="waConsultBtn" href="#" target="_blank" class="btn btn-whatsapp" style="flex: 1.5; min-width: 260px;">
               <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
-              <span>शास्त्री जी से इस कुंडली पर मार्गदर्शन लें</span>
+              <span>शास्त्री जी से इस कुंडली पर व्यक्तिगत मार्गदर्शन लें</span>
             </a>
           </div>
 
@@ -548,14 +714,15 @@
           `जातक: ${data.person.name} (${data.person.gender === 'Male' ? 'पुरुष' : 'महिला'}) • ${data.person.date} ${data.person.time} • ${data.person.place}`;
 
         document.getElementById("metaLagna").textContent = `${data.ascendant.rashiNameHi} (${data.ascendant.rashiNum})`;
+        document.getElementById("metaLagnaNakshatra").textContent = `${data.ascendant.nakshatra} (${data.ascendant.pada}) • ${data.ascendant.nakshatraLord}`;
         document.getElementById("metaLagnaLord").textContent = data.ascendant.lordHi;
         document.getElementById("metaMoonSign").textContent = `${data.moonMetrics.rashiNameHi} (${data.moonMetrics.rashiNum})`;
-        document.getElementById("metaNakshatra").textContent = `${data.moonMetrics.nakshatra} (${data.moonMetrics.pada})`;
+        document.getElementById("metaNakshatra").textContent = `${data.moonMetrics.nakshatra} (${data.moonMetrics.pada}) • ${data.moonMetrics.nakshatraLord}`;
         document.getElementById("metaAyanamsha").textContent = data.ayanamsha.dms.split("'")[0] + "'";
 
         // Update WhatsApp Consultation CTA
         const waText = encodeURIComponent(
-          `प्रणाम शास्त्री अमित कुमार शर्मा जी, मैंने दिव्या दृष्टि पोर्टल पर अपनी जन्म कुंडली बनाई है:\n\nनाम: ${data.person.name}\nजन्म: ${data.person.date} ${data.person.time}\nस्थान: ${data.person.place}\nलग्न: ${data.ascendant.rashiNameHi} (${data.ascendant.rashiNum})\nचंद्र राशि: ${data.moonMetrics.rashiNameHi}\nनक्षत्र: ${data.moonMetrics.nakshatra} (चरण ${data.moonMetrics.pada})\n\nकृपया मेरी कुंडली पर मार्गदर्शन एवं परामर्श प्रदान करें।`
+          `प्रणाम शास्त्री अमित कुमार शर्मा जी, मैंने दिव्या दृष्टि पोर्टल पर अपनी जन्म कुंडली बनाई है:\n\nनाम: ${data.person.name}\nजन्म: ${data.person.date} ${data.person.time}\nस्थान: ${data.person.place}\nलग्न: ${data.ascendant.rashiNameHi} (${data.ascendant.rashiNum}) - नक्षत्र: ${data.ascendant.nakshatra} (${data.ascendant.pada})\nचंद्र राशि: ${data.moonMetrics.rashiNameHi} - नक्षत्र: ${data.moonMetrics.nakshatra} (${data.moonMetrics.pada})\n\nकृपया मेरी कुंडली पर विस्तृत मार्गदर्शन एवं परामर्श प्रदान करें।`
         );
         document.getElementById("waConsultBtn").href = `https://wa.me/919829743685?text=${waText}`;
 
@@ -564,49 +731,52 @@
 
         // Render Planetary Table
         renderPlanetaryTable(data);
+
+        // Render Comprehensive Saransh
+        renderKundliSaransh(data);
       }
 
       function renderPlanetaryTable(data) {
         planetaryTableBody.innerHTML = "";
 
-        // Row 1: Ascendant (Lagna)
-        const trAsc = document.createElement("tr");
-        trAsc.style.background = "#FEF3C7";
-        trAsc.style.fontWeight = "700";
-        trAsc.innerHTML = `
-          <td><span class="planet-symbol-badge" style="background:#881337; color:#FFFFFF;">लग्न</span> <strong>लग्न (Ascendant)</strong></td>
-          <td style="color:#0B192C;"><strong>${data.ascendant.rashiNameHi} (${data.ascendant.rashiNameEn})</strong></td>
-          <td>${data.ascendant.dms}</td>
-          <td>${data.ascendant.nakshatra} (${data.ascendant.pada})</td>
-          <td><span class="service-badge-pill" style="background:#FFF1F2; color:#881337;">तनु भाव (स्वामी: ${data.ascendant.lordHi})</span></td>
-        `;
-        planetaryTableBody.appendChild(trAsc);
+        const rows = data.tableRows || [data.ascendant].concat(data.planets);
 
-        // Planetary Rows
-        data.planets.forEach(p => {
+        rows.forEach((p, idx) => {
           const tr = document.createElement("tr");
 
           let retroTag = p.isRetrograde ? `<span class="planet-retro-tag">*वक्री</span>` : "";
           let combustTag = p.isCombust ? `<span class="planet-combust-tag">#अस्त</span>` : "";
 
-          let dignityBadge = `<span class="service-badge-pill service-badge-offline">${p.dignity}</span>`;
-          if (p.dignityStatus === "exalted") {
+          let dignityBadge = `<span class="service-badge-pill service-badge-offline">${p.dignityHi || "सामान्य"}</span>`;
+          if (idx === 0) {
+            tr.style.background = "#FEF3C7";
+            tr.style.fontWeight = "700";
+            dignityBadge = `<span class="service-badge-pill" style="background:#881337; color:#FFFFFF; border:1px solid #9F1239;">तनु भाव (स्वामी: ${p.rashiLord})</span>`;
+          } else if (p.dignityStatus === "exalted") {
             dignityBadge = `<span class="service-badge-pill" style="background:#DCFCE7; color:#166534; border:1px solid #86EFAC;">उच्च (Exalted)</span>`;
           } else if (p.dignityStatus === "debilitated") {
             dignityBadge = `<span class="service-badge-pill" style="background:#FEE2E2; color:#991B1B; border:1px solid #FCA5A5;">नीच (Debilitated)</span>`;
           } else if (p.dignityStatus === "own") {
-            dignityBadge = `<span class="service-badge-pill" style="background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE;">स्वराशि</span>`;
+            dignityBadge = `<span class="service-badge-pill" style="background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE;">स्वराशि (Own)</span>`;
           }
+
+          let pColor = "#881337";
+          if (p.code === "Su") pColor = "#DC2626";
+          else if (p.code === "Mo") pColor = "#0284C7";
+          else if (p.code === "Ma") pColor = "#B91C1C";
+          else if (p.code === "Me") pColor = "#16A34A";
+          else if (p.code === "Ju") pColor = "#D97706";
+          else if (p.code === "Ve") pColor = "#C026D3";
+          else if (p.code === "Sa") pColor = "#1E3A8A";
+          else if (p.code === "Ra" || p.code === "Ke") pColor = "#B45309";
 
           tr.innerHTML = `
             <td>
-              <span class="planet-symbol-badge">${p.code}</span>
-              <strong>${p.nameHi} (${p.nameEn})</strong>
-              ${retroTag} ${combustTag}
+              <strong style="color: ${pColor}; font-size: 0.95rem;">${p.displayLabelHi || p.nameHi}</strong>
             </td>
-            <td style="color:#0B192C;"><strong>${p.rashiNameHi} (${p.rashiNameEn})</strong></td>
-            <td>${p.dms}</td>
-            <td>${p.nakshatraNameHi} (${p.pada})</td>
+            <td style="color: #881337; font-weight: 700;">${p.rashiHi}</td>
+            <td style="font-family: monospace; font-size: 0.92rem; color: #1F2937;">${p.dms}</td>
+            <td style="color: #374151; font-weight: 600;">${p.nakshatraHi}(${p.nakshatraPada})</td>
             <td>${dignityBadge}</td>
           `;
           planetaryTableBody.appendChild(tr);
@@ -615,7 +785,7 @@
 
       /**
        * North Indian Vedic Diamond Chart SVG Renderer
-       * Matches Screenshot 2 perfectly with crisp vector geometry and house rashi numbers
+       * Matches Screenshot 2 perfectly with vector diamond geometry, vermilion rashi numerals, and clean planet labels
        */
       function renderSvgChart(data) {
         const svg = kundliSvg;
@@ -623,26 +793,14 @@
 
         const isNavamsha = activeChartType === "navamsha";
 
-        // Determine base sign for House 1
-        // For Lagna Chart: data.ascendant.rashiNum
-        // For Navamsha Chart: calculate Navamsha sign of Lagna
-        const lagnaSignNum = data.ascendant.rashiNum;
-        let chartBaseSign = lagnaSignNum;
-
-        if (isNavamsha) {
-          const navSpan = 360.0 / 108.0;
-          const navIndex = Math.floor(data.ascendant.longitude / navSpan);
-          chartBaseSign = (navIndex % 12) + 1;
-        }
+        const lagnaSignNum = isNavamsha ? data.navHouses[0].rashiNum : data.ascendant.rashiNum;
+        const chartBaseSign = lagnaSignNum;
 
         // Map planets to houses based on chartBaseSign
         const housePlanets = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: [] };
 
         data.planets.forEach(p => {
-          let pSign = p.rashiNum;
-          if (isNavamsha) {
-            pSign = p.navamshaNum;
-          }
+          let pSign = isNavamsha ? p.navamshaRashiNum : p.rashiNum;
           const house = ((pSign - chartBaseSign + 12) % 12) + 1;
           housePlanets[house].push(p);
         });
@@ -669,8 +827,6 @@
         svg.appendChild(innerRect);
 
         // North Indian Lines Geometry
-        // 1. Diagonals: (0,0)->(500,500) and (500,0)->(0,500)
-        // 2. Central Diamond: (250,0)->(0,250)->(250,500)->(500,250)->(250,0)
         const lines = [
           { x1: 0, y1: 0, x2: 500, y2: 500 },
           { x1: 500, y1: 0, x2: 0, y2: 500 },
@@ -692,43 +848,46 @@
           svg.appendChild(line);
         });
 
-        // House Numbers & Planet Text Positions for North Indian Chart
-        // House 1 (Top Center Diamond)
-        // House 2 (Top Left Triangle)
-        // House 3 (Left Top Triangle)
-        // House 4 (Left Center Diamond)
-        // House 5 (Left Bottom Triangle)
-        // House 6 (Bottom Left Triangle)
-        // House 7 (Bottom Center Diamond)
-        // House 8 (Bottom Right Triangle)
-        // House 9 (Right Bottom Triangle)
-        // House 10 (Right Center Diamond)
-        // House 11 (Right Top Triangle)
-        // House 12 (Top Right Triangle)
-        const houseConfigs = {
-          1: { numX: 250, numY: 228, pX: 250, pY: 135 },
-          2: { numX: 120, numY: 105, pX: 140, pY: 55 },
-          3: { numX: 105, numY: 120, pX: 55, pY: 140 },
-          4: { numX: 228, numY: 250, pX: 135, pY: 250 },
-          5: { numX: 105, numY: 380, pX: 55, pY: 360 },
-          6: { numX: 120, numY: 395, pX: 140, pY: 445 },
-          7: { numX: 250, numY: 272, pX: 250, pY: 365 },
-          8: { numX: 380, numY: 395, pX: 360, pY: 445 },
-          9: { numX: 395, numY: 380, pX: 445, pY: 360 },
-          10: { numX: 272, numY: 250, pX: 365, pY: 250 },
-          11: { numX: 395, numY: 120, pX: 445, pY: 140 },
-          12: { numX: 380, numY: 105, pX: 360, pY: 55 }
+        // House Number Coordinates (Corners of Bhavas in Vermilion Red #9F1239)
+        const houseNumCoords = {
+          1: { x: 250, y: 228 },
+          2: { x: 120, y: 105 },
+          3: { x: 105, y: 120 },
+          4: { x: 228, y: 250 },
+          5: { x: 105, y: 380 },
+          6: { x: 120, y: 395 },
+          7: { x: 250, y: 272 },
+          8: { x: 380, y: 395 },
+          9: { x: 395, y: 380 },
+          10: { x: 272, y: 250 },
+          11: { x: 395, y: 120 },
+          12: { x: 380, y: 105 }
+        };
+
+        // Hindi short names for chart matching Screenshot 2
+        const hindiChartNames = {
+          "Su": "सूर्य",
+          "Mo": "चन्द्र",
+          "Ma": "मंगल",
+          "Me": "बुध",
+          "Ju": "बृह",
+          "Ve": "शुक्र",
+          "Sa": "शनि",
+          "Ra": "राहु",
+          "Ke": "केतू",
+          "Ur": "हर्षल",
+          "Ne": "नेप"
         };
 
         // Render each house: Rashi Number + Planet Badges
         for (let h = 1; h <= 12; h++) {
-          const cfg = houseConfigs[h];
+          const numCoord = houseNumCoords[h];
           const rashiInHouse = ((chartBaseSign - 1 + (h - 1)) % 12) + 1;
 
           // Rashi Number Text (Vermilion Red #9F1239, Bold)
           const numText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-          numText.setAttribute("x", cfg.numX);
-          numText.setAttribute("y", cfg.numY);
+          numText.setAttribute("x", numCoord.x);
+          numText.setAttribute("y", numCoord.y);
           numText.setAttribute("text-anchor", "middle");
           numText.setAttribute("dominant-baseline", "middle");
           numText.setAttribute("fill", "#9F1239");
@@ -741,44 +900,181 @@
           // Planets in this House
           const pList = housePlanets[h];
           if (pList.length > 0) {
-            const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-
-            // Stack or space planets neatly
-            const startY = cfg.pY - ((pList.length - 1) * 10);
             pList.forEach((p, pIdx) => {
+              // Custom non-colliding positions per house matching Screenshot 2
+              let pX = 250;
+              let pY = 250;
+
+              if (h === 1) {
+                pX = 250;
+                pY = 130 + (pIdx * 24);
+              } else if (h === 2) {
+                pX = pIdx === 0 ? 110 : 145;
+                pY = pIdx === 0 ? 50 : 72;
+              } else if (h === 3) {
+                pX = 65;
+                pY = 140 + (pIdx * 20);
+              } else if (h === 4) {
+                pX = 135;
+                pY = 250 + (pIdx * 20);
+              } else if (h === 5) {
+                pX = 65;
+                pY = 360 + (pIdx * 20);
+              } else if (h === 6) {
+                pX = pIdx === 0 ? 115 : 175;
+                pY = pIdx === 0 ? 425 : 445;
+              } else if (h === 7) {
+                pX = 250;
+                pY = 345 + (pIdx * 24);
+              } else if (h === 8) {
+                pX = 360;
+                pY = 435 + (pIdx * 20);
+              } else if (h === 9) {
+                pX = pIdx === 0 ? 415 : 455;
+                pY = pIdx === 0 ? 345 : 368;
+              } else if (h === 10) {
+                pX = 365;
+                pY = 250 + (pIdx * 20);
+              } else if (h === 11) {
+                pX = 445;
+                pY = 140 + (pIdx * 20);
+              } else if (h === 12) {
+                pX = pIdx === 0 ? 360 : 385;
+                pY = pIdx === 0 ? 55 : 75;
+              }
+
               const pText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-              pText.setAttribute("x", cfg.pX);
-              pText.setAttribute("y", startY + (pIdx * 20));
+              pText.setAttribute("x", pX);
+              pText.setAttribute("y", pY);
               pText.setAttribute("text-anchor", "middle");
               pText.setAttribute("dominant-baseline", "middle");
               pText.setAttribute("font-family", "Plus Jakarta Sans, sans-serif");
-              pText.setAttribute("font-size", "13.5");
+              pText.setAttribute("font-size", "14");
               pText.setAttribute("font-weight", "700");
 
-              // Color code by planet nature
+              // Color codes matching traditional chart palette (Screenshot 2)
               let pColor = "#0B192C";
-              if (p.code === "Su") pColor = "#B45309";
-              else if (p.code === "Mo") pColor = "#0369A1";
+              if (p.code === "Su") pColor = "#DC2626";
+              else if (p.code === "Mo") pColor = "#0284C7";
               else if (p.code === "Ma") pColor = "#B91C1C";
-              else if (p.code === "Me") pColor = "#15803D";
+              else if (p.code === "Me") pColor = "#16A34A";
               else if (p.code === "Ju") pColor = "#D97706";
-              else if (p.code === "Ve") pColor = "#7E22CE";
+              else if (p.code === "Ve") pColor = "#C026D3";
               else if (p.code === "Sa") pColor = "#1E3A8A";
-              else if (p.code === "Ra" || p.code === "Ke") pColor = "#475569";
+              else if (p.code === "Ra" || p.code === "Ke") pColor = "#B45309";
+              else if (p.code === "Ur" || p.code === "Ne") pColor = "#7E22CE";
 
               pText.setAttribute("fill", pColor);
 
               let retroMark = p.isRetrograde ? "*" : "";
               let combustMark = p.isCombust ? "#" : "";
-              pText.textContent = `${p.code}${retroMark}${combustMark} ${p.shortDeg}`;
-              group.appendChild(pText);
+              let hiName = hindiChartNames[p.code] || p.nameHi;
+              let degNum = p.shortDeg.replace("°", "");
+
+              pText.textContent = `${hiName}${retroMark}${combustMark} ${degNum}`;
+              svg.appendChild(pText);
             });
-            svg.appendChild(group);
           }
         }
       }
 
-      // Initial Default Calculation on Page Load (Jaipur / Sep 15, 1995)
+      /**
+       * Render Comprehensive Beginner-Friendly Kundli Saransh
+       */
+      function renderKundliSaransh(data) {
+        const s = data.saransh;
+        if (!s) return;
+
+        // Lagna & Personality
+        document.getElementById("saranshLagnaSub").textContent = `${data.ascendant.rashiNameHi} लग्न • ${data.ascendant.nakshatra} नक्षत्र • लग्नेश: ${data.ascendant.lordHi}`;
+        document.getElementById("saranshPersonality").innerHTML = s.personality.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        document.getElementById("saranshLagneshPill").textContent = s.lagneshDetail.replace(/\*\*(.*?)\*\*/g, '');
+
+        // Moon & Mind
+        document.getElementById("saranshMoonSub").textContent = `${data.moonMetrics.rashiNameHi} राशि • ${data.moonMetrics.nakshatra} (चरण ${data.moonMetrics.pada}) • स्वामी: ${data.moonMetrics.nakshatraLord}`;
+        document.getElementById("saranshMoon").innerHTML = s.mindAndEmotions.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        document.getElementById("saranshMoonPill").textContent = `चंद्रमा: ${data.moonMetrics.dignity}`;
+
+        // Yogas Grid
+        const yogasGrid = document.getElementById("saranshYogasGrid");
+        yogasGrid.innerHTML = "";
+        s.yogas.forEach(y => {
+          const yDiv = document.createElement("div");
+          yDiv.className = "yoga-card";
+          yDiv.innerHTML = `
+            <div class="yoga-card-top">
+              <span style="font-size: 1.3rem;">${y.icon}</span>
+              <div>
+                <strong>${y.title}</strong>
+                <span class="service-badge-pill" style="margin-left: 6px; font-size: 0.72rem; padding: 2px 8px;">${y.type}</span>
+              </div>
+            </div>
+            <p>${y.desc}</p>
+          `;
+          yogasGrid.appendChild(yDiv);
+        });
+
+        // 4 Pillars
+        document.getElementById("saranshCareer").innerHTML = s.fourPillars.career.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        document.getElementById("saranshMarriage").innerHTML = s.fourPillars.marriage.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        document.getElementById("saranshHealth").innerHTML = s.fourPillars.health.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        document.getElementById("saranshFortune").innerHTML = s.fourPillars.fortune.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+        // Favorable Factors
+        document.getElementById("favGemstone").textContent = s.favorableFactors.gemstone;
+        document.getElementById("favColor").textContent = s.favorableFactors.color;
+        document.getElementById("favNumbers").textContent = s.favorableFactors.numbers;
+        document.getElementById("favDeity").textContent = s.favorableFactors.deity;
+        document.getElementById("favDay").textContent = s.favorableFactors.day;
+
+        // Remedies Grid
+        const remediesGrid = document.getElementById("saranshRemediesGrid");
+        remediesGrid.innerHTML = "";
+        s.remedies.forEach(r => {
+          const rDiv = document.createElement("div");
+          rDiv.className = "remedy-item";
+          rDiv.innerHTML = `
+            <strong>${r.icon} ${r.title}</strong>
+            <p>${r.desc}</p>
+          `;
+          remediesGrid.appendChild(rDiv);
+        });
+
+        // 12 Houses Grid
+        const housesGrid = document.getElementById("housesCardsGrid");
+        housesGrid.innerHTML = "";
+        s.houseInsights.forEach(h => {
+          const hDiv = document.createElement("div");
+          hDiv.className = "house-card";
+          let pText = h.planetsList.length > 0 ? `विराजमान ग्रह: ${h.planetsList.join(", ")}` : "कोई ग्रह नहीं (खाली भाव)";
+          hDiv.innerHTML = `
+            <div class="house-card-header">
+              <strong>${h.title}</strong>
+              <span class="house-card-rashi">${h.rashiHi} (${h.rashiNum})</span>
+            </div>
+            <div class="house-card-planets">${pText}</div>
+            <p>${h.summary.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</p>
+          `;
+          housesGrid.appendChild(hDiv);
+        });
+
+        // Accordion Toggle Handler
+        const toggleHousesBox = document.getElementById("toggleHousesBox");
+        const housesContent = document.getElementById("housesAccordionContent");
+        const arrow = document.getElementById("houseToggleArrow");
+        
+        toggleHousesBox.onclick = function() {
+          if (housesContent.style.display === "none") {
+            housesContent.style.display = "block";
+            arrow.style.transform = "rotate(0deg)";
+          } else {
+            housesContent.style.display = "none";
+            arrow.style.transform = "rotate(-90deg)";
+          }
+        };
+      }
+
+      // Initial Default Calculation on Page Load (aayush sharma / 30-06-2008 / 18:58 / Jaipur)
       kundliForm.dispatchEvent(new Event('submit'));
     });
   </script>
