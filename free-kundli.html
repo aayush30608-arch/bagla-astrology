@@ -617,6 +617,7 @@
           customTz.value = sel.tz;
         }
       });
+      citySelect.dispatchEvent(new Event('change'));
 
       toggleCoordsBtn.addEventListener("click", function () {
         coordsBox.style.display = coordsBox.style.display === "none" ? "block" : "none";
@@ -687,15 +688,20 @@
         const input = {
           name: name,
           gender: gender,
-          day: day,
-          month: month,
-          year: year,
-          hour: hour,
-          min: min,
-          sec: sec,
+          day: parseInt(day, 10),
+          month: parseInt(month, 10),
+          year: parseInt(year, 10),
+          hour: parseInt(hour, 10),
+          min: parseInt(min, 10),
+          minute: parseInt(min, 10),
+          sec: parseInt(sec, 10),
+          second: parseInt(sec, 10),
           lat: lat,
+          latitude: lat,
           lon: lon,
+          longitude: lon,
           tz: tz,
+          timezone: tz,
           place: placeName
         };
 
@@ -907,40 +913,40 @@
 
               if (h === 1) {
                 pX = 250;
-                pY = 130 + (pIdx * 24);
+                pY = 125 + (pIdx * 24);
               } else if (h === 2) {
-                pX = pIdx === 0 ? 110 : 145;
-                pY = pIdx === 0 ? 50 : 72;
+                pX = 110;
+                pY = 46 + (pIdx * 24);
               } else if (h === 3) {
                 pX = 65;
-                pY = 140 + (pIdx * 20);
+                pY = 145 + (pIdx * 22);
               } else if (h === 4) {
                 pX = 135;
-                pY = 250 + (pIdx * 20);
+                pY = 250 + (pIdx * 22);
               } else if (h === 5) {
                 pX = 65;
-                pY = 360 + (pIdx * 20);
+                pY = 360 + (pIdx * 22);
               } else if (h === 6) {
-                pX = pIdx === 0 ? 115 : 175;
-                pY = pIdx === 0 ? 425 : 445;
+                pX = 135;
+                pY = 430 + (pIdx * 24);
               } else if (h === 7) {
                 pX = 250;
-                pY = 345 + (pIdx * 24);
+                pY = 355 + (pIdx * 24);
               } else if (h === 8) {
-                pX = 360;
-                pY = 435 + (pIdx * 20);
+                pX = 370;
+                pY = 445 + (pIdx * 22);
               } else if (h === 9) {
-                pX = pIdx === 0 ? 415 : 455;
-                pY = pIdx === 0 ? 345 : 368;
+                pX = 435;
+                pY = 345 + (pIdx * 24);
               } else if (h === 10) {
                 pX = 365;
-                pY = 250 + (pIdx * 20);
+                pY = 250 + (pIdx * 22);
               } else if (h === 11) {
-                pX = 445;
-                pY = 140 + (pIdx * 20);
+                pX = 435;
+                pY = 145 + (pIdx * 22);
               } else if (h === 12) {
-                pX = pIdx === 0 ? 360 : 385;
-                pY = pIdx === 0 ? 55 : 75;
+                pX = 370;
+                pY = 50 + (pIdx * 24);
               }
 
               const pText = document.createElementNS("http://www.w3.org/2000/svg", "text");

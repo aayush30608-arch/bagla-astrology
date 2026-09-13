@@ -221,15 +221,32 @@
    * Main Generator Function
    */
   function generateKundli(input) {
+    input = input || {};
     var year = parseInt(input.year, 10) || 2000;
     var month = parseInt(input.month, 10) || 1;
     var day = parseInt(input.day, 10) || 1;
-    var hour = parseInt(input.hour, 10) || 12;
-    var min = parseInt(input.minute, 10) || 0;
-    var sec = parseInt(input.second, 10) || 0;
-    var tz = parseFloat(input.timezone) || 5.5;
-    var lat = parseFloat(input.latitude) || 26.9124;
-    var lon = parseFloat(input.longitude) || 75.7873;
+    var hour = parseInt(input.hour, 10);
+    if (isNaN(hour)) hour = 12;
+
+    var rawMin = (input.minute !== undefined && input.minute !== null && input.minute !== "") ? input.minute : input.min;
+    var min = parseInt(rawMin, 10);
+    if (isNaN(min)) min = 0;
+
+    var rawSec = (input.second !== undefined && input.second !== null && input.second !== "") ? input.second : input.sec;
+    var sec = parseInt(rawSec, 10);
+    if (isNaN(sec)) sec = 0;
+
+    var rawTz = (input.timezone !== undefined && input.timezone !== null && input.timezone !== "") ? input.timezone : input.tz;
+    var tz = parseFloat(rawTz);
+    if (isNaN(tz)) tz = 5.5;
+
+    var rawLat = (input.latitude !== undefined && input.latitude !== null && input.latitude !== "") ? input.latitude : input.lat;
+    var lat = parseFloat(rawLat);
+    if (isNaN(lat)) lat = 26.9124;
+
+    var rawLon = (input.longitude !== undefined && input.longitude !== null && input.longitude !== "") ? input.longitude : input.lon;
+    var lon = parseFloat(rawLon);
+    if (isNaN(lon)) lon = 75.7873;
 
     // 1. Julian Day (JD)
     var decimalHour = (hour + min / 60.0 + sec / 3600.0) - tz;
