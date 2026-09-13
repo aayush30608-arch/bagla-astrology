@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>निःशुल्क ऑनलाइन जन्म कुंडली एवं लग्न चक्र कैलकुलेटर | Free Kundli & Lagna Chart | DIVYA DRISHTI</title>
+  <meta name="description" content="दिव्या दृष्टि - अपनी जन्म तिथि, समय और स्थान डालकर मुफ्त में अपनी संपूर्ण वैदिक लग्न कुंडली (Lagna Chart), नवमांश चक्र (D9) एवं ग्रह स्थिति सारणी प्राप्त करें।">
+  <meta name="keywords" content="Free Kundli Online, Lagna Chart Generator, North Indian Kundli, Janam Kundli Calculator, Shastri Amit Kumar Sharma, Divya Drishti, मुफ्त जन्म कुंडली, लग्न चक्र">
+  
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="canvas-stars"></canvas>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Announcement & Quick Contact">
+    <div class="container">
+      <div class="top-bar-left">
+        <span class="top-bar-item">
+          ✨ <em>मुफ्त वैदिक जन्म कुंडली कैलकुलेटर</em> — शास्त्री अमित कुमार शर्मा (जयपुर)
+        </span>
+        <a href="tel:+919829743685" class="top-bar-item">
+          हेल्पलाइन: +91 98297 43685
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-badge">DIVYA DRISHTI • Apke Sitare • Aapki Disha</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar" aria-label="Main Navigation">
+        <a href="index.html" class="brand-logo-link">
+          <img src="images/logo.png" alt="Divya Drishti Emblem" class="brand-logo-img">
+          <div class="brand-name-wrap">
+            <span class="brand-name">DIVYA DRISHTI</span>
+            <span class="brand-tagline">Apke Sitare • Aapki Disha</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item nav-item-dropdown">
+            <a href="services.html" class="nav-link active dropdown-toggle">
+              <span>Services</span>
+              <svg class="nav-arrow" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="free-kundli.html" class="dropdown-link" style="color: #B8860B; font-weight: 700;">✨ मुफ्त लग्न कुंडली बनाएं</a></li>
+              <li><a href="services.html#offline-services" class="dropdown-link">🚩 ऑफलाइन मांगलिक सेवाएं</a></li>
+              <li><a href="services.html#online-services" class="dropdown-link">🌐 ऑनलाइन ई-अनुष्ठान</a></li>
+              <li><a href="kundli.html" class="dropdown-link">📜 जन्म कुंडली परामर्श</a></li>
+              <li><a href="services.html" class="dropdown-link" style="border-top: 1px solid rgba(212,175,55,0.25); font-weight: 700; color: #B8860B;">सभी सेवाएँ देखें →</a></li>
+            </ul>
+          </li>
+          <li><a href="baglamukhi.html" class="nav-link">Maa Baglamukhi</a></li>
+          <li><a href="horoscope.html" class="nav-link">Horoscope</a></li>
+          <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="header-actions">
+          <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Ji%2C%20I%20generated%20my%20Kundli%20on%20Divya%20Drishti%20and%20want%20consultation." target="_blank" class="header-wa-btn">
+            <span>WhatsApp: 9829743685</span>
+          </a>
+          <button class="hamburger-btn" aria-label="Toggle Mobile Menu">
+            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb-nav">
+          <a href="index.html">Home</a>
+          <span class="separator">/</span>
+          <span>मुफ्त ऑनलाइन लग्न कुंडली</span>
+        </nav>
+        <div class="section-eyebrow">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          लाहिड़ी (चित्रापक्ष) अयनांश आधारित वैदिक गणना
+        </div>
+        <h1 class="section-title text-gold-gradient">
+          मुफ्त ऑनलाइन जन्म कुंडली एवं लग्न चक्र कैलकुलेटर
+        </h1>
+        <p class="section-subtitle">
+          अपना जन्म विवरण भरें और तुरंत सटीक उत्तर-भारतीय लग्न चक्र (Lagna Chart), नवमांश कुंडली (D9) एवं संपूर्ण ग्रह स्थिति (अंश, नक्षत्र, वक्री व अस्त) प्राप्त करें।
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Generator Interface -->
+    <section class="container">
+      <div class="kundli-generator-grid">
+        
+        <!-- LEFT: Birth Details Input Card (Matching Screenshot 1) -->
+        <div class="kundli-card kundli-input-card">
+          <div class="kundli-card-header">
+            <div>
+              <h2>जन्म विवरण दर्ज करें</h2>
+              <span style="font-size: 0.88rem; color: #78350F; font-weight: 600;">Enter Birth Details</span>
+            </div>
+            <span class="service-badge-pill service-badge-offline">१००% सटीक गणना</span>
+          </div>
+
+          <form id="kundliForm" autocomplete="off">
+            <!-- Gender Selector -->
+            <div class="kundli-form-group">
+              <label>लिंग (Gender):</label>
+              <div class="gender-toggle-wrap">
+                <button type="button" class="gender-btn active" data-gender="Male" id="btnMale">
+                  <span>👨 पुरुष (Male)</span>
+                </button>
+                <button type="button" class="gender-btn" data-gender="Female" id="btnFemale">
+                  <span>👩 महिला (Female)</span>
+                </button>
+              </div>
+              <input type="hidden" id="genderInput" value="Male">
+            </div>
+
+            <!-- Name Input -->
+            <div class="kundli-form-group">
+              <label for="personName">नाम (Name):</label>
+              <input type="text" id="personName" class="kundli-form-input" placeholder="उदा. जातक का नाम" value="अभय शर्मा" required>
+            </div>
+
+            <!-- Birth Date (DD / MM / YYYY) -->
+            <div class="kundli-form-group">
+              <label>जन्म तिथि (Date of Birth):</label>
+              <div class="kundli-split-inputs">
+                <div>
+                  <input type="number" id="birthDay" class="kundli-form-input" placeholder="DD (दिन)" min="1" max="31" value="15" required>
+                </div>
+                <div>
+                  <input type="number" id="birthMonth" class="kundli-form-input" placeholder="MM (माह)" min="1" max="12" value="9" required>
+                </div>
+                <div>
+                  <input type="number" id="birthYear" class="kundli-form-input" placeholder="YYYY (वर्ष)" min="1900" max="2100" value="1995" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Birth Time (HH : MM : SS - 24hrs) -->
+            <div class="kundli-form-group">
+              <label>जन्म समय (Time of Birth - 24hrs):</label>
+              <div class="kundli-split-inputs">
+                <div>
+                  <input type="number" id="birthHour" class="kundli-form-input" placeholder="HH (घंटा)" min="0" max="23" value="11" required>
+                </div>
+                <div>
+                  <input type="number" id="birthMin" class="kundli-form-input" placeholder="MM (मिनट)" min="0" max="59" value="45" required>
+                </div>
+                <div>
+                  <input type="number" id="birthSec" class="kundli-form-input" placeholder="SS (सेकंड)" min="0" max="59" value="0">
+                </div>
+              </div>
+            </div>
+
+            <!-- Birth Place (City Selector & Search) -->
+            <div class="kundli-form-group">
+              <label for="citySelect">जन्म स्थान (Place of Birth):</label>
+              <select id="citySelect" class="kundli-form-select">
+                <!-- Populated dynamically via kundli-engine.js -->
+              </select>
+            </div>
+
+            <!-- Custom Coordinates Toggle (Optional) -->
+            <div style="margin-bottom: 20px;">
+              <button type="button" id="toggleCoordsBtn" style="background: none; border: none; color: #B8860B; font-size: 0.86rem; font-weight: 700; cursor: pointer; text-decoration: underline;">
+                + अक्षांश व देशांतर स्वयं दर्ज करें (Custom Latitude / Longitude)
+              </button>
+              <div id="coordsBox" style="display: none; margin-top: 12px; padding: 14px; background: #FAF6F0; border-radius: var(--radius-md); border: 1px solid rgba(212,175,55,0.3);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                  <div>
+                    <label style="font-size: 0.78rem;">Latitude (°N):</label>
+                    <input type="number" id="customLat" class="kundli-form-input" step="0.0001" value="26.9124">
+                  </div>
+                  <div>
+                    <label style="font-size: 0.78rem;">Longitude (°E):</label>
+                    <input type="number" id="customLon" class="kundli-form-input" step="0.0001" value="75.7873">
+                  </div>
+                  <div>
+                    <label style="font-size: 0.78rem;">Timezone:</label>
+                    <input type="number" id="customTz" class="kundli-form-input" step="0.5" value="5.5">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Action Buttons -->
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button type="submit" class="btn btn-gold" style="flex: 2; padding: 14px 20px; font-size: 1rem;">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2l2.4 7.4h7.6l-6.1 4.5 2.3 7.1-6.2-4.5-6.2 4.5 2.3-7.1-6.1-4.5h7.6z"/></svg>
+                <span>लग्न कुंडली बनाएं (Go →)</span>
+              </button>
+              <button type="button" id="btnReset" class="btn btn-outline" style="flex: 1; padding: 14px 16px;">
+                <span>रीसेट</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Output Kundli Chart & Planetary Positions (Matching Screenshot 2) -->
+        <div class="kundli-card" id="kundliResultCard">
+          <div class="kundli-card-header">
+            <div>
+              <h2 id="chartTitle">लग्न कुंडली (Lagna Chart)</h2>
+              <span id="personMeta" style="font-size: 0.88rem; color: #78350F; font-weight: 600;">
+                जातक: अभय शर्मा • १५/०९/१९९५ ११:४५ • जयपुर
+              </span>
+            </div>
+            <!-- Chart Toggle Tabs -->
+            <div class="chart-type-tabs" style="margin-bottom: 0;">
+              <button type="button" class="chart-type-btn active" id="btnLagnaChart">लग्न (D1)</button>
+              <button type="button" class="chart-type-btn" id="btnNavamshaChart">नवमांश (D9)</button>
+            </div>
+          </div>
+
+          <!-- Quick Avakahada Summary Metrics -->
+          <div class="kundli-metrics-grid">
+            <div class="kundli-metric-box">
+              <span>लग्न (Ascendant)</span>
+              <strong id="metaLagna">वृश्चिक (8)</strong>
+            </div>
+            <div class="kundli-metric-box">
+              <span>लग्नेश (Lagna Lord)</span>
+              <strong id="metaLagnaLord">मंगल</strong>
+            </div>
+            <div class="kundli-metric-box">
+              <span>चंद्र राशि (Moon Sign)</span>
+              <strong id="metaMoonSign">कन्या (6)</strong>
+            </div>
+            <div class="kundli-metric-box">
+              <span>जन्म नक्षत्र (Nakshatra)</span>
+              <strong id="metaNakshatra">हस्त (४)</strong>
+            </div>
+            <div class="kundli-metric-box">
+              <span>अयनांश (Lahiri)</span>
+              <strong id="metaAyanamsha">२३° ५१'</strong>
+            </div>
+          </div>
+
+          <!-- SVG North Indian Kundli Chart (Matching Diamond Layout in Screenshot 2) -->
+          <div class="kundli-chart-wrapper">
+            <svg id="kundliSvg" class="kundli-svg-chart" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rendered dynamically by script -->
+            </svg>
+            <div class="kundli-chart-legend">
+              * वक्री (Retrograde) &nbsp;•&nbsp; # अस्त (Combust) &nbsp;•&nbsp; उत्तर-भारतीय लग्न चक्र
+            </div>
+          </div>
+
+          <!-- Planetary Positions Table (Matching Table in Screenshot 2) -->
+          <div style="margin-top: 30px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+              <h3 style="color: #0B192C; font-size: 1.3rem; margin: 0;">ग्रह स्थिति सारणी (Planetary Positions)</h3>
+              <span style="font-size: 0.82rem; color: #78350F; font-weight: 700;">वैदिक निरयण पद्धति</span>
+            </div>
+
+            <div class="planetary-positions-card">
+              <table class="planetary-table">
+                <thead>
+                  <tr>
+                    <th>ग्रह (Planets)</th>
+                    <th>राशि (Sign)</th>
+                    <th>अंश (Degree)</th>
+                    <th>नक्षत्र (चरण)</th>
+                    <th>स्थिति (Dignity)</th>
+                  </tr>
+                </thead>
+                <tbody id="planetaryTableBody">
+                  <!-- Injected dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Action CTA Group -->
+          <div style="margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="javascript:window.print()" class="btn btn-outline" style="flex: 1; min-width: 200px;">
+              <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+              <span>🖨️ कुंडली प्रिंट / PDF</span>
+            </a>
+            <a id="waConsultBtn" href="#" target="_blank" class="btn btn-whatsapp" style="flex: 1.5; min-width: 260px;">
+              <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+              <span>शास्त्री जी से इस कुंडली पर मार्गदर्शन लें</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Vedic Kundli Wisdom Guide Section -->
+    <section class="container" style="margin-bottom: 70px;">
+      <div class="ritual-content-card">
+        <h2>वैदिक जन्म कुंडली एवं लग्न चक्र का रहस्य</h2>
+        <p>
+          वैदिक ज्योतिष में जन्म कुंडली जातक के जन्म समय पर आकाशमंडल में ग्रहों और नक्षत्रों की वास्तविक स्थिति का पवित्र दिव्य मानचित्र (Cosmic Blueprint) है। जब बच्चा जन्म लेता है, उस समय पूर्वी क्षितिज पर जो राशि उदित (Ascending) हो रही होती है, उसे **लग्न (Ascendant)** कहते हैं। लग्न चक्र जातक के संपूर्ण जीवन का आधार होता है।
+        </p>
+
+        <h3>कुंडली के १२ भाव एवं उनका फल</h3>
+        <div class="services-catalog-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); margin-top: 24px; margin-bottom: 24px;">
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">१. प्रथम भाव (तनु भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">शारीरिक बनावट, व्यक्तित्व, आत्मबल, आरोग्य एवं जीवन शक्ति।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">२. द्वितीय भाव (धन भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">संचित धन, कुटुंब, वाणी, प्रारंभिक शिक्षा एवं खान-पान।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">३. तृतीय भाव (सहज भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">पराक्रम, छोटे भाई-बहन, साहस, छोटी यात्राएं व संचार।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">४. चतुर्थ भाव (सुख भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">माता, गृह सुख, भूमि, भवन, वाहन एवं मानसिक शांति।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">५. पंचम भाव (पुत्र/विद्या भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">संतान, उच्च विद्या, बुद्धि, पूर्वजन्म के पुण्य एवं शेयर/सट्टा।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">६. षष्ठ भाव (रिपु/रोग भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">शत्रु, रोग, ऋण (कर्ज), कोर्ट केस एवं दैनिक कार्यक्षेत्र।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">७. सप्तम भाव (जाया भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">जीवनसाथी, वैवाहिक सामंजस्य, व्यापारिक साझेदारी व जनसंपर्क।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">८. अष्टम भाव (आयु भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">आयु, मृत्यु कारण, अचानक होने वाली घटनाएं एवं गुप्त विद्या।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">९. नवम भाव (भाग्य भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">भाग्य, धर्म, गुरु, पिता का सुख, तीर्थाटन एवं उच्च संस्कार।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">१०. दशम भाव (कर्म भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">नौकरी, व्यवसाय, मान-सम्मान, पद-प्रतिष्ठा एवं पिता।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">११. एकादश भाव (लाभ भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">आय, लाभ, इच्छा पूर्ति, मित्र मंडली एवं बड़े भाई-बहन।</p>
+          </div>
+          <div style="background: #FAF6F0; padding: 18px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.3);">
+            <strong style="color: #0B192C;">१२. द्वादश भाव (व्यय भाव):</strong>
+            <p style="font-size: 0.88rem; color: #4B5563; margin-bottom: 0;">खर्च, विदेश गमन, मोक्ष, अस्पताल व्यय एवं शयन सुख।</p>
+          </div>
+        </div>
+
+        <h3>लग्न चक्र और नवमांश (D9) का महत्व</h3>
+        <p>
+          महर्षि पराशर ने स्पष्ट लिखा है कि केवल लग्न कुंडली देखकर अंतिम निर्णय नहीं लेना चाहिए। यदि कोई ग्रह लग्न कुंडली में नीच का हो किंतु नवमांश में उच्च का हो जाए, तो वह उत्तम राजयोग देता है। इसी प्रकार वैवाहिक सुख और आध्यात्मिक क्षमता की पुष्टि नवमांश चक्र द्वारा की जाती है।
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="images/logo.png" alt="Divya Drishti Emblem" class="footer-logo-img">
+            <div class="footer-brand-text">
+              <span class="footer-brand-name">DIVYA DRISHTI</span>
+              <span class="footer-brand-sub">Apke Sitare • Aapki Disha</span>
+            </div>
+          </div>
+          <p>शास्त्री अमित कुमार शर्मा — वैदिक ज्योतिष, जन्म कुंडली विश्लेषण, हस्तरेखा एवं माँ बगलामुखी अनुष्ठान।</p>
+        </div>
+        <div class="footer-col">
+          <h4>ज्योतिष सेवाएं</h4>
+          <ul class="footer-links">
+            <li><a href="free-kundli.html">मुफ्त लग्न कुंडली कैलकुलेटर</a></li>
+            <li><a href="kundli.html">जन्म कुंडली विश्लेषण</a></li>
+            <li><a href="palmistry.html">हस्तरेखा दर्शन</a></li>
+            <li><a href="kundli-milan.html">कुंडली मिलान</a></li>
+            <li><a href="horoscope.html">दैनिक राशिफल</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>सीधा संपर्क</h4>
+          <p>हेल्पलाइन: <a href="tel:+919829743685">+91 98297 43685</a></p>
+          <p>जयपुर, राजस्थान, भारत</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 DIVYA DRISHTI. All Sacred Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919829743685?text=Hello%20Shastri%20Ji%2C%20I%20want%20to%20consult%20my%20Kundli." target="_blank" class="floating-whatsapp-btn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.06.11.04.61-.21 1.18-.2.56-1.24 1.1-1.7 1.12-.46.02-.47.36-2.96-.73-2.49-1.09-3.99-3.75-4.11-3.92-.12-.17-.99-1.32-.99-2.51 0-1.19.63-1.78.85-2.02.22-.24.49-.3.66-.3.17 0 .34.01.49.02.16.01.37-.06.58.44.22.52.74 1.82.81 1.95.07.13.12.28.02.46-.09.17-.14.28-.27.44-.13.15-.28.35-.4.47-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.81 1 .89 1.84 1.17 2.1 1.3.26.13.41.11.56-.06.16-.17.67-.78.85-1.05.18-.27.36-.23.6-.14zM12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.33A10 10 0 1 0 12 2z"/></svg>
+  </a>
+
+  <!-- Astronomical Engine & App Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/kundli-engine.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const citySelect = document.getElementById("citySelect");
+      const toggleCoordsBtn = document.getElementById("toggleCoordsBtn");
+      const coordsBox = document.getElementById("coordsBox");
+      const customLat = document.getElementById("customLat");
+      const customLon = document.getElementById("customLon");
+      const customTz = document.getElementById("customTz");
+      const kundliForm = document.getElementById("kundliForm");
+      const btnReset = document.getElementById("btnReset");
+      const kundliSvg = document.getElementById("kundliSvg");
+      const planetaryTableBody = document.getElementById("planetaryTableBody");
+      const btnLagnaChart = document.getElementById("btnLagnaChart");
+      const btnNavamshaChart = document.getElementById("btnNavamshaChart");
+      const chartTitle = document.getElementById("chartTitle");
+
+      let activeChartType = "lagna"; // "lagna" or "navamsha"
+      let currentKundliData = null;
+
+      // Populate City Dropdown
+      KundliEngine.CITIES.forEach((c, idx) => {
+        const opt = document.createElement("option");
+        opt.value = idx;
+        opt.textContent = `${c.name} (${c.lat.toFixed(2)}°N, ${c.lon.toFixed(2)}°E)`;
+        if (c.name.includes("Jaipur")) opt.selected = true;
+        citySelect.appendChild(opt);
+      });
+
+      citySelect.addEventListener("change", function () {
+        const sel = KundliEngine.CITIES[parseInt(this.value, 10)];
+        if (sel) {
+          customLat.value = sel.lat;
+          customLon.value = sel.lon;
+          customTz.value = sel.tz;
+        }
+      });
+
+      toggleCoordsBtn.addEventListener("click", function () {
+        coordsBox.style.display = coordsBox.style.display === "none" ? "block" : "none";
+      });
+
+      // Gender toggle
+      const btnMale = document.getElementById("btnMale");
+      const btnFemale = document.getElementById("btnFemale");
+      const genderInput = document.getElementById("genderInput");
+
+      btnMale.addEventListener("click", function () {
+        btnMale.classList.add("active");
+        btnFemale.classList.remove("active");
+        genderInput.value = "Male";
+      });
+
+      btnFemale.addEventListener("click", function () {
+        btnFemale.classList.add("active");
+        btnMale.classList.remove("active");
+        genderInput.value = "Female";
+      });
+
+      btnReset.addEventListener("click", function () {
+        kundliForm.reset();
+        btnMale.classList.add("active");
+        btnFemale.classList.remove("active");
+        genderInput.value = "Male";
+        citySelect.value = 0;
+        citySelect.dispatchEvent(new Event('change'));
+      });
+
+      // Chart Type Switcher (Lagna / Navamsha)
+      btnLagnaChart.addEventListener("click", function () {
+        activeChartType = "lagna";
+        btnLagnaChart.classList.add("active");
+        btnNavamshaChart.classList.remove("active");
+        chartTitle.textContent = "लग्न कुंडली (Lagna Chart / D1)";
+        if (currentKundliData) renderSvgChart(currentKundliData);
+      });
+
+      btnNavamshaChart.addEventListener("click", function () {
+        activeChartType = "navamsha";
+        btnNavamshaChart.classList.add("active");
+        btnLagnaChart.classList.remove("active");
+        chartTitle.textContent = "नवमांश कुंडली (Navamsha Chart / D9)";
+        if (currentKundliData) renderSvgChart(currentKundliData);
+      });
+
+      // Form Submit Handler
+      kundliForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("personName").value.trim() || "जातक";
+        const gender = genderInput.value;
+        const day = document.getElementById("birthDay").value;
+        const month = document.getElementById("birthMonth").value;
+        const year = document.getElementById("birthYear").value;
+        const hour = document.getElementById("birthHour").value;
+        const min = document.getElementById("birthMin").value;
+        const sec = document.getElementById("birthSec").value || 0;
+
+        const selCity = KundliEngine.CITIES[parseInt(citySelect.value, 10)] || KundliEngine.CITIES[0];
+        const lat = parseFloat(customLat.value) || selCity.lat;
+        const lon = parseFloat(customLon.value) || selCity.lon;
+        const tz = parseFloat(customTz.value) || selCity.tz;
+        const placeName = selCity.name.split(",")[0];
+
+        const input = {
+          name: name,
+          gender: gender,
+          day: day,
+          month: month,
+          year: year,
+          hour: hour,
+          min: min,
+          sec: sec,
+          lat: lat,
+          lon: lon,
+          tz: tz,
+          place: placeName
+        };
+
+        currentKundliData = KundliEngine.generateKundli(input);
+        displayResults(currentKundliData);
+
+        // Smooth scroll to chart on mobile
+        if (window.innerWidth < 992) {
+          document.getElementById("kundliResultCard").scrollIntoView({ behavior: "smooth" });
+        }
+      });
+
+      function displayResults(data) {
+        // Meta description
+        document.getElementById("personMeta").textContent = 
+          `जातक: ${data.person.name} (${data.person.gender === 'Male' ? 'पुरुष' : 'महिला'}) • ${data.person.date} ${data.person.time} • ${data.person.place}`;
+
+        document.getElementById("metaLagna").textContent = `${data.ascendant.rashiNameHi} (${data.ascendant.rashiNum})`;
+        document.getElementById("metaLagnaLord").textContent = data.ascendant.lordHi;
+        document.getElementById("metaMoonSign").textContent = `${data.moonMetrics.rashiNameHi} (${data.moonMetrics.rashiNum})`;
+        document.getElementById("metaNakshatra").textContent = `${data.moonMetrics.nakshatra} (${data.moonMetrics.pada})`;
+        document.getElementById("metaAyanamsha").textContent = data.ayanamsha.dms.split("'")[0] + "'";
+
+        // Update WhatsApp Consultation CTA
+        const waText = encodeURIComponent(
+          `प्रणाम शास्त्री अमित कुमार शर्मा जी, मैंने दिव्या दृष्टि पोर्टल पर अपनी जन्म कुंडली बनाई है:\n\nनाम: ${data.person.name}\nजन्म: ${data.person.date} ${data.person.time}\nस्थान: ${data.person.place}\nलग्न: ${data.ascendant.rashiNameHi} (${data.ascendant.rashiNum})\nचंद्र राशि: ${data.moonMetrics.rashiNameHi}\nनक्षत्र: ${data.moonMetrics.nakshatra} (चरण ${data.moonMetrics.pada})\n\nकृपया मेरी कुंडली पर मार्गदर्शन एवं परामर्श प्रदान करें।`
+        );
+        document.getElementById("waConsultBtn").href = `https://wa.me/919829743685?text=${waText}`;
+
+        // Render SVG Chart
+        renderSvgChart(data);
+
+        // Render Planetary Table
+        renderPlanetaryTable(data);
+      }
+
+      function renderPlanetaryTable(data) {
+        planetaryTableBody.innerHTML = "";
+
+        // Row 1: Ascendant (Lagna)
+        const trAsc = document.createElement("tr");
+        trAsc.style.background = "#FEF3C7";
+        trAsc.style.fontWeight = "700";
+        trAsc.innerHTML = `
+          <td><span class="planet-symbol-badge" style="background:#881337; color:#FFFFFF;">लग्न</span> <strong>लग्न (Ascendant)</strong></td>
+          <td style="color:#0B192C;"><strong>${data.ascendant.rashiNameHi} (${data.ascendant.rashiNameEn})</strong></td>
+          <td>${data.ascendant.dms}</td>
+          <td>${data.ascendant.nakshatra} (${data.ascendant.pada})</td>
+          <td><span class="service-badge-pill" style="background:#FFF1F2; color:#881337;">तनु भाव (स्वामी: ${data.ascendant.lordHi})</span></td>
+        `;
+        planetaryTableBody.appendChild(trAsc);
+
+        // Planetary Rows
+        data.planets.forEach(p => {
+          const tr = document.createElement("tr");
+
+          let retroTag = p.isRetrograde ? `<span class="planet-retro-tag">*वक्री</span>` : "";
+          let combustTag = p.isCombust ? `<span class="planet-combust-tag">#अस्त</span>` : "";
+
+          let dignityBadge = `<span class="service-badge-pill service-badge-offline">${p.dignity}</span>`;
+          if (p.dignityStatus === "exalted") {
+            dignityBadge = `<span class="service-badge-pill" style="background:#DCFCE7; color:#166534; border:1px solid #86EFAC;">उच्च (Exalted)</span>`;
+          } else if (p.dignityStatus === "debilitated") {
+            dignityBadge = `<span class="service-badge-pill" style="background:#FEE2E2; color:#991B1B; border:1px solid #FCA5A5;">नीच (Debilitated)</span>`;
+          } else if (p.dignityStatus === "own") {
+            dignityBadge = `<span class="service-badge-pill" style="background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE;">स्वराशि</span>`;
+          }
+
+          tr.innerHTML = `
+            <td>
+              <span class="planet-symbol-badge">${p.code}</span>
+              <strong>${p.nameHi} (${p.nameEn})</strong>
+              ${retroTag} ${combustTag}
+            </td>
+            <td style="color:#0B192C;"><strong>${p.rashiNameHi} (${p.rashiNameEn})</strong></td>
+            <td>${p.dms}</td>
+            <td>${p.nakshatraNameHi} (${p.pada})</td>
+            <td>${dignityBadge}</td>
+          `;
+          planetaryTableBody.appendChild(tr);
+        });
+      }
+
+      /**
+       * North Indian Vedic Diamond Chart SVG Renderer
+       * Matches Screenshot 2 perfectly with crisp vector geometry and house rashi numbers
+       */
+      function renderSvgChart(data) {
+        const svg = kundliSvg;
+        svg.innerHTML = ""; // Clear existing
+
+        const isNavamsha = activeChartType === "navamsha";
+
+        // Determine base sign for House 1
+        // For Lagna Chart: data.ascendant.rashiNum
+        // For Navamsha Chart: calculate Navamsha sign of Lagna
+        const lagnaSignNum = data.ascendant.rashiNum;
+        let chartBaseSign = lagnaSignNum;
+
+        if (isNavamsha) {
+          const navSpan = 360.0 / 108.0;
+          const navIndex = Math.floor(data.ascendant.longitude / navSpan);
+          chartBaseSign = (navIndex % 12) + 1;
+        }
+
+        // Map planets to houses based on chartBaseSign
+        const housePlanets = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: [] };
+
+        data.planets.forEach(p => {
+          let pSign = p.rashiNum;
+          if (isNavamsha) {
+            pSign = p.navamshaNum;
+          }
+          const house = ((pSign - chartBaseSign + 12) % 12) + 1;
+          housePlanets[house].push(p);
+        });
+
+        // Background & Master Outer Border
+        const bgRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        bgRect.setAttribute("width", "500");
+        bgRect.setAttribute("height", "500");
+        bgRect.setAttribute("fill", "#FFFDF9");
+        bgRect.setAttribute("stroke", "#D4AF37");
+        bgRect.setAttribute("stroke-width", "5");
+        bgRect.setAttribute("rx", "6");
+        svg.appendChild(bgRect);
+
+        // Inner Border Frame
+        const innerRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        innerRect.setAttribute("x", "6");
+        innerRect.setAttribute("y", "6");
+        innerRect.setAttribute("width", "488");
+        innerRect.setAttribute("height", "488");
+        innerRect.setAttribute("fill", "none");
+        innerRect.setAttribute("stroke", "rgba(212, 175, 55, 0.4)");
+        innerRect.setAttribute("stroke-width", "1.5");
+        svg.appendChild(innerRect);
+
+        // North Indian Lines Geometry
+        // 1. Diagonals: (0,0)->(500,500) and (500,0)->(0,500)
+        // 2. Central Diamond: (250,0)->(0,250)->(250,500)->(500,250)->(250,0)
+        const lines = [
+          { x1: 0, y1: 0, x2: 500, y2: 500 },
+          { x1: 500, y1: 0, x2: 0, y2: 500 },
+          { x1: 250, y1: 0, x2: 0, y2: 250 },
+          { x1: 0, y1: 250, x2: 250, y2: 500 },
+          { x1: 250, y1: 500, x2: 500, y2: 250 },
+          { x1: 500, y1: 250, x2: 250, y2: 0 }
+        ];
+
+        lines.forEach(l => {
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", l.x1);
+          line.setAttribute("y1", l.y1);
+          line.setAttribute("x2", l.x2);
+          line.setAttribute("y2", l.y2);
+          line.setAttribute("stroke", "#D4AF37");
+          line.setAttribute("stroke-width", "2.8");
+          line.setAttribute("stroke-linecap", "round");
+          svg.appendChild(line);
+        });
+
+        // House Numbers & Planet Text Positions for North Indian Chart
+        // House 1 (Top Center Diamond)
+        // House 2 (Top Left Triangle)
+        // House 3 (Left Top Triangle)
+        // House 4 (Left Center Diamond)
+        // House 5 (Left Bottom Triangle)
+        // House 6 (Bottom Left Triangle)
+        // House 7 (Bottom Center Diamond)
+        // House 8 (Bottom Right Triangle)
+        // House 9 (Right Bottom Triangle)
+        // House 10 (Right Center Diamond)
+        // House 11 (Right Top Triangle)
+        // House 12 (Top Right Triangle)
+        const houseConfigs = {
+          1: { numX: 250, numY: 228, pX: 250, pY: 135 },
+          2: { numX: 120, numY: 105, pX: 140, pY: 55 },
+          3: { numX: 105, numY: 120, pX: 55, pY: 140 },
+          4: { numX: 228, numY: 250, pX: 135, pY: 250 },
+          5: { numX: 105, numY: 380, pX: 55, pY: 360 },
+          6: { numX: 120, numY: 395, pX: 140, pY: 445 },
+          7: { numX: 250, numY: 272, pX: 250, pY: 365 },
+          8: { numX: 380, numY: 395, pX: 360, pY: 445 },
+          9: { numX: 395, numY: 380, pX: 445, pY: 360 },
+          10: { numX: 272, numY: 250, pX: 365, pY: 250 },
+          11: { numX: 395, numY: 120, pX: 445, pY: 140 },
+          12: { numX: 380, numY: 105, pX: 360, pY: 55 }
+        };
+
+        // Render each house: Rashi Number + Planet Badges
+        for (let h = 1; h <= 12; h++) {
+          const cfg = houseConfigs[h];
+          const rashiInHouse = ((chartBaseSign - 1 + (h - 1)) % 12) + 1;
+
+          // Rashi Number Text (Vermilion Red #9F1239, Bold)
+          const numText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          numText.setAttribute("x", cfg.numX);
+          numText.setAttribute("y", cfg.numY);
+          numText.setAttribute("text-anchor", "middle");
+          numText.setAttribute("dominant-baseline", "middle");
+          numText.setAttribute("fill", "#9F1239");
+          numText.setAttribute("font-family", "Plus Jakarta Sans, sans-serif");
+          numText.setAttribute("font-weight", "800");
+          numText.setAttribute("font-size", "17");
+          numText.textContent = rashiInHouse;
+          svg.appendChild(numText);
+
+          // Planets in this House
+          const pList = housePlanets[h];
+          if (pList.length > 0) {
+            const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+            // Stack or space planets neatly
+            const startY = cfg.pY - ((pList.length - 1) * 10);
+            pList.forEach((p, pIdx) => {
+              const pText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              pText.setAttribute("x", cfg.pX);
+              pText.setAttribute("y", startY + (pIdx * 20));
+              pText.setAttribute("text-anchor", "middle");
+              pText.setAttribute("dominant-baseline", "middle");
+              pText.setAttribute("font-family", "Plus Jakarta Sans, sans-serif");
+              pText.setAttribute("font-size", "13.5");
+              pText.setAttribute("font-weight", "700");
+
+              // Color code by planet nature
+              let pColor = "#0B192C";
+              if (p.code === "Su") pColor = "#B45309";
+              else if (p.code === "Mo") pColor = "#0369A1";
+              else if (p.code === "Ma") pColor = "#B91C1C";
+              else if (p.code === "Me") pColor = "#15803D";
+              else if (p.code === "Ju") pColor = "#D97706";
+              else if (p.code === "Ve") pColor = "#7E22CE";
+              else if (p.code === "Sa") pColor = "#1E3A8A";
+              else if (p.code === "Ra" || p.code === "Ke") pColor = "#475569";
+
+              pText.setAttribute("fill", pColor);
+
+              let retroMark = p.isRetrograde ? "*" : "";
+              let combustMark = p.isCombust ? "#" : "";
+              pText.textContent = `${p.code}${retroMark}${combustMark} ${p.shortDeg}`;
+              group.appendChild(pText);
+            });
+            svg.appendChild(group);
+          }
+        }
+      }
+
+      // Initial Default Calculation on Page Load (Jaipur / Sep 15, 1995)
+      kundliForm.dispatchEvent(new Event('submit'));
+    });
+  </script>
+</body>
+</html>

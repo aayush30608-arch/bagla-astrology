@@ -4761,3 +4761,293 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ==========================================================================
+   FREE KUNDLI & LAGNA CHART GENERATOR STYLES
+   ========================================================================== */
+
+.kundli-generator-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 70px;
+}
+
+.kundli-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 10px 35px rgba(11, 25, 44, 0.08);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kundli-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0B192C 0%, #D4AF37 50%, #0B192C 100%);
+}
+
+.kundli-card-header {
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.2);
+  padding-bottom: 20px;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kundli-card-header h2,
+.kundli-card-header h3 {
+  font-size: 1.5rem;
+  color: #0B192C;
+  margin-bottom: 4px;
+}
+
+.kundli-form-group {
+  margin-bottom: 22px;
+}
+
+.kundli-form-group label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 8px;
+}
+
+.kundli-form-input,
+.kundli-form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  background: #FAF6F0;
+  font-family: inherit;
+  font-size: 0.96rem;
+  color: #0B192C;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.kundli-form-input:focus,
+.kundli-form-select:focus {
+  border-color: #D4AF37;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.18);
+}
+
+.kundli-split-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.gender-toggle-wrap {
+  display: flex;
+  gap: 12px;
+}
+
+.gender-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  background: #FAF6F0;
+  color: #374151;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.gender-btn.active {
+  background: #0B192C;
+  color: #F1D06E;
+  border-color: #D4AF37;
+  box-shadow: 0 4px 15px rgba(11, 25, 44, 0.15);
+}
+
+/* North Indian Vedic Diamond Chart SVG Container */
+.kundli-chart-wrapper {
+  background: linear-gradient(135deg, #FFFDF9 0%, #FAF5EC 100%);
+  border: 2px solid #D4AF37;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: inset 0 0 30px rgba(212, 175, 55, 0.1), 0 8px 30px rgba(11, 25, 44, 0.08);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.kundli-svg-chart {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  display: block;
+  margin: 0 auto;
+  user-select: none;
+}
+
+/* Chart Switcher Buttons */
+.chart-type-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chart-type-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  background: #FFFFFF;
+  color: #0B192C;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.chart-type-btn.active {
+  background: #0B192C;
+  color: #F1D06E;
+  border-color: #D4AF37;
+}
+
+/* Chart Legend */
+.kundli-chart-legend {
+  font-size: 0.86rem;
+  color: #78350F;
+  font-weight: 600;
+  margin-top: 14px;
+}
+
+/* Planetary Positions Table */
+.planetary-positions-card {
+  margin-top: 26px;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  overflow-x: auto;
+  box-shadow: 0 4px 20px rgba(11, 25, 44, 0.04);
+}
+
+.planetary-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 540px;
+  font-size: 0.92rem;
+}
+
+.planetary-table th {
+  background: #0B192C;
+  color: #F1D06E;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid #D4AF37;
+}
+
+.planetary-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  color: #1F2937;
+  vertical-align: middle;
+}
+
+.planetary-table tr:hover {
+  background: #FFFBF2;
+}
+
+.planet-symbol-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0B192C;
+  color: #F1D06E;
+  font-weight: 800;
+  font-size: 0.76rem;
+  margin-right: 8px;
+}
+
+.planet-retro-tag {
+  color: #B45309;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-left: 4px;
+}
+
+.planet-combust-tag {
+  color: #BE123C;
+  font-weight: 700;
+  font-size: 0.82rem;
+  margin-left: 4px;
+}
+
+/* Quick Avakahada / Birth Metrics Grid */
+.kundli-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.kundli-metric-box {
+  background: #FFFDF9;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.kundli-metric-box span {
+  display: block;
+  font-size: 0.78rem;
+  color: #6B7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.kundli-metric-box strong {
+  font-size: 0.98rem;
+  color: #0B192C;
+}
+
+@media (max-width: 992px) {
+  .kundli-generator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #000000 !important;
+  }
+  .site-header, .top-bar, .site-footer, .floating-whatsapp-btn, .kundli-input-card, .btn {
+    display: none !important;
+  }
+  .kundli-chart-wrapper {
+    box-shadow: none !important;
+    border: 1px solid #000000 !important;
+  }
+}
+
+
