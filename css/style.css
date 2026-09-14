@@ -95,6 +95,12 @@ html {
   scroll-behavior: smooth;
   font-size: 16px;
   color-scheme: light;
+  supported-color-schemes: light;
+}
+
+:root, html, body {
+  color-scheme: light;
+  supported-color-schemes: light;
 }
 
 body {
@@ -169,10 +175,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #0B192C 0%, #997517 30%, #D4AF37 65%, #B8860B 100%);
+  background: linear-gradient(135deg, #B45309 0%, #D4AF37 35%, #F59E0B 70%, #B8860B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
+  color: #D4AF37; /* High contrast fallback */
 }
 
 .text-navy-gradient {
@@ -2325,6 +2332,30 @@ h1, h2, h3, h4, h5, h6 {
 
   .floating-whatsapp-tooltip {
     display: none;
+  }
+
+  /* Mobile Floating Action Buttons: WhatsApp on Left, Drishti AI on Right */
+  .floating-whatsapp-btn {
+    bottom: 24px !important;
+    left: 20px !important;
+    right: auto !important;
+    width: 52px !important;
+    height: 52px !important;
+  }
+  .floating-whatsapp-btn svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  /* Hero Title & Description Mobile Optimization */
+  .hero-title {
+    font-size: clamp(1.85rem, 5.5vw, 2.3rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  .hero-description {
+    font-size: 0.98rem !important;
+    line-height: 1.62 !important;
   }
 }
 
@@ -5341,7 +5372,21 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 1024px) {
   .drishti-studio-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .drishti-chat-pane {
+    order: 1; /* CHAT PANE APPEARS FIRST ON MOBILE */
+    height: calc(100vh - 160px);
+    min-height: 520px;
+    max-height: none;
+    margin-bottom: 20px;
+  }
+
+  .drishti-sidebar {
+    order: 2; /* Sidebar appears below the chat arena on mobile */
   }
 }
 
@@ -5751,4 +5796,18 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
   margin: 0;
 }
+
+/* ==========================================================================
+   HIGH CONTRAST & DARK MODE COMPATIBILITY
+   Guarantees vivid gold text and royal clarity across all Android / iOS devices
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #F59E0B 0%, #FDE68A 50%, #D4AF37 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #F59E0B !important;
+  }
+}
+
 

@@ -7,6 +7,8 @@
   <meta name="description" content="दिव्या दृष्टि - अपनी जन्म तिथि, समय और स्थान डालकर मुफ्त में अपनी संपूर्ण वैदिक लग्न कुंडली (Lagna Chart), नवमांश चक्र (D9) एवं ग्रह स्थिति सारणी प्राप्त करें।">
   <meta name="keywords" content="Free Kundli Online, Lagna Chart Generator, North Indian Kundli, Janam Kundli Calculator, Shastri Amit Kumar Sharma, Divya Drishti, मुफ्त जन्म कुंडली, लग्न चक्र">
   
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#FAF6F0">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -138,34 +140,52 @@
               <input type="text" id="personName" class="kundli-form-input" placeholder="उदा. जातक का नाम" value="aayush sharma" required>
             </div>
 
-            <!-- Birth Date (DD / MM / YYYY) -->
+            <!-- Birth Date (DD / MM / YYYY) Dropdowns -->
             <div class="kundli-form-group">
               <label>जन्म तिथि (Date of Birth):</label>
               <div class="kundli-split-inputs">
                 <div>
-                  <input type="number" id="birthDay" class="kundli-form-input" placeholder="DD (दिन)" min="1" max="31" value="30" required>
+                  <label for="birthDay" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">दिन (Day):</label>
+                  <select id="birthDay" class="kundli-form-select" required aria-label="दिन / Day">
+                    <!-- Populated dynamically via JS with 1-28/29/30/31 days -->
+                  </select>
                 </div>
                 <div>
-                  <input type="number" id="birthMonth" class="kundli-form-input" placeholder="MM (माह)" min="1" max="12" value="6" required>
+                  <label for="birthMonth" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">माह (Month):</label>
+                  <select id="birthMonth" class="kundli-form-select" required aria-label="माह / Month">
+                    <!-- Populated dynamically via JS with 1-12 months -->
+                  </select>
                 </div>
                 <div>
-                  <input type="number" id="birthYear" class="kundli-form-input" placeholder="YYYY (वर्ष)" min="1900" max="2100" value="2008" required>
+                  <label for="birthYear" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">वर्ष (Year):</label>
+                  <select id="birthYear" class="kundli-form-select" required aria-label="वर्ष / Year">
+                    <!-- Populated dynamically via JS with 1920-2026 years -->
+                  </select>
                 </div>
               </div>
             </div>
 
-            <!-- Birth Time (HH : MM : SS - 24hrs) -->
+            <!-- Birth Time (HH : MM : SS - 24hrs) Dropdowns -->
             <div class="kundli-form-group">
-              <label>जन्म समय (Time of Birth - 24hrs):</label>
+              <label>जन्म समय (Time of Birth - 24 घंटे प्रारूप):</label>
               <div class="kundli-split-inputs">
                 <div>
-                  <input type="number" id="birthHour" class="kundli-form-input" placeholder="HH (घंटा)" min="0" max="23" value="18" required>
+                  <label for="birthHour" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">घंटा (Hour - 24hrs):</label>
+                  <select id="birthHour" class="kundli-form-select" required aria-label="घंटा / Hour">
+                    <!-- Populated dynamically via JS with 00-23 hours -->
+                  </select>
                 </div>
                 <div>
-                  <input type="number" id="birthMin" class="kundli-form-input" placeholder="MM (मिनट)" min="0" max="59" value="58" required>
+                  <label for="birthMin" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">मिनट (Minute):</label>
+                  <select id="birthMin" class="kundli-form-select" required aria-label="मिनट / Minute">
+                    <!-- Populated dynamically via JS with 00-59 minutes -->
+                  </select>
                 </div>
                 <div>
-                  <input type="number" id="birthSec" class="kundli-form-input" placeholder="SS (सेकंड)" min="0" max="59" value="0">
+                  <label for="birthSec" style="font-size:0.75rem; color:#6B7280; margin-bottom:3px; display:block;">सेकंड (Sec):</label>
+                  <select id="birthSec" class="kundli-form-select" aria-label="सेकंड / Second">
+                    <!-- Populated dynamically via JS with 00-59 seconds -->
+                  </select>
                 </div>
               </div>
             </div>
@@ -640,6 +660,129 @@
       });
       citySelect.dispatchEvent(new Event('change'));
 
+      // Birth Date & Time Selectors Elements
+      const birthDay = document.getElementById("birthDay");
+      const birthMonth = document.getElementById("birthMonth");
+      const birthYear = document.getElementById("birthYear");
+      const birthHour = document.getElementById("birthHour");
+      const birthMin = document.getElementById("birthMin");
+      const birthSec = document.getElementById("birthSec");
+
+      // 1. Populate Months (1 to 12)
+      const MONTHS_DATA = [
+        { num: 1, name: "01 - जनवरी (Jan)" },
+        { num: 2, name: "02 - फ़रवरी (Feb)" },
+        { num: 3, name: "03 - मार्च (Mar)" },
+        { num: 4, name: "04 - अप्रैल (Apr)" },
+        { num: 5, name: "05 - मई (May)" },
+        { num: 6, name: "06 - जून (Jun)" },
+        { num: 7, name: "07 - जुलाई (Jul)" },
+        { num: 8, name: "08 - अगस्त (Aug)" },
+        { num: 9, name: "09 - सितम्बर (Sep)" },
+        { num: 10, name: "10 - अक्टूबर (Oct)" },
+        { num: 11, name: "11 - नवम्बर (Nov)" },
+        { num: 12, name: "12 - दिसम्बर (Dec)" }
+      ];
+
+      MONTHS_DATA.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m.num;
+        opt.textContent = m.name;
+        if (m.num === 6) opt.selected = true; // Default June
+        birthMonth.appendChild(opt);
+      });
+
+      // 2. Populate Years (Current Year down to 1920)
+      const maxYear = new Date().getFullYear();
+      for (let y = maxYear; y >= 1920; y--) {
+        const opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        if (y === 2008) opt.selected = true; // Default 2008
+        birthYear.appendChild(opt);
+      }
+
+      // 3. Leap Year & Dynamic Days Calculation Rule
+      function isLeapYear(year) {
+        return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+      }
+
+      function getDaysInMonth(month, year) {
+        if (month === 2) {
+          return isLeapYear(year) ? 29 : 28;
+        }
+        if (month === 4 || month === 6 || month === 9 || month === 11) {
+          return 30;
+        }
+        return 31;
+      }
+
+      function updateDaysDropdown(preferredDay) {
+        const m = parseInt(birthMonth.value, 10) || 1;
+        const y = parseInt(birthYear.value, 10) || 2008;
+        const maxDays = getDaysInMonth(m, y);
+        const currentSelected = preferredDay !== undefined ? preferredDay : (parseInt(birthDay.value, 10) || 1);
+
+        birthDay.innerHTML = "";
+        for (let d = 1; d <= maxDays; d++) {
+          const opt = document.createElement("option");
+          opt.value = d;
+          opt.textContent = d < 10 ? `0${d}` : `${d}`;
+          birthDay.appendChild(opt);
+        }
+
+        if (currentSelected <= maxDays) {
+          birthDay.value = currentSelected;
+        } else {
+          birthDay.value = maxDays;
+        }
+      }
+
+      birthMonth.addEventListener("change", () => updateDaysDropdown());
+      birthYear.addEventListener("change", () => updateDaysDropdown());
+
+      // Initial Days Population (Default: 30)
+      updateDaysDropdown(30);
+
+      // 4. Populate Hours (00 to 23 with 24-hr and AM/PM indicator)
+      for (let h = 0; h < 24; h++) {
+        const opt = document.createElement("option");
+        opt.value = h;
+        const hStr = h < 10 ? `0${h}` : `${h}`;
+        let ampm = "";
+        if (h === 0) ampm = "12:00 AM मध्यरात्रि";
+        else if (h < 12) ampm = `${hStr}:00 AM प्रातः`;
+        else if (h === 12) ampm = "12:00 PM दोपहर";
+        else {
+          const h12 = h - 12;
+          const h12Str = h12 < 10 ? `0${h12}` : `${h12}`;
+          ampm = `${h12Str}:00 PM ${h < 17 ? "दोपहर" : h < 20 ? "सायं" : "रात्रि"}`;
+        }
+        opt.textContent = `${hStr}:00 (${ampm})`;
+        if (h === 18) opt.selected = true; // Default 18:00
+        birthHour.appendChild(opt);
+      }
+
+      // 5. Populate Minutes (00 to 59)
+      for (let min = 0; min < 60; min++) {
+        const opt = document.createElement("option");
+        opt.value = min;
+        const mStr = min < 10 ? `0${min}` : `${min}`;
+        opt.textContent = `${mStr} मिनट`;
+        if (min === 58) opt.selected = true; // Default 58
+        birthMin.appendChild(opt);
+      }
+
+      // 6. Populate Seconds (00 to 59)
+      for (let s = 0; s < 60; s++) {
+        const opt = document.createElement("option");
+        opt.value = s;
+        const sStr = s < 10 ? `0${s}` : `${s}`;
+        opt.textContent = `${sStr} से.`;
+        if (s === 0) opt.selected = true;
+        birthSec.appendChild(opt);
+      }
+
       toggleCoordsBtn.addEventListener("click", function () {
         coordsBox.style.display = coordsBox.style.display === "none" ? "block" : "none";
       });
@@ -668,6 +811,12 @@
         genderInput.value = "Male";
         citySelect.value = 0;
         citySelect.dispatchEvent(new Event('change'));
+        birthMonth.value = 6;
+        birthYear.value = 2008;
+        updateDaysDropdown(30);
+        birthHour.value = 18;
+        birthMin.value = 58;
+        birthSec.value = 0;
       });
 
       // Chart Type Switcher (Lagna / Navamsha)
