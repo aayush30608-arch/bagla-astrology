@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>दृष्टि (Drishti) AI ज्योतिष सहेली — DIVYA DRISHTI (Apke Sitare • Aapki Disha)</title>
   <meta name="description" content="दृष्टि (Drishti) — भारत की पहली समर्पित वैदिक AI ज्योतिष सहेली। अपने करियर, सही निवेश के समय, लव लाइफ, भविष्य की परेशानियां या कुंडली के उपाय प्रेमपूर्वक पूछें।">
   
@@ -17,8 +17,8 @@
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Hide floating widget launcher on dedicated studio page */
-    #drishti-chat-launcher, #drishti-chat-window {
+    /* Hide floating widget launcher and floating WhatsApp button on dedicated studio page so omnibar has clear bottom real estate */
+    #drishti-chat-launcher, #drishti-chat-window, .floating-whatsapp-btn {
       display: none !important;
     }
   </style>
@@ -92,333 +92,199 @@
   </header>
 
   <main>
-    <!-- Page Hero Banner -->
-    <section class="page-hero">
-      <div class="container">
-        <nav class="breadcrumb-nav">
-          <a href="index.html">Home</a>
-          <span class="separator">/</span>
-          <span>दृष्टि (Drishti) AI ज्योतिष सहेली</span>
-        </nav>
-        <div class="section-eyebrow">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          वैदिक पराशर सिद्धांत + आधुनिक कृत्रिम बुद्धिमत्ता (AI)
-        </div>
-        <h1 class="section-title text-gold-gradient">
-          दृष्टि (Drishti) — आपकी व्यक्तिगत AI ज्योतिष सहेली
-        </h1>
-        <p class="section-subtitle">
-          अपने जीवन, करियर के तनाव, लव लाइफ, सही निवेश के समय, भविष्य की सावधानियां या जन्म कुंडली से जुड़े किसी भी सवाल का तुरंत, सटीक और प्रेमपूर्वक समाधान पाएं।
-        </p>
-
-        <!-- Trust Badges -->
-        <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
-          <span class="service-badge-pill" style="background:#FEF3C7; color:#92400E; border:1px solid #FCD34D;">🌸 २४/७ प्रेमपूर्वक उपलब्ध</span>
-          <span class="service-badge-pill" style="background:#ECFDF5; color:#065F46; border:1px solid #A7F3D0;">🪐 १००% वैदिक ज्योतिष आधारित</span>
-          <span class="service-badge-pill" style="background:#EFF6FF; color:#1E40AF; border:1px solid #BFDBFE;">🛡️ शून्य लागत दैनिक सात्विक उपाय</span>
-          <span class="service-badge-pill" style="background:#FFF1F2; color:#9F1239; border:1px solid #FECDD3;">🔒 पूर्णतः सुरक्षित व गोपनीय</span>
-        </div>
-
-        <!-- Prominent Mobile Quick Chat Jump Button -->
-        <div style="text-align: center; margin-top: 22px;">
-          <a href="#studioMainInput" class="btn btn-gold" style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.96rem; padding: 12px 28px; box-shadow: 0 4px 18px rgba(159, 18, 57, 0.35);">
-            <span>💬 दृष्टि AI से सीधे चैट करें (Chat Now ↓)</span>
+    <!-- Dedicated Minimalist Cursor-Style AI Studio Canvas -->
+    <div class="drishti-studio-canvas" id="studioCanvas">
+      
+      <!-- Studio Sub-Header Navstrip -->
+      <div class="drishti-studio-navstrip">
+        <div class="drishti-navstrip-left">
+          <span class="drishti-status-tag">
+            <span class="drishti-status-dot"></span>
+            <span id="studioLiveText">लाइव वैदिक AI सहेली</span>
+          </span>
+          <a href="free-kundli.html" class="drishti-kundli-link-btn" id="navKundliBadge">
+            <span>🔮</span>
+            <span id="navKundliText">कुंडली सिंक</span>
           </a>
+          <span class="drishti-timer-pill" id="studioTimerBadge" style="background:#0F172A; padding:4px 12px; border-radius:999px; border:1px solid rgba(212,175,55,0.3); font-size:0.78rem;">
+            ⏱️ <span id="timerLabel">निःशुल्क:</span> <strong>05:00</strong>
+          </span>
+        </div>
+
+        <div class="drishti-navstrip-right">
+          <!-- Dual Language Switcher -->
+          <div class="drishti-studio-lang-switch">
+            <button id="studioLangHi" class="active">हिन्दी</button>
+            <button id="studioLangEn">English</button>
+          </div>
+
+          <!-- Premium Subscription Link -->
+          <a href="https://wa.me/919829743685?text=Pranam%20Shastri%20Ji%2C%20I%20want%20Drishti%20AI%20Premium%20Plan%20(Rs%20150/mo%20or%20Rs%201500/yr)." target="_blank" class="drishti-action-btn" style="color:#F59E0B; border-color:rgba(245,158,11,0.4);">
+            💎 ₹150/माह
+          </a>
+
+          <!-- Reset / New Chat -->
+          <button id="studioResetBtn" class="drishti-action-btn" title="नई चैट शुरू करें">
+            <span>🔄</span> <span class="hide-mobile">रीसेट</span>
+          </button>
         </div>
       </div>
-    </section>
 
-    <!-- Main Dedicated Drishti AI Studio Section -->
-    <section class="drishti-studio-wrapper">
+      <!-- Chat Messages Scroll Viewport -->
+      <div class="drishti-chat-stream" id="studioMessagesViewport">
+
+        <!-- Centered Minimalist Hero (Visible on Empty State, Matching User's Reference Screenshot) -->
+        <div class="drishti-center-hero" id="studioCenterHero">
+          <div class="drishti-hero-emblem">
+            <svg viewBox="0 0 36 36" fill="none" width="34" height="34">
+              <circle cx="18" cy="18" r="16" fill="url(#drishti-center-glow)" stroke="#F59E0B" stroke-width="1.5"/>
+              <path d="M18 7L20.2 13.8H27.4L21.6 18L23.8 24.8L18 20.6L12.2 24.8L14.4 18L8.6 13.8H15.8L18 7Z" fill="#FFFBEB"/>
+              <circle cx="18" cy="17" r="4.5" fill="#D97706"/>
+              <circle cx="18" cy="17" r="2.2" fill="#FFFFFF"/>
+              <defs>
+                <radialGradient id="drishti-center-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18 18) rotate(90) scale(16)">
+                  <stop stop-color="#DC2626"/>
+                  <stop offset="0.65" stop-color="#991B1B"/>
+                  <stop offset="1" stop-color="#450A0A"/>
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+
+          <h1 class="drishti-hero-title" id="studioHeroTitle">
+            दृष्टि AI से आज क्या <span class="drishti-accent-underline">मार्गदर्शन</span> चाहते हैं?
+          </h1>
+
+          <p class="drishti-hero-subtitle" id="studioHeroSubtitle">
+            वैदिक पराशर सिद्धांत, जन्म कुंडली फलादेश व जीवन समाधान • 24/7 प्रेमपूर्वक उपस्थित
+          </p>
+
+          <!-- Centered Suggested Quick Action Chips -->
+          <div class="drishti-hero-chips" id="studioHeroChips">
+            <button class="drishti-hero-chip" data-query="शेयर बाजार व प्रॉपर्टी में निवेश का सही समय क्या है?">💰 सही निवेश का समय?</button>
+            <button class="drishti-hero-chip" data-query="काम का बहुत ज्यादा दबाव और तनाव है, क्या उपाय करूँ?">💼 करियर, तनाव व वर्कलोड?</button>
+            <button class="drishti-hero-chip" data-query="मेरी शादी के योग कब बन रहे हैं और लव लाइफ कैसी रहेगी?">❤️ लव लाइफ व विवाह योग?</button>
+            <button class="drishti-hero-chip" data-query="भविष्य में किन-किन परेशानियों और ग्रहों से सावधान रहूँ?">⚠️ भविष्य की सावधानियां?</button>
+            <button class="drishti-hero-chip" data-query="आने वाले दिनों में मुझे क्या-क्या बड़े लाभ हो सकते हैं?">🌟 आने वाले लाभ व भाग्योदय?</button>
+            <button class="drishti-hero-chip" data-query="बिना खर्च के 5 सबसे शक्तिशाली दैनिक वैदिक उपाय बताइए">🌿 दैनिक सात्विक उपाय?</button>
+          </div>
+        </div>
+
+        <!-- Chat messages dynamically append here -->
+      </div>
+
+      <!-- Docked Omnibar (Floating at bottom center with attached tabs) -->
+      <div class="drishti-omnibar-dock">
+        <!-- Attached Pill Tabs Strip (Docked directly on top of omnibar card) -->
+        <div class="drishti-omnibar-tabs" id="studioAttachedTabs">
+          <span class="drishti-tab-item active" id="tabAstro" title="Astro Vedic Mode"><span>🪐</span> astro</span>
+          <span class="drishti-tab-item" id="tabVedicAI" title="Vedic AI Model"><span>💻</span> Vedic AI</span>
+          <span class="drishti-tab-item" id="tabKundliSync" title="Kundli Linked Status"><span>ᛘ</span> main (कुंडली)</span>
+          <span class="drishti-tab-item studio-quick-tag" data-query="शेयर बाजार व प्रॉपर्टी में निवेश का सही समय क्या है?">💰 निवेश</span>
+          <span class="drishti-tab-item studio-quick-tag" data-query="काम का बहुत ज्यादा दबाव और तनाव है, क्या उपाय करूँ?">💼 करियर</span>
+          <span class="drishti-tab-item studio-quick-tag" data-query="मेरी शादी के योग कब बन रहे हैं और लव लाइफ कैसी रहेगी?">❤️ विवाह</span>
+          <span class="drishti-tab-item studio-quick-tag" data-query="बिना खर्च के 5 सबसे शक्तिशाली दैनिक वैदिक उपाय बताइए">🌿 उपाय</span>
+        </div>
+
+        <!-- Main Omnibar Card -->
+        <div class="drishti-omnibar-card" id="studioOmnibarCard">
+          <!-- Plus Dropdown Menu -->
+          <div class="drishti-plus-menu" id="studioPlusMenu">
+            <button class="drishti-menu-item" id="menuItemKundli">🔮 मेरी कुंडली से पूछें</button>
+            <a href="free-kundli.html" class="drishti-menu-item">✨ नई कुंडली बनाएं</a>
+            <button class="drishti-menu-item" id="menuItemReset">🔄 नई बातचीत शुरू करें</button>
+            <a href="https://wa.me/919829743685?text=Pranam%20Shastri%20Ji%2C%20I%20want%20direct%20consultation." target="_blank" class="drishti-menu-item">🚩 शास्त्री जी से संपर्क (+91 98297 43685)</a>
+          </div>
+
+          <!-- Prompt Text Input Area -->
+          <textarea id="studioMainInput" class="drishti-prompt-input" rows="1" placeholder="दृष्टि से अपने सितारे, करियर, प्रेम, निवेश या कुंडली के बारे में कुछ भी पूछें..."></textarea>
+
+          <!-- Bottom Controls Row -->
+          <div class="drishti-omnibar-controls">
+            <div class="drishti-controls-left">
+              <button class="drishti-plus-btn" id="studioPlusBtn" title="एक्शन मेनू">+</button>
+              <span class="drishti-control-badge" id="studioGuardBadge" title="100% वैदिक पराशर सिद्धांत">
+                <span>🛡️</span> <span id="guardBadgeText">Vedic Guard</span>
+              </span>
+            </div>
+
+            <div class="drishti-controls-right">
+              <span class="drishti-model-pill" title="वैदिक पराशर मॉडल v2.0">
+                <span>✨</span> Drishti v2.0 Vedic <span style="font-size:0.65rem; opacity:0.7;">⌄</span>
+              </span>
+              <button class="drishti-mic-btn" id="studioMicBtn" title="बोलकर पूछें (Voice Mic)">
+                🎙️
+              </button>
+              <button class="drishti-up-send-btn" id="studioSendBtn" title="प्रश्न पूछें (Enter)">
+                ↑
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Below Studio: 4 Pillars of Vedic Accuracy & Guidance -->
+    <section style="background: #071424; padding: 60px 0; border-top: 1px solid rgba(212,175,55,0.25);">
       <div class="container">
-        <div class="drishti-studio-layout">
-
-          <!-- LEFT COLUMN: Astrological Sidebar & Quick Topics -->
-          <aside class="drishti-sidebar">
-            
-            <!-- Drishti Profile Card -->
-            <div class="drishti-sidebar-card">
-              <div class="drishti-profile-header">
-                <div class="drishti-profile-avatar">
-                  <svg viewBox="0 0 36 36" fill="none" width="34" height="34">
-                    <circle cx="18" cy="18" r="16" fill="url(#drishti-side-glow)" stroke="#F59E0B" stroke-width="1.5"/>
-                    <path d="M18 7L20.2 13.8H27.4L21.6 18L23.8 24.8L18 20.6L12.2 24.8L14.4 18L8.6 13.8H15.8L18 7Z" fill="#FFFBEB"/>
-                    <circle cx="18" cy="17" r="4.5" fill="#D97706"/>
-                    <circle cx="18" cy="17" r="2.2" fill="#FFFFFF"/>
-                    <defs>
-                      <radialGradient id="drishti-side-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18 18) rotate(90) scale(16)">
-                        <stop stop-color="#DC2626"/>
-                        <stop offset="0.65" stop-color="#991B1B"/>
-                        <stop offset="1" stop-color="#450A0A"/>
-                      </radialGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <div class="drishti-profile-info">
-                  <h3>दृष्टि (Drishti)</h3>
-                  <div class="drishti-profile-badge">
-                    <span style="width:7px; height:7px; background:#10B981; border-radius:50%; display:inline-block;"></span>
-                    ऑनलाइन सहेली
-                  </div>
-                </div>
-              </div>
-
-              <p style="font-size: 0.86rem; color: #475569; line-height: 1.55; margin-bottom: 16px;">
-                "नमस्ते जी! 🌸 मैं आपकी सच्ची ज्योतिष सहेली हूँ। कोई भी प्रश्न छोटा या बड़ा नहीं होता। आप संकोच न करें, नीचे दिए गए विषयों पर क्लिक करके सीधे बात करें!" 💖
-              </p>
-
-              <!-- Quick Topic Buttons -->
-              <div class="drishti-topic-list">
-                <button class="drishti-topic-btn" data-studio-query="सही निवेश का समय क्या है? सोना, प्रॉपर्टी और शेयर बाजार के लिए कब योग शुभ हैं?">
-                  <div class="drishti-topic-icon">💰</div>
-                  <div class="drishti-topic-text">
-                    <strong>सही निवेश का समय</strong>
-                    <span>शेयर, सोना, प्रॉपर्टी व मुहूर्त</span>
-                  </div>
-                </button>
-
-                <button class="drishti-topic-btn" data-studio-query="करियर में तरक्की और वर्कलोड के उपाय बताइए। काम का बहुत दबाव रहता है।">
-                  <div class="drishti-topic-icon">💼</div>
-                  <div class="drishti-topic-text">
-                    <strong>करियर, तनाव व वर्कलोड</strong>
-                    <span>काम का दबाव व पदोन्नति उपाय</span>
-                  </div>
-                </button>
-
-                <button class="drishti-topic-btn" data-studio-query="मेरी लव लाइफ और शादी के योग कैसे हैं? दांपत्य में मधुरता के उपाय बताइए।">
-                  <div class="drishti-topic-icon">❤️</div>
-                  <div class="drishti-topic-text">
-                    <strong>लव लाइफ व वैवाहिक सुख</strong>
-                    <span>विवाह योग, दांपत्य सामंजस्य</span>
-                  </div>
-                </button>
-
-                <button class="drishti-topic-btn" data-studio-query="भविष्य में मुझे किन-किन परेशानियों और सावधानियों का ध्यान रखना चाहिए?">
-                  <div class="drishti-topic-icon">⚠️</div>
-                  <div class="drishti-topic-text">
-                    <strong>भविष्य की सावधानियां</strong>
-                    <span>साढ़ेसाती, राहु गोचर व सुरक्षा</span>
-                  </div>
-                </button>
-
-                <button class="drishti-topic-btn" data-studio-query="आने वाले दिनों में मेरे जीवन में क्या-क्या बड़े लाभ और स्वर्णिम अवसर आने वाले हैं?">
-                  <div class="drishti-topic-icon">🌟</div>
-                  <div class="drishti-topic-text">
-                    <strong>आने वाले लाभ व भाग्योदय</strong>
-                    <span>हंस योग, धन लाभ व तरक्की</span>
-                  </div>
-                </button>
-
-                <button class="drishti-topic-btn" data-studio-query="दैनिक जीवन के 5 सबसे सरल और सटीक उपाय बताइए जो बिना खर्च के किए जा सकें।">
-                  <div class="drishti-topic-icon">🌿</div>
-                  <div class="drishti-topic-text">
-                    <strong>सटीक दैनिक वैदिक उपाय</strong>
-                    <span>गौ सेवा, तुलसी, सूर्य अर्घ्य</span>
-                  </div>
-                </button>
-              </div>
-
-              <!-- Kundli Sync Card -->
-              <div class="drishti-kundli-sync" id="drishtiKundliSyncBox">
-                <h4>
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                  कुंडली आधारित फलादेश
-                </h4>
-                <p id="drishtiKundliSyncStatus">
-                  क्या आपने अपनी मुफ्त लग्न कुंडली बनाई है? दृष्टि आपकी कुंडली देखकर शत-प्रतिशत सटीक उत्तर दे सकती है।
-                </p>
-                <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                  <button id="btnAskMyKundli" class="btn btn-gold" style="font-size:0.78rem; padding:8px 14px; width:100%;">
-                    🔮 मेरी कुंडली से पूछें
-                  </button>
-                  <a href="free-kundli.html" class="btn btn-outline" style="font-size:0.75rem; padding:6px 12px; width:100%; text-align:center;">
-                    ✨ नई कुंडली बनाएं →
-                  </a>
-                </div>
-              </div>
-
-              <!-- Connect with Shastri Ji Banner -->
-              <div style="margin-top: 20px; padding: 16px; background: #FAF5FF; border: 1.5px solid #E9D5FF; border-radius: 16px; text-align: center;">
-                <div style="font-size: 1.8rem; margin-bottom: 6px;">🚩</div>
-                <h4 style="font-size: 0.95rem; color: #581C87; margin: 0 0 4px 0; font-weight: 800;">शास्त्री अमित कुमार शर्मा</h4>
-                <p style="font-size: 0.78rem; color: #6B21A8; margin: 0 0 12px 0;">
-                  महा बगलामुखी अनुष्ठान, महामृत्युंजय जाप व व्यक्तिगत वैदिक पूजन हेतु।
-                </p>
-                <a href="https://wa.me/919829743685?text=Pranam%20Shastri%20Ji%2C%20I%20want%20personal%20consultation%20and%20anushthan." target="_blank" class="btn btn-whatsapp" style="font-size: 0.78rem; padding: 8px 14px; width: 100%; justify-content: center;">
-                  <span>सीधे WhatsApp पर बात करें</span>
-                </a>
-              </div>
-
-            </div>
-          </aside>
-
-          <!-- RIGHT COLUMN: Main Dedicated Interactive Chat Arena -->
-          <div class="drishti-chat-pane">
-            
-            <!-- Topbar of Studio -->
-            <div class="drishti-chat-topbar">
-              <div class="drishti-topbar-profile">
-                <div class="drishti-profile-avatar" style="width:44px; height:44px;">
-                  <svg viewBox="0 0 36 36" fill="none" width="26" height="26">
-                    <circle cx="18" cy="18" r="16" fill="url(#drishti-top-glow)" stroke="#F59E0B" stroke-width="1.5"/>
-                    <path d="M18 7L20.2 13.8H27.4L21.6 18L23.8 24.8L18 20.6L12.2 24.8L14.4 18L8.6 13.8H15.8L18 7Z" fill="#FFFBEB"/>
-                    <circle cx="18" cy="17" r="4.5" fill="#D97706"/>
-                    <circle cx="18" cy="17" r="2.2" fill="#FFFFFF"/>
-                    <defs>
-                      <radialGradient id="drishti-top-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18 18) rotate(90) scale(16)">
-                        <stop stop-color="#DC2626"/>
-                        <stop offset="0.65" stop-color="#991B1B"/>
-                        <stop offset="1" stop-color="#450A0A"/>
-                      </radialGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <div>
-                  <h2>दृष्टि (Drishti) AI स्टूडियो</h2>
-                  <p>
-                    <span style="width:8px; height:8px; background:#10B981; border-radius:50%; display:inline-block; box-shadow:0 0 8px #10B981;"></span>
-                    लाइव वैदिक AI मार्गदर्शक • 24/7 प्रेमपूर्वक उपस्थित
-                  </p>
-                </div>
-              </div>
-
-              <div class="drishti-topbar-actions" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <!-- Dual Language Switcher -->
-                <div class="drishti-lang-toggle" style="background: rgba(255,255,255,0.12); padding: 2px; border-radius: 999px; border: 1px solid rgba(212,175,55,0.4); display: inline-flex;">
-                  <button id="studioLangHi" class="drishti-lang-btn active">हिन्दी</button>
-                  <button id="studioLangEn" class="drishti-lang-btn">English</button>
-                </div>
-
-                <!-- 5-Minute Free Countdown Badge -->
-                <div id="studioTimerBadge" class="drishti-timer-pill" style="background: #0F172A; padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(212,175,55,0.3); font-size: 0.78rem;">
-                  ⏱️ निःशुल्क: <strong>05:00</strong>
-                </div>
-
-                <!-- Premium Subscription Link -->
-                <a href="https://wa.me/919829743685?text=Pranam%20Shastri%20Ji%2C%20I%20want%20Drishti%20AI%20Premium%20Plan%20(Rs%20150/mo%20or%20Rs%201500/yr)." target="_blank" class="drishti-premium-badge" style="text-decoration: none; padding: 4px 10px; font-size: 0.72rem;">
-                  💎 ₹150/माह
-                </a>
-
-                <button id="studioVoiceToggle" class="drishti-action-pill-btn" title="आवाज़ चालू/बंद करें">
-                  <span id="voiceIcon">🔊</span>
-                  <span id="voiceText">आवाज़</span>
-                </button>
-                <button id="studioResetBtn" class="drishti-action-pill-btn" title="चैट पुनः शुरू करें">
-                  <span>🔄</span> रीसेट
-                </button>
-                <button id="studioPrintBtn" class="drishti-action-pill-btn" title="सलाह सेव या प्रिंट करें">
-                  <span>📥</span> सेव
-                </button>
-              </div>
-            </div>
-
-            <!-- Quick Suggestion Horizontal Scroll Bar -->
-            <div class="drishti-studio-chips" id="studioChipsBar">
-              <button class="drishti-studio-chip" data-query="शेयर बाजार व प्रॉपर्टी में निवेश का सही समय क्या है?">💰 सही निवेश का समय?</button>
-              <button class="drishti-studio-chip" data-query="काम का बहुत ज्यादा दबाव और तनाव है, क्या उपाय करूँ?">💼 करियर व वर्कलोड?</button>
-              <button class="drishti-studio-chip" data-query="मेरी शादी के योग कब बन रहे हैं और लव लाइफ कैसी रहेगी?">❤️ लव लाइफ व शादी योग?</button>
-              <button class="drishti-studio-chip" data-query="भविष्य में किन-किन परेशानियों और ग्रहों से सावधान रहूँ?">⚠️ आने वाली परेशानियां?</button>
-              <button class="drishti-studio-chip" data-query="आने वाले दिनों में मुझे क्या-क्या बड़े लाभ हो सकते हैं?">🌟 आने वाले लाभ?</button>
-              <button class="drishti-studio-chip" data-query="बिना खर्च के 5 सबसे शक्तिशाली दैनिक उपाय बताइए">🌿 दैनिक सरल उपाय?</button>
-              <button class="drishti-studio-chip" data-query="मेरी कुंडली का सरल सारांश और फलादेश बताओ">🔮 मेरी कुंडली का सार?</button>
-            </div>
-
-            <!-- Chat Messages Viewport -->
-            <div class="drishti-chat-viewport" id="studioMessagesViewport">
-              <!-- Messages injected dynamically via JavaScript -->
-            </div>
-
-            <!-- Chat Input Bar -->
-            <div class="drishti-chat-input-bar">
-              <!-- Quick Emoji Bar -->
-              <div class="drishti-emoji-toolbar">
-                <span style="font-size:0.75rem; color:#64748B; align-self:center; font-weight:700; margin-right:4px;">त्वरित इमोजी:</span>
-                <button class="drishti-emoji-btn" data-emoji="🌸">🌸</button>
-                <button class="drishti-emoji-btn" data-emoji="💰">💰</button>
-                <button class="drishti-emoji-btn" data-emoji="💼">💼</button>
-                <button class="drishti-emoji-btn" data-emoji="❤️">❤️</button>
-                <button class="drishti-emoji-btn" data-emoji="⚠️">⚠️</button>
-                <button class="drishti-emoji-btn" data-emoji="🪔">🪔</button>
-                <button class="drishti-emoji-btn" data-emoji="☀️">☀️</button>
-                <button class="drishti-emoji-btn" data-emoji="🪐">🪐</button>
-                <button class="drishti-emoji-btn" data-emoji="🌿">🌿</button>
-              </div>
-
-              <!-- Main Input Row -->
-              <div class="drishti-input-row">
-                <input type="text" id="studioMainInput" class="drishti-main-input" placeholder="दृष्टि से अपने सितारे, करियर, प्रेम, निवेश या उपाय के बारे में कुछ भी पूछिए..." autocomplete="off">
-                <button id="studioSendBtn" class="drishti-main-send" title="प्रश्न पूछें">
-                  <span>पूछें</span>
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                  </svg>
-                </button>
-              </div>
-
-              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                <span style="font-size: 0.72rem; color: #94A3B8;">
-                  ✨ दृष्टि पारंपरिक वैदिक ज्योतिष व पराशर सिद्धांतों पर आधारित है।
-                </span>
-                <a href="https://wa.me/919829743685?text=Pranam%20Shastri%20Ji%2C%20I%20want%20personal%20astrology%20guidance." target="_blank" style="font-size: 0.74rem; color: #16A34A; font-weight: 700; text-decoration: none;">
-                  📲 शास्त्री जी से व्यक्तिगत अनुष्ठान हेतु संपर्क करें →
-                </a>
-              </div>
-            </div>
-
-          </div>
-
+        <div style="text-align: center; margin-bottom: 36px;">
+          <span class="service-badge-pill" style="background: rgba(212,175,55,0.15); color: #F59E0B; border: 1px solid rgba(212,175,55,0.4);">
+            ✨ पराशर सिद्धांत • आधुनिक तकनीक
+          </span>
+          <h2 style="font-size: 1.8rem; color: #FFFDF9; font-weight: 800; margin-top: 12px;">
+            दृष्टि AI — आपके जीवन का सच्चा आध्यात्मिक संबल
+          </h2>
         </div>
 
-        <!-- 4 Pillars of Drishti AI Showcase -->
-        <div class="drishti-features-grid">
-          <div class="drishti-feature-card">
+        <div class="drishti-features-grid" style="margin-top: 0;">
+          <div class="drishti-feature-card" style="background: #0E1C30; border: 1px solid rgba(212,175,55,0.3); color: #F8FAFC;">
             <div class="feat-icon">🪐</div>
-            <h3>वैदिक सटीकता</h3>
-            <p>महर्षि पराशर व भृगु संहिता के प्राचीन नियमों और लाहिड़ी अयनांश पर आधारित तर्कसंगत ज्योतिषीय दृष्टिकोण।</p>
+            <h3 style="color: #FFFBEB;">वैदिक सटीकता</h3>
+            <p style="color: #94A3B8;">महर्षि पराशर व भृगु संहिता के प्राचीन नियमों और लाहिड़ी अयनांश पर आधारित तर्कसंगत ज्योतिषीय दृष्टिकोण।</p>
           </div>
-          <div class="drishti-feature-card">
+          <div class="drishti-feature-card" style="background: #0E1C30; border: 1px solid rgba(212,175,55,0.3); color: #F8FAFC;">
             <div class="feat-icon">🌸</div>
-            <h3>सहेली का अपनत्व</h3>
-            <p>बिना किसी भय या अंधविश्वास के, प्रेम और आदर से हर समस्या को धैर्यपूर्वक समझकर सकारात्मक समाधान।</p>
+            <h3 style="color: #FFFBEB;">सहेली का अपनत्व</h3>
+            <p style="color: #94A3B8;">बिना किसी भय या अंधविश्वास के, प्रेम और आदर से हर समस्या को धैर्यपूर्वक समझकर सकारात्मक समाधान।</p>
           </div>
-          <div class="drishti-feature-card">
+          <div class="drishti-feature-card" style="background: #0E1C30; border: 1px solid rgba(212,175,55,0.3); color: #F8FAFC;">
             <div class="feat-icon">📈</div>
-            <h3>व्यावहारिक निर्णय</h3>
-            <p>सही समय पर निवेश, करियर में स्थिरता, कार्यभार से राहत और वैवाहिक सामंजस्य के ठोस व व्यावहारिक सूत्र।</p>
+            <h3 style="color: #FFFBEB;">व्यावहारिक निर्णय</h3>
+            <p style="color: #94A3B8;">सही समय पर निवेश, करियर में स्थिरता, कार्यभार से राहत और वैवाहिक सामंजस्य के ठोस व व्यावहारिक सूत्र।</p>
           </div>
-          <div class="drishti-feature-card">
+          <div class="drishti-feature-card" style="background: #0E1C30; border: 1px solid rgba(212,175,55,0.3); color: #F8FAFC;">
             <div class="feat-icon">🪔</div>
-            <h3>सात्विक दैनिक उपाय</h3>
-            <p>बिना किसी भारी खर्च के नित्य जीवन में किए जाने वाले प्रभावी वैदिक उपाय—गौ सेवा, सूर्य अर्घ्य, मंत्र व दान।</p>
+            <h3 style="color: #FFFBEB;">सात्विक दैनिक उपाय</h3>
+            <p style="color: #94A3B8;">बिना किसी भारी खर्च के नित्य जीवन में किए जाने वाले प्रभावी वैदिक उपाय—गौ सेवा, सूर्य अर्घ्य, मंत्र व दान।</p>
           </div>
         </div>
 
-        <!-- Drishti AI Frequently Asked Questions -->
-        <div style="margin-top: 60px; background: #FFFFFF; border-radius: 20px; border: 1px solid rgba(212,175,55,0.3); padding: 36px;">
-          <div style="text-align: center; margin-bottom: 28px;">
-            <span class="service-badge-pill service-badge-offline">जिज्ञासा एवं समाधान</span>
-            <h2 style="font-size: 1.6rem; color: #0B192C; font-weight: 800; margin-top: 10px;">दृष्टि AI के बारे में पूछे जाने वाले सामान्य प्रश्न</h2>
+        <!-- FAQs -->
+        <div style="margin-top: 48px; background: #0E1C30; border-radius: 20px; border: 1px solid rgba(212,175,55,0.3); padding: 36px;">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <h3 style="font-size: 1.5rem; color: #FFFDF9; font-weight: 800; margin: 0;">अक्सर पूछे जाने वाले प्रश्न (FAQs)</h3>
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 820px; margin: 0 auto;">
-            <div style="padding: 16px 20px; background: #FAF7F2; border-radius: 12px; border: 1px solid rgba(212,175,55,0.25);">
-              <h4 style="margin: 0 0 6px 0; color: #0B192C; font-size: 1rem; font-weight: 800;">1. क्या दृष्टि मेरी असली जन्म कुंडली को पढ़ सकती है?</h4>
-              <p style="margin: 0; font-size: 0.88rem; color: #4B5563; line-height: 1.55;">
+          <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px; margin: 0 auto;">
+            <div style="padding: 16px 20px; background: rgba(7,20,36,0.7); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+              <h4 style="margin: 0 0 6px 0; color: #FEF3C7; font-size: 0.98rem; font-weight: 800;">1. क्या दृष्टि मेरी असली जन्म कुंडली को पढ़ सकती है?</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #CBD5E1; line-height: 1.55;">
                 हाँ जी! यदि आपने हमारे 'मुफ्त लग्न कुंडली' पेज पर अपनी कुंडली बनाई है, तो दृष्टि अपने आप आपकी कुंडली के लग्न, राशि, नक्षत्र और भावों को पहचान लेती है और आपके हर प्रश्न का उत्तर आपकी कुंडली के अनुसार देती है।
               </p>
             </div>
 
-            <div style="padding: 16px 20px; background: #FAF7F2; border-radius: 12px; border: 1px solid rgba(212,175,55,0.25);">
-              <h4 style="margin: 0 0 6px 0; color: #0B192C; font-size: 1rem; font-weight: 800;">2. दृष्टि द्वारा बताए गए उपाय किस प्रकार के होते हैं?</h4>
-              <p style="margin: 0; font-size: 0.88rem; color: #4B5563; line-height: 1.55;">
+            <div style="padding: 16px 20px; background: rgba(7,20,36,0.7); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+              <h4 style="margin: 0 0 6px 0; color: #FEF3C7; font-size: 0.98rem; font-weight: 800;">2. दृष्टि द्वारा बताए गए उपाय किस प्रकार के होते हैं?</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #CBD5E1; line-height: 1.55;">
                 दृष्टि केवल सात्विक, शास्त्रीय और बिना किसी अनावश्यक खर्च वाले उपाय बताती है—जैसे भगवान सूर्य को अर्घ्य देना, गौ सेवा, पक्षियों को दाना, मंत्र जप, और सकारात्मक जीवन शैली के नियम।
               </p>
             </div>
 
-            <div style="padding: 16px 20px; background: #FAF7F2; border-radius: 12px; border: 1px solid rgba(212,175,55,0.25);">
-              <h4 style="margin: 0 0 6px 0; color: #0B192C; font-size: 1rem; font-weight: 800;">3. क्या मैं गंभीर संकट या विशेष अनुष्ठान हेतु शास्त्री जी से बात कर सकता हूँ?</h4>
-              <p style="margin: 0; font-size: 0.88rem; color: #4B5563; line-height: 1.55;">
-                बिल्कुल! यदि आपके जीवन में कोई गंभीर संकट, कोर्ट-कचहरी, कालसर्प दोष या विशेष मां बगलामुखी अनुष्ठान की आवश्यकता हो, तो दृष्टि स्टूडियो के भीतर से ही आप सीधे शास्त्री अमित कुमार शर्मा जी के व्हाट्सएप पर संपर्क कर सकते हैं।
+            <div style="padding: 16px 20px; background: rgba(7,20,36,0.7); border-radius: 12px; border: 1px solid rgba(212,175,55,0.2);">
+              <h4 style="margin: 0 0 6px 0; color: #FEF3C7; font-size: 0.98rem; font-weight: 800;">3. क्या मैं गंभीर संकट या विशेष अनुष्ठान हेतु शास्त्री जी से बात कर सकता हूँ?</h4>
+              <p style="margin: 0; font-size: 0.88rem; color: #CBD5E1; line-height: 1.55;">
+                बिल्कुल! यदि आपके जीवन में कोई गंभीर संकट, कोर्ट-कचहरी, कालसर्प दोष या विशेष मां बगलामुखी अनुष्ठान की आवश्यकता हो, तो दृष्टि स्टूडियो के भीतर से ही आप सीधे शास्त्री अमित कुमार शर्मा जी के व्हाट्सएप (+91 98297 43685) पर संपर्क कर सकते हैं।
               </p>
             </div>
           </div>
@@ -492,31 +358,43 @@
   <!-- Dedicated Studio Controller Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      const canvas = document.getElementById("studioCanvas");
       const viewport = document.getElementById("studioMessagesViewport");
+      const centerHero = document.getElementById("studioCenterHero");
+      const heroTitle = document.getElementById("studioHeroTitle");
+      const heroSubtitle = document.getElementById("studioHeroSubtitle");
+      const heroChips = document.getElementById("studioHeroChips");
+      const attachedTabs = document.getElementById("studioAttachedTabs");
       const mainInput = document.getElementById("studioMainInput");
       const sendBtn = document.getElementById("studioSendBtn");
-      const chipsBar = document.getElementById("studioChipsBar");
+      const plusBtn = document.getElementById("studioPlusBtn");
+      const plusMenu = document.getElementById("studioPlusMenu");
+      const micBtn = document.getElementById("studioMicBtn");
       const resetBtn = document.getElementById("studioResetBtn");
-      const printBtn = document.getElementById("studioPrintBtn");
-      const voiceToggle = document.getElementById("studioVoiceToggle");
-      const btnAskMyKundli = document.getElementById("btnAskMyKundli");
-      const kundliSyncStatus = document.getElementById("drishtiKundliSyncStatus");
+      const timerBadge = document.getElementById("studioTimerBadge");
+      const timerLabel = document.getElementById("timerLabel");
       const langHiBtn = document.getElementById("studioLangHi");
       const langEnBtn = document.getElementById("studioLangEn");
-      const timerBadge = document.getElementById("studioTimerBadge");
+      const studioLiveText = document.getElementById("studioLiveText");
+      const navKundliBadge = document.getElementById("navKundliBadge");
+      const navKundliText = document.getElementById("navKundliText");
+      const guardBadgeText = document.getElementById("guardBadgeText");
+      const menuItemKundli = document.getElementById("menuItemKundli");
+      const menuItemReset = document.getElementById("menuItemReset");
 
       const SHASTRI_PHONE = "+91 98297 43685";
       const SHASTRI_PHONE_CLEAN = "919829743685";
       const FREE_DURATION_SECONDS = 300; // 5 Minutes
 
       let currentLang = "hi";
-      let isVoiceActive = false;
       let isStreaming = false;
       let isExpired = false;
       let timerInterval = null;
       let speechSynth = window.speechSynthesis || null;
+      let recognition = null;
+      let isListening = false;
 
-      // Sync initial language
+      // Sync initial language from localStorage
       try {
         const savedLang = localStorage.getItem("drishti_lang");
         if (savedLang === "en" || savedLang === "hi") {
@@ -526,7 +404,12 @@
         }
       } catch (e) {}
 
-      // Check Kundli in sessionStorage or window
+      // Auto-focus input on Desktop / Laptop for frictionless ergonomics
+      if (window.innerWidth > 768 && mainInput) {
+        setTimeout(() => mainInput.focus(), 200);
+      }
+
+      // Check Kundli Synchronization
       function checkKundliSync() {
         let kData = window.currentKundliData;
         if (!kData) {
@@ -536,112 +419,178 @@
           } catch(e) {}
         }
 
+        const tabKundli = document.getElementById("tabKundliSync");
+
         if (kData && kData.ascendant) {
-          if (currentLang === "en") {
-            kundliSyncStatus.innerHTML = `
-              <span style="color:#059669; font-weight:800;">✅ Kundli Linked:</span> 
-              ${kData.ascendant.rashiNameEn || kData.ascendant.rashiNameHi} Lagna (${kData.ascendant.rashiNum}) • ${kData.moonMetrics.rashiNameEn || kData.moonMetrics.rashiNameHi} Moon Sign • ${kData.ascendant.nakshatra} Nakshatra
-            `;
-            btnAskMyKundli.innerHTML = `🔮 Ask with my ${kData.ascendant.rashiNameEn || kData.ascendant.rashiNameHi} Lagna Kundli`;
-          } else {
-            kundliSyncStatus.innerHTML = `
-              <span style="color:#059669; font-weight:800;">✅ कुंडली जुड़ी हुई है:</span> 
-              ${kData.ascendant.rashiNameHi} लग्न (${kData.ascendant.rashiNum}) • ${kData.moonMetrics.rashiNameHi} चंद्र राशि • ${kData.ascendant.nakshatra} नक्षत्र
-            `;
-            btnAskMyKundli.innerHTML = `🔮 मेरी ${kData.ascendant.rashiNameHi} लग्न कुंडली से पूछें`;
+          const rashi = currentLang === "en" ? (kData.ascendant.rashiNameEn || kData.ascendant.rashiNameHi) : kData.ascendant.rashiNameHi;
+          const statusStr = currentLang === "en" ? `Kundli: ${rashi} Lagna` : `कुंडली: ${rashi} लग्न`;
+          
+          if (navKundliText) navKundliText.textContent = statusStr;
+          if (navKundliBadge) {
+            navKundliBadge.style.borderColor = "#10B981";
+            navKundliBadge.style.color = "#A7F3D0";
           }
+          if (tabKundli) tabKundli.innerHTML = `<span>ᛘ</span> ${statusStr}`;
+          if (menuItemKundli) menuItemKundli.textContent = currentLang === "en" ? `🔮 Ask with ${rashi} Kundli` : `🔮 मेरी ${rashi} कुंडली से पूछें`;
         } else {
-          kundliSyncStatus.textContent = currentLang === "en"
-            ? "Have you created your Free Kundli? Drishti can interpret your exact planetary houses and yogas."
-            : "क्या आपने अपनी मुफ्त लग्न कुंडली बनाई है? दृष्टि आपकी कुंडली देखकर शत-प्रतिशत सटीक उत्तर दे सकती है।";
-          btnAskMyKundli.textContent = currentLang === "en" ? "🔮 Ask with my Kundli" : "🔮 मेरी कुंडली से पूछें";
+          if (navKundliText) navKundliText.textContent = currentLang === "en" ? "Kundli Sync" : "कुंडली सिंक";
+          if (tabKundli) tabKundli.innerHTML = `<span>ᛘ</span> ${currentLang === "en" ? "Kundli: Not Linked" : "main (कुंडली)"}`;
+          if (menuItemKundli) menuItemKundli.textContent = currentLang === "en" ? "🔮 Ask with My Kundli" : "🔮 मेरी कुंडली से पूछें";
         }
       }
 
-      // Format simple markdown
+      // Format simple markdown into bold and line breaks
       function formatMarkdown(text) {
         return text
           .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
           .replace(/\*(.*?)\*/g, "<em>$1</em>");
       }
 
-      // Voice Synthesis
-      function speakVoice(text) {
-        if (!isVoiceActive || !speechSynth) return;
-        speechSynth.cancel();
-        let cleanText = text
-          .replace(/[\*\_\|\#\•\-\>]/g, " ")
-          .replace(/[\u{1F300}-\u{1F9FF}]/gu, "")
-          .substring(0, 340);
-
-        const utter = new SpeechSynthesisUtterance(cleanText);
-        utter.lang = currentLang === "en" ? "en-IN" : "hi-IN";
-        utter.rate = 0.92;
-        speechSynth.speak(utter);
+      // Auto-resize Textarea & toggle send button
+      function handleInputResize() {
+        mainInput.style.height = "auto";
+        mainInput.style.height = Math.min(mainInput.scrollHeight, 140) + "px";
+        
+        const hasText = mainInput.value.trim().length > 0;
+        if (hasText && !isExpired && !isStreaming) {
+          sendBtn.classList.add("active");
+          sendBtn.disabled = false;
+        } else {
+          sendBtn.classList.remove("active");
+          sendBtn.disabled = !hasText || isExpired || isStreaming;
+        }
       }
 
-      // Render User Message
+      mainInput.addEventListener("input", handleInputResize);
+
+      // Append User Message to Viewport
       function appendUserMessage(text) {
+        if (centerHero) centerHero.classList.add("collapsed");
+
         const msgDiv = document.createElement("div");
-        msgDiv.className = "drishti-studio-bubble drishti-msg-studio-user";
+        msgDiv.className = "drishti-bubble-user";
         msgDiv.textContent = text;
         viewport.appendChild(msgDiv);
         viewport.scrollTop = viewport.scrollHeight;
       }
 
-      // Show Realistic Typing Indicator (Gemini/ChatGPT Style)
-      function showStudioTyping() {
-        hideStudioTyping();
-        const typingDiv = document.createElement("div");
-        typingDiv.id = "studioTypingIndicator";
-        typingDiv.className = "drishti-typing";
-        typingDiv.style.alignSelf = "flex-start";
-        typingDiv.innerHTML = `
-          <span style="font-size:0.82rem; color:#D4AF37; font-weight:700; margin-right:6px;">
-            ${currentLang === "en" ? "Drishti is meditating on your stars..." : "दृष्टि आपके सितारे देख रही हैं... ✨"}
-          </span>
+      // Thinking Indicator (Bouncing gold dots)
+      function showThinking() {
+        hideThinking();
+        const thinkDiv = document.createElement("div");
+        thinkDiv.id = "studioThinkingIndicator";
+        thinkDiv.className = "drishti-thinking-wrap";
+        thinkDiv.innerHTML = `
+          <span>${currentLang === "en" ? "Drishti is meditating on your stars..." : "दृष्टि आपके सितारे देख रही हैं... ✨"}</span>
           <div class="drishti-typing-dot"></div>
           <div class="drishti-typing-dot"></div>
           <div class="drishti-typing-dot"></div>
         `;
-        viewport.appendChild(typingDiv);
+        viewport.appendChild(thinkDiv);
         viewport.scrollTop = viewport.scrollHeight;
       }
 
-      function hideStudioTyping() {
-        const el = document.getElementById("studioTypingIndicator");
+      function hideThinking() {
+        const el = document.getElementById("studioThinkingIndicator");
         if (el) el.remove();
       }
 
-      // ChatGPT/Gemini Style Realistic Streaming Typewriter
-      function streamStudioBotMessage(fullText, onComplete) {
+      // Realistic Typewriter Streaming Bot Message
+      function streamBotMessage(fullText, onComplete) {
         const msgDiv = document.createElement("div");
-        msgDiv.className = "drishti-studio-bubble drishti-msg-studio-bot";
-        msgDiv.innerHTML = `<span class="drishti-streaming-cursor"></span>`;
+        msgDiv.className = "drishti-bubble-bot";
+
+        msgDiv.innerHTML = `
+          <div class="drishti-bot-header">
+            <div class="drishti-bot-avatar">
+              <svg viewBox="0 0 36 36" fill="none" width="20" height="20">
+                <circle cx="18" cy="18" r="16" fill="url(#drishti-stream-glow)" stroke="#F59E0B" stroke-width="1.5"/>
+                <path d="M18 7L20.2 13.8H27.4L21.6 18L23.8 24.8L18 20.6L12.2 24.8L14.4 18L8.6 13.8H15.8L18 7Z" fill="#FFFBEB"/>
+                <circle cx="18" cy="17" r="4.5" fill="#D97706"/>
+                <circle cx="18" cy="17" r="2.2" fill="#FFFFFF"/>
+                <defs>
+                  <radialGradient id="drishti-stream-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(18 18) rotate(90) scale(16)">
+                    <stop stop-color="#DC2626"/>
+                    <stop offset="0.65" stop-color="#991B1B"/>
+                    <stop offset="1" stop-color="#450A0A"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="drishti-bot-title">
+              <strong>दृष्टि (Drishti)</strong>
+              <span>${currentLang === "en" ? "Vedic AI Astrologer" : "वैदिक AI सहेली"}</span>
+            </div>
+          </div>
+          <div class="drishti-bubble-body"><span class="drishti-streaming-cursor"></span></div>
+        `;
+
         viewport.appendChild(msgDiv);
         viewport.scrollTop = viewport.scrollHeight;
 
+        const bodyEl = msgDiv.querySelector(".drishti-bubble-body");
         let charIndex = 0;
         const totalLen = fullText.length;
+
         const streamInterval = setInterval(() => {
-          // Stream 2-4 chars per tick (~22ms) for natural reading pacing
+          // Stream 2-5 chars per tick (~20ms) for natural reading pacing
           charIndex += Math.floor(Math.random() * 3) + 2;
           if (charIndex > totalLen) charIndex = totalLen;
 
           const currentSlice = fullText.substring(0, charIndex);
-          const formatted = formatMarkdown(currentSlice);
-          msgDiv.innerHTML = formatted + (charIndex < totalLen ? `<span class="drishti-streaming-cursor"></span>` : "");
+          bodyEl.innerHTML = formatMarkdown(currentSlice) + (charIndex < totalLen ? `<span class="drishti-streaming-cursor"></span>` : "");
           viewport.scrollTop = viewport.scrollHeight;
 
           if (charIndex >= totalLen) {
             clearInterval(streamInterval);
             isStreaming = false;
+            handleInputResize();
+
+            // Append Action Buttons (Copy, Voice, WhatsApp Shastri Ji)
+            const actionsDiv = document.createElement("div");
+            actionsDiv.className = "drishti-bubble-actions";
+            actionsDiv.innerHTML = `
+              <button class="drishti-action-btn btn-copy" title="कॉपी करें">
+                <span>📋</span> ${currentLang === "en" ? "Copy" : "कॉपी"}
+              </button>
+              <button class="drishti-action-btn btn-speak" title="आवाज़ में सुनें">
+                <span>🔊</span> ${currentLang === "en" ? "Listen" : "सुनें"}
+              </button>
+              <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20am%20chatting%20with%20Drishti%20AI%20and%20want%20personal%20guidance." target="_blank" class="drishti-action-btn" style="color:#10B981; border-color:rgba(16,185,129,0.4);" title="शास्त्री जी से WhatsApp पर पूछें">
+                <span>💬</span> ${currentLang === "en" ? "Ask Shastri Ji" : "शास्त्री जी से परामर्श"}
+              </a>
+            `;
+
+            // Copy action
+            actionsDiv.querySelector(".btn-copy").addEventListener("click", function () {
+              navigator.clipboard.writeText(fullText).then(() => {
+                this.innerHTML = `<span>✅</span> ${currentLang === "en" ? "Copied!" : "कॉपी हो गया!"}`;
+                setTimeout(() => {
+                  this.innerHTML = `<span>📋</span> ${currentLang === "en" ? "Copy" : "कॉपी"}`;
+                }, 2000);
+              });
+            });
+
+            // Speak action
+            actionsDiv.querySelector(".btn-speak").addEventListener("click", function () {
+              if (!speechSynth) return;
+              speechSynth.cancel();
+              const clean = fullText.replace(/[\*\_\|\#\•\-\>]/g, " ").replace(/[\u{1F300}-\u{1F9FF}]/gu, "").substring(0, 360);
+              const utter = new SpeechSynthesisUtterance(clean);
+              utter.lang = currentLang === "en" ? "en-IN" : "hi-IN";
+              utter.rate = 0.94;
+              speechSynth.speak(utter);
+            });
+
+            msgDiv.appendChild(actionsDiv);
+            viewport.scrollTop = viewport.scrollHeight;
+
             if (onComplete) onComplete();
           }
-        }, 22);
+        }, 20);
       }
 
-      // Timer & Expiration Handling
+      // Timer & 5-Minute Free Consultation Limit
       function getRemainingSeconds() {
         let startTime = null;
         if (window.DrishtiChat && window.DrishtiChat.sessionStartTime) {
@@ -679,19 +628,21 @@
 
         if (timerBadge) {
           if (rem > 0 && !isExpired) {
-            timerBadge.innerHTML = currentLang === "en"
-              ? `⏱️ Free: <strong>${timeStr}</strong>`
-              : `⏱️ निःशुल्क: <strong>${timeStr}</strong>`;
-            timerBadge.className = rem <= 60 ? "drishti-timer-pill warning" : "drishti-timer-pill";
+            timerBadge.innerHTML = `⏱️ <span id="timerLabel">${currentLang === "en" ? "Free:" : "निःशुल्क:"}</span> <strong>${timeStr}</strong>`;
+            if (rem <= 60) {
+              timerBadge.style.borderColor = "#EF4444";
+              timerBadge.style.color = "#FCA5A5";
+            }
           } else {
             timerBadge.innerHTML = currentLang === "en" ? `🔒 Session Expired` : `🔒 समय समाप्त`;
-            timerBadge.className = "drishti-timer-pill expired";
-            handleStudioExpiration();
+            timerBadge.style.borderColor = "#EF4444";
+            timerBadge.style.color = "#FCA5A5";
+            handleExpiration();
           }
         }
 
         if (rem <= 0 && !isExpired) {
-          handleStudioExpiration();
+          handleExpiration();
         }
       }
 
@@ -701,8 +652,8 @@
         timerInterval = setInterval(updateTimerUI, 1000);
       }
 
-      // Show Paywall and lock controls
-      function handleStudioExpiration() {
+      // Show Paywall & Lock Controls
+      function handleExpiration() {
         if (isExpired) return;
         isExpired = true;
         try {
@@ -714,64 +665,63 @@
           window.DrishtiChat.lockInput();
         }
 
-        // Lock inputs
         mainInput.disabled = true;
         mainInput.placeholder = currentLang === "en"
-          ? "Free limit completed. Subscribe to Premium or call Shastri Ji (+91 9829743685)"
+          ? "Free limit completed. Subscribe to Premium or call Shastri Ji (+91 98297 43685)"
           : "निःशुल्क समय पूर्ण • प्रीमियम लें या शास्त्री जी से बात करें (+91 98297 43685)";
         sendBtn.disabled = true;
-        sendBtn.style.opacity = "0.5";
+        sendBtn.classList.remove("active");
 
-        // Render Paywall Card in studio viewport
+        // Render Paywall Card in viewport
         const paywallDiv = document.createElement("div");
-        paywallDiv.className = "drishti-studio-bubble drishti-msg-studio-bot";
+        paywallDiv.className = "drishti-bubble-bot";
         paywallDiv.style.width = "100%";
-        paywallDiv.style.maxWidth = "680px";
+        paywallDiv.style.maxWidth = "760px";
         paywallDiv.innerHTML = `
           <div class="drishti-paywall-card">
-            <div style="font-size:2rem; text-align:center; margin-bottom:8px;">💎✨</div>
-            <h3 style="color:#9F1239; margin:0 0 6px 0; text-align:center; font-size:1.2rem; font-weight:800;">
+            <div style="font-size:2.2rem; text-align:center; margin-bottom:8px;">💎✨</div>
+            <h3 style="color:#D4AF37; margin:0 0 6px 0; text-align:center; font-size:1.3rem; font-weight:800;">
               ${currentLang === "en" ? "Divya Drishti AI — Premium Membership" : "दिव्य दृष्टि AI — प्रीमियम सदस्यता"}
             </h3>
-            <p style="font-size:0.88rem; color:#475569; text-align:center; margin-bottom:16px; line-height:1.55;">
+            <p style="font-size:0.9rem; color:#CBD5E1; text-align:center; margin-bottom:20px; line-height:1.6;">
               ${currentLang === "en"
                 ? "Your 5-minute complimentary Vedic consultation has concluded with divine blessings! 🌸 To continue uninterrupted guidance, detailed planetary analysis, and customized remedies, choose a subscription below:"
                 : "आपका 5 मिनट का निःशुल्क परामर्श स्नेहपूर्वक पूर्ण हुआ जी! 🌸 असीमित ज्योतिष मार्गदर्शन, सटीक ग्रह विश्लेषण और व्यक्तिगत उपायों के लिए अपनी सुविधानुसार प्लान चुनें:"}
             </p>
 
-            <div class="drishti-plan-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:16px;">
-              <div class="drishti-plan-box" style="padding:16px; border:1.5px solid #F59E0B; border-radius:12px; text-align:center; background:#FFFDF9;">
-                <strong style="font-size:0.92rem; color:#0B192C;">${currentLang === "en" ? "Monthly Plan" : "मासिक प्लान"}</strong>
-                <div class="price" style="font-size:1.4rem; font-weight:800; color:#9F1239; margin:6px 0;">₹150 <span style="font-size:0.75rem; color:#64748B;">/ माह</span></div>
-                <p style="font-size:0.78rem; color:#64748B; margin:0 0 12px 0;">${currentLang === "en" ? "30 Days Unlimited Chat" : "30 दिन असीमित AI परामर्श"}</p>
-                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20want%20to%20subscribe%20to%20Monthly%20Plan%20Rs%20150." target="_blank" class="service-badge-pill" style="background:#0B192C; color:#FFF; font-size:0.78rem; text-decoration:none; display:inline-block; padding:8px 18px;">
-                  ${currentLang === "en" ? "Select Plan →" : "प्लान चुनें →"}
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:20px;">
+              <div style="padding:18px; border:1.5px solid rgba(212,175,55,0.4); border-radius:14px; text-align:center; background:rgba(11,25,44,0.6);">
+                <strong style="font-size:0.96rem; color:#FEF3C7;">${currentLang === "en" ? "Monthly Plan" : "मासिक प्लान"}</strong>
+                <div style="font-size:1.6rem; font-weight:800; color:#D4AF37; margin:8px 0;">₹150 <span style="font-size:0.8rem; color:#94A3B8;">/ माह</span></div>
+                <p style="font-size:0.8rem; color:#94A3B8; margin:0 0 14px 0;">${currentLang === "en" ? "30 Days Unlimited AI Chat" : "30 दिन असीमित AI परामर्श"}</p>
+                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20want%20to%20subscribe%20to%20Monthly%20Plan%20Rs%20150." target="_blank" class="drishti-action-btn" style="background:#D4AF37; color:#071424; font-weight:700; width:100%; justify-content:center; padding:8px 0;">
+                  ${currentLang === "en" ? "Select Plan →" : "मासिक प्लान लें →"}
                 </a>
               </div>
 
-              <div class="drishti-plan-box featured" style="padding:16px; border:2px solid #9F1239; border-radius:12px; text-align:center; background:#FFF1F2;">
-                <strong style="font-size:0.92rem; color:#9F1239;">${currentLang === "en" ? "⭐ Yearly Plan (Best Value)" : "⭐ वार्षिक प्लान (सर्वश्रेष्ठ)"}</strong>
-                <div class="price" style="font-size:1.4rem; font-weight:800; color:#9F1239; margin:6px 0;">₹1,500 <span style="font-size:0.75rem; color:#64748B;">/ वर्ष</span></div>
-                <p style="font-size:0.78rem; color:#64748B; margin:0 0 12px 0;">${currentLang === "en" ? "365 Days Full Access (Save ₹300)" : "365 दिन असीमित AI परामर्श (बचत ₹300)"}</p>
-                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20want%20to%20subscribe%20to%20Yearly%20Plan%20Rs%201500." target="_blank" class="service-badge-pill" style="background:#9F1239; color:#FFF; font-size:0.78rem; text-decoration:none; display:inline-block; padding:8px 18px;">
+              <div style="padding:18px; border:2px solid #D4AF37; border-radius:14px; text-align:center; background:rgba(212,175,55,0.12); box-shadow:0 0 20px rgba(212,175,55,0.15);">
+                <strong style="font-size:0.96rem; color:#F59E0B;">${currentLang === "en" ? "⭐ Yearly Plan (Best Value)" : "⭐ वार्षिक प्लान (सर्वश्रेष्ठ)"}</strong>
+                <div style="font-size:1.6rem; font-weight:800; color:#F59E0B; margin:8px 0;">₹1,500 <span style="font-size:0.8rem; color:#94A3B8;">/ वर्ष</span></div>
+                <p style="font-size:0.8rem; color:#CBD5E1; margin:0 0 14px 0;">${currentLang === "en" ? "365 Days Full Access (Save ₹300)" : "365 दिन असीमित AI परामर्श (बचत ₹300)"}</p>
+                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20want%20to%20subscribe%20to%20Yearly%20Plan%20Rs%201500." target="_blank" class="drishti-action-btn" style="background:linear-gradient(135deg, #F59E0B 0%, #D4AF37 100%); color:#071424; font-weight:800; width:100%; justify-content:center; padding:8px 0;">
                   ${currentLang === "en" ? "Get Yearly Pass →" : "वार्षिक पास लें →"}
                 </a>
               </div>
             </div>
 
-            <!-- Escalation to Shastri Ji -->
-            <div style="background:#FAF5FF; border:1.5px solid #E9D5FF; border-radius:14px; padding:16px; text-align:center; margin-top:14px;">
-              <p style="margin:0 0 6px 0; font-size:0.86rem; color:#581C87; font-weight:700;">
+            <!-- Escalation to Shastri Amit Kumar Sharma -->
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(212,175,55,0.25); border-radius:14px; padding:16px; text-align:center;">
+              <p style="margin:0 0 6px 0; font-size:0.88rem; color:#FEF3C7; font-weight:700;">
                 ${currentLang === "en"
-                  ? "📞 For further details, personal horoscope reading & sacred Vedic Anushthan:"
-                  : "📞 बाकी विस्तृत जानकारी, व्यक्तिगत समाधान व विशेष अनुष्ठान हेतु शास्त्री जी से बात करें:"}
+                  ? "📞 For personalized horoscope reading, Kundli matching & sacred Vedic Anushthan:"
+                  : "📞 बाकी विस्तृत कुंडली समाधान व विशेष वैदिक अनुष्ठान हेतु शास्त्री जी से बात करें:"}
               </p>
-              <h4 style="font-size:1.05rem; color:#0B192C; margin:4px 0 10px 0; font-weight:800;">शास्त्री अमित कुमार शर्मा</h4>
+              <h4 style="font-size:1.1rem; color:#FFF; margin:4px 0 12px 0; font-weight:800;">शास्त्री अमित कुमार शर्मा</h4>
               <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
-                <a href="tel:${SHASTRI_PHONE_CLEAN}" class="btn btn-outline" style="font-size:0.82rem; padding:8px 18px; text-decoration:none;">
-                  📞 कॉल करें: ${SHASTRI_PHONE}
+                <a href="tel:${SHASTRI_PHONE_CLEAN}" class="drishti-action-btn" style="padding:8px 16px;">
+                  📞 कॉल: ${SHASTRI_PHONE}
                 </a>
-                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20need%20further%20consultation%20after%20Drishti%20AI%20chat." target="_blank" class="btn btn-whatsapp" style="font-size:0.82rem; padding:8px 18px; text-decoration:none;">
+                <a href="https://wa.me/${SHASTRI_PHONE_CLEAN}?text=Pranam%20Shastri%20Ji%2C%20I%20need%20personal%20consultation%20after%20Drishti%20AI%20chat." target="_blank" class="drishti-action-btn" style="background:#16A34A; color:#FFF; border-color:#16A34A; padding:8px 16px;">
                   💬 सीधे WhatsApp पर बात करें
                 </a>
               </div>
@@ -782,7 +732,7 @@
         viewport.scrollTop = viewport.scrollHeight;
       }
 
-      // Language Switcher Function
+      // Language Switcher
       function setStudioLanguage(lang) {
         currentLang = lang;
         try {
@@ -796,34 +746,41 @@
           window.DrishtiChat.setLanguage(lang);
         }
 
-        // Update Input Placeholder
-        if (!isExpired) {
-          mainInput.placeholder = currentLang === "en"
-            ? "Ask Drishti about your stars, career, love life, investments, or Vedic remedies..."
-            : "दृष्टि से अपने सितारे, करियर, प्रेम, निवेश या उपाय के बारे में कुछ भी पूछिए...";
-        }
-
-        // Update Suggestion Chips Bar
-        if (chipsBar) {
-          if (currentLang === "en") {
-            chipsBar.innerHTML = `
-              <button class="drishti-studio-chip" data-query="What is the best time for investment in stocks and gold?">💰 Investment Timing?</button>
-              <button class="drishti-studio-chip" data-query="How to overcome career workload and achieve promotion?">💼 Career & Workload?</button>
-              <button class="drishti-studio-chip" data-query="How is my love life and marriage prospects?">❤️ Love Life & Marriage?</button>
-              <button class="drishti-studio-chip" data-query="What future challenges and planetary transits should I be cautious of?">⚠️ Future Cautions?</button>
-              <button class="drishti-studio-chip" data-query="What upcoming gains and fortunate yogas are coming my way?">🌟 Upcoming Gains?</button>
-              <button class="drishti-studio-chip" data-query="Give me 5 zero-cost powerful daily Vedic remedies">🌿 Daily Remedies?</button>
-              <button class="drishti-studio-chip" data-query="Please summarize my Janam Kundli and yogas">🔮 My Kundli Summary?</button>
+        // Update Text according to language
+        if (currentLang === "en") {
+          if (heroTitle) heroTitle.innerHTML = `What should we explore in <span class="drishti-accent-underline">astro</span>?`;
+          if (heroSubtitle) heroSubtitle.textContent = "Vedic Parashar Astrology, Janam Kundli analysis & life solutions • Loving 24/7 presence";
+          if (studioLiveText) studioLiveText.textContent = "Live Vedic AI";
+          if (guardBadgeText) guardBadgeText.textContent = "Vedic Guard";
+          if (!isExpired) {
+            mainInput.placeholder = "Ask Drishti anything about your stars, career, love, investments, or remedies...";
+          }
+          if (heroChips) {
+            heroChips.innerHTML = `
+              <button class="drishti-hero-chip" data-query="What is the best time for investment in stocks, gold and property?">💰 Investment Timings?</button>
+              <button class="drishti-hero-chip" data-query="How to overcome career workload and achieve promotion?">💼 Career & Workload?</button>
+              <button class="drishti-hero-chip" data-query="How is my love life and marriage prospects?">❤️ Love Life & Marriage?</button>
+              <button class="drishti-hero-chip" data-query="What future challenges and planetary transits should I be cautious of?">⚠️ Future Cautions?</button>
+              <button class="drishti-hero-chip" data-query="What upcoming gains and fortunate yogas are coming my way?">🌟 Upcoming Fortunes?</button>
+              <button class="drishti-hero-chip" data-query="Give me 5 zero-cost powerful daily Vedic remedies">🌿 Daily Remedies?</button>
             `;
-          } else {
-            chipsBar.innerHTML = `
-              <button class="drishti-studio-chip" data-query="शेयर बाजार व प्रॉपर्टी में निवेश का सही समय क्या है?">💰 सही निवेश का समय?</button>
-              <button class="drishti-studio-chip" data-query="काम का बहुत ज्यादा दबाव और तनाव है, क्या उपाय करूँ?">💼 करियर व वर्कलोड?</button>
-              <button class="drishti-studio-chip" data-query="मेरी शादी के योग कब बन रहे हैं और लव लाइफ कैसी रहेगी?">❤️ लव लाइफ व शादी योग?</button>
-              <button class="drishti-studio-chip" data-query="भविष्य में किन-किन परेशानियों और ग्रहों से सावधान रहूँ?">⚠️ आने वाली परेशानियां?</button>
-              <button class="drishti-studio-chip" data-query="आने वाले दिनों में मुझे क्या-क्या बड़े लाभ हो सकते हैं?">🌟 आने वाले लाभ?</button>
-              <button class="drishti-studio-chip" data-query="बिना खर्च के 5 सबसे शक्तिशाली दैनिक उपाय बताइए">🌿 दैनिक सरल उपाय?</button>
-              <button class="drishti-studio-chip" data-query="मेरी कुंडली का सरल सारांश और फलादेश बताओ">🔮 मेरी कुंडली का सार?</button>
+          }
+        } else {
+          if (heroTitle) heroTitle.innerHTML = `दृष्टि AI से आज क्या <span class="drishti-accent-underline">मार्गदर्शन</span> चाहते हैं?`;
+          if (heroSubtitle) heroSubtitle.textContent = "वैदिक पराशर सिद्धांत, जन्म कुंडली फलादेश व जीवन समाधान • 24/7 प्रेमपूर्वक उपस्थित";
+          if (studioLiveText) studioLiveText.textContent = "लाइव वैदिक AI सहेली";
+          if (guardBadgeText) guardBadgeText.textContent = "Vedic Guard";
+          if (!isExpired) {
+            mainInput.placeholder = "दृष्टि से अपने सितारे, करियर, प्रेम, निवेश या कुंडली के बारे में कुछ भी पूछें...";
+          }
+          if (heroChips) {
+            heroChips.innerHTML = `
+              <button class="drishti-hero-chip" data-query="शेयर बाजार व प्रॉपर्टी में निवेश का सही समय क्या है?">💰 सही निवेश का समय?</button>
+              <button class="drishti-hero-chip" data-query="काम का बहुत ज्यादा दबाव और तनाव है, क्या उपाय करूँ?">💼 करियर, तनाव व वर्कलोड?</button>
+              <button class="drishti-hero-chip" data-query="मेरी शादी के योग कब बन रहे हैं और लव लाइफ कैसी रहेगी?">❤️ लव लाइफ व विवाह योग?</button>
+              <button class="drishti-hero-chip" data-query="भविष्य में किन-किन परेशानियों और ग्रहों से सावधान रहूँ?">⚠️ भविष्य की सावधानियां?</button>
+              <button class="drishti-hero-chip" data-query="आने वाले दिनों में मुझे क्या-क्या बड़े लाभ हो सकते हैं?">🌟 आने वाले लाभ व भाग्योदय?</button>
+              <button class="drishti-hero-chip" data-query="बिना खर्च के 5 सबसे शक्तिशाली दैनिक वैदिक उपाय बताइए">🌿 दैनिक सात्विक उपाय?</button>
             `;
           }
         }
@@ -832,74 +789,42 @@
         updateTimerUI();
       }
 
-      // Initial Greeting
-      function initialGreeting() {
-        viewport.innerHTML = "";
-        const greetingText = currentLang === "en"
-          ? `Namaste and warm greetings, dear friend! 🌸✨ I am your personal Vedic AI companion and spiritual mentor, **"Drishti"**.
-
-A heartfelt welcome to Divya Drishti's dedicated AI Studio! 💖
-
-You may lovingly ask me about any sphere of your life:
-• 💰 **Auspicious Investment Timings** (Gold, Property, Stock Markets, Muhurat)
-• 💼 **Career, Workload & Growth** (Stress relief, promotion remedies)
-• ❤️ **Love Life & Marriage Harmony** (Marriage yogas, marital bliss)
-• ⚠️ **Future Cautions & Transits** (Saturn Sade Sati, Rahu transit remedies)
-• 🌟 **Upcoming Fortunes & Gains** (Hans Yoga, golden opportunities)
-• 🌿 **Zero-Cost Daily Vedic Remedies** (Sacred gaushala service, Surya arghya)
-
-Click any suggestion chip above or write your question below! 👇`
-          : `नमस्ते प्रिय जी! 🌸✨ मैं आपकी वैदिक AI सहेली और आध्यात्मिक मार्गदर्शक **"दृष्टि" (Drishti)** हूँ।
-
-'दिव्य दृष्टि' के इस समर्पित AI स्टूडियो में आपका हृदय से स्वागत है! 💖 
-
-आप मुझसे अपने जीवन के किसी भी क्षेत्र के बारे में प्रेमपूर्वक पूछ सकते हैं:
-• 💰 **सही निवेश का समय** (सोना, जमीन, शेयर बाजार, शुभ मुहूर्त)
-• 💼 **करियर, तनाव व वर्कलोड** (नौकरी की परेशानियां, पदोन्नति के उपाय)
-• ❤️ **लव लाइफ व विवाह** (विवाह योग, दांपत्य जीवन में मिठास)
-• ⚠️ **भविष्य की सावधानियां** (शनि साढ़ेसाती, राहु गोचर से बचाव)
-• 🌟 **आने वाले लाभ व भाग्योदय** (हंस योग, स्वर्णिम अवसर)
-• 🌿 **सटीक व सरल दैनिक उपाय** (बिना किसी खर्च के सात्विक उपाय)
-
-ऊपर दिए गए त्वरित सुझावों पर क्लिक करें या सीधे नीचे अपना प्रश्न लिखें जी! 👇`;
-
-        const msgDiv = document.createElement("div");
-        msgDiv.className = "drishti-studio-bubble drishti-msg-studio-bot";
-        msgDiv.innerHTML = formatMarkdown(greetingText);
-        viewport.appendChild(msgDiv);
-      }
-
-      // Process User Query
+      // Process and Send User Query
       function handleStudioSend(text) {
         if (isExpired) {
           alert(currentLang === "en"
             ? "Your 5-minute complimentary consultation has ended. Please subscribe to Premium or call Shastri Ji (+91 9829743685)."
             : "आपका 5 मिनट का निःशुल्क समय समाप्त हो चुका है। कृपया प्रीमियम सदस्यता लें या शास्त्री जी को कॉल करें (+91 98297 43685)।");
-          handleStudioExpiration();
+          handleExpiration();
           return;
         }
 
         if (isStreaming) return;
 
-        const q = text || mainInput.value.trim();
+        const q = (text || mainInput.value).trim();
         if (!q) return;
+
         mainInput.value = "";
+        handleInputResize();
+        if (plusMenu) plusMenu.classList.remove("show");
 
         // Start session timer on first user message
         startSessionTimer();
 
-        // 1. Render user message
+        // 1. Render User Bubble
         appendUserMessage(q);
 
-        // 2. Realistic Gemini/ChatGPT thinking indicator
+        // 2. Realistic Gemini/ChatGPT Thinking Indicator
         isStreaming = true;
-        showStudioTyping();
+        sendBtn.disabled = true;
+        sendBtn.classList.remove("active");
+        showThinking();
 
-        // 3. 1.8s realistic thinking delay (ChatGPT/Gemini style)
+        // 3. 1.8s Realistic Thinking Delay
         setTimeout(() => {
-          hideStudioTyping();
+          hideThinking();
 
-          // Generate response with strict astrology guardrail
+          // Generate response with strict Vedic astrology guardrail
           let response = "";
           if (window.DrishtiChat && window.DrishtiChat.generateResponse) {
             response = window.DrishtiChat.generateResponse(q);
@@ -916,94 +841,139 @@ Click any suggestion chip above or write your question below! 👇`
           }
 
           // 4. Stream response typewriter style
-          streamStudioBotMessage(response, () => {
-            speakVoice(response);
-          });
+          streamBotMessage(response);
         }, 1800);
       }
 
-      // Language Switcher Events
-      if (langHiBtn) langHiBtn.addEventListener("click", () => setStudioLanguage("hi"));
-      if (langEnBtn) langEnBtn.addEventListener("click", () => setStudioLanguage("en"));
+      // Voice Input Microphone (Web Speech API)
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.onstart = function () {
+          isListening = true;
+          micBtn.classList.add("active");
+          micBtn.title = currentLang === "en" ? "Listening... Speak now" : "सुन रही हूँ... बोलिए 🎙️";
+        };
+
+        recognition.onresult = function (event) {
+          const transcript = event.results[0][0].transcript;
+          if (transcript) {
+            mainInput.value = transcript;
+            handleInputResize();
+            mainInput.focus();
+          }
+        };
+
+        recognition.onerror = function () {
+          isListening = false;
+          micBtn.classList.remove("active");
+        };
+
+        recognition.onend = function () {
+          isListening = false;
+          micBtn.classList.remove("active");
+          micBtn.title = currentLang === "en" ? "Voice Input" : "बोलकर पूछें";
+        };
+      }
+
+      micBtn.addEventListener("click", function () {
+        if (!recognition) {
+          alert(currentLang === "en"
+            ? "Voice speech recognition is not supported in this browser. Please type your query."
+            : "आपके ब्राउज़र में बोलकर पूछने की सुविधा उपलब्ध नहीं है। कृपया टाइप करके पूछें जी।");
+          return;
+        }
+
+        if (isListening) {
+          recognition.stop();
+        } else {
+          recognition.lang = currentLang === "en" ? "en-IN" : "hi-IN";
+          recognition.start();
+        }
+      });
+
+      // + Plus Button Menu Toggle
+      plusBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        plusMenu.classList.toggle("show");
+      });
+
+      document.addEventListener("click", function (e) {
+        if (plusMenu && !plusMenu.contains(e.target) && e.target !== plusBtn) {
+          plusMenu.classList.remove("show");
+        }
+      });
+
+      // Plus Menu Items
+      if (menuItemKundli) {
+        menuItemKundli.addEventListener("click", function () {
+          plusMenu.classList.remove("show");
+          handleStudioSend(currentLang === "en"
+            ? "Please provide a complete Vedic horoscope reading and yoga summary for my Janam Kundli."
+            : "मेरी जन्म कुंडली का संपूर्ण सारांश, शुभ योग और फलादेश बताएं");
+        });
+      }
+
+      if (menuItemReset) {
+        menuItemReset.addEventListener("click", function () {
+          plusMenu.classList.remove("show");
+          if (confirm(currentLang === "en" ? "Start a new conversation? 🌸" : "क्या आप नई बातचीत शुरू करना चाहते हैं जी? 🌸")) {
+            viewport.innerHTML = "";
+            if (centerHero) centerHero.classList.remove("collapsed");
+            viewport.appendChild(centerHero);
+            mainInput.value = "";
+            handleInputResize();
+            if (window.innerWidth > 768) mainInput.focus();
+          }
+        });
+      }
+
+      // Reset Button in Top Navstrip
+      resetBtn.addEventListener("click", function () {
+        if (confirm(currentLang === "en" ? "Start a new conversation? 🌸" : "क्या आप नई बातचीत शुरू करना चाहते हैं जी? 🌸")) {
+          viewport.innerHTML = "";
+          if (centerHero) centerHero.classList.remove("collapsed");
+          viewport.appendChild(centerHero);
+          mainInput.value = "";
+          handleInputResize();
+          if (window.innerWidth > 768) mainInput.focus();
+        }
+      });
 
       // Send Events
       sendBtn.addEventListener("click", () => handleStudioSend());
-      mainInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
+
+      mainInput.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
           handleStudioSend();
         }
       });
 
-      // Quick Chips Click
-      chipsBar.addEventListener("click", (e) => {
-        const chip = e.target.closest(".drishti-studio-chip");
+      // Hero Suggestions & Attached Tabs Click
+      document.addEventListener("click", function (e) {
+        const chip = e.target.closest(".drishti-hero-chip, .studio-quick-tag");
         if (chip) {
           const q = chip.getAttribute("data-query");
           if (q) handleStudioSend(q);
         }
       });
 
-      // Sidebar Topic Buttons Click
-      document.querySelectorAll(".drishti-topic-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-          const q = this.getAttribute("data-studio-query");
-          if (q) handleStudioSend(q);
-        });
-      });
-
-      // Quick Emoji Buttons Click
-      document.querySelectorAll(".drishti-emoji-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-          if (isExpired) return;
-          const emoji = this.getAttribute("data-emoji");
-          mainInput.value += emoji;
-          mainInput.focus();
-        });
-      });
-
-      // Ask My Kundli Button
-      btnAskMyKundli.addEventListener("click", function () {
-        handleStudioSend(currentLang === "en"
-          ? "Please provide a complete Vedic summary and horoscope reading for my birth chart."
-          : "मेरी जन्म कुंडली का संपूर्ण सारांश और फलादेश बताएं");
-      });
-
-      // Reset Button
-      resetBtn.addEventListener("click", function () {
-        if (confirm(currentLang === "en" ? "Do you want to reset studio chat? 🌸" : "क्या आप स्टूडियो की चैट रीसेट करना चाहते हैं जी? 🌸")) {
-          viewport.innerHTML = "";
-          initialGreeting();
-        }
-      });
-
-      // Print / Save Button
-      printBtn.addEventListener("click", function () {
-        window.print();
-      });
-
-      // Voice Toggle Button
-      voiceToggle.addEventListener("click", function () {
-        isVoiceActive = !isVoiceActive;
-        if (isVoiceActive) {
-          this.classList.add("active");
-          document.getElementById("voiceText").textContent = currentLang === "en" ? "Voice ON" : "आवाज़ ON";
-        } else {
-          this.classList.remove("active");
-          document.getElementById("voiceText").textContent = currentLang === "en" ? "Voice OFF" : "आवाज़ OFF";
-          if (speechSynth) speechSynth.cancel();
-        }
-      });
+      // Language Switcher Clicks
+      if (langHiBtn) langHiBtn.addEventListener("click", () => setStudioLanguage("hi"));
+      if (langEnBtn) langEnBtn.addEventListener("click", () => setStudioLanguage("en"));
 
       // Initial Bootstrap
       setStudioLanguage(currentLang);
-      initialGreeting();
       checkKundliSync();
       window.addEventListener("kundliGenerated", checkKundliSync);
 
-      // Check if already expired from previous session
+      // Check Expiration from previous active session
       if (sessionStorage.getItem("drishti_expired") === "true") {
-        handleStudioExpiration();
+        handleExpiration();
       } else if (sessionStorage.getItem("drishti_session_start")) {
         initTimerLoop();
       }
