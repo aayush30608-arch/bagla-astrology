@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initReviewsPage();
   initDrishtiChatLoader();
+  initMetaPixelEvents();
 });
 
 /* ==========================================================================
@@ -779,5 +780,32 @@ function initReviewsPage() {
   // Initial render on page load
   updateStatistics();
   renderReviews();
+}
+
+/* ==========================================================================
+   META PIXEL CONVERSION EVENTS TRACKER
+   Automatically tracks Leads, Contacts & Consultations for Meta Ads Manager
+   ========================================================================== */
+function initMetaPixelEvents() {
+  document.addEventListener('click', (e) => {
+    // 1. WhatsApp consultation clicks
+    const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
+    if (waLink && typeof fbq === 'function') {
+      fbq('track', 'Contact', { content_name: 'WhatsApp Consultation' });
+    }
+
+    // 2. Direct phone call clicks
+    const telLink = e.target.closest('a[href^="tel:"]');
+    if (telLink && typeof fbq === 'function') {
+      fbq('track', 'Contact', { content_name: 'Phone Call Helpline' });
+    }
+  });
+
+  // 3. Kundli generated event
+  window.addEventListener('kundliGenerated', () => {
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', { content_name: 'Free Kundli Generated' });
+    }
+  });
 }
 
