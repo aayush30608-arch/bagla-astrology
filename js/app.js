@@ -783,21 +783,37 @@ function initReviewsPage() {
 }
 
 /* ==========================================================================
-   META PIXEL CONVERSION EVENTS TRACKER
-   Automatically tracks Leads, Contacts & Consultations for Meta Ads Manager
+   ANALYTICS & CONVERSION EVENTS TRACKER (GTM & META PIXEL)
+   Automatically tracks Leads, Contacts & Consultations for GTM & Meta Ads
    ========================================================================== */
 function initMetaPixelEvents() {
   document.addEventListener('click', (e) => {
     // 1. WhatsApp consultation clicks
     const waLink = e.target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
-    if (waLink && typeof fbq === 'function') {
-      fbq('track', 'Contact', { content_name: 'WhatsApp Consultation' });
+    if (waLink) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact', { content_name: 'WhatsApp Consultation' });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        event_category: 'engagement',
+        event_label: 'WhatsApp Consultation'
+      });
     }
 
     // 2. Direct phone call clicks
     const telLink = e.target.closest('a[href^="tel:"]');
-    if (telLink && typeof fbq === 'function') {
-      fbq('track', 'Contact', { content_name: 'Phone Call Helpline' });
+    if (telLink) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Contact', { content_name: 'Phone Call Helpline' });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'phone_call_click',
+        event_category: 'engagement',
+        event_label: 'Phone Call Helpline'
+      });
     }
   });
 
@@ -806,6 +822,12 @@ function initMetaPixelEvents() {
     if (typeof fbq === 'function') {
       fbq('track', 'Lead', { content_name: 'Free Kundli Generated' });
     }
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'kundli_generated',
+      event_category: 'lead',
+      event_label: 'Free Kundli Generated'
+    });
   });
 }
 
