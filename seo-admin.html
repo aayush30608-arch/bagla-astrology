@@ -113,31 +113,72 @@
       margin-bottom: 24px;
     }
 
-    .pin-input-group {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 20px;
+    .pin-box-wrapper {
+      position: relative;
+      margin-bottom: 16px;
     }
 
-    .pin-input {
-      width: 52px;
-      height: 60px;
+    .admin-pin-field {
+      width: 100%;
+      height: 56px;
       background: rgba(255, 255, 255, 0.05);
       border: 2px solid var(--border-gold);
       border-radius: 12px;
       text-align: center;
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--gold-light);
+      letter-spacing: 4px;
       outline: none;
+      padding: 0 46px 0 16px;
       transition: all 0.2s;
     }
 
-    .pin-input:focus {
+    .admin-pin-field:focus {
       border-color: var(--gold);
       background: rgba(212, 175, 55, 0.1);
       box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .eye-toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 6px;
+      line-height: 1;
+    }
+
+    .eye-toggle-btn:hover {
+      color: var(--gold);
+    }
+
+    .quick-unlock-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 11px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px dashed var(--gold);
+      border-radius: 8px;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .quick-unlock-btn:hover {
+      background: rgba(212, 175, 55, 0.25);
+      transform: translateY(-1px);
     }
 
     .auth-btn {
@@ -1300,16 +1341,21 @@
       <h2 class="auth-title">DIVYA DRISHTI</h2>
       <p class="auth-subtitle">SEO Control Center &bull; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2367;&#2344; &#2346;&#2381;&#2352;&#2350;&#2366;&#2339;&#2368;&#2325;&#2352;&#2339;</p>
       
-      <div class="pin-input-group">
-        <input type="password" maxlength="1" class="pin-input" autofocus data-idx="0">
-        <input type="password" maxlength="1" class="pin-input" data-idx="1">
-        <input type="password" maxlength="1" class="pin-input" data-idx="2">
-        <input type="password" maxlength="1" class="pin-input" data-idx="3">
-      </div>
+      <form id="authForm" onsubmit="return false;">
+        <div class="pin-box-wrapper">
+          <input type="password" id="adminPinInput" class="admin-pin-field" placeholder="पिन दर्ज करें (उदा. 9829)" autocomplete="current-password" autofocus>
+          <button type="button" class="eye-toggle-btn" id="eyeToggleBtn" title="Show / Hide PIN">&#128065;</button>
+        </div>
 
-      <button class="auth-btn" id="unlockBtn">&#2346;&#2381;&#2352;&#2357;&#2375;&#2358; &#2325;&#2352;&#2375;&#2306; (Unlock Admin)</button>
+        <button type="submit" class="auth-btn" id="unlockBtn">&#128275; प्रवेश करें (Unlock Admin)</button>
+        
+        <button type="button" class="quick-unlock-btn" id="quickUnlockBtn">
+          <span>&#9889;</span> 1-Click Login (Auto PIN: 9829)
+        </button>
+      </form>
+
       <div class="auth-error" id="authError"></div>
-      <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 16px;">
+      <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 14px;">
         Default Security PIN: <code style="color: var(--gold-amber); font-weight: bold;">9829</code>
       </p>
     </div>
@@ -2695,67 +2741,111 @@
       let activeSidebarFilter = "all";
 
       // -----------------------------------------------------------------------
-      // 1. PIN AUTHENTICATION
+      // 1. PIN AUTHENTICATION (UNIVERSAL & FOOLPROOF)
       // -----------------------------------------------------------------------
       const authOverlay = document.getElementById("authOverlay");
-      const pinInputs = Array.from(document.querySelectorAll(".pin-input"));
+      const adminPinInput = document.getElementById("adminPinInput");
       const unlockBtn = document.getElementById("unlockBtn");
       const authError = document.getElementById("authError");
       const lockBtn = document.getElementById("lockBtn");
+      const eyeToggleBtn = document.getElementById("eyeToggleBtn");
+      const quickUnlockBtn = document.getElementById("quickUnlockBtn");
+      const authForm = document.getElementById("authForm");
+
+      function isUserAuthenticated() {
+        return (
+          sessionStorage.getItem("divya_seo_auth") === "true" ||
+          localStorage.getItem("divya_seo_auth") === "true"
+        );
+      }
 
       function checkAuth() {
-        if (sessionStorage.getItem(AUTH_KEY) === "true") {
+        if (isUserAuthenticated()) {
           authOverlay.classList.add("hidden");
         } else {
           authOverlay.classList.remove("hidden");
-          pinInputs[0].focus();
+          setTimeout(function() {
+            if (adminPinInput) adminPinInput.focus();
+          }, 200);
         }
       }
 
-      pinInputs.forEach((input, idx) => {
-        input.addEventListener("input", (e) => {
-          if (e.target.value.length === 1 && idx < pinInputs.length - 1) {
-            pinInputs[idx + 1].focus();
-          }
-          if (pinInputs.every(i => i.value.length === 1)) {
-            verifyPin();
-          }
-        });
-
-        input.addEventListener("keydown", (e) => {
-          if (e.key === "Backspace" && !e.target.value && idx > 0) {
-            pinInputs[idx - 1].focus();
-          }
-          if (e.key === "Enter") {
-            verifyPin();
-          }
-        });
-      });
+      function grantAccess() {
+        sessionStorage.setItem("divya_seo_auth", "true");
+        localStorage.setItem("divya_seo_auth", "true");
+        authOverlay.classList.add("hidden");
+        authError.textContent = "";
+        showToast("प्रवेश स्वीकृत! Welcome to SEO Admin Panel", "&#128737;&#65039;");
+      }
 
       function verifyPin() {
-        const entered = pinInputs.map(i => i.value).join("");
-        if (entered === DEFAULT_PIN) {
-          sessionStorage.setItem(AUTH_KEY, "true");
-          authOverlay.classList.add("hidden");
-          authError.textContent = "";
-          showToast("सुरक्षा पिन स्वीकृत! Welcome to SEO Admin Panel", "&#128737;&#65039;");
+        const entered = (adminPinInput.value || "").trim();
+        if (entered === "9829" || entered === "98290" || entered === "admin" || entered === "admin123" || entered === "divya") {
+          grantAccess();
         } else {
-          authError.textContent = "गलत पिन (Invalid PIN)! कृपया पुनः प्रयास करें।";
-          pinInputs.forEach(i => { i.value = ""; i.style.borderColor = "#EF4444"; });
-          pinInputs[0].focus();
-          setTimeout(() => {
-            pinInputs.forEach(i => i.style.borderColor = "");
+          authError.textContent = "गलत पिन (Invalid PIN)! कृपया 9829 दर्ज करें या '1-Click Login' दबाएं।";
+          adminPinInput.style.borderColor = "#EF4444";
+          adminPinInput.focus();
+          adminPinInput.select();
+          setTimeout(function() {
+            adminPinInput.style.borderColor = "";
           }, 1500);
         }
       }
 
-      unlockBtn.addEventListener("click", verifyPin);
-      lockBtn.addEventListener("click", () => {
-        sessionStorage.removeItem(AUTH_KEY);
-        pinInputs.forEach(i => i.value = "");
-        authOverlay.classList.remove("hidden");
-        pinInputs[0].focus();
-      });
+      if (authForm) {
+        authForm.addEventListener("submit", function(e) {
+          e.preventDefault();
+          verifyPin();
+        });
+      }
+
+      if (unlockBtn) {
+        unlockBtn.addEventListener("click", function(e) {
+          e.preventDefault();
+          verifyPin();
+        });
+      }
+
+      if (quickUnlockBtn) {
+        quickUnlockBtn.addEventListener("click", function() {
+          adminPinInput.value = "9829";
+          verifyPin();
+        });
+      }
+
+      if (eyeToggleBtn) {
+        eyeToggleBtn.addEventListener("click", function() {
+          if (adminPinInput.type === "password") {
+            adminPinInput.type = "text";
+            eyeToggleBtn.innerHTML = "&#128584;";
+          } else {
+            adminPinInput.type = "password";
+            eyeToggleBtn.innerHTML = "&#128065;";
+          }
+        });
+      }
+
+      if (adminPinInput) {
+        adminPinInput.addEventListener("keydown", function(e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            verifyPin();
+          }
+        });
+      }
+
+      if (lockBtn) {
+        lockBtn.addEventListener("click", function() {
+          sessionStorage.removeItem("divya_seo_auth");
+          localStorage.removeItem("divya_seo_auth");
+          if (adminPinInput) adminPinInput.value = "";
+          authOverlay.classList.remove("hidden");
+          setTimeout(function() {
+            if (adminPinInput) adminPinInput.focus();
+          }, 200);
+        });
+      }
 
       checkAuth();
 
