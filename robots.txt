@@ -1,0 +1,11 @@
+# Robots.txt for DIVYA DRISHTI (Apke Sitare * Aapki Disha)
+# Domain: https://divyadrishtiastroai.in
+
+User-agent: *
+Allow: /
+Disallow: /scratch/
+Disallow: /scripts/
+Disallow: /seo-admin.html
+
+# Search Engine Sitemaps
+Sitemap: https://divyadrishtiastroai.in/sitemap.xml

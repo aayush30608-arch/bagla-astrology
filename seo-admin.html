@@ -1,0 +1,2529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Control Center | Divya Drishti (दिव्या दृष्टि)</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  
+  <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Master SEO Catalog Data -->
+  <script src="js/seo-catalog.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #071424;
+      --bg-card: #0D1E33;
+      --bg-card-hover: #132A47;
+      --bg-card-subtle: #0B192C;
+      --border-gold: rgba(212, 175, 55, 0.25);
+      --border-gold-bright: #D4AF37;
+      --gold: #D4AF37;
+      --gold-light: #F5E6BE;
+      --gold-amber: #F59E0B;
+      --ruby: #9F1239;
+      --ruby-light: #E11D48;
+      --emerald: #10B981;
+      --emerald-bg: rgba(16, 185, 129, 0.12);
+      --amber-bg: rgba(245, 158, 11, 0.12);
+      --ruby-bg: rgba(159, 18, 57, 0.15);
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-gold: #E6C25B;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(159, 18, 57, 0.06) 0%, transparent 40%);
+    }
+
+    /* Auth PIN Modal Overlay */
+    #authOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 18, 0.95);
+      backdrop-filter: blur(16px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #authOverlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .auth-card {
+      background: linear-gradient(145deg, #0F2238 0%, #081525 100%);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), var(--shadow-gold);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 420px;
+      padding: 36px 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .auth-om {
+      font-size: 40px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    }
+
+    .auth-title {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    .auth-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .pin-input-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .pin-input {
+      width: 52px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--border-gold);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold-light);
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .pin-input:focus {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.1);
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+      color: #071424;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .auth-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .auth-error {
+      color: #F87171;
+      font-size: 13px;
+      margin-top: 14px;
+      min-height: 20px;
+    }
+
+    /* Top Navbar */
+    .top-nav {
+      background: rgba(11, 25, 44, 0.95);
+      border-bottom: 1px solid var(--border-gold);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .brand-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--gold-light);
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--ruby-bg);
+      color: #FCA5A5;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 2px 8px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+      color: #071424;
+      border-color: var(--gold);
+    }
+
+    .btn-gold:hover {
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-danger {
+      background: var(--ruby-bg);
+      color: #FCA5A5;
+      border-color: rgba(225, 29, 72, 0.4);
+    }
+
+    .btn-danger:hover {
+      background: rgba(225, 29, 72, 0.25);
+    }
+
+    /* Tab Navigation */
+    .tab-bar {
+      background: #091728;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 24px;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      padding: 14px 20px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .tab-btn.active {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold);
+      background: rgba(212, 175, 55, 0.04);
+    }
+
+    .tab-badge {
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+    }
+
+    .tab-btn.active .tab-badge {
+      background: var(--gold);
+      color: #071424;
+      font-weight: 700;
+    }
+
+    /* Main Container */
+    .main-content {
+      flex: 1;
+      padding: 24px;
+      max-width: 1600px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* KPI Summary Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .kpi-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .kpi-icon.green {
+      background: var(--emerald-bg);
+      color: var(--emerald);
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .kpi-icon.ruby {
+      background: var(--ruby-bg);
+      color: var(--ruby-light);
+      border-color: rgba(225, 29, 72, 0.25);
+    }
+
+    .kpi-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: #FFFFFF;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Tab 1 Layout: 2-Column Editor + Previews */
+    .editor-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 1080px) {
+      .editor-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .panel-title {
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Page Switcher Header */
+    .page-select-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 22px;
+      background: var(--bg-card-subtle);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    .category-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .cat-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .cat-pill:hover, .cat-pill.active {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      font-weight: 600;
+    }
+
+    .selector-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .page-dropdown {
+      flex: 1;
+      background: #071424;
+      border: 1.5px solid var(--border-gold);
+      color: var(--text-main);
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .page-dropdown:focus {
+      border-color: var(--gold);
+    }
+
+    .page-dropdown optgroup {
+      background: #0B192C;
+      color: var(--gold-amber);
+      font-weight: 700;
+    }
+
+    .page-dropdown option {
+      background: #071424;
+      color: #FFFFFF;
+      font-weight: normal;
+      padding: 6px;
+    }
+
+    .nav-arrow-btn {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .nav-arrow-btn:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .form-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .char-counter {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .char-counter.good {
+      color: var(--emerald);
+      background: var(--emerald-bg);
+      font-weight: 600;
+    }
+
+    .char-counter.warn {
+      color: var(--gold-amber);
+      background: var(--amber-bg);
+    }
+
+    .char-counter.bad {
+      color: var(--ruby-light);
+      background: var(--ruby-bg);
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      margin-top: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      transition: width 0.2s, background-color 0.2s;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.03);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+      line-height: 1.4;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .img-preview-box {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .img-thumb {
+      width: 60px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .img-meta-text {
+      font-size: 11px;
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+
+    /* SEO Health Meter Widget */
+    .health-widget {
+      background: linear-gradient(145deg, #10243C 0%, #0A192C 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .health-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .score-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      border: 3px solid var(--emerald);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .score-circle.amber {
+      border-color: var(--gold-amber);
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .score-circle.ruby {
+      border-color: var(--ruby-light);
+      box-shadow: 0 0 15px rgba(225, 29, 72, 0.3);
+    }
+
+    .score-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .score-sub {
+      font-size: 9px;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .health-info h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 3px;
+    }
+
+    .health-info p {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+    }
+
+    @media (max-width: 500px) {
+      .checklist-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .check-item.passed {
+      color: #A7F3D0;
+    }
+
+    .check-icon {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* Google SERP Snippet Preview Mockup */
+    .preview-box {
+      margin-bottom: 22px;
+    }
+
+    .preview-header-tabs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .preview-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .view-toggle {
+      display: flex;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .view-btn {
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .view-btn.active {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--gold-light);
+    }
+
+    .serp-card {
+      background: #FFFFFF;
+      color: #202124;
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+      font-family: arial, sans-serif;
+      transition: max-width 0.25s ease;
+    }
+
+    .serp-card.mobile {
+      max-width: 380px;
+      margin: 0 auto;
+      border: 2px solid #E2E8F0;
+    }
+
+    .serp-url-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+      font-size: 12px;
+      color: #202124;
+    }
+
+    .serp-favicon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #FAF6F0;
+      object-fit: cover;
+    }
+
+    .serp-site-name {
+      font-weight: 600;
+      color: #202124;
+    }
+
+    .serp-breadcrumb {
+      color: #5f6368;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .serp-title {
+      font-size: 18px;
+      font-weight: 400;
+      color: #1a0dab;
+      line-height: 1.3;
+      margin-bottom: 4px;
+      cursor: pointer;
+      word-break: break-word;
+    }
+
+    .serp-title:hover {
+      text-decoration: underline;
+    }
+
+    .serp-snippet {
+      font-size: 13px;
+      color: #4d5156;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    /* Social WhatsApp Share Card Preview */
+    .social-card {
+      background: #111B21;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 440px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .social-img-wrap {
+      width: 100%;
+      height: 180px;
+      background: #000;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .social-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .social-body {
+      padding: 12px 14px;
+      background: #1F2C34;
+    }
+
+    .social-domain {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #8696A0;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .social-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #E9EDEF;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .social-desc {
+      font-size: 12px;
+      color: #8696A0;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Tab 2: Site Audit Matrix Table */
+    .table-controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .audit-table-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+
+    .audit-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .audit-table th {
+      background: #09192C;
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-gold);
+      white-space: nowrap;
+    }
+
+    .audit-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    .audit-table tr:hover td {
+      background: rgba(212, 175, 55, 0.03);
+    }
+
+    .page-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .page-cell-title {
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .page-cell-slug {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-core { background: rgba(59, 130, 246, 0.15); color: #93C5FD; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-tool { background: rgba(168, 85, 247, 0.15); color: #D8B4FE; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-rashi { background: rgba(245, 158, 11, 0.15); color: #FCD34D; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-service { background: rgba(236, 72, 153, 0.15); color: #F9A8D4; border: 1px solid rgba(236, 72, 153, 0.3); }
+
+    .score-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 3px 9px;
+      border-radius: 12px;
+    }
+
+    .score-badge.high { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .score-badge.mid { background: var(--amber-bg); color: var(--gold-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .score-badge.low { background: var(--ruby-bg); color: var(--ruby-light); border: 1px solid rgba(225, 29, 72, 0.3); }
+
+    /* Code Viewers / Editors (Tabs 3, 4, 5) */
+    .code-viewer-box {
+      background: #050E18;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: #E2E8F0;
+      line-height: 1.5;
+      overflow-x: auto;
+      max-height: 480px;
+      white-space: pre;
+    }
+
+    .code-viewer-box.editable {
+      outline: none;
+      cursor: text;
+    }
+
+    /* Modal for Exported Head Tags */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 18, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 760px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #FFFFFF;
+    }
+
+    /* Toast Notification */
+    #toastNotification {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: linear-gradient(135deg, #0F233B 0%, #081729 100%);
+      border: 1px solid var(--gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.2);
+      border-radius: 10px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold-light);
+      font-size: 13.5px;
+      font-weight: 600;
+      z-index: 999999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #toastNotification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================================================================== -->
+  <!-- 1. AUTH PIN SECURITY MODAL OVERLAY -->
+  <!-- ===================================================================== -->
+  <div id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-om">ॐ</div>
+      <h2 class="auth-title">DIVYA DRISHTI</h2>
+      <p class="auth-subtitle">SEO Control Center • सुरक्षा पिन प्रमाणीकरण</p>
+      
+      <div class="pin-input-group">
+        <input type="password" maxlength="1" class="pin-input" autofocus data-idx="0">
+        <input type="password" maxlength="1" class="pin-input" data-idx="1">
+        <input type="password" maxlength="1" class="pin-input" data-idx="2">
+        <input type="password" maxlength="1" class="pin-input" data-idx="3">
+      </div>
+
+      <button class="auth-btn" id="unlockBtn">प्रवेश करें (Unlock Admin)</button>
+      <div class="auth-error" id="authError"></div>
+      <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
+        Default Security PIN: <code style="color: var(--gold-amber);">9829</code>
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 2. TOP NAVBAR -->
+  <!-- ===================================================================== -->
+  <header class="top-nav">
+    <div class="nav-brand">
+      <img src="images/logo.png" alt="Divya Drishti" class="brand-logo">
+      <div class="brand-text">
+        <h1>
+          DIVYA DRISHTI
+          <span class="brand-badge">SEO ADMIN PANEL</span>
+        </h1>
+        <p>42 Pages Master Catalog • https://divyadrishtiastroai.in</p>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-outline" id="saveLocalBtn" title="Save changes to browser memory">
+        <span>💾</span> Save All
+      </button>
+      <button class="btn btn-gold" id="exportCodeBtn" title="Get <head> tags or sync script">
+        <span>⚡</span> Sync / Export
+      </button>
+      <a href="index.html" target="_blank" class="btn btn-outline" title="Open live website homepage">
+        <span>🌐</span> View Site
+      </a>
+      <button class="btn btn-danger" id="lockBtn" title="Lock SEO panel">
+        <span>🔒</span> Lock
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 3. TAB NAVIGATION BAR -->
+  <!-- ===================================================================== -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="tab-editor">
+      <span>⚡</span> Page SEO Editor
+      <span class="tab-badge" id="editorBadge">42</span>
+    </button>
+    <button class="tab-btn" data-tab="tab-audit">
+      <span>📊</span> Site Audit Matrix
+      <span class="tab-badge" id="auditBadge">42</span>
+    </button>
+    <button class="tab-btn" data-tab="tab-sitemap">
+      <span>🗺️</span> XML Sitemap Manager
+    </button>
+    <button class="tab-btn" data-tab="tab-robots">
+      <span>🤖</span> Robots.txt Manager
+    </button>
+    <button class="tab-btn" data-tab="tab-sync">
+      <span>🔄</span> Automation & Sync Engine
+    </button>
+  </nav>
+
+  <!-- ===================================================================== -->
+  <!-- 4. MAIN CONTENT AREA -->
+  <!-- ===================================================================== -->
+  <main class="main-content">
+
+    <!-- KPI Metrics Strip -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-icon">📄</div>
+        <div>
+          <div class="kpi-val" id="kpiTotalPages">42</div>
+          <div class="kpi-label">Total Indexed Pages</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon green">⭐</div>
+        <div>
+          <div class="kpi-val" id="kpiAvgScore">92</div>
+          <div class="kpi-label">Average SEO Health</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">🗺️</div>
+        <div>
+          <div class="kpi-val">100%</div>
+          <div class="kpi-label">Sitemap Coverage</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon ruby">🛡️</div>
+        <div>
+          <div class="kpi-val">Secured</div>
+          <div class="kpi-label">PIN Protection: Active</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- TAB 1: PAGE SEO EDITOR & LIVE PREVIEWS -->
+    <!-- ----------------------------------------------------------------- -->
+    <section class="tab-pane active" id="tab-editor">
+      
+      <!-- Page Selector Bar -->
+      <div class="page-select-bar">
+        <div class="category-pills">
+          <button class="cat-pill active" data-filter="all">All Pages (42)</button>
+          <button class="cat-pill" data-filter="core">Core Pages (5)</button>
+          <button class="cat-pill" data-filter="tools">Astrology Tools (10)</button>
+          <button class="cat-pill" data-filter="rashi">Rashifal (12)</button>
+          <button class="cat-pill" data-filter="services">Puja Services (15)</button>
+        </div>
+        <div class="selector-row">
+          <button class="nav-arrow-btn" id="prevPageBtn" title="Previous Page">◀</button>
+          <select class="page-dropdown" id="pageDropdown"></select>
+          <button class="nav-arrow-btn" id="nextPageBtn" title="Next Page">▶</button>
+          <a href="#" target="_blank" class="btn btn-outline" id="livePageLink" title="Open this file in browser">
+            <span>↗</span> Open
+          </a>
+        </div>
+      </div>
+
+      <div class="editor-layout">
+        
+        <!-- Left: Form Controls -->
+        <div class="panel-card">
+          <div class="panel-header">
+            <h2 class="panel-title">
+              <span>✍️</span> Edit Metadata for <span id="currentEditingFileName" style="color: var(--gold);">index.html</span>
+            </h2>
+            <div style="display:flex; gap: 8px;">
+              <button class="btn btn-outline" id="resetCurrentBtn" style="padding: 6px 12px; font-size: 12px;">Reset</button>
+              <button class="btn btn-gold" id="savePageBtn" style="padding: 6px 12px; font-size: 12px;">Save Page</button>
+            </div>
+          </div>
+
+          <!-- Meta Title -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="fieldTitle">
+                <span>🏷️</span> Meta Title (Title Tag)
+              </label>
+              <span class="char-counter" id="titleCounter">0 / 60 chars</span>
+            </div>
+            <input type="text" class="form-input" id="fieldTitle" placeholder="e.g. Online Kundali & Janam Kundli Analysis | Divya Drishti">
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="titleProgress"></div>
+            </div>
+          </div>
+
+          <!-- Meta Description -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="fieldDesc">
+                <span>📝</span> Meta Description
+              </label>
+              <span class="char-counter" id="descCounter">0 / 160 chars</span>
+            </div>
+            <textarea class="form-textarea" id="fieldDesc" placeholder="e.g. Get personalized online kundali and Janam Kundli analysis with expert Vedic astrology guidance..."></textarea>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" id="descProgress"></div>
+            </div>
+          </div>
+
+          <!-- Focus Keywords -->
+          <div class="form-group">
+            <div class="form-label-row">
+              <label class="form-label" for="fieldKeywords">
+                <span>🔑</span> Focus Keywords (Comma-separated)
+              </label>
+            </div>
+            <input type="text" class="form-input" id="fieldKeywords" placeholder="Divya Drishti, Vedic Astrology, Kundli, Shastri Amit Kumar Sharma">
+          </div>
+
+          <!-- Canonical URL & Robots -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldCanonical">🔗 Canonical URL</label>
+              </div>
+              <input type="url" class="form-input" id="fieldCanonical" placeholder="https://divyadrishtiastroai.in/">
+            </div>
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldRobots">🤖 Robots Directive</label>
+              </div>
+              <select class="form-select" id="fieldRobots">
+                <option value="index, follow">index, follow (Standard)</option>
+                <option value="noindex, follow">noindex, follow</option>
+                <option value="index, nofollow">index, nofollow</option>
+                <option value="noindex, nofollow">noindex, nofollow (Hidden)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Schema.org Type & Priority -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldSchema">🧩 Schema.org Type</label>
+              </div>
+              <select class="form-select" id="fieldSchema">
+                <option value="AstrologyService">AstrologyService (Vedic Astrology)</option>
+                <option value="Service">Service (Puja / Anushthan)</option>
+                <option value="WebApplication">WebApplication (Online Tool)</option>
+                <option value="Article">Article (Rashifal / Blog)</option>
+                <option value="AboutPage">AboutPage (Shastri Ji Profile)</option>
+                <option value="ContactPage">ContactPage (Jaipur Sanctuary)</option>
+                <option value="Review">Review / AggregateRating</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldPriority">⭐ Sitemap Priority</label>
+              </div>
+              <select class="form-select" id="fieldPriority">
+                <option value="1.00">1.00 (Highest - Homepage)</option>
+                <option value="0.95">0.95 (High - Core Tools)</option>
+                <option value="0.90">0.90 (Important - Services/Rashis)</option>
+                <option value="0.80">0.80 (Standard)</option>
+                <option value="0.60">0.60 (Low)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Open Graph & Social Media Card -->
+          <div style="margin-top: 10px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.1);">
+            <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-weight: 700; font-size: 14px; color: var(--gold-light);">
+                🌐 Open Graph & Social Cards
+              </span>
+              <button class="btn btn-outline" id="syncOgBtn" style="padding: 4px 10px; font-size: 11px;">
+                Mirror from Meta
+              </button>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldOgTitle">OG Title</label>
+              </div>
+              <input type="text" class="form-input" id="fieldOgTitle">
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldOgDesc">OG Description</label>
+              </div>
+              <textarea class="form-textarea" id="fieldOgDesc" style="min-height: 60px;"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-row">
+                <label class="form-label" for="fieldOgImage">OG Image URL</label>
+              </div>
+              <input type="url" class="form-input" id="fieldOgImage">
+              <div class="img-preview-box">
+                <img src="images/Divya Drishti Astro Guide Banner.png" alt="OG Preview" class="img-thumb" id="ogThumb">
+                <div class="img-meta-text" id="ogThumbUrl">images/Divya Drishti Astro Guide Banner.png</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div style="display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;">
+            <button class="btn btn-gold" id="btnCopyHead" style="flex: 1;">
+              <span>📋</span> Copy Full &lt;head&gt; SEO Code
+            </button>
+            <button class="btn btn-outline" id="btnViewSchema">
+              <span>🧩</span> View JSON-LD Schema
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right: Real-time Live Previews & Scoring -->
+        <div>
+          
+          <!-- Live SEO Score Gauge -->
+          <div class="health-widget">
+            <div class="health-top-row">
+              <div class="health-info">
+                <h3>SEO Health Score</h3>
+                <p id="healthGrade">Calculating real-time analysis...</p>
+              </div>
+              <div class="score-circle" id="scoreCircle">
+                <span class="score-num" id="scoreValue">95</span>
+                <span class="score-sub">/ 100</span>
+              </div>
+            </div>
+
+            <!-- Health Checklist -->
+            <div class="checklist-grid">
+              <div class="check-item" id="checkTitle">
+                <span class="check-icon">✓</span> Title Length (50-60 ch)
+              </div>
+              <div class="check-item" id="checkDesc">
+                <span class="check-icon">✓</span> Description (130-160 ch)
+              </div>
+              <div class="check-item" id="checkKeywords">
+                <span class="check-icon">✓</span> Keywords Defined
+              </div>
+              <div class="check-item" id="checkCanonical">
+                <span class="check-icon">✓</span> Canonical URL Valid
+              </div>
+              <div class="check-item" id="checkOg">
+                <span class="check-icon">✓</span> OG Image Configured
+              </div>
+              <div class="check-item" id="checkSchema">
+                <span class="check-icon">✓</span> JSON-LD Schema Ready
+              </div>
+            </div>
+          </div>
+
+          <!-- Google SERP Snippet Preview -->
+          <div class="preview-box">
+            <div class="preview-header-tabs">
+              <div class="preview-badge">
+                <span>🔍</span> Google SERP Preview
+              </div>
+              <div class="view-toggle">
+                <button class="view-btn active" id="viewDesktopBtn">Desktop</button>
+                <button class="view-btn" id="viewMobileBtn">Mobile</button>
+              </div>
+            </div>
+
+            <div class="serp-card" id="serpCard">
+              <div class="serp-url-row">
+                <img src="images/logo.png" alt="Favicon" class="serp-favicon">
+                <span class="serp-site-name">Divya Drishti</span>
+                <span class="serp-breadcrumb" id="serpBreadcrumb">https://divyadrishtiastroai.in</span>
+              </div>
+              <div class="serp-title" id="serpTitle">
+                Online Kundali &amp; Janam Kundli Analysis | Divya Drishti
+              </div>
+              <div class="serp-snippet" id="serpSnippet">
+                Get personalized online kundali and Janam Kundli analysis with expert Vedic astrology guidance. Explore planetary positions, horoscope and life insights.
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Share / WhatsApp Preview -->
+          <div class="preview-box">
+            <div class="preview-header-tabs">
+              <div class="preview-badge">
+                <span>💬</span> WhatsApp / Social Share Card
+              </div>
+            </div>
+
+            <div class="social-card">
+              <div class="social-img-wrap">
+                <img src="images/Divya Drishti Astro Guide Banner.png" alt="Social Card" id="socialImgPreview">
+              </div>
+              <div class="social-body">
+                <div class="social-domain">
+                  <span>🔒</span> DIVYADRISHTIASTROAI.IN
+                </div>
+                <div class="social-title" id="socialTitle">
+                  Online Kundali &amp; Janam Kundli Analysis | Divya Drishti
+                </div>
+                <div class="social-desc" id="socialDesc">
+                  Get personalized online kundali and Janam Kundli analysis with expert Vedic astrology guidance...
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- TAB 2: SITE-WIDE SEO AUDIT MATRIX -->
+    <!-- ----------------------------------------------------------------- -->
+    <section class="tab-pane" id="tab-audit">
+      <div class="panel-card" style="margin-bottom: 24px;">
+        <div class="table-controls-bar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="tableSearch" placeholder="Search 42 pages by name, file, or keyword...">
+          </div>
+          <div class="filter-group">
+            <button class="cat-pill active" data-tbl-filter="all">All (42)</button>
+            <button class="cat-pill" data-tbl-filter="core">Core (5)</button>
+            <button class="cat-pill" data-tbl-filter="tools">Tools (10)</button>
+            <button class="cat-pill" data-tbl-filter="rashi">Rashis (12)</button>
+            <button class="cat-pill" data-tbl-filter="services">Services (15)</button>
+          </div>
+        </div>
+
+        <div class="audit-table-wrap">
+          <table class="audit-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Page / URL</th>
+                <th>Category</th>
+                <th>Title Status</th>
+                <th>Description Status</th>
+                <th>Schema</th>
+                <th>SEO Score</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="auditTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- TAB 3: XML SITEMAP MANAGER -->
+    <!-- ----------------------------------------------------------------- -->
+    <section class="tab-pane" id="tab-sitemap">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <span>🗺️</span> XML Sitemap (sitemap.xml)
+          </h2>
+          <div style="display:flex; gap: 8px;">
+            <button class="btn btn-outline" id="btnCopySitemap">Copy XML</button>
+            <button class="btn btn-gold" id="btnDownloadSitemap">Download sitemap.xml</button>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Automatically covers all 42 URLs on <code style="color: var(--gold-light);">https://divyadrishtiastroai.in</code> with daily and weekly crawl priorities.
+        </p>
+        <div class="code-viewer-box" id="sitemapViewer"></div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- TAB 4: ROBOTS.TXT MANAGER -->
+    <!-- ----------------------------------------------------------------- -->
+    <section class="tab-pane" id="tab-robots">
+      <div class="panel-card">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <span>🤖</span> Search Engine Robots (robots.txt)
+          </h2>
+          <div style="display:flex; gap: 8px;">
+            <button class="btn btn-outline" id="btnCopyRobots">Copy robots.txt</button>
+            <button class="btn btn-gold" id="btnDownloadRobots">Download robots.txt</button>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Defines crawling access for Googlebot, Bingbot, and protects sensitive admin &amp; script paths.
+        </p>
+        <div class="code-viewer-box editable" id="robotsViewer" contenteditable="true"></div>
+      </div>
+    </section>
+
+    <!-- ----------------------------------------------------------------- -->
+    <!-- TAB 5: AUTOMATION & SYNC ENGINE -->
+    <!-- ----------------------------------------------------------------- -->
+    <section class="tab-pane" id="tab-sync">
+      <div class="panel-card" style="margin-bottom: 24px;">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <span>🔄</span> HTML Files Auto-Sync Engine
+          </h2>
+        </div>
+        <p style="font-size: 14px; color: var(--text-main); margin-bottom: 18px; line-height: 1.6;">
+          Your website runs on static HTML files. We provide an automated PowerShell engine (<code style="color: var(--gold);">scripts/apply-seo.ps1</code>) that injects your updated titles, meta descriptions, Open Graph cards, canonical tags, and Schema.org JSON-LD directly into all 42 HTML files with one command!
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
+          <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-light); margin-bottom: 8px; font-size: 15px;">Step 1: Export Catalog JSON</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
+              Download the current SEO catalog as JSON or save your edits in browser storage.
+            </p>
+            <button class="btn btn-gold" id="btnDownloadCatalogJson">
+              <span>📥</span> Download seo-catalog.json
+            </button>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-light); margin-bottom: 8px; font-size: 15px;">Step 2: Run Auto-Sync Script</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
+              Run this single command in terminal to update all 42 HTML files automatically:
+            </p>
+            <div style="background: #050E18; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; color: var(--gold-amber); margin-bottom: 10px;">
+              powershell -ExecutionPolicy Bypass -File .\scripts\apply-seo.ps1
+            </div>
+            <button class="btn btn-outline" id="btnCopySyncCmd">
+              <span>📋</span> Copy PowerShell Command
+            </button>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+            <h4 style="color: var(--gold-light); margin-bottom: 8px; font-size: 15px;">Step 3: Import / Restore</h4>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
+              Restore data from a previously downloaded JSON catalog file.
+            </p>
+            <input type="file" id="importJsonInput" accept=".json" style="display: none;">
+            <button class="btn btn-outline" id="btnImportJson">
+              <span>📤</span> Choose JSON to Import
+            </button>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <span style="font-weight: 700; color: #FFFFFF; font-size: 14px;">Safety &amp; Backups:</span>
+            <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">Existing tracking scripts (Meta Pixel &amp; Google Tag Manager) are preserved untouched.</span>
+          </div>
+          <button class="btn btn-danger" id="btnResetAllDefaults">
+            <span>⚠️</span> Reset All 42 Pages to Defaults
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- 5. CODE EXPORT MODAL -->
+  <!-- ===================================================================== -->
+  <div class="modal-overlay" id="codeModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 style="font-family: 'Cinzel', serif; color: var(--gold-light);" id="modalTitle">
+          Generated SEO Code
+        </h3>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="code-viewer-box" id="modalCodeContent" style="flex: 1; margin-bottom: 16px;"></div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <button class="btn btn-outline" id="modalCloseAction">Close</button>
+        <button class="btn btn-gold" id="modalCopyBtn">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 6. TOAST NOTIFICATION -->
+  <!-- ===================================================================== -->
+  <div id="toastNotification">
+    <span id="toastIcon">✨</span>
+    <span id="toastMsg">Changes saved successfully!</span>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 7. APPLICATION LOGIC -->
+  <!-- ===================================================================== -->
+  <script>
+    (function() {
+      // Configuration & State
+      const DEFAULT_PIN = "9829";
+      const AUTH_KEY = "divya_seo_auth_session";
+      const STORAGE_KEY = "divya_seo_master_catalog";
+      const DOMAIN = "https://divyadrishtiastroai.in";
+
+      let catalog = [];
+      let currentIndex = 0;
+      let activeFilter = "all";
+
+      // -----------------------------------------------------------------------
+      // 1. PIN AUTHENTICATION
+      // -----------------------------------------------------------------------
+      const authOverlay = document.getElementById("authOverlay");
+      const pinInputs = Array.from(document.querySelectorAll(".pin-input"));
+      const unlockBtn = document.getElementById("unlockBtn");
+      const authError = document.getElementById("authError");
+      const lockBtn = document.getElementById("lockBtn");
+
+      function checkAuth() {
+        if (sessionStorage.getItem(AUTH_KEY) === "true") {
+          authOverlay.classList.add("hidden");
+        } else {
+          authOverlay.classList.remove("hidden");
+          pinInputs[0].focus();
+        }
+      }
+
+      pinInputs.forEach((input, idx) => {
+        input.addEventListener("input", (e) => {
+          if (e.target.value.length === 1 && idx < pinInputs.length - 1) {
+            pinInputs[idx + 1].focus();
+          }
+          if (pinInputs.every(i => i.value.length === 1)) {
+            verifyPin();
+          }
+        });
+
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !e.target.value && idx > 0) {
+            pinInputs[idx - 1].focus();
+          }
+          if (e.key === "Enter") {
+            verifyPin();
+          }
+        });
+      });
+
+      function verifyPin() {
+        const entered = pinInputs.map(i => i.value).join("");
+        if (entered === DEFAULT_PIN) {
+          sessionStorage.setItem(AUTH_KEY, "true");
+          authOverlay.classList.add("hidden");
+          authError.textContent = "";
+          showToast("सुरक्षा पिन स्वीकृत! Welcome to SEO Admin Panel", "🛡️");
+        } else {
+          authError.textContent = "गलत पिन (Invalid PIN)! कृपया पुनः प्रयास करें।";
+          pinInputs.forEach(i => { i.value = ""; i.style.borderColor = "#EF4444"; });
+          pinInputs[0].focus();
+          setTimeout(() => {
+            pinInputs.forEach(i => i.style.borderColor = "");
+          }, 1500);
+        }
+      }
+
+      unlockBtn.addEventListener("click", verifyPin);
+      lockBtn.addEventListener("click", () => {
+        sessionStorage.removeItem(AUTH_KEY);
+        pinInputs.forEach(i => i.value = "");
+        authOverlay.classList.remove("hidden");
+        pinInputs[0].focus();
+      });
+
+      checkAuth();
+
+      // -----------------------------------------------------------------------
+      // 2. DATA INITIALIZATION
+      // -----------------------------------------------------------------------
+      function initData() {
+        const localData = localStorage.getItem(STORAGE_KEY);
+        if (localData) {
+          try {
+            catalog = JSON.parse(localData);
+          } catch(e) {
+            catalog = window.SEO_CATALOG || [];
+          }
+        } else if (window.SEO_CATALOG && Array.isArray(window.SEO_CATALOG)) {
+          catalog = JSON.parse(JSON.stringify(window.SEO_CATALOG));
+        } else {
+          catalog = [];
+        }
+
+        populatePageDropdown();
+        renderAuditTable();
+        renderSitemapViewer();
+        renderRobotsViewer();
+        updateKpiMetrics();
+        loadPage(0);
+      }
+
+      // -----------------------------------------------------------------------
+      // 3. TAB CONTROLS
+      // -----------------------------------------------------------------------
+      const tabButtons = document.querySelectorAll(".tab-btn");
+      const tabPanes = document.querySelectorAll(".tab-pane");
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach(b => b.classList.remove("active"));
+          tabPanes.forEach(p => p.classList.remove("active"));
+          btn.classList.add("active");
+          const target = document.getElementById(btn.dataset.tab);
+          if (target) target.classList.add("active");
+        });
+      });
+
+      function switchTab(tabId) {
+        tabButtons.forEach(b => {
+          if (b.dataset.tab === tabId) b.classList.add("active");
+          else b.classList.remove("active");
+        });
+        tabPanes.forEach(p => {
+          if (p.id === tabId) p.classList.add("active");
+          else p.classList.remove("active");
+        });
+      }
+
+      // -----------------------------------------------------------------------
+      // 4. PAGE SELECTOR & CATEGORY FILTERING
+      // -----------------------------------------------------------------------
+      const pageDropdown = document.getElementById("pageDropdown");
+      const categoryPills = document.querySelectorAll(".cat-pill[data-filter]");
+
+      function populatePageDropdown() {
+        pageDropdown.innerHTML = "";
+        
+        const groups = {
+          core: document.createElement("optgroup"),
+          tools: document.createElement("optgroup"),
+          rashi: document.createElement("optgroup"),
+          services: document.createElement("optgroup")
+        };
+
+        groups.core.label = "--- CORE PAGES (5) ---";
+        groups.tools.label = "--- ASTROLOGY TOOLS & PORTALS (10) ---";
+        groups.rashi.label = "--- 12 RASHIFAL PAGES (12) ---";
+        groups.services.label = "--- PUJA & ANUSHTHAN SERVICES (15) ---";
+
+        catalog.forEach((item, idx) => {
+          if (activeFilter !== "all" && item.category !== activeFilter) return;
+
+          const opt = document.createElement("option");
+          opt.value = idx;
+          opt.textContent = `${item.name} (${item.file})`;
+          if (groups[item.category]) {
+            groups[item.category].appendChild(opt);
+          }
+        });
+
+        Object.values(groups).forEach(g => {
+          if (g.children.length > 0) pageDropdown.appendChild(g);
+        });
+
+        pageDropdown.value = currentIndex;
+      }
+
+      categoryPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          categoryPills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          activeFilter = pill.dataset.filter;
+          populatePageDropdown();
+          // Jump to first matching page if current page isn't in filter
+          if (activeFilter !== "all" && catalog[currentIndex].category !== activeFilter) {
+            const firstIdx = catalog.findIndex(c => c.category === activeFilter);
+            if (firstIdx !== -1) loadPage(firstIdx);
+          }
+        });
+      });
+
+      pageDropdown.addEventListener("change", (e) => {
+        loadPage(parseInt(e.target.value, 10));
+      });
+
+      document.getElementById("prevPageBtn").addEventListener("click", () => {
+        if (currentIndex > 0) loadPage(currentIndex - 1);
+        else loadPage(catalog.length - 1);
+      });
+
+      document.getElementById("nextPageBtn").addEventListener("click", () => {
+        if (currentIndex < catalog.length - 1) loadPage(currentIndex + 1);
+        else loadPage(0);
+      });
+
+      // -----------------------------------------------------------------------
+      // 5. FORM BINDINGS & LIVE UPDATES
+      // -----------------------------------------------------------------------
+      const fieldTitle = document.getElementById("fieldTitle");
+      const fieldDesc = document.getElementById("fieldDesc");
+      const fieldKeywords = document.getElementById("fieldKeywords");
+      const fieldCanonical = document.getElementById("fieldCanonical");
+      const fieldRobots = document.getElementById("fieldRobots");
+      const fieldSchema = document.getElementById("fieldSchema");
+      const fieldPriority = document.getElementById("fieldPriority");
+      const fieldOgTitle = document.getElementById("fieldOgTitle");
+      const fieldOgDesc = document.getElementById("fieldOgDesc");
+      const fieldOgImage = document.getElementById("fieldOgImage");
+
+      const titleCounter = document.getElementById("titleCounter");
+      const titleProgress = document.getElementById("titleProgress");
+      const descCounter = document.getElementById("descCounter");
+      const descProgress = document.getElementById("descProgress");
+
+      const serpTitle = document.getElementById("serpTitle");
+      const serpSnippet = document.getElementById("serpSnippet");
+      const serpBreadcrumb = document.getElementById("serpBreadcrumb");
+      const socialTitle = document.getElementById("socialTitle");
+      const socialDesc = document.getElementById("socialDesc");
+      const socialImgPreview = document.getElementById("socialImgPreview");
+      const ogThumb = document.getElementById("ogThumb");
+      const ogThumbUrl = document.getElementById("ogThumbUrl");
+
+      function loadPage(idx) {
+        if (!catalog[idx]) return;
+        currentIndex = idx;
+        const page = catalog[idx];
+
+        document.getElementById("currentEditingFileName").textContent = page.file;
+        pageDropdown.value = idx;
+
+        const liveLink = document.getElementById("livePageLink");
+        liveLink.href = page.file;
+
+        fieldTitle.value = page.title || "";
+        fieldDesc.value = page.description || "";
+        fieldKeywords.value = page.keywords || "";
+        fieldCanonical.value = page.canonical || page.url || "";
+        fieldRobots.value = page.robots || "index, follow";
+        fieldSchema.value = page.schemaType || "AstrologyService";
+        fieldPriority.value = page.priority || "0.90";
+        fieldOgTitle.value = page.ogTitle || page.title || "";
+        fieldOgDesc.value = page.ogDescription || page.description || "";
+        fieldOgImage.value = page.ogImage || `${DOMAIN}/images/Divya%20Drishti%20Astro%20Guide%20Banner.png`;
+
+        updatePreviews();
+      }
+
+      function updatePreviews() {
+        const title = fieldTitle.value;
+        const desc = fieldDesc.value;
+        const canonical = fieldCanonical.value;
+        const ogTitle = fieldOgTitle.value || title;
+        const ogDesc = fieldOgDesc.value || desc;
+        const ogImage = fieldOgImage.value;
+
+        // Title Counter & Progress
+        const tLen = title.length;
+        titleCounter.textContent = `${tLen} / 60 chars`;
+        titleCounter.className = "char-counter " + (tLen >= 50 && tLen <= 60 ? "good" : (tLen > 60 && tLen <= 70 ? "warn" : "bad"));
+        const tPercent = Math.min(100, Math.round((tLen / 60) * 100));
+        titleProgress.style.width = tPercent + "%";
+        titleProgress.style.backgroundColor = tLen >= 50 && tLen <= 60 ? "var(--emerald)" : (tLen <= 70 ? "var(--gold-amber)" : "var(--ruby-light)");
+
+        // Desc Counter & Progress
+        const dLen = desc.length;
+        descCounter.textContent = `${dLen} / 160 chars`;
+        descCounter.className = "char-counter " + (dLen >= 130 && dLen <= 160 ? "good" : (dLen > 160 && dLen <= 175 ? "warn" : "bad"));
+        const dPercent = Math.min(100, Math.round((dLen / 160) * 100));
+        descProgress.style.width = dPercent + "%";
+        descProgress.style.backgroundColor = dLen >= 130 && dLen <= 160 ? "var(--emerald)" : (dLen <= 175 ? "var(--gold-amber)" : "var(--ruby-light)");
+
+        // Google SERP Snippet Preview
+        serpTitle.textContent = title || "No Title Specified";
+        serpSnippet.textContent = desc || "No description specified. Google will generate a snippet from page contents.";
+        serpBreadcrumb.textContent = canonical || `${DOMAIN}/${catalog[currentIndex].file}`;
+
+        // Social Preview
+        socialTitle.textContent = ogTitle || title;
+        socialDesc.textContent = ogDesc || desc;
+        socialImgPreview.src = ogImage || "images/Divya Drishti Astro Guide Banner.png";
+        ogThumb.src = ogImage || "images/Divya Drishti Astro Guide Banner.png";
+        ogThumbUrl.textContent = ogImage;
+
+        // Calculate and Render SEO Score
+        calculateHealthScore();
+      }
+
+      [fieldTitle, fieldDesc, fieldKeywords, fieldCanonical, fieldRobots, fieldSchema, fieldPriority, fieldOgTitle, fieldOgDesc, fieldOgImage].forEach(input => {
+        input.addEventListener("input", updatePreviews);
+        input.addEventListener("change", updatePreviews);
+      });
+
+      // Mirror button
+      document.getElementById("syncOgBtn").addEventListener("click", () => {
+        fieldOgTitle.value = fieldTitle.value;
+        fieldOgDesc.value = fieldDesc.value;
+        updatePreviews();
+        showToast("Open Graph tags updated from Meta Title/Desc!", "🔄");
+      });
+
+      // Desktop vs Mobile SERP Toggle
+      const viewDesktopBtn = document.getElementById("viewDesktopBtn");
+      const viewMobileBtn = document.getElementById("viewMobileBtn");
+      const serpCard = document.getElementById("serpCard");
+
+      viewDesktopBtn.addEventListener("click", () => {
+        viewDesktopBtn.classList.add("active");
+        viewMobileBtn.classList.remove("active");
+        serpCard.classList.remove("mobile");
+      });
+
+      viewMobileBtn.addEventListener("click", () => {
+        viewMobileBtn.classList.add("active");
+        viewDesktopBtn.classList.remove("active");
+        serpCard.classList.add("mobile");
+      });
+
+      // -----------------------------------------------------------------------
+      // 6. REAL-TIME SEO HEALTH SCORE ENGINE
+      // -----------------------------------------------------------------------
+      function calculateHealthScore() {
+        let score = 0;
+        const title = fieldTitle.value.trim();
+        const desc = fieldDesc.value.trim();
+        const keywords = fieldKeywords.value.trim();
+        const canonical = fieldCanonical.value.trim();
+        const ogImage = fieldOgImage.value.trim();
+        const schema = fieldSchema.value;
+
+        // Checklist checks
+        const checkTitle = document.getElementById("checkTitle");
+        const checkDesc = document.getElementById("checkDesc");
+        const checkKeywords = document.getElementById("checkKeywords");
+        const checkCanonical = document.getElementById("checkCanonical");
+        const checkOg = document.getElementById("checkOg");
+        const checkSchema = document.getElementById("checkSchema");
+
+        // 1. Title: 50-65 chars (+20)
+        if (title.length >= 45 && title.length <= 65) {
+          score += 20;
+          checkTitle.classList.add("passed");
+        } else if (title.length >= 30 && title.length <= 75) {
+          score += 12;
+          checkTitle.classList.remove("passed");
+        } else {
+          checkTitle.classList.remove("passed");
+        }
+
+        // 2. Desc: 120-165 chars (+20)
+        if (desc.length >= 130 && desc.length <= 165) {
+          score += 20;
+          checkDesc.classList.add("passed");
+        } else if (desc.length >= 90 && desc.length <= 180) {
+          score += 12;
+          checkDesc.classList.remove("passed");
+        } else {
+          checkDesc.classList.remove("passed");
+        }
+
+        // 3. Keywords (+15)
+        if (keywords.length > 5) {
+          score += 15;
+          checkKeywords.classList.add("passed");
+        } else {
+          checkKeywords.classList.remove("passed");
+        }
+
+        // 4. Canonical (+15)
+        if (canonical.startsWith("https://divyadrishtiastroai.in")) {
+          score += 15;
+          checkCanonical.classList.add("passed");
+        } else {
+          checkCanonical.classList.remove("passed");
+        }
+
+        // 5. Open Graph Image (+15)
+        if (ogImage.length > 10) {
+          score += 15;
+          checkOg.classList.add("passed");
+        } else {
+          checkOg.classList.remove("passed");
+        }
+
+        // 6. Schema Type (+15)
+        if (schema) {
+          score += 15;
+          checkSchema.classList.add("passed");
+        } else {
+          checkSchema.classList.remove("passed");
+        }
+
+        // Clamp to 100
+        score = Math.min(100, score);
+
+        // Update UI
+        const scoreValue = document.getElementById("scoreValue");
+        const scoreCircle = document.getElementById("scoreCircle");
+        const healthGrade = document.getElementById("healthGrade");
+
+        scoreValue.textContent = score;
+        scoreCircle.className = "score-circle " + (score >= 85 ? "" : (score >= 70 ? "amber" : "ruby"));
+
+        if (score >= 85) {
+          healthGrade.textContent = "उत्कृष्ट (Excellent) • Search Engine Ready";
+          healthGrade.style.color = "var(--emerald)";
+        } else if (score >= 70) {
+          healthGrade.textContent = "मध्यम (Good) • Minor optimizations suggested";
+          healthGrade.style.color = "var(--gold-amber)";
+        } else {
+          healthGrade.textContent = "सुधार आवश्यक (Needs Work) • Optimize tags";
+          healthGrade.style.color = "var(--ruby-light)";
+        }
+
+        return score;
+      }
+
+      // -----------------------------------------------------------------------
+      // 7. SAVE / RESET / STORAGE
+      // -----------------------------------------------------------------------
+      function saveCurrentPage() {
+        if (!catalog[currentIndex]) return;
+        const page = catalog[currentIndex];
+
+        page.title = fieldTitle.value;
+        page.description = fieldDesc.value;
+        page.keywords = fieldKeywords.value;
+        page.canonical = fieldCanonical.value;
+        page.robots = fieldRobots.value;
+        page.schemaType = fieldSchema.value;
+        page.priority = fieldPriority.value;
+        page.ogTitle = fieldOgTitle.value;
+        page.ogDescription = fieldOgDesc.value;
+        page.ogImage = fieldOgImage.value;
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(catalog));
+        updateKpiMetrics();
+        renderAuditTable();
+        renderSitemapViewer();
+        showToast(`Saved changes for ${page.file}!`, "💾");
+      }
+
+      document.getElementById("savePageBtn").addEventListener("click", saveCurrentPage);
+      document.getElementById("saveLocalBtn").addEventListener("click", () => {
+        saveCurrentPage();
+        showToast("All 42 pages saved in local memory!", "✨");
+      });
+
+      document.getElementById("resetCurrentBtn").addEventListener("click", () => {
+        if (confirm("Reset this page's SEO tags to initial catalog defaults?")) {
+          const original = (window.SEO_CATALOG || []).find(c => c.file === catalog[currentIndex].file);
+          if (original) {
+            catalog[currentIndex] = JSON.parse(JSON.stringify(original));
+            loadPage(currentIndex);
+            saveCurrentPage();
+            showToast("Reset to defaults!", "🔄");
+          }
+        }
+      });
+
+      // -----------------------------------------------------------------------
+      // 8. SITE-WIDE AUDIT MATRIX TABLE (TAB 2)
+      // -----------------------------------------------------------------------
+      const auditTableBody = document.getElementById("auditTableBody");
+      const tableSearch = document.getElementById("tableSearch");
+      const tableFilterPills = document.querySelectorAll(".cat-pill[data-tbl-filter]");
+      let activeTableFilter = "all";
+
+      function computeItemScore(item) {
+        let s = 0;
+        if (item.title && item.title.length >= 45 && item.title.length <= 65) s += 20;
+        else if (item.title && item.title.length >= 30) s += 12;
+
+        if (item.description && item.description.length >= 130 && item.description.length <= 165) s += 20;
+        else if (item.description && item.description.length >= 90) s += 12;
+
+        if (item.keywords && item.keywords.length > 5) s += 15;
+        if (item.canonical && item.canonical.startsWith("https://divyadrishtiastroai.in")) s += 15;
+        if (item.ogImage && item.ogImage.length > 10) s += 15;
+        if (item.schemaType) s += 15;
+        return Math.min(100, s);
+      }
+
+      function renderAuditTable() {
+        auditTableBody.innerHTML = "";
+        const q = (tableSearch.value || "").toLowerCase();
+
+        catalog.forEach((item, idx) => {
+          if (activeTableFilter !== "all" && item.category !== activeTableFilter) return;
+          if (q && !item.name.toLowerCase().includes(q) && !item.file.toLowerCase().includes(q) && !(item.title || "").toLowerCase().includes(q)) return;
+
+          const tr = document.createElement("tr");
+          const score = computeItemScore(item);
+
+          const catClass = item.category === "core" ? "badge-core" : (item.category === "tools" ? "badge-tool" : (item.category === "rashi" ? "badge-rashi" : "badge-service"));
+          const scoreClass = score >= 85 ? "high" : (score >= 70 ? "mid" : "low");
+
+          const tLen = (item.title || "").length;
+          const dLen = (item.description || "").length;
+
+          tr.innerHTML = `
+            <td style="color: var(--text-muted); font-family: monospace;">${idx + 1}</td>
+            <td>
+              <div class="page-cell">
+                <span class="page-cell-title">${item.name}</span>
+                <span class="page-cell-slug">${item.file}</span>
+              </div>
+            </td>
+            <td><span class="badge ${catClass}">${item.category.toUpperCase()}</span></td>
+            <td>
+              <span style="font-size: 11.5px; color: ${tLen >= 50 && tLen <= 60 ? 'var(--emerald)' : (tLen <= 70 ? 'var(--gold-amber)' : 'var(--ruby-light)')};">
+                ${tLen} chars
+              </span>
+            </td>
+            <td>
+              <span style="font-size: 11.5px; color: ${dLen >= 130 && dLen <= 160 ? 'var(--emerald)' : (dLen <= 175 ? 'var(--gold-amber)' : 'var(--ruby-light)')};">
+                ${dLen} chars
+              </span>
+            </td>
+            <td><span style="font-size: 11.5px; color: var(--gold-light); font-family: monospace;">${item.schemaType || 'AstrologyService'}</span></td>
+            <td><span class="score-badge ${scoreClass}">${score} / 100</span></td>
+            <td>
+              <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;" onclick="window.editPageByIndex(${idx})">
+                Edit ✍️
+              </button>
+            </td>
+          `;
+          auditTableBody.appendChild(tr);
+        });
+      }
+
+      window.editPageByIndex = function(idx) {
+        loadPage(idx);
+        switchTab("tab-editor");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+
+      tableSearch.addEventListener("input", renderAuditTable);
+      tableFilterPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+          tableFilterPills.forEach(p => p.classList.remove("active"));
+          pill.classList.add("active");
+          activeTableFilter = pill.dataset.tblFilter;
+          renderAuditTable();
+        });
+      });
+
+      function updateKpiMetrics() {
+        document.getElementById("kpiTotalPages").textContent = catalog.length;
+        let totalScore = 0;
+        catalog.forEach(item => {
+          totalScore += computeItemScore(item);
+        });
+        const avg = Math.round(totalScore / (catalog.length || 1));
+        document.getElementById("kpiAvgScore").textContent = avg;
+      }
+
+      // -----------------------------------------------------------------------
+      // 9. XML SITEMAP MANAGER (TAB 3)
+      // -----------------------------------------------------------------------
+      const sitemapViewer = document.getElementById("sitemapViewer");
+
+      function generateSitemapXml() {
+        const today = new Date().toISOString().split("T")[0];
+        let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+        catalog.forEach(item => {
+          const loc = item.file === "index.html" ? `${DOMAIN}/` : `${DOMAIN}/${item.file}`;
+          xml += `  <url>\n`;
+          xml += `    <loc>${loc}</loc>\n`;
+          xml += `    <lastmod>${today}</lastmod>\n`;
+          xml += `    <changefreq>${item.changefreq || 'weekly'}</changefreq>\n`;
+          xml += `    <priority>${item.priority || '0.80'}</priority>\n`;
+          xml += `  </url>\n`;
+        });
+
+        xml += `</urlset>\n`;
+        return xml;
+      }
+
+      function renderSitemapViewer() {
+        sitemapViewer.textContent = generateSitemapXml();
+      }
+
+      document.getElementById("btnCopySitemap").addEventListener("click", () => {
+        navigator.clipboard.writeText(generateSitemapXml()).then(() => {
+          showToast("Sitemap XML copied to clipboard!", "📋");
+        });
+      });
+
+      document.getElementById("btnDownloadSitemap").addEventListener("click", () => {
+        const blob = new Blob([generateSitemapXml()], { type: "application/xml" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "sitemap.xml";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Downloaded sitemap.xml!", "📥");
+      });
+
+      // -----------------------------------------------------------------------
+      // 10. ROBOTS.TXT MANAGER (TAB 4)
+      // -----------------------------------------------------------------------
+      const robotsViewer = document.getElementById("robotsViewer");
+
+      function getRobotsTxtDefault() {
+        return `# Robots.txt for DIVYA DRISHTI (Apke Sitare • Aapki Disha)\n# Domain: https://divyadrishtiastroai.in\n\nUser-agent: *\nAllow: /\nDisallow: /scratch/\nDisallow: /scripts/\nDisallow: /seo-admin.html\n\n# Search Engine Sitemaps\nSitemap: https://divyadrishtiastroai.in/sitemap.xml\n`;
+      }
+
+      function renderRobotsViewer() {
+        robotsViewer.textContent = getRobotsTxtDefault();
+      }
+
+      document.getElementById("btnCopyRobots").addEventListener("click", () => {
+        navigator.clipboard.writeText(robotsViewer.textContent).then(() => {
+          showToast("robots.txt copied to clipboard!", "📋");
+        });
+      });
+
+      document.getElementById("btnDownloadRobots").addEventListener("click", () => {
+        const blob = new Blob([robotsViewer.textContent], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "robots.txt";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Downloaded robots.txt!", "📥");
+      });
+
+      // -----------------------------------------------------------------------
+      // 11. AUTOMATION, EXPORT & CODE MODAL
+      // -----------------------------------------------------------------------
+      const codeModal = document.getElementById("codeModal");
+      const modalCloseBtn = document.getElementById("modalCloseBtn");
+      const modalCloseAction = document.getElementById("modalCloseAction");
+      const modalCopyBtn = document.getElementById("modalCopyBtn");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalCodeContent = document.getElementById("modalCodeContent");
+
+      function openModal(title, code) {
+        modalTitle.textContent = title;
+        modalCodeContent.textContent = code;
+        codeModal.classList.add("open");
+      }
+
+      function closeModal() {
+        codeModal.classList.remove("open");
+      }
+
+      modalCloseBtn.addEventListener("click", closeModal);
+      modalCloseAction.addEventListener("click", closeModal);
+      codeModal.addEventListener("click", (e) => {
+        if (e.target === codeModal) closeModal();
+      });
+
+      modalCopyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(modalCodeContent.textContent).then(() => {
+          showToast("Code copied to clipboard!", "📋");
+          closeModal();
+        });
+      });
+
+      // Copy Head Tags
+      document.getElementById("btnCopyHead").addEventListener("click", () => {
+        saveCurrentPage();
+        const p = catalog[currentIndex];
+        const tags = `<!-- Master SEO Tags: ${p.file} -->\n<title>${p.title}</title>\n<meta name="description" content="${p.description}">\n<meta name="keywords" content="${p.keywords}">\n<link rel="canonical" href="${p.canonical}">\n<meta name="robots" content="${p.robots}">\n\n<!-- Open Graph / WhatsApp -->\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Divya Drishti">\n<meta property="og:url" content="${p.canonical}">\n<meta property="og:title" content="${p.ogTitle || p.title}">\n<meta property="og:description" content="${p.ogDescription || p.description}">\n<meta property="og:image" content="${p.ogImage}">\n\n<!-- Twitter Cards -->\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="${p.ogTitle || p.title}">\n<meta name="twitter:description" content="${p.ogDescription || p.description}">\n<meta name="twitter:image" content="${p.ogImage}">`;
+        openModal(`HTML <head> Tags for ${p.file}`, tags);
+      });
+
+      // View JSON-LD Schema
+      document.getElementById("btnViewSchema").addEventListener("click", () => {
+        const p = catalog[currentIndex];
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": p.schemaType || "AstrologyService",
+          "name": p.title,
+          "url": p.canonical,
+          "description": p.description,
+          "image": p.ogImage,
+          "provider": {
+            "@type": "AstrologyService",
+            "name": "Divya Drishti",
+            "founder": "Shastri Amit Kumar Sharma",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Jaipur",
+              "addressRegion": "Rajasthan",
+              "addressCountry": "IN"
+            }
+          }
+        };
+        const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n<\/script>`;
+        openModal(`JSON-LD Schema for ${p.file}`, scriptTag);
+      });
+
+      // Download Catalog JSON
+      document.getElementById("btnDownloadCatalogJson").addEventListener("click", () => {
+        const jsonStr = JSON.stringify(catalog, null, 2);
+        const blob = new Blob([jsonStr], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "seo-catalog.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast("Downloaded seo-catalog.json!", "📥");
+      });
+
+      // Copy PowerShell Sync Command
+      document.getElementById("btnCopySyncCmd").addEventListener("click", () => {
+        const cmd = "powershell -ExecutionPolicy Bypass -File .\\scripts\\apply-seo.ps1";
+        navigator.clipboard.writeText(cmd).then(() => {
+          showToast("PowerShell command copied! Paste and run in terminal.", "📋");
+        });
+      });
+
+      // Import JSON
+      const importJsonInput = document.getElementById("importJsonInput");
+      document.getElementById("btnImportJson").addEventListener("click", () => {
+        importJsonInput.click();
+      });
+
+      importJsonInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          try {
+            const parsed = JSON.parse(ev.target.result);
+            if (Array.isArray(parsed) && parsed.length > 0) {
+              catalog = parsed;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(catalog));
+              initData();
+              showToast(`Imported ${catalog.length} pages successfully!`, "📥");
+            } else {
+              alert("Invalid JSON format. Expected an array of page objects.");
+            }
+          } catch(err) {
+            alert("Error reading JSON file: " + err.message);
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // Reset All to Defaults
+      document.getElementById("btnResetAllDefaults").addEventListener("click", () => {
+        if (confirm("Are you sure you want to reset ALL 42 pages to default metadata? Any unsaved edits will be lost.")) {
+          localStorage.removeItem(STORAGE_KEY);
+          if (window.SEO_CATALOG) {
+            catalog = JSON.parse(JSON.stringify(window.SEO_CATALOG));
+          }
+          initData();
+          showToast("Reset all 42 pages to initial defaults!", "🔄");
+        }
+      });
+
+      // Navbar Sync / Export Button
+      document.getElementById("exportCodeBtn").addEventListener("click", () => {
+        switchTab("tab-sync");
+      });
+
+      // -----------------------------------------------------------------------
+      // 12. TOAST NOTIFICATION HELPER
+      // -----------------------------------------------------------------------
+      const toast = document.getElementById("toastNotification");
+      const toastMsg = document.getElementById("toastMsg");
+      const toastIcon = document.getElementById("toastIcon");
+      let toastTimer = null;
+
+      function showToast(message, icon = "✨") {
+        toastMsg.textContent = message;
+        toastIcon.textContent = icon;
+        toast.classList.add("show");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3200);
+      }
+
+      // Initialize Application
+      initData();
+
+    })();
+  </script>
+</body>
+</html>
