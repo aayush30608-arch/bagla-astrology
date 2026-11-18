@@ -8,8 +8,8 @@
   'use strict';
 
   const DEFAULT_PIN = "9829";
-  const PIN_ALIASES = ["9829", "98290", "admin", "admin123", "divya"];
-  const AUTH_KEY = "divya_seo_auth";
+  const AUTH_KEY = "divya_seo_session_authenticated";
+  const CUSTOM_PIN_KEY = "divya_admin_custom_pin";
   const STORAGE_KEY = "divya_seo_master_catalog";
   const DOMAIN = "https://divyadrishtiastroai.in";
 
@@ -19,7 +19,7 @@
   let activeTableFilter = "all";
 
   // ---------------------------------------------------------------------------
-  // 1. PIN AUTHENTICATION (FAIL-SAFE, UNIVERSAL)
+  // 1. STRICT PIN AUTHENTICATION
   // ---------------------------------------------------------------------------
   const authOverlay = document.getElementById("authOverlay");
   const adminPinInput = document.getElementById("adminPinInput");
@@ -27,14 +27,14 @@
   const authError = document.getElementById("authError");
   const lockBtn = document.getElementById("lockBtn");
   const eyeToggleBtn = document.getElementById("eyeToggleBtn");
-  const quickUnlockBtn = document.getElementById("quickUnlockBtn");
   const authForm = document.getElementById("authForm");
 
+  function getValidPin() {
+    return localStorage.getItem(CUSTOM_PIN_KEY) || DEFAULT_PIN;
+  }
+
   function isUserAuthenticated() {
-    return (
-      sessionStorage.getItem(AUTH_KEY) === "true" ||
-      localStorage.getItem(AUTH_KEY) === "true"
-    );
+    return sessionStorage.getItem(AUTH_KEY) === "true";
   }
 
   function checkAuth() {
@@ -50,24 +50,25 @@
 
   function grantAccess() {
     sessionStorage.setItem(AUTH_KEY, "true");
-    localStorage.setItem(AUTH_KEY, "true");
     if (authOverlay) authOverlay.classList.add("hidden");
     if (authError) authError.textContent = "";
-    showToast("प्रवेश स्वीकृत! Welcome to SEO Admin Panel", "&#128737;&#65039;");
+    showToast("सुरक्षा पिन स्वीकृत! Welcome to SEO Admin Panel", "&#128737;&#65039;");
   }
 
   function verifyPin() {
     const entered = (adminPinInput ? adminPinInput.value : "").trim();
-    if (PIN_ALIASES.indexOf(entered) !== -1) {
+    const targetPin = getValidPin();
+
+    if (entered && entered === targetPin) {
       grantAccess();
     } else {
       if (authError) {
-        authError.textContent = "गलत पिन (Invalid PIN)! कृपया 9829 दर्ज करें या '1-Click Login' दबाएं।";
+        authError.textContent = "गलत पिन (Incorrect PIN)! केवल अधिकृत एडमिन ही प्रवेश कर सकते हैं।";
       }
       if (adminPinInput) {
         adminPinInput.style.borderColor = "#EF4444";
+        adminPinInput.value = "";
         adminPinInput.focus();
-        adminPinInput.select();
         setTimeout(function() {
           adminPinInput.style.borderColor = "";
         }, 1500);
@@ -85,13 +86,6 @@
   if (unlockBtn) {
     unlockBtn.addEventListener("click", function(e) {
       e.preventDefault();
-      verifyPin();
-    });
-  }
-
-  if (quickUnlockBtn) {
-    quickUnlockBtn.addEventListener("click", function() {
-      if (adminPinInput) adminPinInput.value = DEFAULT_PIN;
       verifyPin();
     });
   }
@@ -121,12 +115,28 @@
   if (lockBtn) {
     lockBtn.addEventListener("click", function() {
       sessionStorage.removeItem(AUTH_KEY);
-      localStorage.removeItem(AUTH_KEY);
       if (adminPinInput) adminPinInput.value = "";
       if (authOverlay) authOverlay.classList.remove("hidden");
       setTimeout(function() {
         if (adminPinInput) adminPinInput.focus();
       }, 200);
+      showToast("एडमिन पैनल लॉक कर दिया गया है।", "&#128274;");
+    });
+  }
+
+  // Change PIN Feature in Settings Tab
+  const newPinInput = document.getElementById("newPinInput");
+  const btnSaveNewPin = document.getElementById("btnSaveNewPin");
+  if (btnSaveNewPin && newPinInput) {
+    btnSaveNewPin.addEventListener("click", function() {
+      const val = (newPinInput.value || "").trim();
+      if (val.length >= 4) {
+        localStorage.setItem(CUSTOM_PIN_KEY, val);
+        newPinInput.value = "";
+        showToast("नया सुरक्षा पिन सफलतापूर्वक सेव हो गया!", "&#128274;");
+      } else {
+        alert("कृपया कम से कम 4 अक्षरों या अंकों का नया पिन दर्ज करें।");
+      }
     });
   }
 

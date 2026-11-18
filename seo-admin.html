@@ -1331,55 +1331,28 @@
   </style>
 </head>
 <body>
-  <script>
-    function unlockAdminDirect() {
-      var overlay = document.getElementById('authOverlay');
-      if (overlay) {
-        overlay.style.display = 'none';
-        overlay.classList.add('hidden');
-      }
-      try {
-        localStorage.setItem('divya_seo_auth', 'true');
-        sessionStorage.setItem('divya_seo_auth', 'true');
-      } catch(e) {}
-    }
-    if (
-      location.search.indexOf('auth') !== -1 ||
-      location.search.indexOf('unlock') !== -1 ||
-      localStorage.getItem('divya_seo_auth') === 'true' ||
-      sessionStorage.getItem('divya_seo_auth') === 'true'
-    ) {
-      document.addEventListener('DOMContentLoaded', unlockAdminDirect);
-      unlockAdminDirect();
-    }
-  </script>
 
   <!-- ===================================================================== -->
   <!-- 1. AUTH PIN SECURITY MODAL OVERLAY -->
   <!-- ===================================================================== -->
   <div id="authOverlay">
     <div class="auth-card">
-      <button type="button" onclick="unlockAdminDirect()" style="position:absolute; top:12px; right:16px; background:none; border:none; color:var(--text-muted); font-size:24px; cursor:pointer; line-height:1;" title="Close / Bypass">&times;</button>
       <div class="auth-om">&#2384;</div>
       <h2 class="auth-title">DIVYA DRISHTI</h2>
-      <p class="auth-subtitle">SEO Control Center &bull; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2367;&#2344; &#2346;&#2381;&#2352;&#2350;&#2366;&#2339;&#2368;&#2325;&#2352;&#2339;</p>
+      <p class="auth-subtitle">SEO Control Center &bull; &#2327;&#2377;&#2346;&#2344;&#2368;&#2351; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2367;&#2344; &#2342;&#2352;&#2381;&#2332; &#2325;&#2352;&#2375;&#2306;</p>
       
       <form id="authForm" onsubmit="return false;">
         <div class="pin-box-wrapper">
-          <input type="password" id="adminPinInput" class="admin-pin-field" placeholder="पिन दर्ज करें (उदा. 9829)" autocomplete="current-password" autofocus>
+          <input type="password" id="adminPinInput" class="admin-pin-field" placeholder="&#2346;&#2367;&#2344; &#2342;&#2352;&#2381;&#2332; &#2325;&#2352;&#2375;&#2306; (Default: 9829)" autocomplete="current-password" autofocus required>
           <button type="button" class="eye-toggle-btn" id="eyeToggleBtn" title="Show / Hide PIN">&#128065;</button>
         </div>
 
-        <button type="submit" class="auth-btn" id="unlockBtn">&#128275; प्रवेश करें (Unlock Admin)</button>
-        
-        <button type="button" class="quick-unlock-btn" id="quickUnlockBtn">
-          <span>&#9889;</span> 1-Click Login (Auto PIN: 9829)
-        </button>
+        <button type="submit" class="auth-btn" id="unlockBtn">&#128274; &#2346;&#2381;&#2352;&#2357;&#2375;&#2358; &#2325;&#2352;&#2375;&#2306; (Unlock Admin)</button>
       </form>
 
       <div class="auth-error" id="authError"></div>
       <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 14px;">
-        Default Security PIN: <code style="color: var(--gold-amber); font-weight: bold;">9829</code>
+        &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2360;&#2370;&#2331;&#2344;&#2366;: &#2325;&#2375;&#2357;&#2354; &#2309;&#2347;&#2367;&#2325;&#2371;&#2340; &#2319;&#2337;&#2350;&#2367;&#2344; &#2361;&#2368; &#2357;&#2376;&#2343; &#2346;&#2367;&#2344; &#2342;&#2381;&#2357;&#2366;&#2352;&#2366; &#2346;&#2381;&#2352;&#2357;&#2375;&#2358; &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2378;&#2306;&#2308;
       </p>
     </div>
   </div>
@@ -1869,7 +1842,18 @@
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px;">
-          <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
+          <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold); margin-bottom: 20px;">
+          <h4 style="color: var(--gold-light); margin-bottom: 8px; font-size: 15px;">&#128274; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2367;&#2344; &#2348;&#2342;&#2354;&#2375;&#2306; (Change Security PIN)</h4>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 12px;">
+            &#2310;&#2346; &#2309;&#2346;&#2344;&#2368; &#2346;&#2360;&#2306;&#2342; &#2325;&#2366; &#2325;&#2379;&#2312; &#2349;&#2368; &#2344;&#2351;&#2366; &#2346;&#2367;&#2344; &#2351;&#2366; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2360;&#2375;&#2335; &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2378;&#2306; (&#2357;&#2352;&#2381;&#2340;&#2350;&#2366;&#2344; &#2337;&#2367;&#2347;&#2364;&#2377;&#2354;&#2381;&#2335;: 9829):
+          </p>
+          <div style="display: flex; gap: 10px; max-width: 440px;">
+            <input type="password" id="newPinInput" class="form-input" placeholder="&#2344;&#2351;&#2366; &#2346;&#2367;&#2344; &#2342;&#2352;&#2381;&#2332; &#2325;&#2352;&#2375;&#2306; (उदा. 9829 या नया कोड)">
+            <button class="btn btn-gold" id="btnSaveNewPin">&#2346;&#2367;&#2344; &#2360;&#2375;&#2357; &#2325;&#2352;&#2375;&#2306;</button>
+          </div>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-gold);">
             <h4 style="color: var(--gold-light); margin-bottom: 8px; font-size: 15px;">Step 1: Export Catalog JSON</h4>
             <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">
               Download the current SEO catalog as JSON or save your edits in browser storage.
@@ -1949,7 +1933,7 @@
   <!-- ===================================================================== -->
   <!-- 7. MASTER CATALOG & ADMIN APPLICATION SCRIPTS                        -->
   <!-- ===================================================================== -->
-  <script src="js/seo-catalog.js?v=2.3"></script>
-  <script src="js/seo-admin.js?v=2.3"></script>
+  <script src="js/seo-catalog.js?v=3.0"></script>
+  <script src="js/seo-admin.js?v=3.0"></script>
 </body>
 </html>
