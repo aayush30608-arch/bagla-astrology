@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEO Control Center | Divya Drishti (दिव्या दृष्टि)</title>
+  <title>SEO Admin Panel | Divya Drishti (दिव्या दृष्टि)</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/png" href="images/logo.png">
   
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Master SEO Catalog Data -->
+  <!-- Master SEO Catalog Script (with embedded fallback) -->
   <script src="js/seo-catalog.js"></script>
 
   <style>
@@ -64,7 +64,7 @@
     #authOverlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 10, 18, 0.95);
+      background: rgba(4, 10, 18, 0.96);
       backdrop-filter: blur(16px);
       z-index: 99999;
       display: flex;
@@ -93,7 +93,7 @@
     }
 
     .auth-om {
-      font-size: 40px;
+      font-size: 42px;
       color: var(--gold);
       margin-bottom: 12px;
       text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
@@ -333,8 +333,8 @@
     /* Main Container */
     .main-content {
       flex: 1;
-      padding: 24px;
-      max-width: 1600px;
+      padding: 20px 24px;
+      max-width: 1750px;
       width: 100%;
       margin: 0 auto;
     }
@@ -356,30 +356,30 @@
     /* KPI Summary Cards */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
     .kpi-card {
       background: var(--bg-card);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius);
-      padding: 18px 20px;
+      padding: 16px 18px;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .kpi-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      font-size: 20px;
       background: rgba(212, 175, 55, 0.1);
       color: var(--gold);
       border: 1px solid rgba(212, 175, 55, 0.2);
@@ -391,14 +391,8 @@
       border-color: rgba(16, 185, 129, 0.25);
     }
 
-    .kpi-icon.ruby {
-      background: var(--ruby-bg);
-      color: var(--ruby-light);
-      border-color: rgba(225, 29, 72, 0.25);
-    }
-
     .kpi-val {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 800;
       color: #FFFFFF;
       font-family: 'JetBrains Mono', monospace;
@@ -406,21 +400,32 @@
     }
 
     .kpi-label {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
-      margin-top: 3px;
+      margin-top: 2px;
     }
 
-    /* Tab 1 Layout: 2-Column Editor + Previews */
-    .editor-layout {
+    /* ======================================================================= */
+    /* 3-COLUMN WORKSPACE: SIDEBAR LIST | FORM EDITOR | PREVIEWS               */
+    /* ======================================================================= */
+    .editor-3col-layout {
       display: grid;
-      grid-template-columns: 1.2fr 0.95fr;
-      gap: 24px;
+      grid-template-columns: 350px 1.25fr 1fr;
+      gap: 20px;
       align-items: start;
     }
 
-    @media (max-width: 1080px) {
-      .editor-layout {
+    @media (max-width: 1450px) {
+      .editor-3col-layout {
+        grid-template-columns: 320px 1fr;
+      }
+      .previews-col {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .editor-3col-layout {
         grid-template-columns: 1fr;
       }
     }
@@ -429,7 +434,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 22px;
       box-shadow: var(--shadow);
     }
 
@@ -437,117 +442,237 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
-      padding-bottom: 14px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
     }
 
     .panel-title {
       font-family: 'Cinzel', serif;
-      font-size: 18px;
+      font-size: 17px;
       color: var(--gold-light);
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    /* Page Switcher Header */
-    .page-select-bar {
+    /* ----------------------------------------------------------------------- */
+    /* LEFT SIDEBAR: ALL WEB PAGES LIST DIRECTORY                              */
+    /* ----------------------------------------------------------------------- */
+    .pages-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin-bottom: 22px;
-      background: var(--bg-card-subtle);
-      padding: 16px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      gap: 14px;
+      position: sticky;
+      top: 80px;
+      max-height: calc(100vh - 100px);
     }
 
-    .category-pills {
+    .sidebar-header {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sidebar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .pages-count-badge {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .sidebar-search-box {
+      position: relative;
+    }
+
+    .sidebar-search-input {
+      width: 100%;
+      background: #071424;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      padding: 8px 12px 8px 32px;
+      font-size: 12.5px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .sidebar-search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .sidebar-search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .sidebar-filter-pills {
+      display: flex;
+      gap: 6px;
       flex-wrap: wrap;
     }
 
-    .cat-pill {
+    .side-pill {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text-muted);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 3px 9px;
+      border-radius: 14px;
+      font-size: 11px;
       cursor: pointer;
       transition: all 0.15s;
     }
 
-    .cat-pill:hover, .cat-pill.active {
-      background: rgba(212, 175, 55, 0.15);
+    .side-pill:hover, .side-pill.active {
+      background: rgba(212, 175, 55, 0.2);
       border-color: var(--gold);
       color: var(--gold-light);
       font-weight: 600;
     }
 
-    .selector-row {
+    .pages-scroll-list {
       display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .page-dropdown {
+      flex-direction: column;
+      gap: 7px;
+      overflow-y: auto;
       flex: 1;
-      background: #071424;
-      border: 1.5px solid var(--border-gold);
-      color: var(--text-main);
-      padding: 11px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      outline: none;
-      cursor: pointer;
+      padding-right: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border-gold) transparent;
     }
 
-    .page-dropdown:focus {
-      border-color: var(--gold);
+    .pages-scroll-list::-webkit-scrollbar {
+      width: 5px;
+    }
+    .pages-scroll-list::-webkit-scrollbar-thumb {
+      background: var(--border-gold);
+      border-radius: 4px;
     }
 
-    .page-dropdown optgroup {
-      background: #0B192C;
-      color: var(--gold-amber);
-      font-weight: 700;
-    }
-
-    .page-dropdown option {
-      background: #071424;
-      color: #FFFFFF;
-      font-weight: normal;
-      padding: 6px;
-    }
-
-    .nav-arrow-btn {
-      width: 42px;
-      height: 42px;
+    .page-list-item {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: var(--radius-sm);
-      color: var(--text-main);
       cursor: pointer;
-      transition: all 0.15s;
+      transition: all 0.15s ease;
+      text-align: left;
     }
 
-    .nav-arrow-btn:hover {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: var(--gold);
-      color: var(--gold);
+    .page-list-item:hover {
+      background: rgba(212, 175, 55, 0.06);
+      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateX(2px);
     }
+
+    .page-list-item.active {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.04) 100%);
+      border-color: var(--gold);
+      border-left: 3.5px solid var(--gold);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .pli-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pli-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .page-list-item.active .pli-title {
+      color: var(--gold-light);
+    }
+
+    .pli-slug {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+
+    .pli-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .pli-score {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 8px;
+    }
+
+    .pli-score.high { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pli-score.mid { background: var(--amber-bg); color: var(--gold-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pli-score.low { background: var(--ruby-bg); color: var(--ruby-light); border: 1px solid rgba(225, 29, 72, 0.3); }
+
+    .pli-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .pli-badge.core { background: rgba(59, 130, 246, 0.2); color: #93C5FD; }
+    .pli-badge.tools { background: rgba(168, 85, 247, 0.2); color: #D8B4FE; }
+    .pli-badge.rashi { background: rgba(245, 158, 11, 0.2); color: #FCD34D; }
+    .pli-badge.services { background: rgba(236, 72, 153, 0.2); color: #F9A8D4; }
 
     /* Form Fields */
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-label-row {
@@ -613,7 +738,7 @@
       border-radius: var(--radius-sm);
       color: var(--text-main);
       padding: 10px 14px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-family: inherit;
       outline: none;
       transition: all 0.2s;
@@ -676,8 +801,8 @@
       background: linear-gradient(145deg, #10243C 0%, #0A192C 100%);
       border: 1px solid var(--border-gold);
       border-radius: var(--radius);
-      padding: 20px;
-      margin-bottom: 20px;
+      padding: 18px;
+      margin-bottom: 18px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
@@ -685,12 +810,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .score-circle {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -712,7 +837,7 @@
     }
 
     .score-num {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 800;
       color: #FFFFFF;
       line-height: 1;
@@ -720,7 +845,7 @@
     }
 
     .score-sub {
-      font-size: 9px;
+      font-size: 8.5px;
       color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
@@ -728,34 +853,28 @@
     }
 
     .health-info h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--gold-light);
-      margin-bottom: 3px;
+      margin-bottom: 2px;
     }
 
     .health-info p {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
     }
 
     .checklist-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px 12px;
-    }
-
-    @media (max-width: 500px) {
-      .checklist-grid {
-        grid-template-columns: 1fr;
-      }
+      gap: 7px 10px;
     }
 
     .check-item {
       display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 11.5px;
       color: var(--text-muted);
     }
 
@@ -764,20 +883,20 @@
     }
 
     .check-icon {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
     }
 
     /* Google SERP Snippet Preview Mockup */
     .preview-box {
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .preview-header-tabs {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
     .preview-badge {
@@ -800,7 +919,7 @@
     }
 
     .view-btn {
-      padding: 3px 10px;
+      padding: 3px 9px;
       font-size: 11px;
       font-weight: 600;
       background: none;
@@ -819,14 +938,14 @@
       background: #FFFFFF;
       color: #202124;
       border-radius: 10px;
-      padding: 16px 18px;
+      padding: 15px 16px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.25);
       font-family: arial, sans-serif;
       transition: max-width 0.25s ease;
     }
 
     .serp-card.mobile {
-      max-width: 380px;
+      max-width: 360px;
       margin: 0 auto;
       border: 2px solid #E2E8F0;
     }
@@ -861,7 +980,7 @@
     }
 
     .serp-title {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 400;
       color: #1a0dab;
       line-height: 1.3;
@@ -875,7 +994,7 @@
     }
 
     .serp-snippet {
-      font-size: 13px;
+      font-size: 12.5px;
       color: #4d5156;
       line-height: 1.45;
       word-break: break-word;
@@ -887,13 +1006,12 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       overflow: hidden;
-      max-width: 440px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .social-img-wrap {
       width: 100%;
-      height: 180px;
+      height: 160px;
       background: #000;
       overflow: hidden;
       position: relative;
@@ -911,26 +1029,26 @@
     }
 
     .social-domain {
-      font-size: 11px;
+      font-size: 10.5px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: #8696A0;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
       gap: 5px;
     }
 
     .social-title {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #E9EDEF;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       line-height: 1.3;
     }
 
     .social-desc {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #8696A0;
       line-height: 1.4;
       display: -webkit-box;
@@ -1178,9 +1296,9 @@
   <!-- ===================================================================== -->
   <div id="authOverlay">
     <div class="auth-card">
-      <div class="auth-om">ॐ</div>
+      <div class="auth-om">&#2384;</div>
       <h2 class="auth-title">DIVYA DRISHTI</h2>
-      <p class="auth-subtitle">SEO Control Center • सुरक्षा पिन प्रमाणीकरण</p>
+      <p class="auth-subtitle">SEO Control Center &bull; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2367;&#2344; &#2346;&#2381;&#2352;&#2350;&#2366;&#2339;&#2368;&#2325;&#2352;&#2339;</p>
       
       <div class="pin-input-group">
         <input type="password" maxlength="1" class="pin-input" autofocus data-idx="0">
@@ -1189,10 +1307,10 @@
         <input type="password" maxlength="1" class="pin-input" data-idx="3">
       </div>
 
-      <button class="auth-btn" id="unlockBtn">प्रवेश करें (Unlock Admin)</button>
+      <button class="auth-btn" id="unlockBtn">&#2346;&#2381;&#2352;&#2357;&#2375;&#2358; &#2325;&#2352;&#2375;&#2306; (Unlock Admin)</button>
       <div class="auth-error" id="authError"></div>
-      <p style="font-size: 11px; color: var(--text-muted); margin-top: 16px;">
-        Default Security PIN: <code style="color: var(--gold-amber);">9829</code>
+      <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 16px;">
+        Default Security PIN: <code style="color: var(--gold-amber); font-weight: bold;">9829</code>
       </p>
     </div>
   </div>
@@ -1208,22 +1326,22 @@
           DIVYA DRISHTI
           <span class="brand-badge">SEO ADMIN PANEL</span>
         </h1>
-        <p>42 Pages Master Catalog • https://divyadrishtiastroai.in</p>
+        <p>42 Pages Master Directory &bull; https://divyadrishtiastroai.in</p>
       </div>
     </div>
 
     <div class="nav-actions">
       <button class="btn btn-outline" id="saveLocalBtn" title="Save changes to browser memory">
-        <span>💾</span> Save All
+        <span>&#128190;</span> Save All
       </button>
-      <button class="btn btn-gold" id="exportCodeBtn" title="Get <head> tags or sync script">
-        <span>⚡</span> Sync / Export
+      <button class="btn btn-gold" id="exportCodeBtn" title="Get head tags or sync script">
+        <span>&#9889;</span> Sync / Export
       </button>
       <a href="index.html" target="_blank" class="btn btn-outline" title="Open live website homepage">
-        <span>🌐</span> View Site
+        <span>&#127760;</span> View Site
       </a>
       <button class="btn btn-danger" id="lockBtn" title="Lock SEO panel">
-        <span>🔒</span> Lock
+        <span>&#128274;</span> Lock
       </button>
     </div>
   </header>
@@ -1233,21 +1351,21 @@
   <!-- ===================================================================== -->
   <nav class="tab-bar">
     <button class="tab-btn active" data-tab="tab-editor">
-      <span>⚡</span> Page SEO Editor
+      <span>&#9889;</span> Page Directory &amp; SEO Editor
       <span class="tab-badge" id="editorBadge">42</span>
     </button>
     <button class="tab-btn" data-tab="tab-audit">
-      <span>📊</span> Site Audit Matrix
+      <span>&#128202;</span> Site-Wide Audit Matrix
       <span class="tab-badge" id="auditBadge">42</span>
     </button>
     <button class="tab-btn" data-tab="tab-sitemap">
-      <span>🗺️</span> XML Sitemap Manager
+      <span>&#128506;&#65039;</span> XML Sitemap Manager
     </button>
     <button class="tab-btn" data-tab="tab-robots">
-      <span>🤖</span> Robots.txt Manager
+      <span>&#129302;</span> Robots.txt Manager
     </button>
     <button class="tab-btn" data-tab="tab-sync">
-      <span>🔄</span> Automation & Sync Engine
+      <span>&#128260;</span> Automation &amp; Sync Engine
     </button>
   </nav>
 
@@ -1259,70 +1377,90 @@
     <!-- KPI Metrics Strip -->
     <div class="kpi-grid">
       <div class="kpi-card">
-        <div class="kpi-icon">📄</div>
+        <div class="kpi-icon">&#128196;</div>
         <div>
           <div class="kpi-val" id="kpiTotalPages">42</div>
           <div class="kpi-label">Total Indexed Pages</div>
         </div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon green">⭐</div>
+        <div class="kpi-icon green">&#11088;</div>
         <div>
           <div class="kpi-val" id="kpiAvgScore">92</div>
           <div class="kpi-label">Average SEO Health</div>
         </div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon">🗺️</div>
+        <div class="kpi-icon">&#128506;&#65039;</div>
         <div>
           <div class="kpi-val">100%</div>
           <div class="kpi-label">Sitemap Coverage</div>
         </div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-icon ruby">🛡️</div>
+        <div class="kpi-icon ruby">&#128737;&#65039;</div>
         <div>
           <div class="kpi-val">Secured</div>
-          <div class="kpi-label">PIN Protection: Active</div>
+          <div class="kpi-label">PIN: 9829 (Active)</div>
         </div>
       </div>
     </div>
 
     <!-- ----------------------------------------------------------------- -->
-    <!-- TAB 1: PAGE SEO EDITOR & LIVE PREVIEWS -->
+    <!-- TAB 1: 3-COLUMN WORKSPACE: PAGES LIST | FORM EDITOR | PREVIEWS    -->
     <!-- ----------------------------------------------------------------- -->
     <section class="tab-pane active" id="tab-editor">
       
-      <!-- Page Selector Bar -->
-      <div class="page-select-bar">
-        <div class="category-pills">
-          <button class="cat-pill active" data-filter="all">All Pages (42)</button>
-          <button class="cat-pill" data-filter="core">Core Pages (5)</button>
-          <button class="cat-pill" data-filter="tools">Astrology Tools (10)</button>
-          <button class="cat-pill" data-filter="rashi">Rashifal (12)</button>
-          <button class="cat-pill" data-filter="services">Puja Services (15)</button>
-        </div>
-        <div class="selector-row">
-          <button class="nav-arrow-btn" id="prevPageBtn" title="Previous Page">◀</button>
-          <select class="page-dropdown" id="pageDropdown"></select>
-          <button class="nav-arrow-btn" id="nextPageBtn" title="Next Page">▶</button>
-          <a href="#" target="_blank" class="btn btn-outline" id="livePageLink" title="Open this file in browser">
-            <span>↗</span> Open
-          </a>
-        </div>
-      </div>
-
-      <div class="editor-layout">
+      <div class="editor-3col-layout">
         
-        <!-- Left: Form Controls -->
+        <!-- =============================================================== -->
+        <!-- COLUMN 1: EVERY WEB PAGE DIRECTORY LIST (42 PAGES)             -->
+        <!-- =============================================================== -->
+        <aside class="pages-sidebar">
+          <div class="sidebar-header">
+            <h3 class="sidebar-title">
+              <span>&#128196;</span> Web Pages List
+            </h3>
+            <span class="pages-count-badge" id="sidebarCount">42 Pages</span>
+          </div>
+
+          <!-- Quick Search Filter -->
+          <div class="sidebar-search-box">
+            <span class="sidebar-search-icon">&#128269;</span>
+            <input type="text" class="sidebar-search-input" id="sidebarSearch" placeholder="Filter 42 pages...">
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="sidebar-filter-pills">
+            <button class="side-pill active" data-side-filter="all">All (42)</button>
+            <button class="side-pill" data-side-filter="core">Core (5)</button>
+            <button class="side-pill" data-side-filter="tools">Tools (10)</button>
+            <button class="side-pill" data-side-filter="rashi">Rashis (12)</button>
+            <button class="side-pill" data-side-filter="services">Puja (15)</button>
+          </div>
+
+          <!-- Scrollable Pages List -->
+          <div class="pages-scroll-list" id="pagesScrollList">
+            <!-- Dynamically populated with all 42 pages -->
+          </div>
+        </aside>
+
+        <!-- =============================================================== -->
+        <!-- COLUMN 2: ACTIVE PAGE METADATA EDITOR                          -->
+        <!-- =============================================================== -->
         <div class="panel-card">
           <div class="panel-header">
-            <h2 class="panel-title">
-              <span>✍️</span> Edit Metadata for <span id="currentEditingFileName" style="color: var(--gold);">index.html</span>
-            </h2>
+            <div>
+              <h2 class="panel-title">
+                <span>&#9997;&#65039;</span> Editing: <span id="currentEditingFileName" style="color: var(--gold); margin-left: 4px;">index.html</span>
+              </h2>
+              <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;" id="currentEditingPageName">Home (मुख्य पृष्ठ)</p>
+            </div>
             <div style="display:flex; gap: 8px;">
-              <button class="btn btn-outline" id="resetCurrentBtn" style="padding: 6px 12px; font-size: 12px;">Reset</button>
-              <button class="btn btn-gold" id="savePageBtn" style="padding: 6px 12px; font-size: 12px;">Save Page</button>
+              <a href="#" target="_blank" class="btn btn-outline" id="livePageLink" style="padding: 6px 12px; font-size: 12px;" title="Open this file in browser">
+                <span>&#8599;</span> View Page
+              </a>
+              <button class="btn btn-gold" id="savePageBtn" style="padding: 6px 12px; font-size: 12px;">Save</button>
             </div>
           </div>
 
@@ -1330,7 +1468,7 @@
           <div class="form-group">
             <div class="form-label-row">
               <label class="form-label" for="fieldTitle">
-                <span>🏷️</span> Meta Title (Title Tag)
+                <span>&#127991;&#65039;</span> Meta Title (Title Tag)
               </label>
               <span class="char-counter" id="titleCounter">0 / 60 chars</span>
             </div>
@@ -1344,7 +1482,7 @@
           <div class="form-group">
             <div class="form-label-row">
               <label class="form-label" for="fieldDesc">
-                <span>📝</span> Meta Description
+                <span>&#128221;</span> Meta Description
               </label>
               <span class="char-counter" id="descCounter">0 / 160 chars</span>
             </div>
@@ -1358,7 +1496,7 @@
           <div class="form-group">
             <div class="form-label-row">
               <label class="form-label" for="fieldKeywords">
-                <span>🔑</span> Focus Keywords (Comma-separated)
+                <span>&#128273;</span> Focus Keywords (Comma-separated)
               </label>
             </div>
             <input type="text" class="form-input" id="fieldKeywords" placeholder="Divya Drishti, Vedic Astrology, Kundli, Shastri Amit Kumar Sharma">
@@ -1368,13 +1506,13 @@
           <div class="form-grid-2">
             <div class="form-group">
               <div class="form-label-row">
-                <label class="form-label" for="fieldCanonical">🔗 Canonical URL</label>
+                <label class="form-label" for="fieldCanonical">&#128279; Canonical URL</label>
               </div>
               <input type="url" class="form-input" id="fieldCanonical" placeholder="https://divyadrishtiastroai.in/">
             </div>
             <div class="form-group">
               <div class="form-label-row">
-                <label class="form-label" for="fieldRobots">🤖 Robots Directive</label>
+                <label class="form-label" for="fieldRobots">&#129302; Robots Directive</label>
               </div>
               <select class="form-select" id="fieldRobots">
                 <option value="index, follow">index, follow (Standard)</option>
@@ -1389,7 +1527,7 @@
           <div class="form-grid-2">
             <div class="form-group">
               <div class="form-label-row">
-                <label class="form-label" for="fieldSchema">🧩 Schema.org Type</label>
+                <label class="form-label" for="fieldSchema">&#129513; Schema.org Type</label>
               </div>
               <select class="form-select" id="fieldSchema">
                 <option value="AstrologyService">AstrologyService (Vedic Astrology)</option>
@@ -1403,7 +1541,7 @@
             </div>
             <div class="form-group">
               <div class="form-label-row">
-                <label class="form-label" for="fieldPriority">⭐ Sitemap Priority</label>
+                <label class="form-label" for="fieldPriority">&#11088; Sitemap Priority</label>
               </div>
               <select class="form-select" id="fieldPriority">
                 <option value="1.00">1.00 (Highest - Homepage)</option>
@@ -1418,8 +1556,8 @@
           <!-- Open Graph & Social Media Card -->
           <div style="margin-top: 10px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.1);">
             <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span style="font-weight: 700; font-size: 14px; color: var(--gold-light);">
-                🌐 Open Graph & Social Cards
+              <span style="font-weight: 700; font-size: 13.5px; color: var(--gold-light);">
+                &#127760; Open Graph &amp; Social Cards (WhatsApp / FB)
               </span>
               <button class="btn btn-outline" id="syncOgBtn" style="padding: 4px 10px; font-size: 11px;">
                 Mirror from Meta
@@ -1453,19 +1591,24 @@
           </div>
 
           <!-- Bottom Action Buttons -->
-          <div style="display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;">
+          <div style="display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;">
             <button class="btn btn-gold" id="btnCopyHead" style="flex: 1;">
-              <span>📋</span> Copy Full &lt;head&gt; SEO Code
+              <span>&#128203;</span> Copy Full &lt;head&gt; Code
             </button>
             <button class="btn btn-outline" id="btnViewSchema">
-              <span>🧩</span> View JSON-LD Schema
+              <span>&#129513;</span> View JSON-LD
+            </button>
+            <button class="btn btn-outline" id="resetCurrentBtn">
+              <span>&#128260;</span> Reset
             </button>
           </div>
 
         </div>
 
-        <!-- Right: Real-time Live Previews & Scoring -->
-        <div>
+        <!-- =============================================================== -->
+        <!-- COLUMN 3: REAL-TIME LIVE PREVIEWS & SCORE                      -->
+        <!-- =============================================================== -->
+        <div class="previews-col">
           
           <!-- Live SEO Score Gauge -->
           <div class="health-widget">
@@ -1483,22 +1626,22 @@
             <!-- Health Checklist -->
             <div class="checklist-grid">
               <div class="check-item" id="checkTitle">
-                <span class="check-icon">✓</span> Title Length (50-60 ch)
+                <span class="check-icon">&#10003;</span> Title (50-60 ch)
               </div>
               <div class="check-item" id="checkDesc">
-                <span class="check-icon">✓</span> Description (130-160 ch)
+                <span class="check-icon">&#10003;</span> Description (130-160 ch)
               </div>
               <div class="check-item" id="checkKeywords">
-                <span class="check-icon">✓</span> Keywords Defined
+                <span class="check-icon">&#10003;</span> Keywords
               </div>
               <div class="check-item" id="checkCanonical">
-                <span class="check-icon">✓</span> Canonical URL Valid
+                <span class="check-icon">&#10003;</span> Canonical URL
               </div>
               <div class="check-item" id="checkOg">
-                <span class="check-icon">✓</span> OG Image Configured
+                <span class="check-icon">&#10003;</span> OG Image
               </div>
               <div class="check-item" id="checkSchema">
-                <span class="check-icon">✓</span> JSON-LD Schema Ready
+                <span class="check-icon">&#10003;</span> JSON-LD Schema
               </div>
             </div>
           </div>
@@ -1507,7 +1650,7 @@
           <div class="preview-box">
             <div class="preview-header-tabs">
               <div class="preview-badge">
-                <span>🔍</span> Google SERP Preview
+                <span>&#128269;</span> Google SERP Preview
               </div>
               <div class="view-toggle">
                 <button class="view-btn active" id="viewDesktopBtn">Desktop</button>
@@ -1534,7 +1677,7 @@
           <div class="preview-box">
             <div class="preview-header-tabs">
               <div class="preview-badge">
-                <span>💬</span> WhatsApp / Social Share Card
+                <span>&#128172;</span> WhatsApp / Social Share Card
               </div>
             </div>
 
@@ -1544,7 +1687,7 @@
               </div>
               <div class="social-body">
                 <div class="social-domain">
-                  <span>🔒</span> DIVYADRISHTIASTROAI.IN
+                  <span>&#128274;</span> DIVYADRISHTIASTROAI.IN
                 </div>
                 <div class="social-title" id="socialTitle">
                   Online Kundali &amp; Janam Kundli Analysis | Divya Drishti
@@ -1568,7 +1711,7 @@
       <div class="panel-card" style="margin-bottom: 24px;">
         <div class="table-controls-bar">
           <div class="search-box">
-            <span class="search-icon">🔍</span>
+            <span class="search-icon">&#128269;</span>
             <input type="text" class="search-input" id="tableSearch" placeholder="Search 42 pages by name, file, or keyword...">
           </div>
           <div class="filter-group">
@@ -1607,7 +1750,7 @@
       <div class="panel-card">
         <div class="panel-header">
           <h2 class="panel-title">
-            <span>🗺️</span> XML Sitemap (sitemap.xml)
+            <span>&#128506;&#65039;</span> XML Sitemap (sitemap.xml)
           </h2>
           <div style="display:flex; gap: 8px;">
             <button class="btn btn-outline" id="btnCopySitemap">Copy XML</button>
@@ -1628,7 +1771,7 @@
       <div class="panel-card">
         <div class="panel-header">
           <h2 class="panel-title">
-            <span>🤖</span> Search Engine Robots (robots.txt)
+            <span>&#129302;</span> Search Engine Robots (robots.txt)
           </h2>
           <div style="display:flex; gap: 8px;">
             <button class="btn btn-outline" id="btnCopyRobots">Copy robots.txt</button>
@@ -1649,7 +1792,7 @@
       <div class="panel-card" style="margin-bottom: 24px;">
         <div class="panel-header">
           <h2 class="panel-title">
-            <span>🔄</span> HTML Files Auto-Sync Engine
+            <span>&#128260;</span> HTML Files Auto-Sync Engine
           </h2>
         </div>
         <p style="font-size: 14px; color: var(--text-main); margin-bottom: 18px; line-height: 1.6;">
@@ -1663,7 +1806,7 @@
               Download the current SEO catalog as JSON or save your edits in browser storage.
             </p>
             <button class="btn btn-gold" id="btnDownloadCatalogJson">
-              <span>📥</span> Download seo-catalog.json
+              <span>&#128229;</span> Download seo-catalog.json
             </button>
           </div>
 
@@ -1676,7 +1819,7 @@
               powershell -ExecutionPolicy Bypass -File .\scripts\apply-seo.ps1
             </div>
             <button class="btn btn-outline" id="btnCopySyncCmd">
-              <span>📋</span> Copy PowerShell Command
+              <span>&#128203;</span> Copy PowerShell Command
             </button>
           </div>
 
@@ -1687,7 +1830,7 @@
             </p>
             <input type="file" id="importJsonInput" accept=".json" style="display: none;">
             <button class="btn btn-outline" id="btnImportJson">
-              <span>📤</span> Choose JSON to Import
+              <span>&#128228;</span> Choose JSON to Import
             </button>
           </div>
         </div>
@@ -1698,7 +1841,7 @@
             <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">Existing tracking scripts (Meta Pixel &amp; Google Tag Manager) are preserved untouched.</span>
           </div>
           <button class="btn btn-danger" id="btnResetAllDefaults">
-            <span>⚠️</span> Reset All 42 Pages to Defaults
+            <span>&#9888;&#65039;</span> Reset All 42 Pages to Defaults
           </button>
         </div>
 
@@ -1730,14 +1873,816 @@
   <!-- 6. TOAST NOTIFICATION -->
   <!-- ===================================================================== -->
   <div id="toastNotification">
-    <span id="toastIcon">✨</span>
+    <span id="toastIcon">&#10024;</span>
     <span id="toastMsg">Changes saved successfully!</span>
   </div>
 
   <!-- ===================================================================== -->
-  <!-- 7. APPLICATION LOGIC -->
+  <!-- 7. APPLICATION LOGIC & EMBEDDED DEFAULT MASTER CATALOG                 -->
   <!-- ===================================================================== -->
   <script>
+    // Embedded Fallback Catalog to guarantee 100% offline & zero-dependency functionality
+    window.EMBEDDED_SEO_CATALOG = [
+    {
+        "id":  "index",
+        "file":  "index.html",
+        "name":  "Home (मुख्य पृष्ठ)",
+        "category":  "core",
+        "url":  "https://divyadrishtiastroai.in/",
+        "canonical":  "https://divyadrishtiastroai.in/",
+        "title":  "Online Kundali \u0026 Janam Kundli Analysis | Divya Drishti",
+        "description":  "Get personalized online kundali and Janam Kundli analysis with expert Vedic astrology guidance. Explore planetary positions, horoscope and life insights.",
+        "keywords":  "Divya Drishti, Apke Sitare Aapki Disha, Vedic Astrology, Kundli, Horoscope, Palmistry, Hasthrekha, Kundli Milan, Baglamukhi Anushthan, Jaipur Astrologer",
+        "ogTitle":  "Online Kundali \u0026 Janam Kundli Analysis | Divya Drishti",
+        "ogDescription":  "Get personalized online kundali and Janam Kundli analysis with expert Vedic astrology guidance. Explore planetary positions, horoscope and life insights.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "1.00",
+        "changefreq":  "daily",
+        "schemaType":  "AstrologyService"
+    },
+    {
+        "id":  "about",
+        "file":  "about.html",
+        "name":  "About Shastri Ji (परिचय)",
+        "category":  "core",
+        "url":  "https://divyadrishtiastroai.in/about.html",
+        "canonical":  "https://divyadrishtiastroai.in/about.html",
+        "title":  "About Shastri Amit Kumar Sharma | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Meet Shastri \u0026 Maa Baglamukhi Upasak Amit Kumar Sharma at Divya Drishti (Apke Sitare • Aapki Disha). Over 30 years of authentic Vedic astrology, palmistry, and sacred Anushthans in Jaipur.",
+        "keywords":  "Amit Kumar Sharma, Divya Drishti, Apke Sitare Aapki Disha, Shastri Amit Kumar Sharma, Maa Baglamukhi Upasak Jaipur, Baglamukhi Hawan Jaipur, Vedic Astrology",
+        "ogTitle":  "About Shastri Amit Kumar Sharma | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Meet Shastri \u0026 Maa Baglamukhi Upasak Amit Kumar Sharma at Divya Drishti (Apke Sitare • Aapki Disha). Over 30 years of authentic Vedic astrology, palmistry, and sacred Anushthans in Jaipur.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "weekly",
+        "schemaType":  "AboutPage"
+    },
+    {
+        "id":  "contact",
+        "file":  "contact.html",
+        "name":  "Contact \u0026 Sanctuary (सम्पर्क)",
+        "category":  "core",
+        "url":  "https://divyadrishtiastroai.in/contact.html",
+        "canonical":  "https://divyadrishtiastroai.in/contact.html",
+        "title":  "Contact \u0026 Sanctuary Consultations | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Connect with Shastri \u0026 Maa Baglamukhi Upasak Amit Kumar Sharma at Divya Drishti (Jaipur). Schedule Janam Kundli analysis, palmistry, or sacred Baglamukhi Hawan consultations via phone or WhatsApp.",
+        "keywords":  "Contact Divya Drishti, Shastri Amit Kumar Sharma phone, Astrologer Jaipur WhatsApp, Baglamukhi Hawan Jaipur contact, Book Kundli consultation",
+        "ogTitle":  "Contact \u0026 Sanctuary Consultations | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Connect with Shastri \u0026 Maa Baglamukhi Upasak Amit Kumar Sharma at Divya Drishti (Jaipur). Schedule Janam Kundli analysis, palmistry, or sacred Baglamukhi Hawan consultations via phone or WhatsApp.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "weekly",
+        "schemaType":  "ContactPage"
+    },
+    {
+        "id":  "services",
+        "file":  "services.html",
+        "name":  "All Services (समस्त सेवाएं)",
+        "category":  "core",
+        "url":  "https://divyadrishtiastroai.in/services.html",
+        "canonical":  "https://divyadrishtiastroai.in/services.html",
+        "title":  "वैदिक मांगलिक सेवाएं, ऑफलाइन व ऑनलाइन ई-अनुष्ठान | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा ऑफलाइन मांगलिक कार्य (गृह प्रवेश, विवाह, रामायण पाठ, मंगल पाठ, रुद्राभिषेक, सत्यनारायण कथा) एवं ऑनलाइन ई-अनुष्ठान (बगलामुखी, महामृत्युंजय)।",
+        "keywords":  "Divya Drishti, Shastri Amit Kumar Sharma, Griha Pravesh, Vivah Sanskar, Akhand Ramayan, Mangal Path, Rudrabhishek, Satyanarayan Katha, Grah Shanti, Mool Shanti, Sundarkand, Baglamukhi Online, Mahamrityunjaya Online",
+        "ogTitle":  "वैदिक मांगलिक सेवाएं, ऑफलाइन व ऑनलाइन ई-अनुष्ठान | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा ऑफलाइन मांगलिक कार्य (गृह प्रवेश, विवाह, रामायण पाठ, मंगल पाठ, रुद्राभिषेक, सत्यनारायण कथा) एवं ऑनलाइन ई-अनुष्ठान (बगलामुखी, महामृत्युंजय)।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "weekly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "reviews",
+        "file":  "reviews.html",
+        "name":  "Client Reviews (अनुभव व समीक्षाएं)",
+        "category":  "core",
+        "url":  "https://divyadrishtiastroai.in/reviews.html",
+        "canonical":  "https://divyadrishtiastroai.in/reviews.html",
+        "title":  "Devotee Reviews \u0026 Experiences | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Read authentic devotee reviews and testimonials for Shastri Amit Kumar Sharma at Divya Drishti (Apke Sitare • Aapki Disha). Over three decades of trusted Vedic astrology, palmistry, and Mata Baglamukhi Anushthans in Jaipur. Share your review.",
+        "keywords":  "Divya Drishti Reviews, Shastri Amit Kumar Sharma Reviews, Baglamukhi Anushthan Testimonials, Kundli Astrologer Jaipur Feedback, Devotee Reviews",
+        "ogTitle":  "Devotee Reviews \u0026 Experiences | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Read authentic devotee reviews and testimonials for Shastri Amit Kumar Sharma at Divya Drishti (Apke Sitare • Aapki Disha). Over three decades of trusted Vedic astrology, palmistry, and Mata Baglamukhi Anushthans in Jaipur. Share your review.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "weekly",
+        "schemaType":  "Review"
+    },
+    {
+        "id":  "free-kundli",
+        "file":  "free-kundli.html",
+        "name":  "Free Kundli Generator (मुफ्त कुंडली)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/free-kundli.html",
+        "canonical":  "https://divyadrishtiastroai.in/free-kundli.html",
+        "title":  "निःशुल्क ऑनलाइन जन्म कुंडली एवं लग्न चक्र कैलकुलेटर | Free Kundli \u0026 Lagna Chart | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - अपनी जन्म तिथि, समय और स्थान डालकर मुफ्त में अपनी संपूर्ण वैदिक लग्न कुंडली (Lagna Chart), नवमांश चक्र (D9) एवं ग्रह स्थिति सारणी प्राप्त करें।",
+        "keywords":  "Free Kundli Online, Lagna Chart Generator, North Indian Kundli, Janam Kundli Calculator, Shastri Amit Kumar Sharma, Divya Drishti, मुफ्त जन्म कुंडली, लग्न चक्र",
+        "ogTitle":  "निःशुल्क ऑनलाइन जन्म कुंडली एवं लग्न चक्र कैलकुलेटर | Free Kundli \u0026 Lagna Chart | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - अपनी जन्म तिथि, समय और स्थान डालकर मुफ्त में अपनी संपूर्ण वैदिक लग्न कुंडली (Lagna Chart), नवमांश चक्र (D9) एवं ग्रह स्थिति सारणी प्राप्त करें।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "kundli",
+        "file":  "kundli.html",
+        "name":  "Janam Kundli Online (ऑनलाइन जन्म कुंडली)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/kundli.html",
+        "canonical":  "https://divyadrishtiastroai.in/kundli.html",
+        "title":  "Janam Kundli \u0026 Birth Chart Analysis | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Authentic Janam Kundli \u0026 Vedic Birth Chart analysis by Shastri Amit Kumar Sharma. Exhaustive 12 Bhava decoding, D9 Navamsha, Mahadasha, and ethical remedies in Jaipur.",
+        "keywords":  "Janam Kundli, Vedic Birth Chart, Kundli Reading Jaipur, Shastri Amit Kumar Sharma, Navamsha Chart, Mahadasha Analysis, Divya Drishti",
+        "ogTitle":  "Janam Kundli \u0026 Birth Chart Analysis | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Authentic Janam Kundli \u0026 Vedic Birth Chart analysis by Shastri Amit Kumar Sharma. Exhaustive 12 Bhava decoding, D9 Navamsha, Mahadasha, and ethical remedies in Jaipur.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "kundli-milan",
+        "file":  "kundli-milan.html",
+        "name":  "Kundli Milan / Matchmaking (कुंडली मिलान)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/kundli-milan.html",
+        "canonical":  "https://divyadrishtiastroai.in/kundli-milan.html",
+        "title":  "Kundli Milan \u0026 Marriage Compatibility | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Authentic 36 Guna Ashtakoot Kundli Milan and Mangal Dosha verification by Shastri Amit Kumar Sharma. Over 30 years of ethical matrimonial matching in Jaipur.",
+        "keywords":  "Kundli Milan, Gun Milan, Marriage Compatibility Jaipur, Shastri Amit Kumar Sharma, Manglik Dosha, Nadi Dosha, Divya Drishti",
+        "ogTitle":  "Kundli Milan \u0026 Marriage Compatibility | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Authentic 36 Guna Ashtakoot Kundli Milan and Mangal Dosha verification by Shastri Amit Kumar Sharma. Over 30 years of ethical matrimonial matching in Jaipur.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "horoscope",
+        "file":  "horoscope.html",
+        "name":  "Daily Horoscope / Rashifal (दैनिक राशिफल)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/horoscope.html",
+        "canonical":  "https://divyadrishtiastroai.in/horoscope.html",
+        "title":  "Daily Rashifal \u0026 12 Zodiac Guide | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Explore daily Vedic Rashifal and 12 Zodiac sign forecasts with Divya Drishti. Career, love, health predictions and astrological guidance by Shastri Amit Kumar Sharma.",
+        "keywords":  "Daily Rashifal, Vedic Horoscope, 12 Rashi, Zodiac Signs, Today Horoscope Jaipur, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "Daily Rashifal \u0026 12 Zodiac Guide | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Explore daily Vedic Rashifal and 12 Zodiac sign forecasts with Divya Drishti. Career, love, health predictions and astrological guidance by Shastri Amit Kumar Sharma.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "drishti-ai",
+        "file":  "drishti-ai.html",
+        "name":  "Drishti AI Astrologer (दृष्टि AI सहेली)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/drishti-ai.html",
+        "canonical":  "https://divyadrishtiastroai.in/drishti-ai.html",
+        "title":  "दृष्टि (Drishti) AI ज्योतिष सहेली — DIVYA DRISHTI (Apke Sitare • Aapki Disha)",
+        "description":  "दृष्टि (Drishti) — भारत की पहली समर्पित वैदिक AI ज्योतिष सहेली। अपने करियर, सही निवेश के समय, लव लाइफ, भविष्य की परेशानियां या कुंडली के उपाय प्रेमपूर्वक पूछें।",
+        "keywords":  "Divya Drishti, Vedic Astrology, Kundli, Shastri Amit Kumar Sharma, Jaipur",
+        "ogTitle":  "दृष्टि (Drishti) AI ज्योतिष सहेली — DIVYA DRISHTI (Apke Sitare • Aapki Disha)",
+        "ogDescription":  "दृष्टि (Drishti) — भारत की पहली समर्पित वैदिक AI ज्योतिष सहेली। अपने करियर, सही निवेश के समय, लव लाइफ, भविष्य की परेशानियां या कुंडली के उपाय प्रेमपूर्वक पूछें।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "palmistry",
+        "file":  "palmistry.html",
+        "name":  "Hastarekha / Palmistry (हस्तरेखा विश्लेषण)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/palmistry.html",
+        "canonical":  "https://divyadrishtiastroai.in/palmistry.html",
+        "title":  "Hasthrekha (Palmistry Consultation) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Master Hasthrekha (Palmistry) analysis by Shastri Amit Kumar Sharma. Over 30 years of traditional palm reading in Jaipur. Life, Head, Heart, and Fate lines decoding.",
+        "keywords":  "Hasthrekha, Palmistry Jaipur, Palm Reading, Shastri Amit Kumar Sharma, Hand Lines Reading, Fate Line, Life Line, Divya Drishti",
+        "ogTitle":  "Hasthrekha (Palmistry Consultation) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Master Hasthrekha (Palmistry) analysis by Shastri Amit Kumar Sharma. Over 30 years of traditional palm reading in Jaipur. Life, Head, Heart, and Fate lines decoding.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "gemstones",
+        "file":  "gemstones.html",
+        "name":  "Ratna / Gemstone Guidance (रत्न परामर्श)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/gemstones.html",
+        "canonical":  "https://divyadrishtiastroai.in/gemstones.html",
+        "title":  "Certified Gemstones (Ratna Shastra) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Authentic Vedic Gemstone recommendations by Shastri Amit Kumar Sharma in Jaipur. Natural certified Pukhraj, Neelam, Panna, Manikya, and Moonga with Pran Pratishtha.",
+        "keywords":  "Certified Gemstones Jaipur, Ratna Shastra, Yellow Sapphire, Blue Sapphire, Emerald, Ruby, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "Certified Gemstones (Ratna Shastra) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Authentic Vedic Gemstone recommendations by Shastri Amit Kumar Sharma in Jaipur. Natural certified Pukhraj, Neelam, Panna, Manikya, and Moonga with Pran Pratishtha.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "dasha-remedies",
+        "file":  "dasha-remedies.html",
+        "name":  "Dasha Nivaran \u0026 Remedies (दशा निवारण व उपाय)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/dasha-remedies.html",
+        "canonical":  "https://divyadrishtiastroai.in/dasha-remedies.html",
+        "title":  "Dasha Nivaran \u0026 Vedic Remedies | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Authentic Vedic Dasha Nivaran and planetary remedies by Shastri Amit Kumar Sharma. Shani Sade Sati, Kaal Sarp, Pitra Dosha, and Rahu-Ketu solutions in Jaipur.",
+        "keywords":  "Dasha Nivaran, Shani Sade Sati, Kaal Sarp Dosha, Pitra Dosha Jaipur, Vedic Remedies, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "Dasha Nivaran \u0026 Vedic Remedies | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Authentic Vedic Dasha Nivaran and planetary remedies by Shastri Amit Kumar Sharma. Shani Sade Sati, Kaal Sarp, Pitra Dosha, and Rahu-Ketu solutions in Jaipur.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "career-astrology",
+        "file":  "career-astrology.html",
+        "name":  "Career \u0026 Business Astrology (करियर व व्यापार)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/career-astrology.html",
+        "canonical":  "https://divyadrishtiastroai.in/career-astrology.html",
+        "title":  "Career, Wealth \u0026 Business Astrology | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "Strategic Vedic astrology for career success, business launches, wealth growth, and auspicious Muhurat by Shastri Amit Kumar Sharma in Jaipur.",
+        "keywords":  "Career Astrology, Business Astrology Jaipur, Wealth Yogas, Shubh Muhurat, Shastri Amit Kumar Sharma, 10th House Karma, Divya Drishti",
+        "ogTitle":  "Career, Wealth \u0026 Business Astrology | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "Strategic Vedic astrology for career success, business launches, wealth growth, and auspicious Muhurat by Shastri Amit Kumar Sharma in Jaipur.",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "baglamukhi",
+        "file":  "baglamukhi.html",
+        "name":  "Maa Baglamukhi Sadhana (माँ बगलामुखी)",
+        "category":  "tools",
+        "url":  "https://divyadrishtiastroai.in/baglamukhi.html",
+        "canonical":  "https://divyadrishtiastroai.in/baglamukhi.html",
+        "title":  "Maa Baglamukhi: Legend, Nalkheda Temple \u0026 Anushthan Significance | DIVYA DRISHTI",
+        "description":  "Discover the sacred story of Maa Baglamukhi, how Lord Vishnu worshiped her at Haridra Sarovar, the Pandavas",
+        "keywords":  "Divya Drishti, Apke Sitare Aapki Disha, Maa Baglamukhi, Baglamukhi Story, Lord Vishnu Baglamukhi, Nalkheda Temple Pandavas, Baglamukhi Anushthan benefits, Pitambari Devi, Shastri Amit Kumar Sharma",
+        "ogTitle":  "Maa Baglamukhi: Legend, Nalkheda Temple \u0026 Anushthan Significance | DIVYA DRISHTI",
+        "ogDescription":  "Discover the sacred story of Maa Baglamukhi, how Lord Vishnu worshiped her at Haridra Sarovar, the Pandavas",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.90",
+        "changefreq":  "weekly",
+        "schemaType":  "WebApplication"
+    },
+    {
+        "id":  "rashi-mesh",
+        "file":  "rashi-mesh.html",
+        "name":  "Mesh (Aries) - मेष राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-mesh.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-mesh.html",
+        "title":  "मेष राशि आज का फलादेश (Mesh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "मेष राशि (Aries) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Mesh Rashifal, मेष राशिफल, Aries Daily Horoscope Hindi, आज का मेष फलादेश, Divya Drishti Mesh, Shastri Amit Kumar Sharma",
+        "ogTitle":  "मेष राशि आज का फलादेश (Mesh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "मेष राशि (Aries) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-vrishabh",
+        "file":  "rashi-vrishabh.html",
+        "name":  "Vrishabh (Taurus) - वृषभ राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-vrishabh.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-vrishabh.html",
+        "title":  "वृषभ राशि आज का फलादेश (Vrishabh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "वृषभ राशि (Taurus) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Vrishabh Rashifal, वृषभ राशिफल, Taurus Daily Horoscope Hindi, आज का वृषभ फलादेश, Divya Drishti Vrishabh, Shastri Amit Kumar Sharma",
+        "ogTitle":  "वृषभ राशि आज का फलादेश (Vrishabh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "वृषभ राशि (Taurus) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-mithun",
+        "file":  "rashi-mithun.html",
+        "name":  "Mithun (Gemini) - मिथुन राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-mithun.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-mithun.html",
+        "title":  "मिथुन राशि आज का फलादेश (Mithun Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "मिथुन राशि (Gemini) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Mithun Rashifal, मिथुन राशिफल, Gemini Daily Horoscope Hindi, आज का मिथुन फलादेश, Divya Drishti Mithun, Shastri Amit Kumar Sharma",
+        "ogTitle":  "मिथुन राशि आज का फलादेश (Mithun Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "मिथुन राशि (Gemini) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-kark",
+        "file":  "rashi-kark.html",
+        "name":  "Kark (Cancer) - कर्क राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-kark.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-kark.html",
+        "title":  "कर्क राशि आज का फलादेश (Kark Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "कर्क राशि (Cancer) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Kark Rashifal, कर्क राशिफल, Cancer Daily Horoscope Hindi, आज का कर्क फलादेश, Divya Drishti Kark, Shastri Amit Kumar Sharma",
+        "ogTitle":  "कर्क राशि आज का फलादेश (Kark Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "कर्क राशि (Cancer) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-singh",
+        "file":  "rashi-singh.html",
+        "name":  "Singh (Leo) - सिंह राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-singh.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-singh.html",
+        "title":  "सिंह राशि आज का फलादेश (Singh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "सिंह राशि (Leo) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Singh Rashifal, सिंह राशिफल, Leo Daily Horoscope Hindi, आज का सिंह फलादेश, Divya Drishti Singh, Shastri Amit Kumar Sharma",
+        "ogTitle":  "सिंह राशि आज का फलादेश (Singh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "सिंह राशि (Leo) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-kanya",
+        "file":  "rashi-kanya.html",
+        "name":  "Kanya (Virgo) - कन्या राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-kanya.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-kanya.html",
+        "title":  "कन्या राशि आज का फलादेश (Kanya Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "कन्या राशि (Virgo) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Kanya Rashifal, कन्या राशिफल, Virgo Daily Horoscope Hindi, आज का कन्या फलादेश, Divya Drishti Kanya, Shastri Amit Kumar Sharma",
+        "ogTitle":  "कन्या राशि आज का फलादेश (Kanya Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "कन्या राशि (Virgo) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-tula",
+        "file":  "rashi-tula.html",
+        "name":  "Tula (Libra) - तुला राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-tula.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-tula.html",
+        "title":  "तुला राशि आज का फलादेश (Tula Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "तुला राशि (Libra) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Tula Rashifal, तुला राशिफल, Libra Daily Horoscope Hindi, आज का तुला फलादेश, Divya Drishti Tula, Shastri Amit Kumar Sharma",
+        "ogTitle":  "तुला राशि आज का फलादेश (Tula Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "तुला राशि (Libra) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-vrishchik",
+        "file":  "rashi-vrishchik.html",
+        "name":  "Vrishchik (Scorpio) - वृश्चिक राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-vrishchik.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-vrishchik.html",
+        "title":  "वृश्चिक राशि आज का फलादेश (Vrishchik Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "वृश्चिक राशि (Scorpio) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Vrishchik Rashifal, वृश्चिक राशिफल, Scorpio Daily Horoscope Hindi, आज का वृश्चिक फलादेश, Divya Drishti Vrishchik, Shastri Amit Kumar Sharma",
+        "ogTitle":  "वृश्चिक राशि आज का फलादेश (Vrishchik Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "वृश्चिक राशि (Scorpio) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-dhanu",
+        "file":  "rashi-dhanu.html",
+        "name":  "Dhanu (Sagittarius) - धनु राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-dhanu.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-dhanu.html",
+        "title":  "धनु राशि आज का फलादेश (Dhanu Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "धनु राशि (Sagittarius) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Dhanu Rashifal, धनु राशिफल, Sagittarius Daily Horoscope Hindi, आज का धनु फलादेश, Divya Drishti Dhanu, Shastri Amit Kumar Sharma",
+        "ogTitle":  "धनु राशि आज का फलादेश (Dhanu Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "धनु राशि (Sagittarius) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-makar",
+        "file":  "rashi-makar.html",
+        "name":  "Makar (Capricorn) - मकर राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-makar.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-makar.html",
+        "title":  "मकर राशि आज का फलादेश (Makar Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "मकर राशि (Capricorn) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Makar Rashifal, मकर राशिफल, Capricorn Daily Horoscope Hindi, आज का मकर फलादेश, Divya Drishti Makar, Shastri Amit Kumar Sharma",
+        "ogTitle":  "मकर राशि आज का फलादेश (Makar Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "मकर राशि (Capricorn) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-kumbh",
+        "file":  "rashi-kumbh.html",
+        "name":  "Kumbh (Aquarius) - कुम्भ राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-kumbh.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-kumbh.html",
+        "title":  "कुंभ राशि आज का फलादेश (Kumbh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "कुंभ राशि (Aquarius) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Kumbh Rashifal, कुंभ राशिफल, Aquarius Daily Horoscope Hindi, आज का कुंभ फलादेश, Divya Drishti Kumbh, Shastri Amit Kumar Sharma",
+        "ogTitle":  "कुंभ राशि आज का फलादेश (Kumbh Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "कुंभ राशि (Aquarius) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "rashi-meen",
+        "file":  "rashi-meen.html",
+        "name":  "Meen (Pisces) - मीन राशिफल",
+        "category":  "rashi",
+        "url":  "https://divyadrishtiastroai.in/rashi-meen.html",
+        "canonical":  "https://divyadrishtiastroai.in/rashi-meen.html",
+        "title":  "मीन राशि आज का फलादेश (Meen Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "description":  "मीन राशि (Pisces) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "keywords":  "Meen Rashifal, मीन राशिफल, Pisces Daily Horoscope Hindi, आज का मीन फलादेश, Divya Drishti Meen, Shastri Amit Kumar Sharma",
+        "ogTitle":  "मीन राशि आज का फलादेश (Meen Rashifal Today) | DIVYA DRISHTI | Apke Sitare • Aapki Disha",
+        "ogDescription":  "मीन राशि (Pisces) का आज का विस्तृत दैनिक फलादेश। जानिए आज आपके जीवन में क्या गतिविधियां होने की संभावना है — करियर, धन लाभ, पारिवारिक सुख, स्वास्थ्य, शुभ अंक, शुभ रंग और शास्त्री जी का दैनिक उपाय।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.85",
+        "changefreq":  "daily",
+        "schemaType":  "Article"
+    },
+    {
+        "id":  "service-baglamukhi-online",
+        "file":  "service-baglamukhi-online.html",
+        "name":  "Online Baglamukhi Hawan (ऑनलाइन बगलामुखी हवन)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-baglamukhi-online.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-baglamukhi-online.html",
+        "title":  "माँ बगलामुखी ऑनलाइन ई-अनुष्ठान | Baglamukhi Online Anushthan | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - देश-विदेश में बैठे भक्तों के लिए शास्त्री अमित कुमार शर्मा द्वारा वीडियो कॉल पर लाइव नाम-गोत्र संकल्प, पीताम्बरी बगलामुखी जप, लाइव हवन दर्शन एवं सिद्ध रक्षा कवच कूरियर सेवा।",
+        "keywords":  "Online Baglamukhi Puja, E-Puja Baglamukhi Jaipur, Live Sankalp Baglamukhi, Court Case Online Puja, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "माँ बगलामुखी ऑनलाइन ई-अनुष्ठान | Baglamukhi Online Anushthan | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - देश-विदेश में बैठे भक्तों के लिए शास्त्री अमित कुमार शर्मा द्वारा वीडियो कॉल पर लाइव नाम-गोत्र संकल्प, पीताम्बरी बगलामुखी जप, लाइव हवन दर्शन एवं सिद्ध रक्षा कवच कूरियर सेवा।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-baglamukhi-offline",
+        "file":  "service-baglamukhi-offline.html",
+        "name":  "Offline Baglamukhi Hawan (ऑफलाइन बगलामुखी हवन)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-baglamukhi-offline.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-baglamukhi-offline.html",
+        "title":  "माँ बगलामुखी प्रत्यक्ष महा अनुष्ठान (ऑफलाइन) | Baglamukhi Offline | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में जयपुर आश्रम या यजमान के स्थल पर माँ पीताम्बरी बगलामुखी का प्रत्यक्ष सवा लाख महा अनुष्ठान, हल्दी माला जप एवं पीली सरसों दशांश हवन।",
+        "keywords":  "Maa Baglamukhi Offline Anushthan Jaipur, Baglamukhi Hawan Jaipur, Court Case Victory, Shatru Vinash, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "माँ बगलामुखी प्रत्यक्ष महा अनुष्ठान (ऑफलाइन) | Baglamukhi Offline | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में जयपुर आश्रम या यजमान के स्थल पर माँ पीताम्बरी बगलामुखी का प्रत्यक्ष सवा लाख महा अनुष्ठान, हल्दी माला जप एवं पीली सरसों दशांश हवन।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-mahamrityunjaya-online",
+        "file":  "service-mahamrityunjaya-online.html",
+        "name":  "Online Mahamrityunjaya (महामृत्युंजय जाप)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-mahamrityunjaya-online.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-mahamrityunjaya-online.html",
+        "title":  "महामृत्युंजय ऑनलाइन ई-अनुष्ठान | Online Mahamrityunjaya | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - गंभीर स्वास्थ्य संकट, अस्पताल/आईसीयू में भर्ती परिजन एवं असाध्य रोग निवारण हेतु लाइव वीडियो संकल्प द्वारा सवा लाख महामृत्युंजय जाप, लाइव संजीवनी हवन एवं सिद्ध कवच डिलीवरी।",
+        "keywords":  "Online Mahamrityunjaya Jap, E-Puja Hospital Patient, ICU Health Puja, Shastri Amit Kumar Sharma, Divya Drishti, ऑनलाइन महामृत्युंजय",
+        "ogTitle":  "महामृत्युंजय ऑनलाइन ई-अनुष्ठान | Online Mahamrityunjaya | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - गंभीर स्वास्थ्य संकट, अस्पताल/आईसीयू में भर्ती परिजन एवं असाध्य रोग निवारण हेतु लाइव वीडियो संकल्प द्वारा सवा लाख महामृत्युंजय जाप, लाइव संजीवनी हवन एवं सिद्ध कवच डिलीवरी।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-mahamrityunjaya-offline",
+        "file":  "service-mahamrityunjaya-offline.html",
+        "name":  "Offline Mahamrityunjaya (ऑफलाइन महामृत्युंजय)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-mahamrityunjaya-offline.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-mahamrityunjaya-offline.html",
+        "title":  "महामृत्युंजय महा अनुष्ठान (ऑफलाइन) | Mahamrityunjaya Offline | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में सवा लाख महामृत्युंजय महाजाप, संजीवनी दशांश हवन एवं अकाल मृत्यु भय व गंभीर व्याधि निवारण अनुष्ठान।",
+        "keywords":  "Mahamrityunjaya Jap Jaipur, Mahamrityunjaya Anushthan Offline, Sanjeevani Hawan, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "महामृत्युंजय महा अनुष्ठान (ऑफलाइन) | Mahamrityunjaya Offline | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में सवा लाख महामृत्युंजय महाजाप, संजीवनी दशांश हवन एवं अकाल मृत्यु भय व गंभीर व्याधि निवारण अनुष्ठान।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-rudrabhishek",
+        "file":  "service-rudrabhishek.html",
+        "name":  "Vedic Rudrabhishek Puja (रुद्राभिषेक पूजन)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-rudrabhishek.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-rudrabhishek.html",
+        "title":  "द्वादश ज्योतिर्लिंग रुद्राभिषेक पूजन | Rudrabhishek Puja | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी से संपूर्ण रुद्राभिषेक, पंचामृत स्नान, महामृत्युंजय एवं शिव आराधना।",
+        "keywords":  "Rudrabhishek Puja Jaipur, Shiv Abhishek, Rudrashtadhyayi, Laghu Rudra, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "द्वादश ज्योतिर्लिंग रुद्राभिषेक पूजन | Rudrabhishek Puja | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा शुक्ल यजुर्वेदीय रुद्राष्टाध्यायी से संपूर्ण रुद्राभिषेक, पंचामृत स्नान, महामृत्युंजय एवं शिव आराधना।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-grah-shanti",
+        "file":  "service-grah-shanti.html",
+        "name":  "Navgrah Shanti Puja (नवग्रह शांति पूजन)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-grah-shanti.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-grah-shanti.html",
+        "title":  "नवग्रह शांति पूजन एवं दोष निवारण | Navgrah Shanti Puja | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सूर्य, चंद्र, मंगल, बुध, गुरु, शुक्र, शनि, राहु एवं केतु की वेदोक्त नवग्रह शांति, समिधा हवन एवं ग्रह पीड़ा निवारण।",
+        "keywords":  "Navgrah Shanti Puja Jaipur, Grah Dosh Nivaran, Planetary Peace, Shastri Amit Kumar Sharma, Divya Drishti, नवग्रह शांति",
+        "ogTitle":  "नवग्रह शांति पूजन एवं दोष निवारण | Navgrah Shanti Puja | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सूर्य, चंद्र, मंगल, बुध, गुरु, शुक्र, शनि, राहु एवं केतु की वेदोक्त नवग्रह शांति, समिधा हवन एवं ग्रह पीड़ा निवारण।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-vastu-shanti",
+        "file":  "service-vastu-shanti.html",
+        "name":  "Bhoomi Pujan \u0026 Vastu (भूमि पूजन व वास्तु)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-vastu-shanti.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-vastu-shanti.html",
+        "title":  "भूमि पूजन, शिलान्यास एवं वास्तु शांति | Vastu Shanti \u0026 Bhoomi Pujan | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा नए भूखंड हेतु वैदिक भूमि पूजन, शिलान्यास, कूर्म-अनंत प्रतिष्ठा, शल्योद्धार एवं वास्तु दोष निवारण शांति।",
+        "keywords":  "Bhoomi Pujan Jaipur, Vastu Shanti Puja, Foundation Stone Laying, Shastri Amit Kumar Sharma, Divya Drishti, भूमि पूजन",
+        "ogTitle":  "भूमि पूजन, शिलान्यास एवं वास्तु शांति | Vastu Shanti \u0026 Bhoomi Pujan | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा नए भूखंड हेतु वैदिक भूमि पूजन, शिलान्यास, कूर्म-अनंत प्रतिष्ठा, शल्योद्धार एवं वास्तु दोष निवारण शांति।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-griha-pravesh",
+        "file":  "service-griha-pravesh.html",
+        "name":  "Griha Pravesh Puja (गृह प्रवेश पूजन)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-griha-pravesh.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-griha-pravesh.html",
+        "title":  "गृह प्रवेश पूजन एवं वास्तु प्रतिष्ठा | Griha Pravesh Puja | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा नए व पुराने घर के लिए संपूर्ण वैदिक गृह प्रवेश पूजन, वास्तु शुद्धि, नवग्रह शांति एवं मंगल हवन विधि।",
+        "keywords":  "Griha Pravesh Puja Jaipur, Vastu Shanti, New Home Puja, Shastri Amit Kumar Sharma, Divya Drishti, गृह प्रवेश पूजन, वास्तु शुद्धि",
+        "ogTitle":  "गृह प्रवेश पूजन एवं वास्तु प्रतिष्ठा | Griha Pravesh Puja | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा नए व पुराने घर के लिए संपूर्ण वैदिक गृह प्रवेश पूजन, वास्तु शुद्धि, नवग्रह शांति एवं मंगल हवन विधि।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-satyanarayan-katha",
+        "file":  "service-satyanarayan-katha.html",
+        "name":  "Satyanarayan Vrat Katha (सत्यनारायण कथा)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-satyanarayan-katha.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-satyanarayan-katha.html",
+        "title":  "श्री सत्यनारायण व्रत कथा एवं हवन | Satyanarayan Katha | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा श्री सत्यनारायण भगवान की पावन कथा, पंचामृत, पंजीरी भोग, केला मंडप एवं सुख-समृद्धि हवन।",
+        "keywords":  "Satyanarayan Katha Jaipur, Satyanarayan Puja, Purnima Katha, Shastri Amit Kumar Sharma, Divya Drishti, सत्यनारायण कथा",
+        "ogTitle":  "श्री सत्यनारायण व्रत कथा एवं हवन | Satyanarayan Katha | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा श्री सत्यनारायण भगवान की पावन कथा, पंचामृत, पंजीरी भोग, केला मंडप एवं सुख-समृद्धि हवन।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-sundarkand-path",
+        "file":  "service-sundarkand-path.html",
+        "name":  "Sundarkand Path (संगीतमय सुंदरकांड)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-sundarkand-path.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-sundarkand-path.html",
+        "title":  "संगीतमय श्री सुंदरकांड पाठ | Sundarkand Path | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के निर्देशन में संगीतमय श्री सुंदरकांड पाठ, हनुमान चालीसा, बजरंग बाण, सिंदूर अर्पण एवं मारुति हवन।",
+        "keywords":  "Sundarkand Path Jaipur, Musical Sundarkand, Hanuman Ji Puja, Shastri Amit Kumar Sharma, Divya Drishti, सुंदरकांड पाठ",
+        "ogTitle":  "संगीतमय श्री सुंदरकांड पाठ | Sundarkand Path | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के निर्देशन में संगीतमय श्री सुंदरकांड पाठ, हनुमान चालीसा, बजरंग बाण, सिंदूर अर्पण एवं मारुति हवन।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-mangal-path",
+        "file":  "service-mangal-path.html",
+        "name":  "Mangal Chandi Path (श्री मंगल चंडी पाठ)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-mangal-path.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-mangal-path.html",
+        "title":  "श्री दादी / कुलदेवी मंगल पाठ महोत्सव | Mangal Path | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा श्री राणी सती दादी, शाकंभरी माता एवं कुलदेवी का भव्य मंगल पाठ, अखंड ज्योत, चुनरी उत्सव एवं भजन कीर्तन।",
+        "keywords":  "Rani Sati Dadi Mangal Path Jaipur, Kuldevi Mangal Path, Chundadi Utsav, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "श्री दादी / कुलदेवी मंगल पाठ महोत्सव | Mangal Path | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा श्री राणी सती दादी, शाकंभरी माता एवं कुलदेवी का भव्य मंगल पाठ, अखंड ज्योत, चुनरी उत्सव एवं भजन कीर्तन।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-ramayan-path",
+        "file":  "service-ramayan-path.html",
+        "name":  "Akhand Ramayan Path (अखंड रामायण पाठ)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-ramayan-path.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-ramayan-path.html",
+        "title":  "अखंड श्री रामचरितमानस पाठ | Akhand Ramayan Path | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में 24 घंटे का अखंड श्री रामचरितमानस पाठ, संपुट पाठ, हवन एवं पूर्णाहुति।",
+        "keywords":  "Akhand Ramayan Path Jaipur, Ramcharitmanas Path, Shastri Amit Kumar Sharma, Divya Drishti, अखंड रामायण पाठ",
+        "ogTitle":  "अखंड श्री रामचरितमानस पाठ | Akhand Ramayan Path | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा के सानिध्य में 24 घंटे का अखंड श्री रामचरितमानस पाठ, संपुट पाठ, हवन एवं पूर्णाहुति।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-mul-shanti",
+        "file":  "service-mul-shanti.html",
+        "name":  "Gandmool Nakshatra Shanti (गंडमूल शांति)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-mul-shanti.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-mul-shanti.html",
+        "title":  "गंडमूल नक्षत्र शांति पूजन | Gandmool Mool Shanti | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा अश्विनी, आश्लेषा, मघा, ज्येष्ठा, मूल एवं रेवती नक्षत्र में जन्मे जातकों की २७ कुओं के जल व २७ वृक्षों के पत्तों सहित संपूर्ण गंडमूल शांति।",
+        "keywords":  "Mool Shanti Puja Jaipur, Gandmool Dosh Nivaran, 27 Nakshatra Puja, Shastri Amit Kumar Sharma, Divya Drishti, मूल शांति पूजन",
+        "ogTitle":  "गंडमूल नक्षत्र शांति पूजन | Gandmool Mool Shanti | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा अश्विनी, आश्लेषा, मघा, ज्येष्ठा, मूल एवं रेवती नक्षत्र में जन्मे जातकों की २७ कुओं के जल व २७ वृक्षों के पत्तों सहित संपूर्ण गंडमूल शांति।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-sanskar-vidhi",
+        "file":  "service-sanskar-vidhi.html",
+        "name":  "Shodash Sanskar Vidhi (षोडश संस्कार विधान)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-sanskar-vidhi.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-sanskar-vidhi.html",
+        "title":  "वैदिक संस्कार: नामकरण, मुंडन एवं यज्ञोपवीत | Vedic Sanskar | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सनातन षोडश संस्कारों में प्रमुख: नामकरण, चूड़ाकर्म (मुंडन), अन्नप्राशन एवं यज्ञोपवीत (जनेऊ) संस्कार का वैदिक विधान।",
+        "keywords":  "Namkaran Sanskar Jaipur, Mundan Sanskar, Yajnopavit Janeu, Shodash Sanskar, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "वैदिक संस्कार: नामकरण, मुंडन एवं यज्ञोपवीत | Vedic Sanskar | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सनातन षोडश संस्कारों में प्रमुख: नामकरण, चूड़ाकर्म (मुंडन), अन्नप्राशन एवं यज्ञोपवीत (जनेऊ) संस्कार का वैदिक विधान।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    },
+    {
+        "id":  "service-vivah-sanskar",
+        "file":  "service-vivah-sanskar.html",
+        "name":  "Vedic Vivah Sanskar (वैदिक विवाह संस्कार)",
+        "category":  "services",
+        "url":  "https://divyadrishtiastroai.in/service-vivah-sanskar.html",
+        "canonical":  "https://divyadrishtiastroai.in/service-vivah-sanskar.html",
+        "title":  "वैदिक विवाह संस्कार एवं सप्तपदी विधान | Vivah Sanskar | DIVYA DRISHTI",
+        "description":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सनातन पद्धति से संपूर्ण विवाह संस्कार, पाणिग्रहण, सप्तपदी, कन्यादान एवं वैदिक मंत्रोच्चार।",
+        "keywords":  "Vedic Vivah Sanskar Jaipur, Wedding Priest Jaipur, Saptapadi, Kanyadaan, Shastri Amit Kumar Sharma, Divya Drishti",
+        "ogTitle":  "वैदिक विवाह संस्कार एवं सप्तपदी विधान | Vivah Sanskar | DIVYA DRISHTI",
+        "ogDescription":  "दिव्या दृष्टि - शास्त्री अमित कुमार शर्मा द्वारा सनातन पद्धति से संपूर्ण विवाह संस्कार, पाणिग्रहण, सप्तपदी, कन्यादान एवं वैदिक मंत्रोच्चार।",
+        "ogImage":  "https://divyadrishtiastroai.in/images/Divya%20Drishti%20Astro%20Guide%20Banner.png",
+        "twitterCard":  "summary_large_image",
+        "robots":  "index, follow",
+        "priority":  "0.80",
+        "changefreq":  "monthly",
+        "schemaType":  "Service"
+    }
+];
+
     (function() {
       // Configuration & State
       const DEFAULT_PIN = "9829";
@@ -1747,7 +2692,7 @@
 
       let catalog = [];
       let currentIndex = 0;
-      let activeFilter = "all";
+      let activeSidebarFilter = "all";
 
       // -----------------------------------------------------------------------
       // 1. PIN AUTHENTICATION
@@ -1793,7 +2738,7 @@
           sessionStorage.setItem(AUTH_KEY, "true");
           authOverlay.classList.add("hidden");
           authError.textContent = "";
-          showToast("सुरक्षा पिन स्वीकृत! Welcome to SEO Admin Panel", "🛡️");
+          showToast("सुरक्षा पिन स्वीकृत! Welcome to SEO Admin Panel", "&#128737;&#65039;");
         } else {
           authError.textContent = "गलत पिन (Invalid PIN)! कृपया पुनः प्रयास करें।";
           pinInputs.forEach(i => { i.value = ""; i.style.borderColor = "#EF4444"; });
@@ -1815,7 +2760,7 @@
       checkAuth();
 
       // -----------------------------------------------------------------------
-      // 2. DATA INITIALIZATION
+      // 2. DATA INITIALIZATION (Catalog Load Priority: LocalStorage -> JS File -> Embedded)
       // -----------------------------------------------------------------------
       function initData() {
         const localData = localStorage.getItem(STORAGE_KEY);
@@ -1823,15 +2768,15 @@
           try {
             catalog = JSON.parse(localData);
           } catch(e) {
-            catalog = window.SEO_CATALOG || [];
+            catalog = window.SEO_CATALOG || window.EMBEDDED_SEO_CATALOG || [];
           }
-        } else if (window.SEO_CATALOG && Array.isArray(window.SEO_CATALOG)) {
+        } else if (window.SEO_CATALOG && Array.isArray(window.SEO_CATALOG) && window.SEO_CATALOG.length > 0) {
           catalog = JSON.parse(JSON.stringify(window.SEO_CATALOG));
         } else {
-          catalog = [];
+          catalog = JSON.parse(JSON.stringify(window.EMBEDDED_SEO_CATALOG || []));
         }
 
-        populatePageDropdown();
+        renderPagesSidebar();
         renderAuditTable();
         renderSitemapViewer();
         renderRobotsViewer();
@@ -1867,70 +2812,63 @@
       }
 
       // -----------------------------------------------------------------------
-      // 4. PAGE SELECTOR & CATEGORY FILTERING
+      // 4. PAGES DIRECTORY SIDEBAR LIST (EVERY WEB PAGE VISIBLY LISTED!)
       // -----------------------------------------------------------------------
-      const pageDropdown = document.getElementById("pageDropdown");
-      const categoryPills = document.querySelectorAll(".cat-pill[data-filter]");
+      const pagesScrollList = document.getElementById("pagesScrollList");
+      const sidebarSearch = document.getElementById("sidebarSearch");
+      const sideFilterPills = document.querySelectorAll(".side-pill");
+      const sidebarCount = document.getElementById("sidebarCount");
 
-      function populatePageDropdown() {
-        pageDropdown.innerHTML = "";
-        
-        const groups = {
-          core: document.createElement("optgroup"),
-          tools: document.createElement("optgroup"),
-          rashi: document.createElement("optgroup"),
-          services: document.createElement("optgroup")
-        };
-
-        groups.core.label = "--- CORE PAGES (5) ---";
-        groups.tools.label = "--- ASTROLOGY TOOLS & PORTALS (10) ---";
-        groups.rashi.label = "--- 12 RASHIFAL PAGES (12) ---";
-        groups.services.label = "--- PUJA & ANUSHTHAN SERVICES (15) ---";
+      function renderPagesSidebar() {
+        pagesScrollList.innerHTML = "";
+        const q = (sidebarSearch.value || "").toLowerCase().trim();
+        let matchCount = 0;
 
         catalog.forEach((item, idx) => {
-          if (activeFilter !== "all" && item.category !== activeFilter) return;
+          if (activeSidebarFilter !== "all" && item.category !== activeSidebarFilter) return;
+          if (q && !item.name.toLowerCase().includes(q) && !item.file.toLowerCase().includes(q) && !(item.title || "").toLowerCase().includes(q)) return;
 
-          const opt = document.createElement("option");
-          opt.value = idx;
-          opt.textContent = `${item.name} (${item.file})`;
-          if (groups[item.category]) {
-            groups[item.category].appendChild(opt);
-          }
+          matchCount++;
+          const score = computeItemScore(item);
+          const scoreClass = score >= 85 ? "high" : (score >= 70 ? "mid" : "low");
+
+          const itemEl = document.createElement("div");
+          itemEl.className = "page-list-item " + (idx === currentIndex ? "active" : "");
+          itemEl.dataset.idx = idx;
+
+          itemEl.innerHTML = 
+            <div class="pli-info">
+              <div class="pli-title">
+                <span style="font-size:11px; opacity:0.6; font-family:monospace;"># + (idx + 1) + </span>
+                 + item.name + 
+              </div>
+              <div class="pli-slug"> + item.file + </div>
+            </div>
+            <div class="pli-meta">
+              <span class="pli-score  + scoreClass + "> + score + %</span>
+              <span class="pli-badge  + item.category + "> + item.category + </span>
+            </div>
+          ;
+
+          itemEl.addEventListener("click", () => {
+            loadPage(idx);
+          });
+
+          pagesScrollList.appendChild(itemEl);
         });
 
-        Object.values(groups).forEach(g => {
-          if (g.children.length > 0) pageDropdown.appendChild(g);
-        });
-
-        pageDropdown.value = currentIndex;
+        sidebarCount.textContent = matchCount + " Pages";
       }
 
-      categoryPills.forEach(pill => {
+      sidebarSearch.addEventListener("input", renderPagesSidebar);
+
+      sideFilterPills.forEach(pill => {
         pill.addEventListener("click", () => {
-          categoryPills.forEach(p => p.classList.remove("active"));
+          sideFilterPills.forEach(p => p.classList.remove("active"));
           pill.classList.add("active");
-          activeFilter = pill.dataset.filter;
-          populatePageDropdown();
-          // Jump to first matching page if current page isn't in filter
-          if (activeFilter !== "all" && catalog[currentIndex].category !== activeFilter) {
-            const firstIdx = catalog.findIndex(c => c.category === activeFilter);
-            if (firstIdx !== -1) loadPage(firstIdx);
-          }
+          activeSidebarFilter = pill.dataset.sideFilter;
+          renderPagesSidebar();
         });
-      });
-
-      pageDropdown.addEventListener("change", (e) => {
-        loadPage(parseInt(e.target.value, 10));
-      });
-
-      document.getElementById("prevPageBtn").addEventListener("click", () => {
-        if (currentIndex > 0) loadPage(currentIndex - 1);
-        else loadPage(catalog.length - 1);
-      });
-
-      document.getElementById("nextPageBtn").addEventListener("click", () => {
-        if (currentIndex < catalog.length - 1) loadPage(currentIndex + 1);
-        else loadPage(0);
       });
 
       // -----------------------------------------------------------------------
@@ -1967,7 +2905,17 @@
         const page = catalog[idx];
 
         document.getElementById("currentEditingFileName").textContent = page.file;
-        pageDropdown.value = idx;
+        document.getElementById("currentEditingPageName").textContent = page.name + " (" + page.category.toUpperCase() + ")";
+
+        // Highlight in sidebar list
+        document.querySelectorAll(".page-list-item").forEach(item => {
+          if (parseInt(item.dataset.idx, 10) === idx) {
+            item.classList.add("active");
+            item.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          } else {
+            item.classList.remove("active");
+          }
+        });
 
         const liveLink = document.getElementById("livePageLink");
         liveLink.href = page.file;
@@ -1981,7 +2929,7 @@
         fieldPriority.value = page.priority || "0.90";
         fieldOgTitle.value = page.ogTitle || page.title || "";
         fieldOgDesc.value = page.ogDescription || page.description || "";
-        fieldOgImage.value = page.ogImage || `${DOMAIN}/images/Divya%20Drishti%20Astro%20Guide%20Banner.png`;
+        fieldOgImage.value = page.ogImage || (DOMAIN + "/images/Divya%20Drishti%20Astro%20Guide%20Banner.png");
 
         updatePreviews();
       }
@@ -1996,7 +2944,7 @@
 
         // Title Counter & Progress
         const tLen = title.length;
-        titleCounter.textContent = `${tLen} / 60 chars`;
+        titleCounter.textContent = tLen + " / 60 chars";
         titleCounter.className = "char-counter " + (tLen >= 50 && tLen <= 60 ? "good" : (tLen > 60 && tLen <= 70 ? "warn" : "bad"));
         const tPercent = Math.min(100, Math.round((tLen / 60) * 100));
         titleProgress.style.width = tPercent + "%";
@@ -2004,7 +2952,7 @@
 
         // Desc Counter & Progress
         const dLen = desc.length;
-        descCounter.textContent = `${dLen} / 160 chars`;
+        descCounter.textContent = dLen + " / 160 chars";
         descCounter.className = "char-counter " + (dLen >= 130 && dLen <= 160 ? "good" : (dLen > 160 && dLen <= 175 ? "warn" : "bad"));
         const dPercent = Math.min(100, Math.round((dLen / 160) * 100));
         descProgress.style.width = dPercent + "%";
@@ -2013,7 +2961,7 @@
         // Google SERP Snippet Preview
         serpTitle.textContent = title || "No Title Specified";
         serpSnippet.textContent = desc || "No description specified. Google will generate a snippet from page contents.";
-        serpBreadcrumb.textContent = canonical || `${DOMAIN}/${catalog[currentIndex].file}`;
+        serpBreadcrumb.textContent = canonical || (DOMAIN + "/" + catalog[currentIndex].file);
 
         // Social Preview
         socialTitle.textContent = ogTitle || title;
@@ -2036,7 +2984,7 @@
         fieldOgTitle.value = fieldTitle.value;
         fieldOgDesc.value = fieldDesc.value;
         updatePreviews();
-        showToast("Open Graph tags updated from Meta Title/Desc!", "🔄");
+        showToast("Open Graph tags updated from Meta Title/Desc!", "&#128260;");
       });
 
       // Desktop vs Mobile SERP Toggle
@@ -2130,10 +3078,8 @@
           checkSchema.classList.remove("passed");
         }
 
-        // Clamp to 100
         score = Math.min(100, score);
 
-        // Update UI
         const scoreValue = document.getElementById("scoreValue");
         const scoreCircle = document.getElementById("scoreCircle");
         const healthGrade = document.getElementById("healthGrade");
@@ -2175,25 +3121,26 @@
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(catalog));
         updateKpiMetrics();
+        renderPagesSidebar();
         renderAuditTable();
         renderSitemapViewer();
-        showToast(`Saved changes for ${page.file}!`, "💾");
+        showToast("Saved changes for " + page.file + "!", "&#128190;");
       }
 
       document.getElementById("savePageBtn").addEventListener("click", saveCurrentPage);
       document.getElementById("saveLocalBtn").addEventListener("click", () => {
         saveCurrentPage();
-        showToast("All 42 pages saved in local memory!", "✨");
+        showToast("All 42 pages saved in local memory!", "&#10024;");
       });
 
       document.getElementById("resetCurrentBtn").addEventListener("click", () => {
         if (confirm("Reset this page's SEO tags to initial catalog defaults?")) {
-          const original = (window.SEO_CATALOG || []).find(c => c.file === catalog[currentIndex].file);
+          const original = (window.EMBEDDED_SEO_CATALOG || []).find(c => c.file === catalog[currentIndex].file);
           if (original) {
             catalog[currentIndex] = JSON.parse(JSON.stringify(original));
             loadPage(currentIndex);
             saveCurrentPage();
-            showToast("Reset to defaults!", "🔄");
+            showToast("Reset to defaults!", "&#128260;");
           }
         }
       });
@@ -2238,33 +3185,33 @@
           const tLen = (item.title || "").length;
           const dLen = (item.description || "").length;
 
-          tr.innerHTML = `
-            <td style="color: var(--text-muted); font-family: monospace;">${idx + 1}</td>
+          tr.innerHTML = 
+            <td style="color: var(--text-muted); font-family: monospace;"> + (idx + 1) + </td>
             <td>
               <div class="page-cell">
-                <span class="page-cell-title">${item.name}</span>
-                <span class="page-cell-slug">${item.file}</span>
+                <span class="page-cell-title"> + item.name + </span>
+                <span class="page-cell-slug"> + item.file + </span>
               </div>
             </td>
-            <td><span class="badge ${catClass}">${item.category.toUpperCase()}</span></td>
+            <td><span class="badge  + catClass + "> + item.category.toUpperCase() + </span></td>
             <td>
-              <span style="font-size: 11.5px; color: ${tLen >= 50 && tLen <= 60 ? 'var(--emerald)' : (tLen <= 70 ? 'var(--gold-amber)' : 'var(--ruby-light)')};">
-                ${tLen} chars
+              <span style="font-size: 11.5px; color:  + (tLen >= 50 && tLen <= 60 ? 'var(--emerald)' : (tLen <= 70 ? 'var(--gold-amber)' : 'var(--ruby-light)')) + ;">
+                 + tLen +  chars
               </span>
             </td>
             <td>
-              <span style="font-size: 11.5px; color: ${dLen >= 130 && dLen <= 160 ? 'var(--emerald)' : (dLen <= 175 ? 'var(--gold-amber)' : 'var(--ruby-light)')};">
-                ${dLen} chars
+              <span style="font-size: 11.5px; color:  + (dLen >= 130 && dLen <= 160 ? 'var(--emerald)' : (dLen <= 175 ? 'var(--gold-amber)' : 'var(--ruby-light)')) + ;">
+                 + dLen +  chars
               </span>
             </td>
-            <td><span style="font-size: 11.5px; color: var(--gold-light); font-family: monospace;">${item.schemaType || 'AstrologyService'}</span></td>
-            <td><span class="score-badge ${scoreClass}">${score} / 100</span></td>
+            <td><span style="font-size: 11.5px; color: var(--gold-light); font-family: monospace;"> + (item.schemaType || 'AstrologyService') + </span></td>
+            <td><span class="score-badge  + scoreClass + "> + score +  / 100</span></td>
             <td>
-              <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;" onclick="window.editPageByIndex(${idx})">
-                Edit ✍️
+              <button class="btn btn-outline" style="padding: 4px 10px; font-size: 11px;" onclick="window.editPageByIndex( + idx + )">
+                Edit &#9997;&#65039;
               </button>
             </td>
-          `;
+          ;
           auditTableBody.appendChild(tr);
         });
       }
@@ -2302,19 +3249,19 @@
 
       function generateSitemapXml() {
         const today = new Date().toISOString().split("T")[0];
-        let xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+        let xml = <?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n;
 
         catalog.forEach(item => {
-          const loc = item.file === "index.html" ? `${DOMAIN}/` : `${DOMAIN}/${item.file}`;
-          xml += `  <url>\n`;
-          xml += `    <loc>${loc}</loc>\n`;
-          xml += `    <lastmod>${today}</lastmod>\n`;
-          xml += `    <changefreq>${item.changefreq || 'weekly'}</changefreq>\n`;
-          xml += `    <priority>${item.priority || '0.80'}</priority>\n`;
-          xml += `  </url>\n`;
+          const loc = item.file === "index.html" ? (DOMAIN + "/") : (DOMAIN + "/" + item.file);
+          xml +=   <url>\n;
+          xml +=     <loc> + loc + </loc>\n;
+          xml +=     <lastmod> + today + </lastmod>\n;
+          xml +=     <changefreq> + (item.changefreq || 'weekly') + </changefreq>\n;
+          xml +=     <priority> + (item.priority || '0.80') + </priority>\n;
+          xml +=   </url>\n;
         });
 
-        xml += `</urlset>\n`;
+        xml += </urlset>\n;
         return xml;
       }
 
@@ -2324,7 +3271,7 @@
 
       document.getElementById("btnCopySitemap").addEventListener("click", () => {
         navigator.clipboard.writeText(generateSitemapXml()).then(() => {
-          showToast("Sitemap XML copied to clipboard!", "📋");
+          showToast("Sitemap XML copied to clipboard!", "&#128203;");
         });
       });
 
@@ -2336,7 +3283,7 @@
         a.download = "sitemap.xml";
         a.click();
         URL.revokeObjectURL(url);
-        showToast("Downloaded sitemap.xml!", "📥");
+        showToast("Downloaded sitemap.xml!", "&#128229;");
       });
 
       // -----------------------------------------------------------------------
@@ -2345,7 +3292,7 @@
       const robotsViewer = document.getElementById("robotsViewer");
 
       function getRobotsTxtDefault() {
-        return `# Robots.txt for DIVYA DRISHTI (Apke Sitare • Aapki Disha)\n# Domain: https://divyadrishtiastroai.in\n\nUser-agent: *\nAllow: /\nDisallow: /scratch/\nDisallow: /scripts/\nDisallow: /seo-admin.html\n\n# Search Engine Sitemaps\nSitemap: https://divyadrishtiastroai.in/sitemap.xml\n`;
+        return # Robots.txt for DIVYA DRISHTI (Apke Sitare • Aapki Disha)\n# Domain: https://divyadrishtiastroai.in\n\nUser-agent: *\nAllow: /\nDisallow: /scratch/\nDisallow: /scripts/\nDisallow: /seo-admin.html\n\n# Search Engine Sitemaps\nSitemap: https://divyadrishtiastroai.in/sitemap.xml\n;
       }
 
       function renderRobotsViewer() {
@@ -2354,7 +3301,7 @@
 
       document.getElementById("btnCopyRobots").addEventListener("click", () => {
         navigator.clipboard.writeText(robotsViewer.textContent).then(() => {
-          showToast("robots.txt copied to clipboard!", "📋");
+          showToast("robots.txt copied to clipboard!", "&#128203;");
         });
       });
 
@@ -2366,7 +3313,7 @@
         a.download = "robots.txt";
         a.click();
         URL.revokeObjectURL(url);
-        showToast("Downloaded robots.txt!", "📥");
+        showToast("Downloaded robots.txt!", "&#128229;");
       });
 
       // -----------------------------------------------------------------------
@@ -2397,7 +3344,7 @@
 
       modalCopyBtn.addEventListener("click", () => {
         navigator.clipboard.writeText(modalCodeContent.textContent).then(() => {
-          showToast("Code copied to clipboard!", "📋");
+          showToast("Code copied to clipboard!", "&#128203;");
           closeModal();
         });
       });
@@ -2406,8 +3353,8 @@
       document.getElementById("btnCopyHead").addEventListener("click", () => {
         saveCurrentPage();
         const p = catalog[currentIndex];
-        const tags = `<!-- Master SEO Tags: ${p.file} -->\n<title>${p.title}</title>\n<meta name="description" content="${p.description}">\n<meta name="keywords" content="${p.keywords}">\n<link rel="canonical" href="${p.canonical}">\n<meta name="robots" content="${p.robots}">\n\n<!-- Open Graph / WhatsApp -->\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Divya Drishti">\n<meta property="og:url" content="${p.canonical}">\n<meta property="og:title" content="${p.ogTitle || p.title}">\n<meta property="og:description" content="${p.ogDescription || p.description}">\n<meta property="og:image" content="${p.ogImage}">\n\n<!-- Twitter Cards -->\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content="${p.ogTitle || p.title}">\n<meta name="twitter:description" content="${p.ogDescription || p.description}">\n<meta name="twitter:image" content="${p.ogImage}">`;
-        openModal(`HTML <head> Tags for ${p.file}`, tags);
+        const tags = <!-- Master SEO Tags:  + p.file +  -->\n<title> + p.title + </title>\n<meta name="description" content=" + p.description + ">\n<meta name="keywords" content=" + p.keywords + ">\n<link rel="canonical" href=" + p.canonical + ">\n<meta name="robots" content=" + p.robots + ">\n\n<!-- Open Graph / WhatsApp -->\n<meta property="og:type" content="website">\n<meta property="og:site_name" content="Divya Drishti">\n<meta property="og:url" content=" + p.canonical + ">\n<meta property="og:title" content=" + (p.ogTitle || p.title) + ">\n<meta property="og:description" content=" + (p.ogDescription || p.description) + ">\n<meta property="og:image" content=" + p.ogImage + ">\n\n<!-- Twitter Cards -->\n<meta name="twitter:card" content="summary_large_image">\n<meta name="twitter:title" content=" + (p.ogTitle || p.title) + ">\n<meta name="twitter:description" content=" + (p.ogDescription || p.description) + ">\n<meta name="twitter:image" content=" + p.ogImage + ">;
+        openModal("HTML <head> Tags for " + p.file, tags);
       });
 
       // View JSON-LD Schema
@@ -2432,8 +3379,8 @@
             }
           }
         };
-        const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n<\/script>`;
-        openModal(`JSON-LD Schema for ${p.file}`, scriptTag);
+        const scriptTag = <script type="application/ld+json">\n + JSON.stringify(schema, null, 2) + \n<\/script>;
+        openModal("JSON-LD Schema for " + p.file, scriptTag);
       });
 
       // Download Catalog JSON
@@ -2446,14 +3393,14 @@
         a.download = "seo-catalog.json";
         a.click();
         URL.revokeObjectURL(url);
-        showToast("Downloaded seo-catalog.json!", "📥");
+        showToast("Downloaded seo-catalog.json!", "&#128229;");
       });
 
       // Copy PowerShell Sync Command
       document.getElementById("btnCopySyncCmd").addEventListener("click", () => {
         const cmd = "powershell -ExecutionPolicy Bypass -File .\\scripts\\apply-seo.ps1";
         navigator.clipboard.writeText(cmd).then(() => {
-          showToast("PowerShell command copied! Paste and run in terminal.", "📋");
+          showToast("PowerShell command copied! Paste and run in terminal.", "&#128203;");
         });
       });
 
@@ -2474,7 +3421,7 @@
               catalog = parsed;
               localStorage.setItem(STORAGE_KEY, JSON.stringify(catalog));
               initData();
-              showToast(`Imported ${catalog.length} pages successfully!`, "📥");
+              showToast("Imported " + catalog.length + " pages successfully!", "&#128229;");
             } else {
               alert("Invalid JSON format. Expected an array of page objects.");
             }
@@ -2489,11 +3436,9 @@
       document.getElementById("btnResetAllDefaults").addEventListener("click", () => {
         if (confirm("Are you sure you want to reset ALL 42 pages to default metadata? Any unsaved edits will be lost.")) {
           localStorage.removeItem(STORAGE_KEY);
-          if (window.SEO_CATALOG) {
-            catalog = JSON.parse(JSON.stringify(window.SEO_CATALOG));
-          }
+          catalog = JSON.parse(JSON.stringify(window.EMBEDDED_SEO_CATALOG || []));
           initData();
-          showToast("Reset all 42 pages to initial defaults!", "🔄");
+          showToast("Reset all 42 pages to initial defaults!", "&#128260;");
         }
       });
 
@@ -2510,9 +3455,9 @@
       const toastIcon = document.getElementById("toastIcon");
       let toastTimer = null;
 
-      function showToast(message, icon = "✨") {
+      function showToast(message, icon) {
         toastMsg.textContent = message;
-        toastIcon.textContent = icon;
+        toastIcon.innerHTML = icon || "&#10024;";
         toast.classList.add("show");
         if (toastTimer) clearTimeout(toastTimer);
         toastTimer = setTimeout(() => {
